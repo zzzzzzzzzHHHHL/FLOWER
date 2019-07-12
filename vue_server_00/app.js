@@ -134,3 +134,114 @@ server.get("/import",function(req,res){
 		res.send(result);
 	})
 });
+
+
+
+
+//爱情鲜花
+server.get("/love",function(req,res){
+	var sql="SELECT * FROM flower_love_product";
+	pool.query(sql,function(err,result){
+		if(err)throw err;
+		res.send(result);
+	})
+})
+
+
+
+//生日鲜花
+server.get("/birthday",function(req,res){
+	var sql="SELECT * FROM flower_birthday_product";
+	pool.query(sql,function(err,result){
+		if(err)throw err;
+		res.send(result);
+	})
+})
+
+
+//问候商品鲜花
+server.get("/extend",function(req,res){
+	var sql="SELECT * FROM flower_extend_product";
+	pool.query(sql,function(err,result){
+		if(err)throw err;
+		res.send(result);
+	})
+})
+
+
+
+//祝福商品鲜花
+server.get("/blessing",function(req,res){
+	var sql="SELECT * FROM flower_blessing_product";
+	pool.query(sql,function(err,result){
+		if(err)throw err;
+		res.send(result);
+	})
+})
+
+
+
+//慰问商品鲜花
+server.get("/condole",function(req,res){
+	var sql="SELECT * FROM flower_condole_product";
+	pool.query(sql,function(err,result){
+		if(err)throw err;
+		res.send(result);
+	})
+})
+
+
+
+//道歉商品鲜花
+server.get("/apologize",function(req,res){
+	var sql="SELECT * FROM flower_apologize_product";
+	pool.query(sql,function(err,result){
+		if(err)throw err;
+		res.send(result);
+	})
+})
+
+
+
+//生活商品鲜花
+server.get("/life",function(req,res){
+	var sql="SELECT * FROM flower_life_product";
+	pool.query(sql,function(err,result){
+		if(err)throw err;
+		res.send(result);
+	})
+})
+
+
+
+//开业花篮
+server.get("/opening",function(req,res){
+	var sql="SELECT * FROM flower_opening_product";
+	pool.query(sql,function(err,result){
+		if(err)throw err;
+		res.send(result);
+	})
+})
+
+
+
+//永生花
+server.get("/forever",function(req,res){
+	var sql="SELECT * FROM flower_forever_product";
+	pool.query(sql,function(err,result){
+		if(err)throw err;
+		res.send(result);
+	})
+})
+
+
+
+//礼品
+server.get("/gift",function(req,res){
+	var sql="SELECT * FROM flower_gift_product";
+	pool.query(sql,function(err,result){
+		if(err)throw err;
+		res.send(result);
+	})
+})
+	

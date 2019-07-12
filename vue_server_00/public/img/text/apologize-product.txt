@@ -29,8 +29,6 @@
 (NULL, '布拉格之恋-9朵进口红玫瑰', 'img/apologize-product/ap29.jpg', 999, 'product_details.html?lid=262'),
 (NULL, '缘如花-9朵红玫瑰', 'img/apologize-product/ap30.jpg', 1499, 'product_details.html?lid=263'),
 (NULL, '甜蜜浪漫-33朵红玫瑰礼盒', 'img/apologize-product/ap31.jpg', 599, 'product_details.html?lid=264'),
-(NULL, '爱情印记-14朵进口厄瓜多尔甜心玫瑰', 'img/apologize-product/ap32.jpg', 1499, 'product_details.html?lid=265'),
+(NULL, '爱情印记-14朵进口厄瓜多尔甜心玫瑰', 'img/apologize-product/ap32.jpg', 1499, 'product_details.html?lid=265');
 
 
-
-(NULL, 'title', 'img/apologize-product/ap1.jpg', price, 'product_details.html?lid=234'),

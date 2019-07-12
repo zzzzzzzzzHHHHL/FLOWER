@@ -62,4 +62,3 @@
 (NULL, '情书-52朵红玫瑰', 'img/love-product/l62.jpg', 799, 'product_details.html?lid=135'),
 (NULL, '纯美花开-11朵厄瓜多尔蓝色玫瑰', 'img/love-product/l63.jpg', 1999, 'product_details.html?lid=136'),
 (NULL, '小永远-新娘捧花', 'img/love-product/l64.jpg', 499, 'product_details.html?lid=137'),
-(NULL, 'title', 'img/love-product/l1.jpg', price, 'product_details.html?lid=74'),

@@ -110,13 +110,105 @@ CREATE TABLE flower_import_product(
 
 
 /****爱情鲜花****/
-CREATE TABLE flower_import_product(
+CREATE TABLE flower_love_product(
   pid INT PRIMARY KEY AUTO_INCREMENT,
   title VARCHAR(64),
   pic VARCHAR(128),
   price DECIMAL(10,2),
   href VARCHAR(128)
 );
+
+
+/****生日鲜花****/
+CREATE TABLE flower_birthday_product(
+  pid INT PRIMARY KEY AUTO_INCREMENT,
+  title VARCHAR(64),
+  pic VARCHAR(128),
+  price DECIMAL(10,2),
+  href VARCHAR(128)
+);
+
+
+/****问候长辈鲜花商品****/
+CREATE TABLE flower_extend_product(
+  pid INT PRIMARY KEY AUTO_INCREMENT,
+  title VARCHAR(64),
+  pic VARCHAR(128),
+  price DECIMAL(10,2),
+  href VARCHAR(128)
+);
+
+
+/****祝福庆贺鲜花商品****/
+CREATE TABLE flower_blessing_product(
+  pid INT PRIMARY KEY AUTO_INCREMENT,
+  title VARCHAR(64),
+  pic VARCHAR(128),
+  price DECIMAL(10,2),
+  href VARCHAR(128)
+);
+
+
+/****探病慰问鲜花商品****/
+CREATE TABLE flower_condole_product(
+  pid INT PRIMARY KEY AUTO_INCREMENT,
+  title VARCHAR(64),
+  pic VARCHAR(128),
+  price DECIMAL(10,2),
+  href VARCHAR(128)
+);
+
+
+/****道歉鲜花****/
+CREATE TABLE flower_apologize_product(
+  pid INT PRIMARY KEY AUTO_INCREMENT,
+  title VARCHAR(64),
+  pic VARCHAR(128),
+  price DECIMAL(10,2),
+  href VARCHAR(128)
+);
+
+
+/****生活鲜花****/
+CREATE TABLE flower_life_product(
+  pid INT PRIMARY KEY AUTO_INCREMENT,
+  title VARCHAR(64),
+  pic VARCHAR(128),
+  price DECIMAL(10,2),
+  href VARCHAR(128)
+);
+
+
+/****开业花篮****/
+CREATE TABLE flower_opening_product(
+  pid INT PRIMARY KEY AUTO_INCREMENT,
+  title VARCHAR(64),
+  pic VARCHAR(128),
+  price DECIMAL(10,2),
+  href VARCHAR(128)
+);
+
+
+
+/****永生花****/
+CREATE TABLE flower_forever_product(
+  pid INT PRIMARY KEY AUTO_INCREMENT,
+  title VARCHAR(64),
+  pic VARCHAR(128),
+  price DECIMAL(10,2),
+  href VARCHAR(128)
+);
+
+
+/****礼品****/
+CREATE TABLE flower_gift_product(
+  pid INT PRIMARY KEY AUTO_INCREMENT,
+  title VARCHAR(64),
+  pic VARCHAR(128),
+  price DECIMAL(10,2),
+  href VARCHAR(128)
+);
+
 
 
 /*******************/
@@ -294,3 +386,447 @@ INSERT INTO flower_import_product VALUES
 (NULL, '梦境丛林—森系高档礼盒装', 'img/jinkou-product/jk22.jpg', 1599, 'product_details.html?lid=71'),
 (NULL, '倾情于你-9朵薄荷玫瑰', 'img/jinkou-product/jk23.jpg', 1799, 'product_details.html?lid=72'),
 (NULL, '异域风情-进口花材混搭（送花瓶）', 'img/jinkou-product/jk24.jpg', 799, 'product_details.html?lid=73');
+
+
+
+/****爱情鲜花商品****/
+INSERT INTO flower_love_product VALUES
+(NULL, '爱的勇气-19朵红玫瑰', 'img/love-product/l1.jpg', 499, 'product_details.html?lid=74'),
+(NULL, '一见倾心-19朵红玫瑰', 'img/love-product/l2.jpg', 399, 'product_details.html?lid=75'),
+(NULL, '心上人-13朵混色玫瑰韩式混搭', 'img/love-product/l3.jpg', 499, 'product_details.html?lid=76'),
+(NULL, '永不变心-11朵红玫瑰', 'img/love-product/l4.jpg', 199, 'product_details.html?lid=77'),
+(NULL, '给你我的心-52朵红玫瑰网红抱抱桶', 'img/love-product/l5.jpg', 899, 'product_details.html?lid=78'),
+(NULL, '执手问年华-11朵红玫瑰', 'img/love-product/l6.jpg', 239, 'product_details.html?lid=79'),
+(NULL, '最好的我们-白色满天星', 'img/love-product/l7.jpg', 999, 'product_details.html?lid=80'),
+(NULL, '爱的味道-11朵红玫瑰礼盒', 'img/love-product/l8.jpg', 399, 'product_details.html?lid=81'),
+(NULL, '甜心守护-抖音网红气球翅膀抱抱桶', 'img/love-product/l9.jpg', 799, 'product_details.html?lid=82'),
+(NULL, '爱意浓-33朵红玫瑰网红抱抱桶', 'img/love-product/l10.jpg', 699, 'product_details.html?lid=83'),
+(NULL, '偏偏喜欢你-抖音网红气球抱抱桶', 'img/love-product/l11.jpg', 699, 'product_details.html?lid=84'),
+(NULL, '悦动你心-19朵厄瓜多尔甜心玫瑰', 'img/love-product/l12.jpg', 1799, 'product_details.html?lid=85'),
+(NULL, '甜蜜浪漫-33朵红玫瑰礼盒', 'img/love-product/l13.jpg', 599, 'product_details.html?lid=86'),
+(NULL, '一往深情-19朵红玫瑰', 'img/love-product/l14.jpg', 599, 'product_details.html?lid=87'),
+(NULL, '情动一生-33朵香槟玫瑰', 'img/love-product/l15.jpg', 699, 'product_details.html?lid=88'),
+(NULL, '爱的纪念-抖音网红气球翅膀抱抱桶', 'img/love-product/l16.jpg', 699, 'product_details.html?lid=89'),
+(NULL, '遇见爱情-99朵红玫瑰', 'img/love-product/l17.jpg', 1199, 'product_details.html?lid=90'),
+(NULL, '布拉格之恋-9朵进口红玫瑰', 'img/love-product/l18.jpg', 999, 'product_details.html?lid=91'),
+(NULL, '雪山之恋-33朵白玫瑰韩式混搭', 'img/love-product/l19.jpg', 799, 'product_details.html?lid=92'),
+(NULL, '爱之物语-14朵红玫瑰', 'img/love-product/l20.jpg', 499, 'product_details.html?lid=93'),
+(NULL, '爱情火花-19朵红玫瑰', 'img/love-product/l21.jpg', 599, 'product_details.html?lid=94'),
+(NULL, '见证幸福-巧克力+鲜花礼盒', 'img/love-product/l1.jpg', 599, 'product_details.html?lid=95'),
+(NULL, '无尽的爱-9朵肯尼亚卡布奇诺玫瑰', 'img/love-product/l23.jpg', 899, 'product_details.html?lid=96'),
+(NULL, '告白诗-11朵红玫瑰', 'img/love-product/l24.jpg', 399, 'product_details.html?lid=97'),
+(NULL, '浓浓的思念-99朵香槟玫瑰', 'img/love-product/l25.jpg', 1299, 'product_details.html?lid=98'),
+(NULL, '永结同心-19朵红玫瑰礼盒', 'img/love-product/l26.jpg', 499, 'product_details.html?lid=99'),
+(NULL, '甜蜜无限-网红33颗巧克力+33朵红玫瑰花束', 'img/love-product/l27.jpg', 899, 'product_details.html?lid=100'),
+(NULL, '甜蜜的期待-52朵粉红雪山', 'img/love-product/l28.jpg', 699, 'product_details.html?lid=101'),
+(NULL, '公主的假日-48朵粉红雪山', 'img/love-product/l29.jpg', 699, 'product_details.html?lid=102'),
+(NULL, '清水美嘉-9朵肯尼亚进口玫瑰', 'img/love-product/l30.jpg', 1499, 'product_details.html?lid=103'),
+(NULL, '爱你在身边-33朵红玫瑰', 'img/love-product/l31.jpg', 599, 'product_details.html?lid=104'),
+(NULL, '甜蜜圣诞-红玫瑰+苹果圣诞礼盒', 'img/love-product/l32.jpg', 799, 'product_details.html?lid=105'),
+(NULL, '爱你在身边-33朵红玫瑰', 'img/love-product/l33.jpg', 599, 'product_details.html?lid=106'),
+(NULL, '相濡以沫-新娘手捧花', 'img/love-product/l34.jpg', 599, 'product_details.html?lid=107'),
+(NULL, '甜蜜圣诞-红玫瑰+苹果圣诞礼盒', 'img/love-product/l35.jpg', 799, 'product_details.html?lid=108'),
+(NULL, '温柔月色-33朵粉玫瑰', 'img/love-product/l36.jpg', 599, 'product_details.html?lid=109'),
+(NULL, '浅语花开-33朵粉玫瑰', 'img/love-product/l37.jpg', 599, 'product_details.html?lid=110'),
+(NULL, '心动的感觉-99朵混色玫瑰', 'img/love-product/l38.jpg', 999, 'product_details.html?lid=111'),
+(NULL, '你的眼神-9朵香槟玫瑰+5支白色洋桔梗混搭', 'img/love-product/l39.jpg', 599, 'product_details.html?lid=112'),
+(NULL, '风中芭蕾-51朵混色玫瑰', 'img/love-product/l40.jpg', 899, 'product_details.html?lid=113'),
+(NULL, '我只在乎你-勿忘我熊抱花束', 'img/love-product/l41.jpg', 999, 'product_details.html?lid=114'),
+(NULL, '我如此爱你-33朵红玫瑰', 'img/love-product/l42.jpg', 599, 'product_details.html?lid=115'),
+(NULL, '粉色的回忆-12朵粉玫瑰', 'img/love-product/l43.jpg', 199, 'product_details.html?lid=116'),
+(NULL, '妙龄女郎-19朵粉玫瑰', 'img/love-product/l44.jpg', 499, 'product_details.html?lid=117'),
+(NULL, '浪漫一生-19朵粉玫瑰', 'img/love-product/l45.jpg', 399, 'product_details.html?lid=118'),
+(NULL, '伴着你-33朵红玫瑰抱抱桶', 'img/love-product/l46.jpg', 599, 'product_details.html?lid=119'),
+(NULL, '美好如初-进口绿玫瑰海芋韩式混搭', 'img/love-product/l47.jpg', 1599, 'product_details.html?lid=120'),
+(NULL, '情书-52朵红玫瑰', 'img/love-product/l48.jpg', 799, 'product_details.html?lid=121'),
+(NULL, '百花仙子-19朵海洋之歌', 'img/love-product/l49.jpg', 499, 'product_details.html?lid=122'),
+(NULL, '小夜曲-白玫瑰+绿桔梗混搭', 'img/love-product/l50.jpg', 399, 'product_details.html?lid=123'),
+(NULL, '花开漫恋-6朵玫瑰+满天星韩式混搭', 'img/love-product/l51.jpg', 499, 'product_details.html?lid=124'),
+(NULL, '炙热的爱-33支红玫瑰', 'img/love-product/l52.jpg', 599, 'product_details.html?lid=125'),
+(NULL, '对你爱不完-33朵红玫瑰花束', 'img/love-product/l53.jpg', 599, 'product_details.html?lid=126'),
+(NULL, '初恋的心情-33朵混色玫瑰', 'img/love-product/l54.jpg', 599, 'product_details.html?lid=127'),
+(NULL, '浓情蜜意-99朵粉玫瑰', 'img/love-product/l55.jpg', 1299, 'product_details.html?lid=128'),
+(NULL, '浪漫香气-99朵混色玫瑰', 'img/love-product/l56.jpg', 1199, 'product_details.html?lid=129'),
+(NULL, '好时光-精美手提花篮', 'img/love-product/l57.jpg', 599, 'product_details.html?lid=130'),
+(NULL, '浪漫一生-19朵粉玫瑰', 'img/love-product/l58.jpg', 399, 'product_details.html?lid=131'),
+(NULL, '回眸三生-33朵糖果雪山', 'img/love-product/l59.jpg', 699, 'product_details.html?lid=132'),
+(NULL, '美好如初-进口绿玫瑰海芋韩式混搭', 'img/love-product/l60.jpg', 1599, 'product_details.html?lid=133'),
+(NULL, '陌上花开-99朵粉红雪山', 'img/love-product/l61.jpg', 1199, 'product_details.html?lid=134'),
+(NULL, '情书-52朵红玫瑰', 'img/love-product/l62.jpg', 799, 'product_details.html?lid=135'),
+(NULL, '纯美花开-11朵厄瓜多尔蓝色玫瑰', 'img/love-product/l63.jpg', 1999, 'product_details.html?lid=136'),
+(NULL, '小永远-新娘捧花', 'img/love-product/l64.jpg', 499, 'product_details.html?lid=137'),
+(NULL, 'title', 'img/love-product/l1.jpg', price, 'product_details.html?lid=74');
+
+
+
+
+/****生日鲜花商品****/
+INSERT INTO flower_birthday_product VALUES
+(NULL, '公主的假日-48朵粉红雪山', 'img/birthday-product/b1.jpg', 699, 'product_details.html?lid=378'),
+(NULL, '恰似春风-55朵粉色康乃馨', 'img/birthday-product/b2.jpg', 699, 'product_details.html?lid=379'),
+(NULL, '幸福即将到来-11朵粉玫瑰', 'img/birthday-product/b3.jpg', 299, 'product_details.html?lid=380'),
+(NULL, '陌上花开-99朵粉红雪山', 'img/birthday-product/b4.jpg', 1199, 'product_details.html?lid=381'),
+(NULL, '粉色的回忆-12朵粉玫瑰', 'img/birthday-product/b5.jpg', 199, 'product_details.html?lid=382'),
+(NULL, '祝福挚爱-33朵混色玫瑰', 'img/birthday-product/b6.jpg', 599, 'product_details.html?lid=383'),
+(NULL, '小幸运-小清新礼盒装', 'img/birthday-product/b7.jpg', 599, 'product_details.html?lid=384'),
+(NULL, '真情绽放-33朵紫玫瑰抱抱桶', 'img/birthday-product/b8.jpg', 699, 'product_details.html?lid=385'),
+(NULL, '幸福快乐-粉色康乃馨+向日葵混搭', 'img/birthday-product/b9.jpg', 299, 'product_details.html?lid=386'),
+(NULL, '知心祝福-向日葵+康乃馨混搭', 'img/birthday-product/b10.jpg', 399, 'product_details.html?lid=387'),
+(NULL, '幸福时光-玫瑰+绣球混搭抱抱桶', 'img/birthday-product/b11.jpg', 699, 'product_details.html?lid=388'),
+(NULL, '恩情无限-19朵粉色康乃馨', 'img/birthday-product/b12.jpg', 399, 'product_details.html?lid=389'),
+(NULL, '铭记于心-99朵糖果雪山', 'img/birthday-product/b13.jpg', 1399, 'product_details.html?lid=390'),
+(NULL, '温馨祝福-3色玫瑰混搭', 'img/birthday-product/b14.jpg', 399, 'product_details.html?lid=391'),
+(NULL, '温暖常伴-粉玫瑰+粉玫瑰混搭', 'img/birthday-product/b15.jpg', 399, 'product_details.html?lid=392'),
+(NULL, '温暖陪伴-33朵粉玫瑰', 'img/birthday-product/b16.jpg', 599, 'product_details.html?lid=393'),
+(NULL, '暖暖的在心里-11朵香槟玫瑰礼盒', 'img/birthday-product/b17.jpg', 399, 'product_details.html?lid=394'),
+(NULL, '紧握幸福-19朵红玫瑰礼盒', 'img/birthday-product/b18.jpg', 699, 'product_details.html?lid=395'),
+(NULL, '似水年华-33朵混色玫瑰', 'img/birthday-product/b19.jpg', 599, 'product_details.html?lid=396'),
+(NULL, '雪山之恋-33朵白玫瑰韩式混搭', 'img/birthday-product/b20.jpg', 799, 'product_details.html?lid=397'),
+(NULL, '纯真年代-33朵戴安娜玫瑰', 'img/birthday-product/b21.jpg', 599, 'product_details.html?lid=398'),
+(NULL, '千言万语-11朵红玫瑰花束', 'img/birthday-product/b22.jpg', 199, 'product_details.html?lid=399'),
+(NULL, '甜蜜小调-19朵混色粉玫瑰', 'img/birthday-product/b23.jpg', 499, 'product_details.html?lid=400'),
+(NULL, '花与爱丽丝-52朵艾莎玫瑰', 'img/birthday-product/b24.jpg', 999, 'product_details.html?lid=401'),
+(NULL, '绮梦-11朵混色玫瑰', 'img/birthday-product/b25.jpg', 599, 'product_details.html?lid=402'),
+(NULL, '初遇-52朵戴安娜玫瑰', 'img/birthday-product/b26.jpg', 799, 'product_details.html?lid=403'),
+(NULL, '遇见爱情-99朵红玫瑰', 'img/birthday-product/b27.jpg', 1199, 'product_details.html?lid=404'),
+(NULL, '欣欣向荣-白百合+紫玫瑰混搭', 'img/birthday-product/b28.jpg', 499, 'product_details.html?lid=405'),
+(NULL, '甜蜜的期待-52朵粉红雪山', 'img/birthday-product/b29.jpg', 699, 'product_details.html?lid=406'),
+(NULL, '天使的心跳-9朵澳洲玫瑰', 'img/birthday-product/b30.jpg', 899, 'product_details.html?lid=407'),
+(NULL, '素锦年时-11朵粉玫瑰花束', 'img/birthday-product/b31.jpg', 199, 'product_details.html?lid=408'),
+(NULL, '一路上有你-9朵玫瑰混搭', 'img/birthday-product/b32.jpg', 199, 'product_details.html?lid=409'),
+(NULL, '花开漫恋-6朵玫瑰+满天星韩式混搭', 'img/birthday-product/b33.jpg', 499, 'product_details.html?lid=410'),
+(NULL, '爱的纪念-抖音网红气球翅膀抱抱桶', 'img/birthday-product/b34.jpg', 699, 'product_details.html?lid=411'),
+(NULL, '倩影翩翩-12朵甜心玫瑰', 'img/birthday-product/b35.jpg', 1499, 'product_details.html?lid=412'),
+(NULL, '素锦年时-11朵粉玫瑰花束', 'img/birthday-product/b36.jpg', 199, 'product_details.html?lid=413'),
+(NULL, '一路上有你-9朵玫瑰混搭', 'img/birthday-product/b37.jpg', 199, 'product_details.html?lid=414'),
+(NULL, '见证幸福-巧克力+鲜花礼盒', 'img/birthday-product/b38.jpg', 599, 'product_details.html?lid=415'),
+(NULL, '一往深情-19朵红玫瑰', 'img/birthday-product/b39.jpg', 599, 'product_details.html?lid=416'),
+(NULL, '明媚阳光-19朵红玫瑰', 'img/birthday-product/b40.jpg', 499, 'product_details.html?lid=417'),
+(NULL, '灿烂人生-19朵红色康乃馨', 'img/birthday-product/b41.jpg', 399, 'product_details.html?lid=418'),
+(NULL, '我只在乎你-勿忘我熊抱花束', 'img/birthday-product/b42.jpg', 999, 'product_details.html?lid=419'),
+(NULL, '天使的心跳-9朵澳洲玫瑰', 'img/birthday-product/b43.jpg', 899, 'product_details.html?lid=420'),
+(NULL, '纯美花开-11朵厄瓜多尔蓝色玫瑰', 'img/birthday-product/b44.jpg', 1999, 'product_details.html?lid=421'),
+(NULL, '童年的回忆-6朵向日葵礼盒', 'img/birthday-product/b45.jpg', 459, 'product_details.html?lid=422'),
+(NULL, '常相伴-韩式绣球混搭', 'img/birthday-product/b46.jpg', 499, 'product_details.html?lid=423'),
+(NULL, '青春之乐-3朵混色绣球', 'img/birthday-product/b47.jpg',299, 'product_details.html?lid=424'),
+(NULL, '感动时光-粉百合+白桔梗混搭', 'img/birthday-product/b48.jpg', 389, 'product_details.html?lid=425');
+
+
+/****问候长辈鲜花商品****/
+INSERT INTO flower_extend_product VALUES
+(NULL, '亲切的问候-19朵粉玫瑰+绣球混搭', 'img/extend-product/e1.jpg', 599, 'product_details.html?lid=138'),
+(NULL, '敬祝安好-11朵粉色康乃馨', 'img/extend-product/e2.jpg', 199, 'product_details.html?lid=139'),
+(NULL, '幸福时光-玫瑰+绣球混搭抱抱桶', 'img/extend-product/e3.jpg', 699, 'product_details.html?lid=140'),
+(NULL, '笑口常开-11朵粉玫瑰礼盒', 'img/extend-product/e4.jpg', 399, 'product_details.html?lid=141'),
+(NULL, '幸福平安-香槟玫瑰+雏菊混搭', 'img/extend-product/e5.jpg', 229, 'product_details.html?lid=142'),
+(NULL, '花开富贵-白百合+桔梗混搭花束', 'img/extend-product/e6.jpg', 499, 'product_details.html?lid=143'),
+(NULL, '阳光使者-19朵玫瑰韩式混搭', 'img/extend-product/e7.jpg', 599, 'product_details.html?lid=144'),
+(NULL, '幸福快乐-粉色康乃馨+向日葵混搭', 'img/extend-product/e8.jpg', 299, 'product_details.html?lid=145'),
+(NULL, '知心祝福-向日葵+康乃馨混搭', 'img/extend-product/e9.jpg', 399, 'product_details.html?lid=146'),
+(NULL, '迎接幸福-向日葵+白玫瑰混搭', 'img/extend-product/e10.jpg', 399, 'product_details.html?lid=147'),
+(NULL, '温馨祝福-3色玫瑰混搭', 'img/extend-product/e11.jpg', 399, 'product_details.html?lid=148'),
+(NULL, '温暖陪伴-33朵粉玫瑰', 'img/extend-product/e12.jpg', 599, 'product_details.html?lid=149'),
+(NULL, '纯白圣洁-6支多头白百合', 'img/extend-product/e13.jpg', 399, 'product_details.html?lid=150'),
+(NULL, '浅语花开-33朵粉玫瑰', 'img/extend-product/e14.jpg', 599, 'product_details.html?lid=151'),
+(NULL, '美好的明天-粉玫瑰绣球韩式混搭', 'img/extend-product/e15.jpg', 699, 'product_details.html?lid=152'),
+(NULL, '幸福常伴-19朵红色康乃馨', 'img/extend-product/e16.jpg', 399, 'product_details.html?lid=153'),
+(NULL, '温暖常伴-粉玫瑰+粉玫瑰混搭', 'img/extend-product/e17.jpg', 399, 'product_details.html?lid=154'),
+(NULL, '阳光清晨-15朵香槟玫瑰+3朵向日葵', 'img/extend-product/e18.jpg', 599, 'product_details.html?lid=155'),
+(NULL, '快乐的回忆-粉玫瑰+粉色康乃馨混搭', 'img/extend-product/e19.jpg', 239, 'product_details.html?lid=156'),
+(NULL, '暖暖的在心里-11朵香槟玫瑰礼盒', 'img/extend-product/e20.jpg', 399, 'product_details.html?lid=157'),
+(NULL, '灿烂晴天-19朵粉玫瑰', 'img/extend-product/e21.jpg', 499, 'product_details.html?lid=158'),
+(NULL, '为爱而生-12朵向日葵抱抱桶', 'img/extend-product/e22.jpg', 699, 'product_details.html?lid=159'),
+(NULL, '明媚阳光-19朵红玫瑰', 'img/extend-product/e23.jpg', 499, 'product_details.html?lid=160'),
+(NULL, '倩影翩翩-12朵甜心玫瑰', 'img/extend-product/e24.jpg', 1499, 'product_details.html?lid=161'),
+(NULL, '幸福永相伴-玫瑰+康乃馨礼盒装', 'img/extend-product/e25.jpg', 499, 'product_details.html?lid=162'),
+(NULL, '心中的太阳-11朵粉色康乃馨韩式混搭', 'img/extend-product/e26.jpg', 399, 'product_details.html?lid=163'),
+(NULL, '小幸运-小清新礼盒装', 'img/extend-product/e27.jpg', 599, 'product_details.html?lid=164'),
+(NULL, '欣欣向荣-白百合+紫玫瑰混搭', 'img/extend-product/e28.jpg', 499, 'product_details.html?lid=165'),
+(NULL, '百花仙子-19朵海洋之歌', 'img/extend-product/e29.jpg', 499, 'product_details.html?lid=166'),
+(NULL, '为你祝福-11朵白玫瑰', 'img/extend-product/e30.jpg', 599, 'product_details.html?lid=167'),
+(NULL, '灿烂人生-19朵红色康乃馨', 'img/extend-product/e31.jpg', 399, 'product_details.html?lid=168'),
+(NULL, '常相伴-韩式绣球混搭', 'img/extend-product/e32.jpg', 499, 'product_details.html?lid=169');
+
+
+/****祝福庆贺鲜花商品****/
+INSERT INTO flower_blessing_product VALUES
+(NULL, '知心祝福-向日葵+康乃馨混搭', 'img/blessing-product/bp1.jpg', 399, 'product_details.html?lid=170'),
+(NULL, '温馨祝福-3色玫瑰混搭', 'img/blessing-product/bp2.jpg', 399, 'product_details.html?lid=171'),
+(NULL, '友谊永存-11朵苏醒粉玫瑰', 'img/blessing-product/bp3.jpg', 299, 'product_details.html?lid=172'),
+(NULL, '幸福平安-香槟玫瑰+雏菊混搭', 'img/blessing-product/bp4.jpg', 299, 'product_details.html?lid=173'),
+(NULL, '幸福常伴-19朵红色康乃馨', 'img/blessing-product/bp5.jpg', 399, 'product_details.html?lid=174'),
+(NULL, '幸福滋味-粉玫瑰+白百合混搭', 'img/blessing-product/bp6.jpg', 369, 'product_details.html?lid=175'),
+(NULL, '温暖常伴-粉玫瑰+粉玫瑰混搭', 'img/blessing-product/bp7.jpg', 399, 'product_details.html?lid=176'),
+(NULL, '幸福永相伴-玫瑰+康乃馨礼盒装', 'img/blessing-product/bp8.jpg', 499, 'product_details.html?lid=177'),
+(NULL, '亲切的问候-19朵粉玫瑰+绣球混搭', 'img/blessing-product/bp9.jpg', 599, 'product_details.html?lid=178'),
+(NULL, '恰似春风-55朵粉色康乃馨', 'img/blessing-product/bp10.jpg', 699, 'product_details.html?lid=179'),
+(NULL, '迎接幸福-向日葵+白玫瑰混搭', 'img/blessing-product/bp10.jpg', 399, 'product_details.html?lid=180'),
+(NULL, '花开富贵-白百合+桔梗混搭花束', 'img/blessing-product/bp12.jpg', 499, 'product_details.html?lid=181'),
+(NULL, '正午阳光-11朵香槟玫瑰', 'img/blessing-product/bp13.jpg', 299, 'product_details.html?lid=182'),
+(NULL, '阳光使者-19朵玫瑰韩式混搭', 'img/blessing-product/bp14.jpg', 599, 'product_details.html?lid=183'),
+(NULL, '简单的幸福-蓝色满天星花盒', 'img/blessing-product/bp15.jpg', 399, 'product_details.html?lid=184'),
+(NULL, '欣欣向荣-白百合+紫玫瑰混搭', 'img/blessing-product/bp16.jpg', 499, 'product_details.html?lid=185'),
+(NULL, '永恒的祝福-玫瑰+绣球混搭花束', 'img/blessing-product/bp17.jpg', 599, 'product_details.html?lid=186'),
+(NULL, '感动时光-粉百合+白桔梗混搭', 'img/blessing-product/bp18.jpg', 389, 'product_details.html?lid=187'),
+(NULL, '温暖心底-19朵红玫瑰+苹果圣诞礼盒装', 'img/blessing-product/bp19.jpg', 599, 'product_details.html?lid=188'),
+(NULL, '美好的明天-粉玫瑰绣球韩式混搭', 'img/blessing-product/bp20.jpg', 699, 'product_details.html?lid=189'),
+(NULL, '为你祝福-11朵白玫瑰', 'img/blessing-product/bp21.jpg', 599, 'product_details.html?lid=190'),
+(NULL, '似水年华-33朵混色玫瑰', 'img/blessing-product/bp22.jpg', 599, 'product_details.html?lid=191'),
+(NULL, '幸福即将到来-11朵粉玫瑰', 'img/blessing-product/bp23.jpg', 239, 'product_details.html?lid=192'),
+(NULL, '平安夜-玫瑰+苹果心形礼盒', 'img/blessing-product/bp24.jpg', 499, 'product_details.html?lid=193'),
+(NULL, '纯白圣洁-6支多头白百合', 'img/blessing-product/bp25.jpg', 399, 'product_details.html?lid=194'),
+(NULL, '暖暖回忆-33朵混色玫瑰', 'img/blessing-product/bp26.jpg', 599, 'product_details.html?lid=195'),
+(NULL, '倩影翩翩-12朵甜心玫瑰', 'img/blessing-product/bp27.jpg', 1499, 'product_details.html?lid=196'),
+(NULL, '为爱而生-12朵向日葵抱抱桶', 'img/blessing-product/bp28.jpg', 699, 'product_details.html?lid=197'),
+(NULL, '安娜公主-11朵粉玫瑰花束', 'img/blessing-product/bp29.jpg', 249, 'product_details.html?lid=198'),
+(NULL, '粉色的回忆-12朵粉玫瑰', 'img/blessing-product/bp30.jpg', 199, 'product_details.html?lid=199'),
+(NULL, '美好浪漫-26朵混色玫瑰圣诞款', 'img/blessing-product/bp31.jpg', 699, 'product_details.html?lid=200'),
+(NULL, '宠爱之名-混色韩式熊抱花束', 'img/blessing-product/bp32.jpg', 1299, 'product_details.html?lid=201');
+
+
+
+/****探病慰问鲜花商品****/
+INSERT INTO flower_condole_product VALUES
+(NULL, '敬祝安好-11朵粉色康乃馨', 'img/condole-product/cp1.jpg', 199, 'product_details.html?lid=202'),
+(NULL, '知心祝福-向日葵+康乃馨混搭', 'img/condole-product/cp2.jpg', 399, 'product_details.html?lid=203'),
+(NULL, '幸福快乐-粉色康乃馨+向日葵混搭', 'img/condole-product/cp3.jpg', 299, 'product_details.html?lid=204'),
+(NULL, '温馨祝福-3色玫瑰混搭', 'img/condole-product/cp4.jpg', 399, 'product_details.html?lid=205'),
+(NULL, '感动时光-粉百合+白桔梗混搭', 'img/condole-product/cp5.jpg', 389, 'product_details.html?lid=206'),
+(NULL, '亲切的问候-19朵粉玫瑰+绣球混搭', 'img/condole-product/cp6.jpg', 599, 'product_details.html?lid=207'),
+(NULL, '阳光使者-19朵玫瑰韩式混搭', 'img/condole-product/cp7.jpg', 599, 'product_details.html?lid=208'),
+(NULL, '心中的太阳-11朵粉色康乃馨韩式混搭', 'img/condole-product/cp8.jpg', 399, 'product_details.html?lid=209'),
+(NULL, '恰似春风-55朵粉色康乃馨', 'img/condole-product/cp9.jpg', 699, 'product_details.html?lid=210'),
+(NULL, '幸福平安-香槟玫瑰+雏菊混搭', 'img/condole-product/cp10.jpg', 229, 'product_details.html?lid=211'),
+(NULL, '幸福永相伴-玫瑰+康乃馨礼盒装', 'img/condole-product/cp11.jpg', 499, 'product_details.html?lid=212'),
+(NULL, '为爱而生-12朵向日葵抱抱桶', 'img/condole-product/cp12.jpg', 699, 'product_details.html?lid=213'),
+(NULL, '幸福时光-玫瑰+绣球混搭抱抱桶', 'img/condole-product/cp13.jpg', 699, 'product_details.html?lid=214'),
+(NULL, '美好的明天-粉玫瑰绣球韩式混搭', 'img/condole-product/cp14.jpg', 699, 'product_details.html?lid=215'),
+(NULL, '幸福即将到来-11朵粉玫瑰', 'img/condole-product/cp15.jpg', 299, 'product_details.html?lid=216'),
+(NULL, '阳光清晨-15朵香槟玫瑰+3朵向日葵', 'img/condole-product/cp16.jpg', 599, 'product_details.html?lid=217'),
+(NULL, '小幸运-小清新礼盒装', 'img/condole-product/cp17.jpg', 599, 'product_details.html?lid=218'),
+(NULL, '一路上有你-9朵玫瑰混搭', 'img/condole-product/cp18.jpg', 199, 'product_details.html?lid=219'),
+(NULL, '美好如初-进口绿玫瑰海芋韩式混搭', 'img/condole-product/cp19.jpg', 1599, 'product_details.html?lid=220'),
+(NULL, '风雨同行-8朵向日葵花束', 'img/condole-product/cp20.jpg', 399, 'product_details.html?lid=221'),
+(NULL, '常相伴-韩式绣球混搭', 'img/condole-product/cp21.jpg', 499, 'product_details.html?lid=222'),
+(NULL, '浅语花开-33朵粉玫瑰', 'img/condole-product/cp22.jpg', 599, 'product_details.html?lid=223'),
+(NULL, '温暖常伴-粉玫瑰+粉玫瑰混搭', 'img/condole-product/cp23.jpg', 399, 'product_details.html?lid=224'),
+(NULL, '明媚阳光-19朵红玫瑰', 'img/condole-product/cp24.jpg', 499, 'product_details.html?lid=225'),
+(NULL, '花开富贵-白百合+桔梗混搭花束', 'img/condole-product/cp25.jpg', 499, 'product_details.html?lid=226'),
+(NULL, '幸福滋味-粉玫瑰+白百合混搭', 'img/condole-product/cp26.jpg', 369, 'product_details.html?lid=227'),
+(NULL, '月光倾城-玫瑰+桔梗韩式混搭', 'img/condole-product/cp27.jpg', 499, 'product_details.html?lid=228'),
+(NULL, '纯白圣洁-6支多头白百合', 'img/condole-product/cp28.jpg', 399, 'product_details.html?lid=229'),
+(NULL, '欣欣向荣-白百合+紫玫瑰混搭', 'img/condole-product/cp29.jpg', 499, 'product_details.html?lid=230'),
+(NULL, '运来围绕-6朵向日葵', 'img/condole-product/cp30.jpg', 599, 'product_details.html?lid=231'),
+(NULL, '神密花园-19朵混搭玫瑰礼盒', 'img/condole-product/cp31.jpg', 599, 'product_details.html?lid=232'),
+(NULL, '温暖陪伴-33朵粉玫瑰', 'img/condole-product/cp32.jpg', 599, 'product_details.html?lid=233');
+
+
+
+/****道歉鲜花****/
+INSERT INTO flower_apologize_product VALUES
+(NULL, '美丽的道歉-11朵黄玫瑰', 'img/apologize-product/ap1.jpg', 299, 'product_details.html?lid=234'),
+(NULL, '甜蜜的期待-52朵粉红雪山', 'img/apologize-product/ap2.jpg', 699, 'product_details.html?lid=235'),
+(NULL, '浮生有你-99朵艾莎玫瑰', 'img/apologize-product/ap3.jpg', 1399, 'product_details.html?lid=236'),
+(NULL, '紧握幸福-19朵红玫瑰礼盒', 'img/apologize-product/ap4.jpg', 699, 'product_details.html?lid=237'),
+(NULL, '悦动你心-19朵厄瓜多尔甜心玫瑰', 'img/apologize-product/ap5.jpg', 1799, 'product_details.html?lid=238'),
+(NULL, '公主的假日-48朵粉红雪山', 'img/apologize-product/ap6.jpg', 699, 'product_details.html?lid=239'),
+(NULL, '许你一世爱恋-99朵白玫瑰', 'img/apologize-product/ap7.jpg', 1399, 'product_details.html?lid=240'),
+(NULL, '明媚阳光-19朵红玫瑰', 'img/apologize-product/ap8.jpg', 499, 'product_details.html?lid=241'),
+(NULL, '情书-52朵红玫瑰', 'img/apologize-product/ap9.jpg', 799, 'product_details.html?lid=242'),
+(NULL, '圣诞快乐-3朵红玫瑰+1颗红苹果礼盒装', 'img/apologize-product/ap10.jpg', 499, 'product_details.html?lid=243'),
+(NULL, '心中的太阳-11朵粉色康乃馨韩式混搭', 'img/apologize-product/ap11.jpg', 399, 'product_details.html?lid=244'),
+(NULL, '灼灼其华-绣球混搭熊抱花束', 'img/apologize-product/ap12.jpg', 1299, 'product_details.html?lid=245'),
+(NULL, '丹心言誓-99朵蓝色妖姬', 'img/apologize-product/ap13.jpg', 1499, 'product_details.html?lid=246'),
+(NULL, '一生一世-11朵蓝色妖姬礼盒装', 'img/apologize-product/ap14.jpg', 399, 'product_details.html?lid=247'),
+(NULL, '妙龄女郎-19朵粉玫瑰', 'img/apologize-product/ap15.jpg', 499, 'product_details.html?lid=248'),
+(NULL, '花与爱丽丝-52朵艾莎玫瑰', 'img/apologize-product/ap16.jpg', 999, 'product_details.html?lid=249'),
+(NULL, '丹心言誓-99朵蓝色妖姬', 'img/apologize-product/ap17.jpg', 1499, 'product_details.html?lid=250'),
+(NULL, '一生一世-11朵蓝色妖姬礼盒装', 'img/apologize-product/ap18.jpg', 399, 'product_details.html?lid=251'),
+(NULL, '妙龄女郎-19朵粉玫瑰', 'img/apologize-product/ap19.jpg', 499, 'product_details.html?lid=252'),
+(NULL, '浪漫一生-19朵粉玫瑰', 'img/apologize-product/ap20.jpg', 399, 'product_details.html?lid=253'),
+(NULL, '爱你如诗-时尚混色满天星', 'img/apologize-product/ap21.jpg', 899, 'product_details.html?lid=254'),
+(NULL, '浓情-33朵混色玫瑰', 'img/apologize-product/ap22.jpg', 599, 'product_details.html?lid=255'),
+(NULL, '一见如故-粉色满天星礼盒', 'img/apologize-product/ap23.jpg', 599, 'product_details.html?lid=256'),
+(NULL, '美好如初-进口绿玫瑰海芋韩式混搭', 'img/apologize-product/ap24.jpg', 1599, 'product_details.html?lid=257'),
+(NULL, '卿本佳人-9朵粉红雪山', 'img/apologize-product/ap25.jpg', 499, 'product_details.html?lid=258'),
+(NULL, '爱的味道-11朵红玫瑰礼盒', 'img/apologize-product/ap26.jpg', 399, 'product_details.html?lid=259'),
+(NULL, '恋恋情深-99颗巧克力花束', 'img/apologize-product/ap27.jpg', 1599, 'product_details.html?lid=260'),
+(NULL, '纯白圣洁-6支多头白百合', 'img/apologize-product/ap28.jpg', 399, 'product_details.html?lid=261'),
+(NULL, '布拉格之恋-9朵进口红玫瑰', 'img/apologize-product/ap29.jpg', 999, 'product_details.html?lid=262'),
+(NULL, '缘如花-9朵红玫瑰', 'img/apologize-product/ap30.jpg', 1499, 'product_details.html?lid=263'),
+(NULL, '甜蜜浪漫-33朵红玫瑰礼盒', 'img/apologize-product/ap31.jpg', 599, 'product_details.html?lid=264'),
+(NULL, '爱情印记-14朵进口厄瓜多尔甜心玫瑰', 'img/apologize-product/ap32.jpg', 1499, 'product_details.html?lid=265');
+
+/****生活鲜花****/
+INSERT INTO flower_life_product VALUES
+(NULL, '完美主义-6支跳舞兰（送花瓶）', 'img/life-product/lp1.jpg', 499, 'product_details.html?lid=266'),
+(NULL, '爱丽丝梦境-5支浅黄色康乃馨+4支黄玫瑰+6支红玫瑰', 'img/life-product/lp2.jpg', 399, 'product_details.html?lid=267'),
+(NULL, '异域风情-进口花材混搭（送花瓶）', 'img/life-product/lp3.jpg', 799, 'product_details.html?lid=268'),
+(NULL, '星晴-5支香槟玫瑰+4支粉玫瑰+5支绿色康乃馨', 'img/life-product/lp4.jpg', 399, 'product_details.html?lid=269'),
+(NULL, '沐浴阳光-向日葵混搭（送花瓶）', 'img/life-product/lp5.jpg', 299, 'product_details.html?lid=270'),
+(NULL, '相遇的瞬间-简约版混搭（送花瓶）', 'img/life-product/lp6.jpg', 299, 'product_details.html?lid=271'),
+(NULL, '娉婷秀雅-8支粉玫瑰（送花瓶）', 'img/life-product/lp7.jpg', 399, 'product_details.html?lid=272'),
+(NULL, '长长久久-2支粉桔梗+2支粉色康乃馨+2支紫玫瑰', 'img/life-product/lp8.jpg', 379, 'product_details.html?lid=273'),
+(NULL, '热情焰火-红色转运系混搭（送花瓶）', 'img/life-product/lp9.jpg', 599, 'product_details.html?lid=274'),
+(NULL, '醉眼看花-粉色系混搭（送花瓶）', 'img/life-product/lp10.jpg', 299, 'product_details.html?lid=275'),
+(NULL, '后青春-白玫瑰+小雏菊 混搭（送花瓶）', 'img/life-product/lp11.jpg', 289, 'product_details.html?lid=276'),
+(NULL, '月落星沉-4支白玫瑰+3支绿康乃馨+1支多头白百合', 'img/life-product/lp12.jpg', 379, 'product_details.html?lid=277'),
+(NULL, '遇见晴天-香槟玫瑰+洋桔梗混搭（送花瓶）', 'img/life-product/lp13.jpg', 299, 'product_details.html?lid=278'),
+(NULL, '匆匆那年-白玫瑰+康乃馨混搭（送花瓶）', 'img/life-product/lp14.jpg', 299, 'product_details.html?lid=279'),
+(NULL, '暮云留香-玫瑰+康乃馨混搭（送花瓶）', 'img/life-product/lp15.jpg', 299, 'product_details.html?lid=280'),
+(NULL, '包月鲜花共4束（送花瓶）', 'img/life-product/lp16.jpg', 499, 'product_details.html?lid=281'),
+(NULL, '朝花夕拾-玫瑰+康乃馨混搭（送花瓶）', 'img/life-product/lp17.jpg', 299, 'product_details.html?lid=282'),
+(NULL, '以后的以后-洋桔梗+康乃馨混搭（送花瓶）', 'img/life-product/lp18.jpg', 299, 'product_details.html?lid=283'),
+(NULL, '好心情-红玫瑰+蕾丝花混搭（送花瓶）', 'img/life-product/lp19.jpg', 299, 'product_details.html?lid=284'),
+(NULL, '有点甜-艾莎玫瑰+康乃馨混搭（送花瓶）', 'img/life-product/lp20.jpg', 299, 'product_details.html?lid=285'),
+(NULL, '静悄悄-洋桔梗混搭（送花瓶）', 'img/life-product/lp21.jpg', 299, 'product_details.html?lid=286'),
+(NULL, '纯玫瑰包月鲜花共4束（送花瓶）', 'img/life-product/lp22.jpg', 499, 'product_details.html?lid=287'),
+(NULL, '我乐意-香槟玫瑰+康乃馨混搭（送花瓶）', 'img/life-product/lp23.jpg', 299, 'product_details.html?lid=288'),
+(NULL, '最好的陪伴-红玫瑰+康乃馨混搭（送花瓶）', 'img/life-product/lp24.jpg', 299, 'product_details.html?lid=289'),
+(NULL, '生机勃勃-向日葵+小雏菊混搭（送花瓶）', 'img/life-product/lp25.jpg', 299, 'product_details.html?lid=290'),
+(NULL, '玉洁冰清-黄玫瑰+绿绣球混搭（送花瓶）', 'img/life-product/lp26.jpg', 359, 'product_details.html?lid=291');
+
+
+
+/****开业花篮****/
+INSERT INTO flower_opening_product VALUES
+(NULL, '宏图伟业（2个起售）', 'img/opening-product/op1.jpg', 118, 'product_details.html?lid=292'),
+(NULL, '八方来财（2个起售）', 'img/opening-product/op2.jpg', 128, 'product_details.html?lid=293'),
+(NULL, '财源滚滚', 'img/opening-product/op3.jpg', 178, 'product_details.html?lid=294'),
+(NULL, '好运来（2个起售）', 'img/opening-product/op4.jpg', 188, 'product_details.html?lid=295'),
+(NULL, '鸿运齐天', 'img/opening-product/op5.jpg', 188, 'product_details.html?lid=296'),
+(NULL, '喜气盈门', 'img/opening-product/op6.jpg', 198, 'product_details.html?lid=297'),
+(NULL, '财运吉祥（2个起售）', 'img/opening-product/op7.jpg', 218, 'product_details.html?lid=298'),
+(NULL, '事业长青', 'img/opening-product/op8.jpg', 268, 'product_details.html?lid=299'),
+(NULL, '突飞猛进', 'img/opening-product/op9.jpg', 288, 'product_details.html?lid=300'),
+(NULL, '万事如意-网红气球开业花篮', 'img/opening-product/op10.jpg', 299, 'product_details.html?lid=301'),
+(NULL, '生意畅三春', 'img/opening-product/op11.jpg', 438, 'product_details.html?lid=302'),
+(NULL, '红红火火-红玫瑰开业花篮', 'img/opening-product/op12.jpg', 888, 'product_details.html?lid=303'),
+(NULL, '前程似锦', 'img/opening-product/op13.jpg', 268, 'product_details.html?lid=304'),
+(NULL, '财源广进', 'img/opening-product/op14.jpg', 588, 'product_details.html?lid=305'),
+(NULL, '生意永盛', 'img/opening-product/op15.jpg', 658, 'product_details.html?lid=306'),
+(NULL, '大吉大利-网红气球开业花篮', 'img/opening-product/op16.jpg', 699, 'product_details.html?lid=307'),
+(NULL, '开业志禧-高端罗马柱开业花篮', 'img/opening-product/op17.jpg', 688, 'product_details.html?lid=308'),
+(NULL, '吉祥如意-网红气球开业花篮', 'img/opening-product/op18.jpg', 398, 'product_details.html?lid=309'),
+(NULL, '五福临门', 'img/opening-product/op19.jpg', 658, 'product_details.html?lid=310'),
+(NULL, '鸿运福星-网红气球开业花篮', 'img/opening-product/op20.jpg', 699, 'product_details.html?lid=311'),
+(NULL, '四面瑞气', 'img/opening-product/op21.png', 368, 'product_details.html?lid=312'),
+(NULL, '鸿运昌盛-网红气球开业花篮', 'img/opening-product/op22.jpg', 499, 'product_details.html?lid=313'),
+(NULL, '宏图大展', 'img/opening-product/op23.jpg', 498, 'product_details.html?lid=314'),
+(NULL, '日进斗金', 'img/opening-product/op24.jpg', 1318, 'product_details.html?lid=315'),
+(NULL, '客似云来-网红气球开业花篮', 'img/opening-product/op25.jpg', 399, 'product_details.html?lid=316'),
+(NULL, '张灯结彩', 'img/opening-product/op26.jpg', 288, 'product_details.html?lid=317'),
+(NULL, '敬贺开张-红玫瑰+绣球款开业花篮', 'img/opening-product/op27.jpg', 999, 'product_details.html?lid=318'),
+(NULL, '财源如春潮', 'img/opening-product/op28.jpg', 328, 'product_details.html?lid=319'),
+(NULL, '鹏程万里-网红气球开业花篮', 'img/opening-product/op29.jpg', 699, 'product_details.html?lid=320'),
+(NULL, '财源通四海', 'img/opening-product/op30.jpg', 488, 'product_details.html?lid=321'),
+(NULL, '财运似水', 'img/opening-product/op31.jpg', 288, 'product_details.html?lid=322'),
+(NULL, '万里和风-网红气球开业花篮', 'img/opening-product/op32.jpg', 399, 'product_details.html?lid=323');
+
+
+/****永生花****/
+INSERT INTO flower_forever_product VALUES
+(NULL, '海誓山盟', 'img/forever-product/fp1.jpg', 9999, 'product_details.html?lid=324'),
+(NULL, '真情不变', 'img/forever-product/fp2.jpg', 499, 'product_details.html?lid=325'),
+(NULL, '一池柔情', 'img/forever-product/fp3.jpg', 399, 'product_details.html?lid=326'),
+(NULL, '伉俪情深', 'img/forever-product/fp4.jpg', 699, 'product_details.html?lid=327'),
+(NULL, '如胶似漆', 'img/forever-product/fp5.jpg', 699, 'product_details.html?lid=328'),
+(NULL, '含情脉脉', 'img/forever-product/fp6.jpg', 699, 'product_details.html?lid=329'),
+(NULL, '举案齐眉', 'img/forever-product/fp7.jpg', 699, 'product_details.html?lid=330'),
+(NULL, '天作之合', 'img/forever-product/fp8.jpg', 699, 'product_details.html?lid=331'),
+(NULL, '刻骨铭心', 'img/forever-product/fp9.jpg', 699, 'product_details.html?lid=332'),
+(NULL, '终始若一', 'img/forever-product/fp10.jpg', 699, 'product_details.html?lid=333'),
+(NULL, '长相厮守', 'img/forever-product/fp11.jpg', 699, 'product_details.html?lid=334'),
+(NULL, '情投意合', 'img/forever-product/fp12.jpg', 699, 'product_details.html?lid=335'),
+(NULL, '柔情蜜意', 'img/forever-product/fp13.jpg', 699, 'product_details.html?lid=336'),
+(NULL, '情深似海', 'img/forever-product/fp14.jpg', 699, 'product_details.html?lid=337'),
+(NULL, '一眼万年', 'img/forever-product/fp15.jpg', 299, 'product_details.html?lid=338'),
+(NULL, '天秤座守护花-巨型永生花礼盒', 'img/forever-product/fp16.jpg', 359, 'product_details.html?lid=339'),
+(NULL, '摩羯座守护花-巨型永生花礼盒', 'img/forever-product/fp17.jpg', 359, 'product_details.html?lid=340'),
+(NULL, '双鱼座守护花-巨型永生花礼盒', 'img/forever-product/fp18.jpg', 359, 'product_details.html?lid=341'),
+(NULL, '射手座守护花-巨型永生花礼盒', 'img/forever-product/fp19.jpg', 359, 'product_details.html?lid=342'),
+(NULL, '狮子座守护花-巨型永生花礼盒', 'img/forever-product/fp20.jpg', 359, 'product_details.html?lid=343'),
+(NULL, '双子座守护花-巨型永生花礼盒', 'img/forever-product/fp21.jpg', 359, 'product_details.html?lid=344'),
+(NULL, '水平座守护花-巨型永生花礼盒', 'img/forever-product/fp22.jpg', 359, 'product_details.html?lid=345'),
+(NULL, '天蝎座守护花-巨型永生花礼盒', 'img/forever-product/fp23.jpg', 359, 'product_details.html?lid=346'),
+(NULL, '巨蟹座守护花-巨型永生花礼盒', 'img/forever-product/fp24.jpg', 359, 'product_details.html?lid=347'),
+(NULL, '金牛座守护花-巨型永生花礼盒', 'img/forever-product/fp25.jpg', 359, 'product_details.html?lid=348'),
+(NULL, '白羊座守护花-巨型永生花礼盒', 'img/forever-product/fp26.jpg', 359, 'product_details.html?lid=349'),
+(NULL, '处女座守护花-巨型永生花礼盒', 'img/forever-product/fp27.jpg', 359, 'product_details.html?lid=350');
+
+
+
+/****礼品****/
+INSERT INTO flower_gift_product VALUES
+(NULL, '婀娜多姿-香薰蜡烛', 'img/gift-product/gp1.jpg', 159, 'product_details.html?lid=351'),
+(NULL, '无火香薰', 'img/gift-product/gp2.jpg', 399, 'product_details.html?lid=352'),
+(NULL, '圣诞雪松-香薰蜡烛', 'img/gift-product/gp3.jpg', 199, 'product_details.html?lid=353'),
+(NULL, '藤条挥发香氛', 'img/gift-product/gp4.jpg', 399, 'product_details.html?lid=354'),
+(NULL, '春日樱茶-香薰蜡烛', 'img/gift-product/gp5.jpg', 199, 'product_details.html?lid=355'),
+(NULL, '鼠尾草海盐-香薰蜡烛', 'img/gift-product/gp6.jpg', 199, 'product_details.html?lid=356'),
+(NULL, '英国梨小苍兰-香薰蜡烛', 'img/gift-product/gp7.jpg', 199, 'product_details.html?lid=357'),
+(NULL, '灯塔加湿器', 'img/gift-product/gp8.jpg', 299, 'product_details.html?lid=358'),
+(NULL, '猫咪蓝牙小音箱', 'img/gift-product/gp9.jpg', 399, 'product_details.html?lid=359'),
+(NULL, '月亮时钟夜', 'img/gift-product/gp10.jpg', 399, 'product_details.html?lid=360'),
+(NULL, '机智猫卡通可爱保温杯', 'img/gift-product/gp11.jpg', 299, 'product_details.html?lid=361'),
+(NULL, '蔚蓝魅曲-香薰蜡烛', 'img/gift-product/gp12.jpg', 159, 'product_details.html?lid=362'),
+(NULL, '卧室床头小夜灯', 'img/gift-product/gp13.jpg', 499, 'product_details.html?lid=363'),
+(NULL, '祖马龙红玫瑰-香薰蜡烛', 'img/gift-product/gp14.jpg', 199, 'product_details.html?lid=364'),
+(NULL, '香薰精油套装', 'img/gift-product/gp15.jpg', 399, 'product_details.html?lid=365'),
+(NULL, '创意雪花摆件-水晶球（夏天）', 'img/gift-product/gp16.jpg', 299, 'product_details.html?lid=366'),
+(NULL, '祖马龙蓝风铃-香薰蜡烛', 'img/gift-product/gp17.jpg', 199, 'product_details.html?lid=367'),
+(NULL, '幸运四叶草花手链', 'img/gift-product/gp18.jpg', 299, 'product_details.html?lid=368'),
+(NULL, '陶瓷香薰', 'img/gift-product/gp19.jpg', 199, 'product_details.html?lid=369'),
+(NULL, '家居芳香蜡烛', 'img/gift-product/gp20.jpg', 159, 'product_details.html?lid=370'),
+(NULL, '创意雪花摆件-水晶球（春天）', 'img/gift-product/gp21.jpg', 299, 'product_details.html?lid=371'),
+(NULL, 'MENS WEAR香味-香薰蜡烛', 'img/gift-product/gp22.jpg', 199, 'product_details.html?lid=372'),
+(NULL, '一路有你-鹿头项链', 'img/gift-product/gp23.jpg', 399, 'product_details.html?lid=373'),
+(NULL, '春日樱茶-香薰蜡烛', 'img/gift-product/gp24.jpg', 159, 'product_details.html?lid=374'),
+(NULL, '创意雪花摆件-水晶球（秋天）', 'img/gift-product/gp25.jpg', 299, 'product_details.html?lid=375'),
+(NULL, '创意雪花摆件-水晶球（冬天）', 'img/gift-product/gp26.png', 299, 'product_details.html?lid=376');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

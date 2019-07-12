@@ -29,7 +29,5 @@
 (NULL, '安娜公主-11朵粉玫瑰花束', 'img/blessing-product/bp29.jpg', 249, 'product_details.html?lid=198'),
 (NULL, '粉色的回忆-12朵粉玫瑰', 'img/blessing-product/bp30.jpg', 199, 'product_details.html?lid=199'),
 (NULL, '美好浪漫-26朵混色玫瑰圣诞款', 'img/blessing-product/bp31.jpg', 699, 'product_details.html?lid=200'),
-(NULL, '宠爱之名-混色韩式熊抱花束', 'img/blessing-product/bp32.jpg', 1299, 'product_details.html?lid=201'),
+(NULL, '宠爱之名-混色韩式熊抱花束', 'img/blessing-product/bp32.jpg', 1299, 'product_details.html?lid=201');
 
-
-(NULL, 'title', 'img/blessing-product/bp1.jpg', price, 'product_details.html?lid=170'),

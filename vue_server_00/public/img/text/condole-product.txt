@@ -29,8 +29,7 @@
 (NULL, '–¿–¿œÚ»Ÿ-∞◊∞Ÿ∫œ+◊œ√µπÂªÏ¥Ó', 'img/condole-product/cp29.jpg', 499, 'product_details.html?lid=230'),
 (NULL, '‘À¿¥Œß»∆-6∂‰œÚ»’ø˚', 'img/condole-product/cp30.jpg', 599, 'product_details.html?lid=231'),
 (NULL, '…Ò√‹ª®‘∞-19∂‰ªÏ¥Ó√µπÂ¿Ò∫–', 'img/condole-product/cp31.jpg', 599, 'product_details.html?lid=232'),
-(NULL, 'Œ¬≈Ø≈„∞È-33∂‰∑€√µπÂ', 'img/condole-product/cp32.jpg', 599, 'product_details.html?lid=233'),
+(NULL, 'Œ¬≈Ø≈„∞È-33∂‰∑€√µπÂ', 'img/condole-product/cp32.jpg', 599, 'product_details.html?lid=233');
 
 
 
-(NULL, 'title', 'img/condole-product/cp1.jpg', price, 'product_details.html?lid=202'),

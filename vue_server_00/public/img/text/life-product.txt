@@ -23,9 +23,8 @@
 (NULL, 'ÎÒÀÖÒâ-ÏãéÄÃµ¹å+¿µÄËÜ°»ì´î£¨ËÍ»¨Æ¿£©', 'img/life-product/lp23.jpg', 299, 'product_details.html?lid=288'),
 (NULL, '×îºÃµÄÅã°é-ºìÃµ¹å+¿µÄËÜ°»ì´î£¨ËÍ»¨Æ¿£©', 'img/life-product/lp24.jpg', 299, 'product_details.html?lid=289'),
 (NULL, 'Éú»ú²ª²ª-ÏòÈÕ¿û+Ğ¡³û¾Õ»ì´î£¨ËÍ»¨Æ¿£©', 'img/life-product/lp25.jpg', 299, 'product_details.html?lid=290'),
-(NULL, 'Óñ½à±ùÇå-»ÆÃµ¹å+ÂÌĞåÇò»ì´î£¨ËÍ»¨Æ¿£©', 'img/life-product/lp26.jpg', 359, 'product_details.html?lid=291'),
+(NULL, 'Óñ½à±ùÇå-»ÆÃµ¹å+ÂÌĞåÇò»ì´î£¨ËÍ»¨Æ¿£©', 'img/life-product/lp26.jpg', 359, 'product_details.html?lid=291');
 
 
 
 
-(NULL, 'title', 'img/life-product/lp1.jpg', price, 'product_details.html?lid=266'),
