@@ -14,13 +14,13 @@
             </ul>
         </div>
         <div class="right_pro">
-            <span>24个结果</span>
-            <el-pagination  background  layout="prev, pager, next" :total="20"  ></el-pagination>
+            <span>106个结果</span>
+            <el-pagination  background  layout="prev, pager, next" :total="70"  ></el-pagination>
         </div>         
     </div>
     <div class="my_flex main">
         <div  v-for="(elem,i) of list" :key="i" class="main_pro">
-             <a :href="elem.href"><img :src="`http://127.0.0.1:3000/`+elem.pic" ></a>
+            <a :href="elem.href"><img :src="`http://127.0.0.1:3000/`+elem.pic" ></a>
             <p >
                 <a v-text="elem.title" :href="elem.href"></a>
             </p>
@@ -41,7 +41,7 @@
         },
         
         created() {
-              var url="import";
+              var url="blessing";
                 this.axios.get(url).then(result=>{
                     console.log(result);
                      this.list=result.data
@@ -103,13 +103,13 @@
          line-height:63px;
         margin-right: 30px;
         position:absolute;
-        left:-231px;
+        left:-429px;
         top: 1px;
      }
      .el-pagination{
         height:53px;
         position:absolute;
-        left: -163px;
+        left: -361px;
         top: 12px;
 }
 
