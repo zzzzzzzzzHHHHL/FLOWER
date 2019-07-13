@@ -5,7 +5,7 @@
             <ul class="my_flex">
                 <li><a>排序:</a></li>
                 <li><a>新品</a></li>  
-                <li><a>人气</a></li>  
+                <li><a>人气13</a></li>  
                 <li><a>价格</a> </li>
                 <li>
                     <a><i class="el-icon-caret-top"></i></a>
