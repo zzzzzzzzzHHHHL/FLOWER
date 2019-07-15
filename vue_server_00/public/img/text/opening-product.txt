@@ -11,9 +11,9 @@
 (NULL, '生意畅三春', 'img/opening-product/op11.jpg', 438, 'product_details.html?lid=302'),
 (NULL, '红红火火-红玫瑰开业花篮', 'img/opening-product/op12.jpg', 888, 'product_details.html?lid=303'),
 (NULL, '前程似锦', 'img/opening-product/op13.jpg', 268, 'product_details.html?lid=304'),
-(NULL, '财源广进', 'img/opening-product/op14.jpg', 588, 'product_details.html?lid=305'),
-(NULL, '生意永盛', 'img/opening-product/op15.jpg', 658, 'product_details.html?lid=306'),
-(NULL, '大吉大利-网红气球开业花篮', 'img/opening-product/op16.jpg', 699, 'product_details.html?lid=307'),
+(NULL, '生意永盛', 'img/opening-product/op14.jpg', 658, 'product_details.html?lid=305'),
+(NULL, '大吉大利-网红气球开业花篮', 'img/opening-product/op15.jpg', 699, 'product_details.html?lid=306'),
+(NULL, '开业志禧-高端罗马柱开业花篮', 'img/opening-product/op16.jpg', 688, 'product_details.html?lid=307'),
 (NULL, '开业志禧-高端罗马柱开业花篮', 'img/opening-product/op17.jpg', 688, 'product_details.html?lid=308'),
 (NULL, '吉祥如意-网红气球开业花篮', 'img/opening-product/op18.jpg', 398, 'product_details.html?lid=309'),
 (NULL, '五福临门', 'img/opening-product/op19.jpg', 658, 'product_details.html?lid=310'),
@@ -32,10 +32,3 @@
 (NULL, '万里和风-网红气球开业花篮', 'img/opening-product/op32.jpg', 399, 'product_details.html?lid=323');
 
 
-
-
-
-
-
-
-(NULL, 'title', 'img/opening-product/op1.jpg', price, 'product_details.html?lid=292'),
