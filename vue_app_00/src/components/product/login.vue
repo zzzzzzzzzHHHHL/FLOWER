@@ -186,6 +186,7 @@ input{
 }
 .forget_pwd>a{
     color:#8c8c8c;
+    font-size:12px;
 }
 .forget_pwd>a:hover{
     text-decoration: underline;

@@ -10,11 +10,11 @@
 (NULL, '圣诞快乐-3朵红玫瑰+1颗红苹果礼盒装', 'img/apologize-product/ap10.jpg', 499, 'product_details.html?lid=243'),
 (NULL, '心中的太阳-11朵粉色康乃馨韩式混搭', 'img/apologize-product/ap11.jpg', 399, 'product_details.html?lid=244'),
 (NULL, '灼灼其华-绣球混搭熊抱花束', 'img/apologize-product/ap12.jpg', 1299, 'product_details.html?lid=245'),
-(NULL, '丹心言誓-99朵蓝色妖姬', 'img/apologize-product/ap13.jpg', 1499, 'product_details.html?lid=246'),
-(NULL, '一生一世-11朵蓝色妖姬礼盒装', 'img/apologize-product/ap14.jpg', 399, 'product_details.html?lid=247'),
+(NULL, '一生一世-11朵蓝色妖姬礼盒装', 'img/apologize-product/ap13.jpg', 399, 'product_details.html?lid=246'),
+(NULL, '121，要爱你-121朵紫玫瑰', 'img/apologize-product/ap14.jpg', 1599, 'product_details.html?lid=247'),
 (NULL, '妙龄女郎-19朵粉玫瑰', 'img/apologize-product/ap15.jpg', 499, 'product_details.html?lid=248'),
 (NULL, '花与爱丽丝-52朵艾莎玫瑰', 'img/apologize-product/ap16.jpg', 999, 'product_details.html?lid=249'),
-(NULL, '丹心言誓-99朵蓝色妖姬', 'img/apologize-product/ap17.jpg', 1499, 'product_details.html?lid=250'),
+(NULL, '炙热的爱-33支红玫瑰', 'img/apologize-product/ap17.jpg', 599, 'product_details.html?lid=250'),
 (NULL, '一生一世-11朵蓝色妖姬礼盒装', 'img/apologize-product/ap18.jpg', 399, 'product_details.html?lid=251'),
 (NULL, '妙龄女郎-19朵粉玫瑰', 'img/apologize-product/ap19.jpg', 499, 'product_details.html?lid=252'),
 (NULL, '浪漫一生-19朵粉玫瑰', 'img/apologize-product/ap20.jpg', 399, 'product_details.html?lid=253'),
@@ -27,7 +27,7 @@
 (NULL, '恋恋情深-99颗巧克力花束', 'img/apologize-product/ap27.jpg', 1599, 'product_details.html?lid=260'),
 (NULL, '纯白圣洁-6支多头白百合', 'img/apologize-product/ap28.jpg', 399, 'product_details.html?lid=261'),
 (NULL, '布拉格之恋-9朵进口红玫瑰', 'img/apologize-product/ap29.jpg', 999, 'product_details.html?lid=262'),
-(NULL, '缘如花-9朵红玫瑰', 'img/apologize-product/ap30.jpg', 1499, 'product_details.html?lid=263'),
+(NULL, '夜夜是你-33朵蓝色妖姬', 'img/apologize-product/ap30.jpg', 599, 'product_details.html?lid=263'),
 (NULL, '甜蜜浪漫-33朵红玫瑰礼盒', 'img/apologize-product/ap31.jpg', 599, 'product_details.html?lid=264'),
 (NULL, '爱情印记-14朵进口厄瓜多尔甜心玫瑰', 'img/apologize-product/ap32.jpg', 1499, 'product_details.html?lid=265');
 

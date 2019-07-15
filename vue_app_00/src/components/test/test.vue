@@ -11,7 +11,8 @@
 export default {
   data(){
     return{
-      list:[]
+      list:[],
+      list_one:[],
     }
   },
   created(){
@@ -20,6 +21,8 @@ export default {
       console.log(result);
       this.list=result.data;
       console.log(this.list);
+      this.list_one=this.list.slice(2,10);
+      console.log(this.list_one);
     })
   }
 }

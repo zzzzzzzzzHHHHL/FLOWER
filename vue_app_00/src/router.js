@@ -6,6 +6,7 @@ import HelloContainer from "./components/HelloWorld.vue"
 import Test from "./components/test/test.vue"
 import Test1 from "./components/test/test1.vue"
 import Test3 from "./components/test/test3.vue"
+import Test4 from "./components/test/test4.vue"
 import Import from "./components/product/import.vue"
 import Love from "./components/product/love.vue"
 import Birthady from "./components/product/birthday.vue"
@@ -17,13 +18,20 @@ import Life from "./components/product/life.vue"
 import Opening from "./components/product/opening.vue"
 import Forever from "./components/product/forever.vue"
 import Gift from "./components/product/gift.vue"
+<<<<<<< HEAD
 import Login from "./components/product/login.vue"
 import Register from "./components/product/register.vue"
+=======
+import Admin from "./components/admin/admin.vue"
+
+>>>>>>> d97aa43aa42a712d5eb40804e0ca1eac70d62a40
 Vue.use(Router)
 export default new Router({
   routes: [
     {path:'/',component:HelloContainer},
+    {path:'/Admin',component:Admin},
     {path:'/Test',component:Test},
+    {path:'/Test4',component:Test4},
     {path:'/Test1',component:Test1},
     {path:'/Test3',component:Test3},
     {path:'/Import',component:Import},
