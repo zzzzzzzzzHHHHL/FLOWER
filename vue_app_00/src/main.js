@@ -4,6 +4,7 @@ import router from './router'
 //引入Element-ui
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import "./font/iconfont.css"
 //引入axios.js文件
 import axios from "./axios"
 Vue.use(ElementUI);
