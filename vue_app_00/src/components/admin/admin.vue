@@ -4,7 +4,7 @@
         <header class="header">
           <i class="el-icon-notebook-1"></i><span>花赞商城后台</span>
         </header>
-        <div class="user_login">
+        <div class="admin-msg">
           <div>
             <el-avatar icon="el-icon-user-solid"></el-avatar>
           </div>
@@ -37,12 +37,12 @@ export default {
     box-sizing: border-box;
   }
   .left{
-    width: 10%;
+    width: 15%;
     height:100%;
     background-color: #2a3f54;
   }
   .right{
-    width:90%;
+    width:85%;
     height:100%;
     background-color: #ddd;
   }
@@ -56,16 +56,25 @@ export default {
   .header>span{
     margin-left:5px;
   }
-  .user_login{
+  .admin-msg{
     width: 100%;
-    display: flex;
-    justify-content: space-around;
     margin-top: 30px;
     font-size: 16px;
     color: #fff;
   }
- 
-
+  .admin-msg>div{
+    float: left;
+  }
+  .admin-msg>div:first-child{
+    margin-left: 70px;
+  }
+  .admin-msg>div:last-child{
+    margin-left: 10px;
+  }
+  .admin-msg>div:last-child p{
+    font-size:14px;
+    color:#BAB8B8;
+  }
 </style>
 
 
