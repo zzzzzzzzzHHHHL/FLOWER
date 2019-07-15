@@ -18,8 +18,13 @@ import Life from "./components/product/life.vue"
 import Opening from "./components/product/opening.vue"
 import Forever from "./components/product/forever.vue"
 import Gift from "./components/product/gift.vue"
+<<<<<<< HEAD
+import Login from "./components/product/login.vue"
+import Register from "./components/product/register.vue"
+=======
 import Admin from "./components/admin/admin.vue"
 
+>>>>>>> d97aa43aa42a712d5eb40804e0ca1eac70d62a40
 Vue.use(Router)
 export default new Router({
   routes: [
@@ -40,5 +45,7 @@ export default new Router({
     {path:'/Opening',component:Opening},
     {path:'/Forever',component:Forever},
     {path:'/Gift',component:Gift},
+    {path:'/Login',component:Login},
+    {path:'/Register',component:Register},
   ]
 })
