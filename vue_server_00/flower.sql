@@ -29,10 +29,10 @@ CREATE TABLE flower_details(
 /**鲜花图片**/
 CREATE TABLE flower_pic(
   pid INT PRIMARY KEY AUTO_INCREMENT,
-  flower_id,                  #鲜花编号
-  sm VARCHAR(128),            #小图片路径
-  md VARCHAR(128),            #中图片路径
-  lg VARCHAR(128)             #大图片路径
+  flower_id INT,                #鲜花编号
+  sm VARCHAR(128),              #小图片路径
+  md VARCHAR(128),              #中图片路径
+  lg VARCHAR(128)               #大图片路径
 );	
 
 /**用户信息**/
@@ -441,10 +441,10 @@ INSERT INTO flower_details VALUES
 (NULL,1,'感动时光-粉百合+白桔梗混搭','389','RW000240','6支多头粉百合+5支白色洋桔梗，搭配适量白色满天星、栀子叶装饰。','白色雾面纸+粉色雾面纸韩式包装，银色缎带蝴蝶结束扎。','遇见你，感动了爱情，感动了时光。','免费附送精美贺卡，代写您的祝福。(您下单时可填写留言栏)','全国 （可配送至全国1000多个城市，市区免配送费）','由于各地的花艺师不同，鲜花包扎可能在形式和搭配上与图片不完全一致，但保证主花材的新鲜程度、数量、颜色与说明一致，谢谢您的理解。','<div class="content_tpl"><div class="formwork"><div class="formwork_img"><img class="" src="img/product/details/cp5.jpg"><img class="" src="img/product/details/p50.jpg"></div></div></div>'),
 (NULL,1,'亲切的问候-19朵粉玫瑰+绣球混搭','599','RW000284','19朵粉玫瑰+1朵蓝绣球，搭配适量刺芹、竹柏装饰。','白色雪梨纸+白色雾面纸+蓝色雾面纸韩式包装，粉色丝带+白色英文缎带束扎。','遇见你，感动了爱情，感动了时光。','免费附送精美贺卡，代写您的祝福。(您下单时可填写留言栏)','全国 （可配送至全国1000多个城市，市区免配送费）','由于各地的花艺师不同，鲜花包扎可能在形式和搭配上与图片不完全一致，但保证主花材的新鲜程度、数量、颜色与说明一致，谢谢您的理解。','<div class="content_tpl"><div class="formwork"><div class="formwork_img"><img class="" src="img/product/details/cp6.jpg"><img class="" src="img/product/details/p50.jpg"></div></div></div>'),
 (NULL,1,'阳光使者-19朵玫瑰韩式混搭','599','RW000286','13朵粉玫瑰+6朵紫玫瑰+2朵白色乒乓菊+4支白色洋桔梗，搭配适量尤加利叶、银边翠装饰。','白色雪梨纸+卡其色硬纸+粉色硬纸韩式包装，黑色英文丝带+灰色英文丝带束扎。','余生不求荣华富贵，只求你幸福快乐。','免费附送精美贺卡，代写您的祝福。(您下单时可填写留言栏)','全国 （可配送至全国1000多个城市，市区免配送费）','由于各地的花艺师不同，鲜花包扎可能在形式和搭配上与图片不完全一致，但保证主花材的新鲜程度、数量、颜色与说明一致，谢谢您的理解。','<div class="content_tpl"><div class="formwork"><div class="formwork_img"><img class="" src="img/product/details/cp7.jpg"><img class="" src="img/product/details/p50.jpg"></div></div></div>'),
-(NULL,1,'心中的太阳-11朵粉色康乃馨韩式混搭','399','RW000084','11朵粉色康乃馨、2支多头粉百合，搭配适量栀子叶装饰。','白色软纸+粉色雾面纸扇形包装，精美条纹丝带蝴蝶结束扎。','你像太阳一样热烈，将我的心温暖。','免费附送精美贺卡，代写您的祝福。(您下单时可填写留言栏)','全国 （可配送至全国1000多个城市，市区免配送费）','全国 （可配送至全国1000多个城市，市区免配送费）','<div class="content_tpl"><div class="formwork"><div class="formwork_img"><img class="" src="img/product/details/cp8.jpg"><img class="" src="img/product/details/p50.jpg"></div></div></div>'),
+(NULL,1,'心中的太阳-11朵粉色康乃馨韩式混搭','399','RW000084','11朵粉色康乃馨、2支多头粉百合，搭配适量栀子叶装饰。','白色软纸+粉色雾面纸扇形包装，精美条纹丝带蝴蝶结束扎。','你像太阳一样热烈，将我的心温暖。','免费附送精美贺卡，代写您的祝福。(您下单时可填写留言栏)','全国 （可配送至全国1000多个城市，市区免配送费）','由于各地的花艺师不同，鲜花包扎可能在形式和搭配上与图片不完全一致，但保证主花材的新鲜程度、数量、颜色与说明一致，谢谢您的理解。','<div class="content_tpl"><div class="formwork"><div class="formwork_img"><img class="" src="img/product/details/cp8.jpg"><img class="" src="img/product/details/p50.jpg"></div></div></div>'),
 (NULL,1,'恰似春风-55朵粉色康乃馨','699','RW000028','55朵粉色康乃馨，搭配适量尤加利叶装饰。','白色抱抱桶。','你笑起来的时候眼里满满的爱意，温暖如春风。','免费附送精美贺卡，代写您的祝福。(您下单时可填写留言栏)','全国 （可配送至全国1000多个城市，市区免配送费）','由于各地的花艺师不同，鲜花包扎可能在形式和搭配上与图片不完全一致，但保证主花材的新鲜程度、数量、颜色与说明一致，谢谢您的理解。','<div class="content_tpl"><div class="formwork"><div class="formwork_img"><img class="" src="img/product/details/cp9.jpg"><img class="" src="img/product/details/p50.jpg"></div></div></div>'),
 (NULL,1,'美好的明天-粉玫瑰绣球韩式混搭','699 ','RW000087','1朵粉绣球、6朵戴安娜、6朵粉佳人，搭配7支粉色洋桔梗、粉色雏菊、乒乓菊、尤加利叶、情人草等装饰。','粉色+灰色雾面纸韩式扇形包装，精美粉色丝带蝴蝶结束扎。','我要把我最衷心的祝福送给你，愿你幸福平安。','免费附送精美贺卡，代写您的祝福。(您下单时可填写留言栏)','全国 （可配送至全国1000多个城市，市区免配送费）','由于各地的花艺师不同，鲜花包扎可能在形式和搭配上与图片不完全一致，但保证主花材的新鲜程度、数量、颜色与说明一致，谢谢您的理解。','<div class="content_tpl"><div class="formwork"><div class="formwork_img"><img class="" src="img/product/details/cp10.jpg"><img class="" src="img/product/details/p50.jpg"></div></div></div>'),
-(NULL,1,'幸福平安-香槟玫瑰+雏菊混搭','229 ','RW000275','6朵香槟玫瑰+3支白色洋桔梗+2支绿色多头小菊，搭配适量进口小叶尤加利。','边，让幸福永远伴随你!','免费附送精美贺卡，代写您的祝福。(您下单时可填写留言栏)','全国 （可配送至全国1000多个城市，市区免配送费）','由于各地的花艺师不同，鲜花包扎可能在形式和搭配上与图片不完全一致，但保证主花材的新鲜程度、数量、颜色与说明一致，谢谢您的理解。','<div class="content_tpl"><div class="formwork"><div class="formwork_img"><img class="" src="img/product/details/cp11.jpg"><img class="" src="img/product/details/p50.jpg"></div></div></div>'),
+(NULL,1,'幸福平安-香槟玫瑰+雏菊混搭','229 ','RW000275','6朵香槟玫瑰+3支白色洋桔梗+2支绿色多头小菊，搭配适量进口小叶尤加利。','蓝色硬纸扇形包装，白色缎带蝴蝶结束扎。','我要把我最衷心的祝福送给你，愿你幸福平安。','免费附送精美贺卡，代写您的祝福。(您下单时可填写留言栏)','全国 （可配送至全国1000多个城市，市区免配送费）','由于各地的花艺师不同，鲜花包扎可能在形式和搭配上与图片不完全一致，但保证主花材的新鲜程度、数量、颜色与说明一致，谢谢您的理解。','<div class="content_tpl"><div class="formwork"><div class="formwork_img"><img class="" src="img/product/details/cp11.jpg"><img class="" src="img/product/details/p50.jpg"></div></div></div>'),
 (NULL,1,'幸福永相伴-玫瑰+康乃馨礼盒装','499','RW000147','11朵粉玫瑰（苏醒玫瑰）+9朵粉色康乃馨+2支多头白百合，搭配适量白色相思梅间插装饰。','灰色长方形礼盒装。','真爱就是心疼，不管是亲情还是爱情。','免费附送精美贺卡，代写您的祝福。(您下单时可填写留言栏)','全国 （可配送至全国1000多个城市，市区免配送费）','由于各地的花艺师不同，鲜花包扎可能在形式和搭配上与图片不完全一致，但保证主花材的新鲜程度、数量、颜色与说明一致，谢谢您的理解。','<div class="content_tpl"><div class="formwork"><div class="formwork_img"><img class="" src="img/product/details/cp12.jpg"><img class="" src="img/product/details/p50.jpg"></div></div></div>'),
 (NULL,1,'为爱而生-12朵向日葵抱抱桶','699','RW000005','12朵向日葵，搭配12朵金辉玫瑰、适量绿色小雏菊、菠萝菊、尤加利叶装饰。','精美抱抱桶礼盒装。','遇见你之后，我才懂得什么叫幸福。','免费附送精美贺卡，代写您的祝福。(您下单时可填写留言栏)','全国 （可配送至全国1000多个城市，市区免配送费）','由于各地的花艺师不同，鲜花包扎可能在形式和搭配上与图片不完全一致，但保证主花材的新鲜程度、数量、颜色与说明一致，谢谢您的理解。','<div class="content_tpl"><div class="formwork"><div class="formwork_img"><img class="" src="img/product/details/cp13.jpg"><img class="" src="img/product/details/p50.jpg"></div></div></div>'),
 (NULL,1,'幸福时光-玫瑰+绣球混搭抱抱桶','699','RW000246','2朵蓝绣球+6朵戴安娜粉玫瑰+6朵玛利亚粉玫瑰+6朵紫玫瑰，搭配3支白色洋桔梗、2支白色乒乓菊、适量尤加利果、尤加利叶装饰。','精美抱抱桶礼盒装。','粉色+灰色雾面纸韩式扇形包装，精美粉色丝带蝴蝶结束扎。','免费附送精美贺卡，代写您的祝福。(您下单时可填写留言栏)','全国 （可配送至全国1000多个城市，市区免配送费）','由于各地的花艺师不同，鲜花包扎可能在形式和搭配上与图片不完全一致，但保证主花材的新鲜程度、数量、颜色与说明一致，谢谢您的理解。','<div class="content_tpl"><div class="formwork"><div class="formwork_img"><img class="" src="img/product/details/cp14.jpg"><img class="" src="img/product/details/p50.jpg"></div></div></div>'),
@@ -660,8 +660,6 @@ INSERT INTO flower_details VALUES
 
 
 
-
-
 /**用户信息**/
 INSERT INTO flower_user VALUES
 (NULL, 'tom', '123456', 'ding@qq.com', '13501234567', '1'),
@@ -788,7 +786,7 @@ INSERT INTO flower_love_product VALUES
 (NULL, '甜蜜圣诞-红玫瑰+苹果圣诞礼盒', 'img/love-product/l32.jpg', 799, 'product_details.html?lid=105'),
 (NULL, '爱你在身边-33朵红玫瑰', 'img/love-product/l33.jpg', 599, 'product_details.html?lid=106'),
 (NULL, '相濡以沫-新娘手捧花', 'img/love-product/l34.jpg', 599, 'product_details.html?lid=107'),
-(NULL, '甜蜜圣诞-红玫瑰+苹果圣诞礼盒', 'img/love-product/l35.jpg', 799, 'product_details.html?lid=108'),
+(NULL, '甜蜜圣诞-红玫瑰+苹果圣诞礼盒', 'img/love-product/l35.png', 799, 'product_details.html?lid=108'),
 (NULL, '温柔月色-33朵粉玫瑰', 'img/love-product/l36.jpg', 599, 'product_details.html?lid=109'),
 (NULL, '浅语花开-33朵粉玫瑰', 'img/love-product/l37.jpg', 599, 'product_details.html?lid=110'),
 (NULL, '心动的感觉-99朵混色玫瑰', 'img/love-product/l38.jpg', 999, 'product_details.html?lid=111'),
