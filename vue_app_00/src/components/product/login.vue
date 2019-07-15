@@ -74,10 +74,27 @@ export default {
          $("[data-toggle=tab]").click(function(){
     $(this) .addClass("active").siblings().removeClass("active")
   })
- 
     var as=document.querySelectorAll(
     "[data-toggle=tab]"
   );
+    for(var a of as){
+      as[0].onclick=function(){
+      var div1=document.getElementById("content1");
+      var div2=document.getElementById("content2");
+      var div3=document.querySelector(".login_box")
+      div1.style.display="block";
+      div2.style.display="none"
+      div3.style.height="307px"
+      }
+      as[1].onclick=function(){
+      var div1=document.getElementById("content1");
+      var div2=document.getElementById("content2");
+      var div3=document.querySelector(".login_box")
+      div1.style.display="none";
+      div2.style.display="block";
+      div3.style.height="370px"
+      }
+  }
     },
     methods: { 
         login(){
@@ -186,7 +203,6 @@ input{
 }
 .forget_pwd>a{
     color:#8c8c8c;
-    font-size:12px;
 }
 .forget_pwd>a:hover{
     text-decoration: underline;

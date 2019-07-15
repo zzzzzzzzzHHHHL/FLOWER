@@ -8,14 +8,14 @@
                 <li><a>人气</a></li>  
                 <li><a>价格</a> </li>
                 <li>
-                    <a><i class="el-icon-caret-top"></i></a>
-                    <a><i class="el-icon-caret-bottom"></i></a>   
+                    <a><i class="el-icon-caret-top" @click="add"></i></a>
+                    <a><i class="el-icon-caret-bottom"  @click="cut"></i></a>   
                 </li>      
             </ul>
         </div>
         <div class="right_pro">
             <span>24个结果</span>
-            <el-pagination  background  layout="prev, pager, next" :total="20"  ></el-pagination>
+            <el-pagination  background  layout="prev, pager, next" :total="20" @prev-click="last" @next-click="next" ></el-pagination>
         </div>         
     </div>
     <div class="my_flex main">
@@ -25,8 +25,7 @@
                 <a v-text="elem.title" :href="elem.href"></a>
             </p>
             <p v-text="elem.price"></p>
-        </div>
-    
+        </div>   
     </div>
 </div>
     
@@ -36,17 +35,54 @@
         data(){
             return{
                 list:[],
-               
+               pno:1,ps:16
             }
         },
-        
         created() {
               var url="import";
                 this.axios.get(url).then(result=>{
                     console.log(result);
-                     this.list=result.data
+                     this.list=result.data.slice(0,16)
                 })
-        },     
+        },
+        methods: {
+            last(){
+                var url="import_product";
+                this.pno--;
+                var obj={pno:this.pno,ps:this.ps}
+                this.axios.get(url,{params:obj}).then(result=>{
+               // var rows=this.list.concat(result.data.data)
+                //console.log(rows)
+                  // this.list=rows
+                  this.list=result.data.data
+                })
+            },
+            next(){
+                var url="import_product";
+                this.pno++;
+                var obj={pno:this.pno,ps:this.ps}
+                this.axios.get(url,{params:obj}).then(result=>{
+               // var rows=this.list.concat(result.data.data)
+                //console.log(rows)
+                  // this.list=rows
+                  this.list=result.data.data
+                })
+            },
+              add(){
+                var url="import-priceUp";
+                this.axios.get(url).then(result=>{
+                    this.list=result.data;  
+                })
+                
+            },
+            cut(){
+                var url="import-priceDown";
+                this.axios.get(url).then(result=>{
+                    this.list=result.data
+                })
+                
+            }
+        },  
     }
 </script>
 <style scoped>
@@ -62,6 +98,11 @@
         margin:0 auto;
         border-bottom: 1px solid #d2d2d2;
         border-top: 1px solid #d2d2d2;
+        height:57px;
+        margin-top:40px;
+    }
+    ul{
+        line-height:57px;
     }
     ul li{
         list-style:none
@@ -81,12 +122,12 @@
     }
     .el-icon-caret-top{
         position:absolute;
-        left:-37px;top:4px;
+        left:-37px;top:22px;
         color:#d2d2d2;
     }
      .el-icon-caret-bottom{
         position:absolute;
-        left:-37px;top:9px;
+        left:-37px;top:28px;
         color:#d2d2d2;
     }
     .left_pro>ul>li{
