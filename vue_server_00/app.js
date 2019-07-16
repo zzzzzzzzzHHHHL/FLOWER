@@ -59,7 +59,7 @@ var sql = "SELECT uname,upwd FROM flower_user WHERE uname=? AND upwd=?";
 //将当前登录用户uid保存session
 //result=[{id:1}]
          req.session.uid = 
-         result[0].id;
+         result[0].uid;
          res.send({code:1,msg:"登录成功"});
       }
   })
@@ -814,10 +814,12 @@ server.get("/all_product",(req,res)=>{
 /***************************************************************************************************/ 
 
 
-//鲜花详情
+//鲜花详情查询
 server.get("/details",function(req,res){
-	var sql="SELECT * FROM flower_details";
-	pool.query(sql,function(err,result){
+	var lid=req.query.lid;
+	if(!lid){res.send("请输入查询的编号");return}
+	var sql="SELECT * FROM flower_details WHERE lid=?";
+	pool.query(sql,[lid],function(err,result){
 		if(err)throw err;
 		res.send(result);
 	})
@@ -831,3 +833,74 @@ server.get("/pic",function(req,res){
 		res.send(result);
 	})
 })
+
+/***************************************************************************************************/ 
+
+//购物车查询
+server.get("/cart",(req,res)=>{
+  //1:参数(无参数)app.js
+  console.log(req.session.uid);
+  var uid = req.session.uid;
+  if(!uid){
+    res.send({code:-1,msg:"请登录"});
+    return;
+  }
+  //2:sql
+  var sql = "SELECT * FROM flower_shoppingcart_item WHERE user_id = ?";
+  pool.query(sql,[uid],(err,result)=>{
+    if(err)throw err;
+    res.send({code:1,data:result})
+  })
+  //3:json
+})
+
+
+//删除购物车的商品
+server.get("/delItem",(req,res)=>{
+  //1:参数购物车id
+  var id = req.query.id;
+  //2:sql 删除指定数据
+  var sql = "DELETE flower_shoppingcart_item WHERE lid = ?";
+  //3:json
+  pool.query(sql,[id],(err,result)=>{
+   if(err)throw err;
+   //affectedRows 操作影响行数
+   if(result.affectedRows>0){
+    res.send({code:1,msg:"删除成功"});
+   }else{
+    res.send({code:-1,msg:"删除失败"}) 
+   }
+  })
+});
+
+
+//删除多个选中商品
+server.get("/delAll",(req,res)=>{
+  var ids = req.query.ids;
+  var sql = `DELETE FROM flower_shoppingcart_item WHERE lid IN (${ids})`;
+  //3:json
+  pool.query(sql,(err,result)=>{
+    if(err)throw err;
+    if(result.affectedRows>0){
+      res.send({code:1,msg:"删除成功"});
+    }else{
+      res.send({code:-1,msg:"删除失败"});
+    }
+  })
+});
+
+/***************************************************************************************************/ 
+
+//  
+server.get("/dim",function(req,res){
+	var msg=req.query.msg;
+	if(!msg){res.send("请输入查找值");return}
+	var sql=`select * from flower_all_product where title like '%${msg}%'`;
+	pool.query(sql,function(err,result){
+		if(err)throw err;
+		res.send(result);
+	})
+})
+
+
+

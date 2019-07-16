@@ -21,6 +21,7 @@ import Gift from "./components/product/gift.vue"
 import Login from "./components/product/login.vue"
 import Register from "./components/product/register.vue"
 import Admin from "./components/admin/admin.vue"
+import Scrollbars from "./components/scrollbars/scrollbars.vue"
 Vue.use(Router)
 export default new Router({
   routes: [
@@ -43,5 +44,6 @@ export default new Router({
     {path:'/Gift',component:Gift},
     {path:'/Login',component:Login},
     {path:'/Register',component:Register},
+    {path:'/Scrollbars',component:Scrollbars},
   ]
 })
