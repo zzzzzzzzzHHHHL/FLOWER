@@ -1,5 +1,5 @@
 <template>
-    <div>
+<div>
     <div class="productFilter my_flex">
         <div class="left_pro">
             <ul class="my_flex">
@@ -19,12 +19,14 @@
         </div>         
     </div>
     <div class="my_flex main">
-        <div  v-for="(elem,i) of list" :key="i" class="main_pro">
+        <div  v-for="(elem,i) of list" :key="i" class="main_pro" >
              <a :href="elem.href"><img :src="`http://127.0.0.1:3000/`+elem.pic" ></a>
-            <p >
+             <div class="msg_pro">
+                  <p>
                 <a v-text="elem.title" :href="elem.href"></a>
-            </p>
-            <p v-text="elem.price"></p>
+                  </p>
+            <p v-text="`￥${elem.price}`"></p>
+             </div>
         </div>   
     </div>
 </div>
@@ -38,13 +40,31 @@
                pno:1,ps:16
             }
         },
+        mounted() {
+            var ulStyle=document.querySelector(".el-pager")
+            var firstLi=ulStyle.children[0];
+            var lastLi=ulStyle.children[1]
+            firstLi.onclick=()=>{
+                this.last()
+            }
+            lastLi.onclick=()=>{
+                this.next()
+            }       
+        },
         created() {
               var url="import";
                 this.axios.get(url).then(result=>{
                     console.log(result);
                      this.list=result.data.slice(0,16)
+                    // setTimeout(function(){
+                      //  var divMain=document.querySelectorAll(".main_pro");
+                       // console.log(divMain)
+                     //},10)
+                   //   this.$nextTick(function(){var divMain=document.querySelectorAll(".main_pro");
+                     //  console.log(divMain)})
                 })
         },
+    
         methods: {
             last(){
                 var url="import_product";
@@ -79,15 +99,13 @@
                 var url="import-priceDown";
                 this.axios.get(url).then(result=>{
                     this.list=result.data
-                })
-                
-            }
+                })           
+            },
         },  
     }
 </script>
 <style scoped>
-   
-    a{
+     a{
         cursor: pointer;
     }
     .app-container{
@@ -100,6 +118,7 @@
         border-top: 1px solid #d2d2d2;
         height:57px;
         margin-top:40px;
+       
     }
     ul{
         line-height:57px;
@@ -142,21 +161,13 @@
          display:inline-block;
          height:53px;
          line-height:63px;
-        margin-right: 30px;
-        position:absolute;
-        left:-231px;
-        top: 1px;
+     
      }
      .el-pagination{
         height:53px;
-        position:absolute;
-        left: -163px;
-        top: 12px;
-}
-
- .right_pro{
-         position:relative;
+        padding: 14px 0px;
      }
+
   .main{
       width:1200px;
       margin:0 auto;
@@ -179,5 +190,23 @@
  .main_pro{
      margin:10px 0;
  }
+ .msg_pro{
+     width:280px;
+     height:60px;
+     box-sizing:border-box;
+ }
+ .main_pro:hover{
+     box-shadow: 0 0 5px #d9d9d9;
+     border-radius:5px;
+ }
+ .msg_pro>p:last-child{
+     color:#b2904c;
+     font-size:14px;
+ }
 
+ .msg_pro>p{
+     text-align:center;
+     margin:10px 0px;
+ }
+ 
 </style>

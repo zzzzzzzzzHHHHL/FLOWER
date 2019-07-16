@@ -50,8 +50,7 @@
     }
 </script>
 <style scoped>
-   
-    a{
+     a{
         cursor: pointer;
     }
     .app-container{
@@ -62,6 +61,11 @@
         margin:0 auto;
         border-bottom: 1px solid #d2d2d2;
         border-top: 1px solid #d2d2d2;
+        height:57px;
+        margin-top:40px;
+    }
+    ul{
+        line-height:57px;
     }
     ul li{
         list-style:none
@@ -81,12 +85,12 @@
     }
     .el-icon-caret-top{
         position:absolute;
-        left:-37px;top:4px;
+        left:-37px;top:22px;
         color:#d2d2d2;
     }
      .el-icon-caret-bottom{
         position:absolute;
-        left:-37px;top:9px;
+        left:-37px;top:28px;
         color:#d2d2d2;
     }
     .left_pro>ul>li{
@@ -101,21 +105,13 @@
          display:inline-block;
          height:53px;
          line-height:63px;
-        margin-right: 30px;
-        position:absolute;
-        left:-220px;
-        top: 1px;
+     
      }
      .el-pagination{
         height:53px;
-        position:absolute;
-        left: -160px;
-        top: 12px;
-}
-
- .right_pro{
-         position:relative;
+        padding: 14px 0px;
      }
+
   .main{
       width:1200px;
       margin:0 auto;
@@ -138,5 +134,10 @@
  .main_pro{
      margin:10px 0;
  }
-
+ .msg_pro{
+     width:280px;
+     height:60px;
+     box-sizing:border-box;
+    
+ }
 </style>
