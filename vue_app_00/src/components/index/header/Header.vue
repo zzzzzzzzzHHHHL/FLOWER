@@ -35,7 +35,7 @@ export default {
 
     components:{
      "nput":Input,
-     "navv":Nav,
+     "navv":Nav1,
      "navbar":Navbar,
      "ceiling":Ceiling,
      "middle":Middle,
