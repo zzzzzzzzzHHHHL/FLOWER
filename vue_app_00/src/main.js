@@ -6,7 +6,7 @@ import ElementUI from 'element-ui';
 import './../public/js/jquery-1.11.3'
 import 'element-ui/lib/theme-chalk/index.css';
 import "./font/iconfont.css"
-//import "./../public/js/vue"
+
 //引入axios.js文件
 import axios from "./axios"
 Vue.use(ElementUI);

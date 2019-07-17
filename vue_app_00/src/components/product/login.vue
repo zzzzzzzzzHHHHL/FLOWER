@@ -1,6 +1,6 @@
 <template>
     <div>
-         <div class="container">
+        <div class="container">
         <div class="main">
             <div class="login_box">
                 <div class="swich_type" >
@@ -13,7 +13,7 @@
                     </div>
                     <div class="item_info">
                         <i class="iconfont icon-44"></i>
-                        <input type="text" placeholder="请输入手机号" v-model="uname">
+                        <input type="text" placeholder="请输入用户名" v-model="uname">
                     </div>
                     <div class="item">
                             <i class="iconfont icon-suo"></i>
@@ -31,18 +31,11 @@
                         <i class="iconfont icon-44"></i>
                         <input type="text" placeholder="请输入注册手机号">
                     </div>
-                    <div class="pic_reg">
-                        <input type="text" placeholder="图形验证码">
-                        <a href="#">
-                            <img src="img/captcha.png" alt="">
-                        </a>
-                        <a href="#">看不清换一张</a>
-                    </div>
-                    <div class="reg_msg">
-                        <i class="iconfont icon-xin"></i>
-                        <input type="text" placeholder="请输入短信验证码">
-                        <button>获取短信验证码</button>
-                    </div>
+                     <div class="item">
+                            <i class="iconfont icon-anquan"></i>
+                             <input type="password" placeholder="请输入用户名">
+                        </div>
+                   
                     <div class="item_info">
                             <i class="iconfont  icon-suo"></i>
                             <input type="text" placeholder="请输入密码">
@@ -79,20 +72,20 @@ export default {
   );
     for(var a of as){
       as[0].onclick=function(){
-      var div1=document.getElementById("content1");
-      var div2=document.getElementById("content2");
-      var div3=document.querySelector(".login_box")
-      div1.style.display="block";
-      div2.style.display="none"
-      div3.style.height="307px"
+      var firstCon=document.getElementById("content1");
+      var nextCon=document.getElementById("content2");
+      var lastCon=document.querySelector(".login_box")
+      firstCon.style.display="block";
+      nextCon.style.display="none"
+      lastCon.style.height="317px"
       }
       as[1].onclick=function(){
-      var div1=document.getElementById("content1");
-      var div2=document.getElementById("content2");
-      var div3=document.querySelector(".login_box")
-      div1.style.display="none";
-      div2.style.display="block";
-      div3.style.height="370px"
+      var firstCon=document.getElementById("content1");
+      var nextCon=document.getElementById("content2");
+      var lastCon=document.querySelector(".login_box")
+      firstCon.style.display="none";
+      nextCon.style.display="block";
+      lastCon.style.height="370px"
       }
   }
     },
@@ -126,7 +119,7 @@ body{
     position:relative;
 }
 .login_box{
-    width:270px;height: 307px;
+    width:307px;height: 317px;
     padding: 20px 40px 30px;
     background-color:#fff;
     position: absolute;
@@ -138,16 +131,19 @@ a{
 }
 .swich_type{
     display: flex;
-    justify-content: space-between
+    justify-content: space-between;
+    width:223px;height:50px
 }
 .swich_type>a{
     font-size:18px;
     color: #888;
     border-bottom: 1px solid #d1d1d1;
-    padding:13px;
-    width:134px;height: 27px;
+    padding:10px 0px;
+    width:134px;height: 50px;
     text-align: center;
-    font-weight: bolder
+    font-weight: bolder;
+    box-sizing:border-box;
+   
 }
 .active{
     border-bottom: 2px solid #333 !important;
@@ -159,7 +155,9 @@ a{
 .mobile_yzm>a{
     color:#333;
     float: right;
-    margin-top: 20px;
+    height:16px ;
+     margin-top:15px;
+    
 }
 .item_info{
     margin-top: 30px;
@@ -172,7 +170,7 @@ a{
     color:#e8e8e8
 }
 input{
-    width:223px;height: 28px;
+    width:226px;height: 38px;
     padding: 5px 10px 5px 35px;
     border: 1px solid #d2d2d2;
     font: 12px/1.5 Microsoft ;
@@ -273,7 +271,7 @@ input{
 .reg .icon-suo{
     position: absolute;
     left: -2px;
-    top: 157px;
+    top: 104px;
 }
 #content2{
 	position: absolute;

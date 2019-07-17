@@ -73,7 +73,7 @@ var sql = "SELECT uname,upwd FROM flower_user WHERE uname=? AND upwd=?";
 server.get("/register",function(req,res){
 	var $uname=req.query.uname;
 	var $upwd=req.query.upwd;
-	var $uemail=req.query.email;
+	var $spwd=req.query.spwd;
 	var $uphone=req.query.phone;
 
 	if(!$uname){
@@ -84,8 +84,8 @@ server.get("/register",function(req,res){
 		res.send("密码不能为空");
 		return;
 	}
-	if(!$uemail){
-		res.send("邮箱不能为空");
+	if(!$spwd){
+		res.send("确认密码不能为空");
 		return;
 	}
 	if(!$uphone){

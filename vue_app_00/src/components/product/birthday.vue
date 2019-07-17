@@ -20,10 +20,10 @@
     </div>
     <div class="my_flex main">
         <div  v-for="(elem,i) of list" :key="i" class="main_pro" >
-             <a :href="elem.href"><img :src="`http://127.0.0.1:3000/`+elem.pic" ></a>
+             <router-link :to="elem.href"><img :src="`http://127.0.0.1:3000/`+elem.pic" ></router-link>
              <div class="msg_pro">
                   <p>
-                <a v-text="elem.title" :href="elem.href"></a>
+                <router-link v-text="elem.title" :to="elem.href"></router-link>
                   </p>
             <p v-text="`￥${elem.price}`"></p>
              </div>
@@ -108,6 +108,7 @@
         border-top: 1px solid #d2d2d2;
         height:57px;
         margin-top:40px;
+       
     }
     ul{
         line-height:57px;
@@ -184,4 +185,18 @@
      height:60px;
      box-sizing:border-box;
  }
+ .main_pro:hover{
+     box-shadow: 0 0 5px #d9d9d9;
+     border-radius:5px;
+ }
+ .msg_pro>p:last-child{
+     color:#b2904c;
+     font-size:14px;
+ }
+
+ .msg_pro>p{
+     text-align:center;
+     margin:10px 0px;
+ }
+ 
 </style>
