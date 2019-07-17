@@ -117,7 +117,7 @@
             </div>
             <!-- 结算 -->
             <div class="total">
-                <button class="iconfont icon-fanhui1"> 继续购物</button>
+                <button class="iconfont icon-fanhui1" @click="jxgw"> 继续购物</button>
                 <button>立即结算</button>
             </div>
         </div>
@@ -133,6 +133,9 @@
 export default {
     data(){
         return{}
+    },
+    methods:{
+        jxgw(){window.history.go(-1);}
     }
 }
 </script>
