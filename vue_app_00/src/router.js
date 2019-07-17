@@ -22,12 +22,12 @@ import Login from "./components/product/login.vue"
 import Register from "./components/product/register.vue"
 import Admin from "./components/admin/admin.vue"
 import Scrollbars from "./components/scrollbars/scrollbars.vue"
-<<<<<<< HEAD
+
 // 主页面路径
 import Ceiling from "./components/index/header/Ceiling.vue"
 import Header from "./components/index/header/Header.vue"
 import Input from "./components/index/header/Input.vue"
-import Nav1 from "./components/index/header/Nav.vue"
+import Nav1 from "./components/index/header/Nav1.vue"
 import Navbar from "./components/index/header/Navbar.vue"
 import Middle from "./components/index/middle/Middle.vue"
 import Footer from "./components/index/footer/Footer.vue"

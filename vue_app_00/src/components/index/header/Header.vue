@@ -10,7 +10,7 @@
 </template>
 <script>
 import Input from './Input'
-import Nav from './Nav'
+import Nav1 from './Nav1'
 import Navbar from './Navbar'
 import Ceiling from './Ceiling'
 import Middle from '../middle/Middle'

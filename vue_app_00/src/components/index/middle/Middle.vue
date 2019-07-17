@@ -4,11 +4,11 @@
            <!-- 1F -->
            <div class="floor_1 row">
                <div class="col-7 image_1">
-                   <a href="#"><img src="../../../img/body-img/index_floor1.png" alt=""></a>
+                   <a href="#"><img :src="'http://127.0.0.1:3000/'+this.list[0].pic"></a>
                </div>
                <div class="col-5 ">
                    <div class="image_2">
-                       <a href="#"><img src="../../../img/body-img/index_floor1_right1.jpg" alt=""></a>
+                       <a href="#"><img :src="'http://127.0.0.1:3000/'+this.list[1].pic"></a>
                    </div>
                    <div class="text1">
                        <a href="#">
