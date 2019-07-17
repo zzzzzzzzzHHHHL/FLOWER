@@ -52,7 +52,7 @@ export default new Router({
     {path:'/Login',component:Login},
     {path:'/Register',component:Register},
     {path:'/Scrollbars',component:Scrollbars},
-    // 张旭项目分界线
+    // 张旭项目分界线=
     {path:'/Nav',component:Nav},
     {path:'/Gocart',component:Gocart},
     {path:'/Details',component:Details},
