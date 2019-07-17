@@ -819,9 +819,20 @@
 export default {
     data() {
         return {
-            
+          list:[],
+      list_one:[],  
         }
     },
+    created(){
+    var url="index"
+    this.axios.get(url).then(result=>{
+      console.log(result);
+      this.list=result.data;
+      console.log(this.list);
+      this.list_one=this.list.slice(2,10);
+      console.log(this.list_one);
+    })
+  }
 }
 </script>
 <style>

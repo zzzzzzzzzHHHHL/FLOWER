@@ -3,7 +3,7 @@
       <div class="header_middle">
         <div class="header_logo ">
             <a href="">
-                <img src="../../../../img/header-img/huazan_logo.png" alt="">    
+                <img src="../../../img/header-img/huazan_logo.png" alt="">    
             </a>    
         </div>    
         <div class="header_search ">
@@ -11,8 +11,8 @@
             <button class="header_search_btn"><em class="iconfont icon-sousuo"></em></button>  
         </div>    
         <div class="header_down">
-            <a href=""><img src="../../../../img/header-img/2019071.png" alt="" class="mr-4"></a>    
-            <a href=""><img src="../../../../img/header-img/201907.png" alt=""></a>    
+            <a href=""><img src="../../../img/header-img/2019071.png" alt="" class="mr-4"></a>    
+            <a href=""><img src="../../../img/header-img/201907.png" alt=""></a>    
         </div>    
       </div>
     </div>

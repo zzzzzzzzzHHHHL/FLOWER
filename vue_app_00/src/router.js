@@ -22,6 +22,14 @@ import Login from "./components/product/login.vue"
 import Register from "./components/product/register.vue"
 import Admin from "./components/admin/admin.vue"
 import Scrollbars from "./components/scrollbars/scrollbars.vue"
+// 主页面路径
+import Ceiling from "./components/index/header/Ceiling.vue"
+import Header from "./components/index/header/Header.vue"
+import Input from "./components/index/header/Input.vue"
+import Nav from "./components/index/header/Nav.vue"
+import Navbar from "./components/index/header/Navbar.vue"
+import Middle from "./components/index/middle/Middle.vue"
+import Footer from "./components/index/footer/Footer.vue"
 Vue.use(Router)
 export default new Router({
   routes: [
@@ -45,5 +53,13 @@ export default new Router({
     {path:'/Login',component:Login},
     {path:'/Register',component:Register},
     {path:'/Scrollbars',component:Scrollbars},
+    // 注册主页面路径
+    {path:'/Ceiling',component:Ceiling},
+    {path:'/Header',component:Header},
+    {path:'/Input',component:Input},
+    {path:'/Nav',component:Nav},
+    {path:'/Navbar',component:Navbar},
+    {path:'/Middle',component:Middle},
+    {path:'/Footer',component:Footer},
   ]
 })
