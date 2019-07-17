@@ -20,8 +20,8 @@
     </div>
     <div class="my_flex main">
         <div  v-for="(elem,i) of list" :key="i" class="main_pro">
-            <a :href="elem.href"><img :src="`http://127.0.0.1:3000/`+elem.pic" ></a>
-            <p >
+            <router-link :to="elem.href"><img :src="`http://127.0.0.1:3000/`+elem.pic" ></router-link>
+            <p>
                 <a v-text="elem.title" :href="elem.href"></a>
             </p>
             <p v-text="elem.price"></p>
@@ -41,6 +41,7 @@
         },
         
         created() {
+            this.id
               var url="gift";
                 this.axios.get(url).then(result=>{
                     console.log(result);

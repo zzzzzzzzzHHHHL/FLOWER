@@ -77,7 +77,7 @@
                 <div class="btn">
                     <button @click="jrgwc">加入购物车</button>
                     <button @click="ljgm">立即购买</button>
-                    <button  class="iconfont icon-shoucang-copy"></button>
+                    <button class="iconfont icon-shoucang-copy"></button>
                     <button class="iconfont icon-fenxiang"></button>
                 </div>
                 
@@ -263,6 +263,10 @@ export default {
             },
         }
     },
+    created(){
+        console.log(this.$route.params.lid)
+        this.load();
+    },
     methods:{
         move(e){
             this.mask.visibility="visible"
@@ -376,6 +380,14 @@ export default {
         },
         ljgm(){
             this.$router.push("/Gocart");
+        },
+        load(){
+            
+            var url = "details";
+            var obj={lid:this.$route.params.lid};
+            this.axios.get(url,{params:obj}).then(result=>{
+                console.log(result);
+            })
         },
 
     },

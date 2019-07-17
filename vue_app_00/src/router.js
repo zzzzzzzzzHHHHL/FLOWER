@@ -25,7 +25,7 @@ import Scrollbars from "./components/scrollbars/scrollbars.vue"
 // 张旭项目引用分界线
 import Nav from "./components/project/Nav.vue"
 import Gocart from "./components/project/Gocart.vue"
-import Details from "./components/project/Details.vue"
+import product_details from "./components/project/product_details.vue"
 
 
 
@@ -55,6 +55,6 @@ export default new Router({
     // 张旭项目分界线
     {path:'/Nav',component:Nav},
     {path:'/Gocart',component:Gocart},
-    {path:'/Details',component:Details},
+    {path:'/product_details/:lid',component:product_details,props:true},
   ]
 })
