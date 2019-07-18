@@ -9,7 +9,7 @@
                     <span class="iconfont icon-down fanye1" :class="arrow" @click="up"></span>
                     <div class="ulheight" :style="uheight">
                     <ul class="smallimg" :style="move_ul">
-                        <li><img src="http://127.0.0.1:3000/img/product/lg/gp1.jpg" @mouseenter="select" alt=""></li>
+                        <li><img :src="'http://127.0.0.1:3000/'+list.details" @mouseenter="select" alt=""></li>
                         <li><img src="../../assets/Mig/2.png" @mouseenter="select" alt=""></li>
                         <li><img src="../../assets/Mig/3.png" @mouseenter="select" alt=""></li>
                         <li><img src="../../assets/Mig/1.png" @mouseenter="select" alt=""></li>
@@ -117,6 +117,8 @@
                 </div>
             </div>
             <div class="img">
+                <img :src="'http://127.0.0.1:3000/'+list.details" alt="" class="xqtp">
+                <img src="../../assets/Mig/11.jpg" alt="">
                 <!-- <img src="../../assets/Mig/6.jpg" alt="">
                 <img src="../../assets/Mig/7.jpg" alt="">
                 <img src="../../assets/Mig/8.jpg" alt="">
@@ -378,6 +380,7 @@ export default {
         jrgwc(){
             this.two.display="flex";
             this.guodu2.tsdonghua2=true;
+            this.insert();
         },
         ljgm(){
             this.$router.push("/Gocart");
@@ -387,7 +390,19 @@ export default {
             var obj={lid:this.$route.params.lid};
             this.axios.get(url,{params:obj}).then(result=>{
                 this.list=result.data[0][0];
-                console.log(this.list);
+                // console.log(result.data);
+            })
+        },
+        insert(){
+            var url="InsertProduct";
+            var obj={
+                img_url:this.list.details,
+                title:this.list.title,
+                price:this.list.price,
+                count:this.num1
+            }
+            this.axios.get(url,{params:obj}).then(result=>{
+                console.log(result);
             })
         },
     },
@@ -1018,6 +1033,9 @@ outline: none;
     justify-content: flex-start;
     align-items: flex-start;
     height: auto;
+}
+.details .xqtp{
+    width:960px;
 }
 </style>
 
