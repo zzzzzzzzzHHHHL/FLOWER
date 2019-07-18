@@ -37,6 +37,8 @@ import Nav from "./components/project/Nav.vue"
 import Gocart from "./components/project/Gocart.vue"
 import product_details from "./components/project/product_details.vue"
 import Settlement from "./components/project/Settlement.vue"
+//首页header
+import header from "./components/index/header/header0.vue"
 
 
 
@@ -45,6 +47,7 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {path:'/',component:HelloContainer},
+    {path:'/header',component:header},
     {path:'/Admin',component:Admin},
     {path:'/Test',component:Test},
     {path:'/Test4',component:Test4},
