@@ -48,7 +48,7 @@ const bodyParser=require("body-parser");
 	}
   //1.1:正则表达式验证用户名或密码
   //2:sql
-var sql = "SELECT uname,upwd FROM flower_user WHERE uname=? AND upwd=?";
+var sql = "SELECT uid FROM flower_user WHERE uname=? AND upwd=?";
   //3:json
   pool.query(sql,[$uname,$upwd],(err,result)=>{
       if(err)throw err;
@@ -58,8 +58,8 @@ var sql = "SELECT uname,upwd FROM flower_user WHERE uname=? AND upwd=?";
 //??缺少一步
 //将当前登录用户uid保存session
 //result=[{id:1}]
-         req.session.uid = 
-         result[0].uid;
+        //  console.log(result);
+         req.session.uid = result[0].uid;
          res.send({code:1,msg:"登录成功"});
       }
   })

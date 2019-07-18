@@ -134,8 +134,17 @@ export default {
     data(){
         return{}
     },
+    created(){
+        this.loadMore();
+    },
     methods:{
-        jxgw(){window.history.go(-1);}
+        jxgw(){window.history.go(-1);},
+        loadMore(){
+            var url = "cart";
+            this.axios.get(url).then(result=>{
+               console.log(result);
+            })
+        }
     }
 }
 </script>

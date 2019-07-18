@@ -136,7 +136,7 @@
             </div>
             <ul class="cnxhul">
                 <li>
-                    <a href="#"><img src="../../assets/Mig/1.png" alt=""></a>
+                    <a href="#"><img src="../../assets/Mig/12.jpg" alt=""></a>
                     <div>
                         <p>小幸运</p>
                         <p>小清新礼盒装</p>
@@ -144,35 +144,35 @@
                     </div>
                 </li>
                 <li>
-                    <a href="#"><img src="../../assets/Mig/1.png" alt=""></a>
+                    <a href="#"><img src="../../assets/Mig/13.jpg" alt=""></a>
                     <div>
-                        <p>小幸运</p>
-                        <p>小清新礼盒装</p>
-                        <p>￥599</p>
+                        <p>陌上花开</p>
+                        <p>99朵粉红雪山</p>
+                        <p>￥1199</p>
+                    </div>
+                </li>
+                <li>
+                    <a href="#"><img src="../../assets/Mig/14.jpg" alt=""></a>
+                    <div>
+                        <p>闻香识爱</p>
+                        <p>16朵戴安娜</p>
+                        <p>￥699</p>
+                    </div>
+                </li>
+                <li>
+                    <a href="#"><img src="../../assets/Mig/15.jpg" alt=""></a>
+                    <div>
+                        <p>叶上胭脂</p>
+                        <p>19朵厄瓜多尔红玫瑰</p>
+                        <p>￥1499</p>
                     </div>
                 </li>
                 <li>
                     <a href="#"><img src="../../assets/Mig/1.png" alt=""></a>
                     <div>
-                        <p>小幸运</p>
-                        <p>小清新礼盒装</p>
-                        <p>￥599</p>
-                    </div>
-                </li>
-                <li>
-                    <a href="#"><img src="../../assets/Mig/1.png" alt=""></a>
-                    <div>
-                        <p>小幸运</p>
-                        <p>小清新礼盒装</p>
-                        <p>￥599</p>
-                    </div>
-                </li>
-                <li>
-                    <a href="#"><img src="../../assets/Mig/1.png" alt=""></a>
-                    <div>
-                        <p>小幸运</p>
-                        <p>小清新礼盒装</p>
-                        <p>￥599</p>
+                        <p>初遇</p>
+                        <p>52朵戴安娜玫瑰</p>
+                        <p>￥799</p>
                     </div>
                 </li>
                
@@ -1012,11 +1012,11 @@ outline: none;
     color: #333 !important;
     font-weight: bold !important;
 }
-.details .right .shuoming{
+.details .right p:nth-child(4) span,.details .right p:nth-child(5) span,.details .right p:nth-child(6) span,.details .right p:nth-child(7) span,.details .right p:nth-child(8) span,.details .right p:nth-child(9) span,.details .right p:nth-child(10) span{
     display: inline-block;
     width:440px;
 }
-.details .right .sm{
+.details .right p:nth-child(4),.details .right p:nth-child(5),.details .right p:nth-child(6),.details .right p:nth-child(7),.details .right p:nth-child(8),.details .right p:nth-child(9),.details .right p:nth-child(10){
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
