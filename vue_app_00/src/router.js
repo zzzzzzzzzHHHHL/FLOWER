@@ -22,6 +22,13 @@ import Login from "./components/product/login.vue"
 import Register from "./components/product/register.vue"
 import Admin from "./components/admin/admin.vue"
 import Scrollbars from "./components/scrollbars/scrollbars.vue"
+// 张旭项目引用分界线
+import Nav from "./components/project/Nav.vue"
+import Gocart from "./components/project/Gocart.vue"
+import product_details from "./components/project/product_details.vue"
+
+
+
 Vue.use(Router)
 export default new Router({
   routes: [
@@ -45,5 +52,9 @@ export default new Router({
     {path:'/Login',component:Login},
     {path:'/Register',component:Register},
     {path:'/Scrollbars',component:Scrollbars},
+    // 张旭项目分界线=
+    {path:'/Nav',component:Nav},
+    {path:'/Gocart',component:Gocart},
+    {path:'/product_details/:lid',component:product_details,props:true},
   ]
 })
