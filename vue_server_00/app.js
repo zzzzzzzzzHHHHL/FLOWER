@@ -852,7 +852,7 @@ server.get("/details",function(req,res){
 /***************************************************************************************************/ 
 //添加购物车
 server.get("/InsertProduct",(req,res)=>{
-	// // var uid = req.session.uid;
+	// var uid = req.session.uid;
   // if(!uid){
   //   res.send({code:-1,msg:"请登录"});
   //   return;

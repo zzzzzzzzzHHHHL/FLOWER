@@ -198,18 +198,17 @@ input[type="date"]{
     border: 1px solid #d2d2d2;
     font-size: 14px;
     padding:3px 0px 3px 10px;
+    color: #555555;
 }
 input[type="date"]:focus{
     outline: none;
 }
 input[type="date"]::-webkit-calendar-picker-indicator {
-   position: absolute; 
    color: #d2d2d2;
-   width: 100%;
    background: transparent;
 }
 input[type="date"]::-webkit-calendar-picker-indicator:hover{
-    background-color: #fff;
+    background:transparent;
 }
 /*用来移除上下箭头*/
 input[type="date"]::-webkit-inner-spin-button {
@@ -219,5 +218,4 @@ input[type="date"]::-webkit-inner-spin-button {
 input[type="date"]::-webkit-clear-button{
    display:none;
 }
-
 </style>
