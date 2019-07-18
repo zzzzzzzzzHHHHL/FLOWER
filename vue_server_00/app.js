@@ -813,7 +813,13 @@ server.get("/all_product",(req,res)=>{
 
 /***************************************************************************************************/ 
 
-
+server.get("/details5",function(req,res){
+	var sql="SELECT * FROM flower_details";
+	pool.query(sql,function(err,result){
+		if(err)throw err;
+		res.send(result);
+	})
+})
 //鲜花详情查询
 server.get("/details",function(req,res){
 	var lid=req.query.lid;
@@ -835,6 +841,22 @@ server.get("/pic",function(req,res){
 })
 
 /***************************************************************************************************/ 
+//添加购物车
+server.get("/InsertProduct",(req,res)=>{
+	// // var uid = req.session.uid;
+  // if(!uid){
+  //   res.send({code:-1,msg:"请登录"});
+  //   return;
+	// } 
+	var title=req.query.title;
+	var count=req.query.count;
+  var sql = "INSERT INTO flower_shoppingcart_item(title,count) VALUES(?,?)";
+  pool.query(sql,[title,count],(err,result)=>{
+    if(err)throw err;
+    res.send({code:1,data:result})
+  })
+})
+
 
 //购物车查询
 server.get("/cart",(req,res)=>{
@@ -846,7 +868,7 @@ server.get("/cart",(req,res)=>{
     return;
   }
   //2:sql
-  var sql = "SELECT * FROM flower_shoppingcart_item WHERE user_id = ?";
+  var sql = "SELECT * FROM flower_shoppingcart_item WHERE uid = ?";
   pool.query(sql,[uid],(err,result)=>{
     if(err)throw err;
     res.send({code:1,data:result})
