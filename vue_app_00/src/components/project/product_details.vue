@@ -117,13 +117,13 @@
                 </div>
             </div>
             <div class="img">
-                <img src="../../assets/Mig/6.jpg" alt="">
+                <!-- <img src="../../assets/Mig/6.jpg" alt="">
                 <img src="../../assets/Mig/7.jpg" alt="">
                 <img src="../../assets/Mig/8.jpg" alt="">
                 <img src="../../assets/Mig/9.jpg" alt="">
                 <img src="../../assets/Mig/10.jpg" alt="">
                 <img src="../../assets/Mig/5.jpg" alt="">
-                <img src="../../assets/Mig/11.jpg" alt="">
+                <img src="../../assets/Mig/11.jpg" alt=""> -->
             </div>
         </div>
         <!-- 猜你喜欢 -->
@@ -387,7 +387,7 @@ export default {
             var obj={lid:this.$route.params.lid};
             this.axios.get(url,{params:obj}).then(result=>{
                 this.list=result.data[0][0];
-                console.log(result.data);
+                console.log(this.list);
             })
         },
     },
