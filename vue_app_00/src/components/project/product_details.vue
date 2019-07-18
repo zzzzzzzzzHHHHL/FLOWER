@@ -227,8 +227,9 @@ import { setTimeout, clearInterval } from 'timers';
 export default {
     data(){
         return{
+            list:{},
             updown:{xdown:false},
-            num1:5,
+            num1:1,
             guodu:{tsdonghua:false},
             guodu2:{tsdonghua2:false},
             one:{display:"none"},
@@ -264,7 +265,7 @@ export default {
         }
     },
     created(){
-        console.log(this.$route.params.lid)
+        // console.log(this.$route.params.lid)
         this.load();
     },
     methods:{
@@ -382,11 +383,13 @@ export default {
             this.$router.push("/Gocart");
         },
         load(){
-            
             var url = "details";
             var obj={lid:this.$route.params.lid};
             this.axios.get(url,{params:obj}).then(result=>{
-                console.log(result);
+                // console.log(result.data[0]);
+                this.list=result.data[0];
+                // console.log(this.list);
+                // console.log(this.list.pack);
             })
         },
 
