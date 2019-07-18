@@ -198,6 +198,7 @@ input[type="date"]{
     border: 1px solid #d2d2d2;
     font-size: 14px;
     padding:3px 0px 3px 10px;
+    color: #555555;
 }
 input[type="date"]:focus{
     outline: none;
@@ -216,8 +217,5 @@ input[type="date"]::-webkit-inner-spin-button {
 /*用来移除叉叉按钮*/
 input[type="date"]::-webkit-clear-button{
    display:none;
-}
-input::-webkit-datetime-edit-text{
-    
 }
 </style>

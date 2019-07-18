@@ -861,8 +861,8 @@ server.get("/InsertProduct",(req,res)=>{
 	var title=req.query.title;
 	var price=req.query.price;
 	var count=req.query.count;
-  var sql = "INSERT INTO flower_shoppingcart_item(img_url,title,price,count) VALUES(?,?,?)";
-  pool.query(sql,[img_url,title,count],(err,result)=>{
+  var sql = "INSERT INTO flower_shoppingcart_item(img_url,title,price,count) VALUES(?,?,?,?)";
+  pool.query(sql,[img_url,title,price,count],(err,result)=>{
     if(err)throw err;
     res.send({code:1,data:result})
   })
