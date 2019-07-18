@@ -63,17 +63,17 @@ CREATE TABLE flower_receiver_address(
 
 /**购物车条目**/
 CREATE TABLE flower_shoppingcart_item(
-  iid INT PRIMARY KEY AUTO_INCREMENT,
-  user_id INT,      #用户编号
-  product_id INT,   #商品编号
-  count INT,        #购买数量
-  is_checked BOOLEAN #是否已勾选，确定购买
+  lid INT PRIMARY KEY AUTO_INCREMENT,
+  uid INT,                  #用户编号
+  title VARCHAR(64),	    #商品详情
+  count INT,                #购买数量
+  is_checked BOOLEAN        #是否已勾选，确定购买
 );
 
 /**用户订单**/
 CREATE TABLE flower_order(
   aid INT PRIMARY KEY AUTO_INCREMENT,
-  user_id INT,
+  uid INT,
   address_id INT,
   status INT,             #订单状态  1-等待付款  2-等待发货  3-运输中  4-已签收  5-已取消
   order_time BIGINT,      #下单时间
@@ -1930,9 +1930,9 @@ INSERT INTO flower_pic VALUES
 (NULL, NULL, 'img/product/sm/fp25.jpg','img/product/md/fp25.jpg','img/product/lg/fp25.jpg'),
 (NULL, NULL, 'img/product/sm/fp26.jpg','img/product/md/fp26.jpg','img/product/lg/fp26.jpg'),
 (NULL, NULL, 'img/product/sm/fp27.jpg','img/product/md/fp27.jpg','img/product/lg/fp27.jpg'),
-(NULL, NULL, 'img/product/sm/gp1.jpg','img/product/md/gp1.jpg','img/product/lg/gp1.jpg'),
+(NULL, NULL, '["img/product/sm/gp1.jpg","img/product/sm/gp1.jpg","img/product/sm/gp1.jpg","img/product/sm/gp1.jpg","img/product/sm/gp1.jpg"]','img/product/md/gp1.jpg','img/product/lg/gp1.jpg'),
 (NULL, NULL, 'img/product/sm/gp2.jpg','img/product/md/gp2.jpg','img/product/lg/gp2.jpg'),
-(NULL, NULL, 'img/product/sm/gp3.jpg','img/product/md/gp3.jpg','img/product/lg/gp3.jpg'),
+(NULL, NULL, '["img/product/sm/gp3.jpg","img/product/sm/gp3.jpg","img/product/sm/gp3.jpg",]','img/product/md/gp3.jpg','img/product/lg/gp3.jpg'),
 (NULL, NULL, 'img/product/sm/gp4.jpg','img/product/md/gp4.jpg','img/product/lg/gp4.jpg'),
 (NULL, NULL, 'img/product/sm/gp5.jpg','img/product/md/gp5.jpg','img/product/lg/gp5.jpg'),
 (NULL, NULL, 'img/product/sm/gp6.jpg','img/product/md/gp6.jpg','img/product/lg/gp6.jpg'),

@@ -25,11 +25,11 @@
       <el-tab-pane label="用户列表">用户列表</el-tab-pane>
       <el-tab-pane label="订单列表">订单列表</el-tab-pane>
     </el-tabs>
-    
+    <scoll></scoll>
   </div>
 </template>
 <script>
-
+import scoll from "../scrollbars/scrollbars.vue"
 export default {
   data(){
     
@@ -37,6 +37,9 @@ export default {
         tabPosition: 'left',
         input3:"",
       }
+  },
+  components:{
+    "scoll":scoll
   }
   
 }
