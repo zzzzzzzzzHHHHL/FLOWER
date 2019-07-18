@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="wrap">
         <div id="ceiling">
             <div class="header_bar_l">
                 <div class="header_left_1">
@@ -35,11 +35,17 @@ export default {
 }
 </script>
 <style>
-    *{box-sizing: border-box;}
+    *{margin:0;padding:0;box-sizing: border-box;}
+    .wrap{
+        width:100%;
+        height:36px;
+    }
     a{text-decoration: none !important;}
     #ceiling{
+        width:1200px;
+        margin:0 auto;
         background-color: #fafafa;
-        height: 35px;
+        height: 100%;
         border-bottom: 1px solid #f5f5f5;
         position: relative;
         font-size: 13px;
