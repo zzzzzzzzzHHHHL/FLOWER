@@ -7,6 +7,7 @@
       <el-radio-button label="left">left</el-radio-button>
     </el-radio-group> -->
     <header class="header">
+      
       <h2>花赞商城后台管理</h2>
       <div>
         <el-input placeholder="请输入内容" v-model="input3" class="input-with-select">
@@ -30,6 +31,7 @@
 </template>
 <script>
 import scoll from "../scrollbars/scrollbars.vue"
+
 export default {
   data(){
     
@@ -39,7 +41,8 @@ export default {
       }
   },
   components:{
-    "scoll":scoll
+    "scoll":scoll,
+    
   }
   
 }

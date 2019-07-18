@@ -83,7 +83,7 @@ export default {
     },
 }
 </script>
-<style>
+<style scoped>
     .nav_tl{
         border-bottom: 1px solid #d2d2d2;
         /* padding:15px 0 15px; */

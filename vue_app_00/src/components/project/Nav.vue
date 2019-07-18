@@ -217,6 +217,6 @@ li{
     text-align: center;
     width: 1200px;
     padding: 0 5px;
-    margin: auto;
+    margin:30px auto;
 }
 </style>

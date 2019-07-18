@@ -1,5 +1,8 @@
 <template>
     <div>
+        <header00></header00>
+        <navgitor></navgitor>
+        <banner></banner>
        <div id="floor">
            <!-- 1F -->
            <div class="floor_1">
@@ -122,10 +125,15 @@
             <!-- 9F滚动图 -->
             <scrollbars></scrollbars>
        </div> 
+       <footer00></footer00>
     </div>
 </template>
 <script>
 import Scrollbars from "../../scrollbars/scrollbars.vue"
+import Header from "../header/header0.vue"
+import Footer from "../footer/footer0.vue"
+import Nav from "../../project/Nav.vue"
+import Banner from "../header/Nav1.vue"
 export default {
     
     data() {
@@ -154,7 +162,11 @@ export default {
         })
   },
   components:{
-      "scrollbars":Scrollbars
+      "scrollbars":Scrollbars,
+      "header00":Header,
+      "navgitor":Nav,
+      "footer00":Footer,
+      "banner":Banner
   }
 }
 </script>

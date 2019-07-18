@@ -28,7 +28,7 @@ export default {
     
 }
 </script>
-<style>
+<style scoped>
     .header_middle{
         display: flex; 
         justify-content: space-around;
