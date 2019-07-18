@@ -11,7 +11,7 @@ export default {
       newlist:[]
     }
  },
-//   },../../../../vue_server_00/public/img/
+// 
   created(){
     var url="details5"
     this.axios.get(url).then(result=>{
