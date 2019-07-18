@@ -4,7 +4,7 @@
         <div class="main">
             <div class="login_box">
                 <div class="swich_type">
-                    <a href="#" data-toggle="tab"data-id="content1" >账号登录</a>
+                    <a href="#" data-toggle="tab" data-id="content1" >账号登录</a>
                     <a href="#" data-toggle="tab" data-id="content1" class="active">用户注册</a>
                 </div>
                 <div class="login_in" id="content1">

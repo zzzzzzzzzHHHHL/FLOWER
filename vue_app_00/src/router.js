@@ -36,6 +36,7 @@ import Footer from "./components/index/footer/Footer.vue"
 import Nav from "./components/project/Nav.vue"
 import Gocart from "./components/project/Gocart.vue"
 import product_details from "./components/project/product_details.vue"
+import Settlement from "./components/project/Settlement.vue"
 
 
 
@@ -76,6 +77,7 @@ export default new Router({
     // 张旭项目分界线=
     {path:'/Nav',component:Nav},
     {path:'/Gocart',component:Gocart},
+    {path:'/Settlement',component:Settlement},
     {path:'/product_details/:lid',component:product_details,props:true},
 
   ]
