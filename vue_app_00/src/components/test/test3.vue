@@ -1,6 +1,6 @@
 <template>
-    <div id="container" >
-       
+    <div id="container" v-html="this.newlist[0].details">
+     
     </div>
 </template>
 <script>
@@ -18,7 +18,7 @@ export default {
       console.log(this.list);
       this.newlist=this.list.slice(0,1);
       console.log(this.newlist)
-      console.log(this.newlist[0].details[0].pic1)
+      
     })
   }
 }
