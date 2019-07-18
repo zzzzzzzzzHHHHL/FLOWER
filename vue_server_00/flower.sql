@@ -66,6 +66,7 @@ CREATE TABLE flower_shoppingcart_item(
   lid INT PRIMARY KEY AUTO_INCREMENT,
   uid INT,                  #用户编号
   title VARCHAR(64),	    #商品详情
+  price DECIMAL(10,2),
   count INT,                #购买数量
   is_checked BOOLEAN        #是否已勾选，确定购买
 );

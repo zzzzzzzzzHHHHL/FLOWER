@@ -192,4 +192,32 @@ export default {
     background-color: #8c8c8c;
 }
 /* 日期选择器样式修改 */
+
+/* 用来移除向下箭头 */
+input[type="date"]{
+    border: 1px solid #d2d2d2;
+    font-size: 14px;
+    padding:3px 0px 3px 10px;
+}
+input[type="date"]:focus{
+    outline: none;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+   position: absolute; 
+   color: #d2d2d2;
+   width: 100%;
+   background: transparent;
+}
+input[type="date"]::-webkit-calendar-picker-indicator:hover{
+    background-color: #fff;
+}
+/*用来移除上下箭头*/
+input[type="date"]::-webkit-inner-spin-button {
+	display: none;
+}
+/*用来移除叉叉按钮*/
+input[type="date"]::-webkit-clear-button{
+   display:none;
+}
+
 </style>
