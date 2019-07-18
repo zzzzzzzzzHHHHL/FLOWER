@@ -217,7 +217,6 @@
                 </div>
             </div>
         </div>
-        <!-- <img src="../../assets/Mig/ewm.png" alt=""> -->
     </div>
 </template>
 
@@ -227,7 +226,6 @@ import { setTimeout, clearInterval } from 'timers';
 export default {
     data(){
         return{
-            // pppp:`"<div class="content_tpl"><div class="formwork"><div class="formwork_img"><img class="" src="img/product/details/l1.jpg"><img class="" src="img/product/details/p50.jpg"></div></div></div>"`,
             list:{},
             bigimg:"",
             updown:{xdown:false},
@@ -389,8 +387,7 @@ export default {
             var obj={lid:this.$route.params.lid};
             this.axios.get(url,{params:obj}).then(result=>{
                 this.list=result.data[0][0];
-                console.log(this.list);
-                console.log(this.list.length);
+                console.log(result.data);
             })
         },
     },
@@ -412,7 +409,7 @@ export default {
         window.addEventListener("scroll",this.handleScroll);
     },
     destroyed(){
-        window.removeEventListener("scroll",this.handleScroll)
+        window.removeEventListener("scroll",this.handleScroll);
     },     
 }
 </script>
