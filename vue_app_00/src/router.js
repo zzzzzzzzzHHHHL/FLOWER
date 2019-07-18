@@ -22,10 +22,21 @@ import Login from "./components/product/login.vue"
 import Register from "./components/product/register.vue"
 import Admin from "./components/admin/admin.vue"
 import Scrollbars from "./components/scrollbars/scrollbars.vue"
+
+// 主页面路径
+import Ceiling from "./components/index/header/Ceiling.vue"
+import Header from "./components/index/header/Header.vue"
+import Input from "./components/index/header/Input.vue"
+import Nav1 from "./components/index/header/Nav1.vue"
+import Navbar from "./components/index/header/Navbar.vue"
+import Middle from "./components/index/middle/Middle.vue"
+import Footer from "./components/index/footer/Footer.vue"
+
 // 张旭项目引用分界线
 import Nav from "./components/project/Nav.vue"
 import Gocart from "./components/project/Gocart.vue"
 import product_details from "./components/project/product_details.vue"
+
 
 
 
@@ -52,9 +63,20 @@ export default new Router({
     {path:'/Login',component:Login},
     {path:'/Register',component:Register},
     {path:'/Scrollbars',component:Scrollbars},
+
+    // 注册主页面路径
+    {path:'/Ceiling',component:Ceiling},
+    {path:'/Header',component:Header},
+    {path:'/Input',component:Input},
+    {path:'/Nav1',component:Nav1},
+    {path:'/Navbar',component:Navbar},
+    {path:'/Middle',component:Middle},
+    {path:'/Footer',component:Footer},
+
     // 张旭项目分界线=
     {path:'/Nav',component:Nav},
     {path:'/Gocart',component:Gocart},
     {path:'/product_details/:lid',component:product_details,props:true},
+
   ]
 })

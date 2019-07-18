@@ -21,8 +21,8 @@
     <div class="my_flex main">
         <div  v-for="(elem,i) of list" :key="i" class="main_pro">
             <router-link :to="elem.href"><img :src="`http://127.0.0.1:3000/`+elem.pic" ></router-link>
-            <p>
-                <a v-text="elem.title" :href="elem.href"></a>
+            <p >
+                <router-link v-text="elem.title" :to="elem.href"></router-link>
             </p>
             <p v-text="elem.price"></p>
         </div>

@@ -7,6 +7,11 @@ import './../public/js/jquery-1.11.3'
 import 'element-ui/lib/theme-chalk/index.css';
 import "./font/iconfont.css"
 //import "./../public/js/vue"
+// 字体图标
+import "./font/font1_9089ljplf/iconfont.css"
+import "./font/font2_tygut9aw40b/iconfont.css"
+import "./font/font3_20btlo3xkyh/iconfont.css"
+import "./font/font_xrf7xomh4aj/iconfont.css"
 //引入axios.js文件
 import axios from "./axios"
 Vue.use(ElementUI);

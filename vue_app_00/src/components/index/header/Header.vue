@@ -9,21 +9,33 @@
     </div>
 </template>
 <script>
-import Input from './comm/Input'
-import Nav from './Nav'
-import Navbar from './comm/Navbar'
-import Ceiling from './comm/Ceiling'
-import Middle from './Middle'
-import Footer from './Footer'
+import Input from './Input'
+import Nav1 from './Nav1'
+import Navbar from './Navbar'
+import Ceiling from './Ceiling'
+import Middle from '../middle/Middle'
+import Footer from '../footer/Footer'
 export default {
     data() {
         return {
-            
+        list:[],
+        list_one:[],
         }
     },
+    created(){
+    var url="index"
+    this.axios.get(url).then(result=>{
+      console.log(result);
+      this.list=result.data;
+      console.log(this.list);
+      this.list_one=this.list.slice(2,10);
+      console.log(this.list_one);
+    })
+  },
+
     components:{
      "nput":Input,
-     "navv":Nav,
+     "navv":Nav1,
      "navbar":Navbar,
      "ceiling":Ceiling,
      "middle":Middle,
