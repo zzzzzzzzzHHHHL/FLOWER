@@ -857,10 +857,11 @@ server.get("/InsertProduct",(req,res)=>{
   //   res.send({code:-1,msg:"请登录"});
   //   return;
 	// } 
+	var img_url=req.query.img_url;
 	var title=req.query.title;
 	var count=req.query.count;
-  var sql = "INSERT INTO flower_shoppingcart_item(title,count) VALUES(?,?)";
-  pool.query(sql,[title,count],(err,result)=>{
+  var sql = "INSERT INTO flower_shoppingcart_item(img_url,title,count) VALUES(?,?,?)";
+  pool.query(sql,[img_url,title,count],(err,result)=>{
     if(err)throw err;
     res.send({code:1,data:result})
   })
