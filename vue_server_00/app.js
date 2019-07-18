@@ -817,22 +817,31 @@ server.get("/all_product",(req,res)=>{
 //鲜花详情查询
 server.get("/details",function(req,res){
 	var lid=req.query.lid;
+	var list=[];
 	if(!lid){res.send("请输入查询的编号");return}
+	var sql1="SELECT * FROM flower_pic WHERE pid=?";
 	var sql="SELECT * FROM flower_details WHERE lid=?";
 	pool.query(sql,[lid],function(err,result){
 		if(err)throw err;
-		res.send(result);
+		if(result.length>0){
+			list.push(result);
+			pool.query(sql1,[lid],function(err,result){
+				if(err)throw err;
+				list.push(result);
+				res.send(list);
+			})
+		}
 	})
 })
 
-//鲜花大中小图片
-server.get("/pic",function(req,res){
-	var sql="SELECT * FROM flower_pic";
-	pool.query(sql,function(err,result){
-		if(err)throw err;
-		res.send(result);
-	})
-})
+// //鲜花大中小图片
+// server.get("/pic",function(req,res){
+// 	var sql="SELECT * FROM flower_pic";
+// 	pool.query(sql,function(err,result){
+// 		if(err)throw err;
+// 		res.send(result);
+// 	})
+// })
 
 /***************************************************************************************************/ 
 

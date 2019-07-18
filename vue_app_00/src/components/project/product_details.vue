@@ -9,7 +9,7 @@
                     <span class="iconfont icon-down fanye1" :class="arrow" @click="up"></span>
                     <div class="ulheight" :style="uheight">
                     <ul class="smallimg" :style="move_ul">
-                        <li><img src="../../assets/Mig/1.png" @mouseenter="select" alt=""></li>
+                        <li><img src="http://127.0.0.1:3000/img/product/lg/gp1.jpg" @mouseenter="select" alt=""></li>
                         <li><img src="../../assets/Mig/2.png" @mouseenter="select" alt=""></li>
                         <li><img src="../../assets/Mig/3.png" @mouseenter="select" alt=""></li>
                         <li><img src="../../assets/Mig/1.png" @mouseenter="select" alt=""></li>
@@ -36,10 +36,10 @@
             </div>
             <!-- 右边详情 -->
             <div class="right">
-                <h3>爱在巴黎-19朵甜心玫瑰</h3>
+                <h3 v-text=list.title></h3>
                 <p class="hzj">
                     花赞价 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span class="dj">￥1499</span>&nbsp;&nbsp;&nbsp;
+                    <span class="dj" v-text="`￥${list.price}`"></span>&nbsp;&nbsp;&nbsp;
                     <span class="iconfont icon-erweima" @mouseenter="ewmshow" @mouseleave="ewmhidden"></span>&nbsp;&nbsp;&nbsp;
                     <span class="app">APP折后价</span>
                     <span class="zhj">￥1399省150元</span>
@@ -47,25 +47,25 @@
                 </p>
                 <div class="bigewm"></div>
                 <p>编&nbsp;&nbsp;&nbsp;&nbsp;号 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span>RW000042</span>
+                    <span v-text=list.serial_number></span>
                 </p>
                 <p>材&nbsp;&nbsp;&nbsp;&nbsp;料 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span>19朵甜心玫瑰，搭配适量尤加利叶装饰。</span>
+                    <span v-text=list.material></span>
                 </p>
                 <p>包&nbsp;&nbsp;&nbsp;&nbsp;装 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span>白色雾面纸韩式扇形包装，精美白色字母丝带+黑色丝带束扎。</span>
+                    <span v-text=list.pack></span>
                 </p> 
                 <p>花&nbsp;&nbsp;&nbsp;&nbsp;语 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span>只想和你忘掉一切烦恼，尽情沉醉在最浪漫的气氛中。</span>
+                    <span v-text=list.blessing></span>
                 </p>
                 <p>附&nbsp;&nbsp;&nbsp;&nbsp;赠 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span>免费附送精美贺卡，代写您的祝福。(您下单时可填写留言栏)</span>
+                    <span v-text=list.annexation></span>
                 </p>
                 <p>配&nbsp;&nbsp;&nbsp;&nbsp;送 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span>全国 （可配送至全国1000多个城市，市区免配送费）</span>
+                    <span v-text=list.distribution>全国 （可配送至全国1000多个城市，市区免配送费）</span>
                 </p>
-                <p>说&nbsp;&nbsp;&nbsp;&nbsp;明 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span>特别说明：本款为特别款进口鲜花，请至少提前1-3天预订，或订购前咨询客服。</span>
+                <p class="sm">说&nbsp;&nbsp;&nbsp;&nbsp;明 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span v-text=list.state class="shuoming"></span>
                 </p>
                 <p>数&nbsp;&nbsp;&nbsp;&nbsp;量 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <input type="number" min="1" max="12" name="quantity" v-model="num1" id="">
@@ -227,7 +227,9 @@ import { setTimeout, clearInterval } from 'timers';
 export default {
     data(){
         return{
+            // pppp:`"<div class="content_tpl"><div class="formwork"><div class="formwork_img"><img class="" src="img/product/details/l1.jpg"><img class="" src="img/product/details/p50.jpg"></div></div></div>"`,
             list:{},
+            bigimg:"",
             updown:{xdown:false},
             num1:1,
             guodu:{tsdonghua:false},
@@ -386,13 +388,11 @@ export default {
             var url = "details";
             var obj={lid:this.$route.params.lid};
             this.axios.get(url,{params:obj}).then(result=>{
-                // console.log(result.data[0]);
-                this.list=result.data[0];
-                // console.log(this.list);
-                // console.log(this.list.pack);
+                this.list=result.data[0][0];
+                console.log(this.list);
+                console.log(this.list.length);
             })
         },
-
     },
     mounted(){
         var ul=document.getElementsByClassName("smallimg");
@@ -596,7 +596,7 @@ input[type="number"]{ -moz-appearance: textfield; }
 .details .right p .btnspan button{
     width: 22px;
     height: 15px;
-    font-size: 12px;
+    font-size: 12px !important;
     line-height: 15px;
     color: #666666;
     text-align: center;
@@ -645,6 +645,9 @@ input[type="number"]{ -moz-appearance: textfield; }
     cursor: pointer;
     border-radius: 2px;
 }
+.details .right .btn button:nth-child(2):hover,.details .spxqnavfixed button:nth-child(4):hover{
+    background-color: #c53f3fed;
+}
 .details .right .btn button:nth-child(3){
     width: 43px;
     height: 43px;
@@ -655,7 +658,7 @@ input[type="number"]{ -moz-appearance: textfield; }
     line-height: 43px;
     text-align: center;
     padding: 0;
-    font-size: 24px;
+    font-size: 24px !important;
     color: #999999;
 }
 .details .right .btn button:nth-child(4){
@@ -668,7 +671,7 @@ input[type="number"]{ -moz-appearance: textfield; }
     line-height: 43px;
     text-align: center;
     padding: 0;
-    font-size: 24px;
+    font-size: 24px !important;
     color: #999999;
 }
 .details .spxqnavfixed{
@@ -680,7 +683,7 @@ input[type="number"]{ -moz-appearance: textfield; }
     top: 1px;
 }
 .icon-erweima{
-    font-size: 27px;
+    font-size: 27px !important;
     color: #333 !important;
     line-height: 27.5px;
     position: relative;
@@ -869,7 +872,7 @@ outline: none;
 .details .one>div div:first-child a{
     color: #333 !important;
     font-weight: bold;
-    font-size: 12px;
+    font-size: 12px !important;
     position: relative;
     left: 170px;
 }
@@ -883,7 +886,7 @@ outline: none;
 }
 .details .one>div div:nth-child(2) span:first-child{
     color: #ffaa15;
-    font-size: 40px;
+    font-size: 40px !important;
 }
 .details .one>div div:nth-child(3){
     height: 48px;
@@ -947,7 +950,7 @@ outline: none;
 .details .two>div div:first-child a{
     color: #333 !important;
     font-weight: bold;
-    font-size: 12px;
+    font-size: 12px !important;
     position: relative;
     left: 380px;
 }
@@ -1008,6 +1011,16 @@ outline: none;
 .xdown{
     color: #333 !important;
     font-weight: bold !important;
+}
+.details .right .shuoming{
+    display: inline-block;
+    width:440px;
+}
+.details .right .sm{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: auto;
 }
 </style>
 
