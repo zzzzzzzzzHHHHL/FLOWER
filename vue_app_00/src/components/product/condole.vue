@@ -41,7 +41,15 @@
             }
         },
         mounted() {
-           
+            var ulStyle=document.querySelector(".el-pager")
+            var firstLi=ulStyle.children[0];
+            var lastLi=ulStyle.children[1]
+            firstLi.onclick=()=>{
+                this.last()
+            }
+            lastLi.onclick=()=>{
+                this.next()
+            }       
         },
         created() {
               var url="condole";
@@ -83,13 +91,20 @@
                 this.axios.get(url).then(result=>{
                     this.list=result.data;  
                 })
-                
+                var firsti=document.querySelector(".el-icon-caret-top");
+                var lasti=document.querySelector(".el-icon-caret-bottom");
+                firsti.style.color="red";
+                lasti.style.color="#d2d2d2";
             },
             cut(){
                 var url="condole-priceDown";
                 this.axios.get(url).then(result=>{
                     this.list=result.data
-                })           
+                })
+                var firsti=document.querySelector(".el-icon-caret-top");
+                var lasti=document.querySelector(".el-icon-caret-bottom");
+                firsti.style.color="#d2d2d2";
+                lasti.style.color="red";                
             },
         },  
     }
@@ -108,6 +123,7 @@
         border-top: 1px solid #d2d2d2;
         height:57px;
         margin-top:40px;
+       
     }
     ul{
         line-height:57px;
@@ -184,4 +200,22 @@
      height:60px;
      box-sizing:border-box;
  }
+ .main_pro{
+     box-shadow: 0 0 5px #d9d9d9;
+     border-radius:5px;
+ }
+ .main_pro:hover{
+    transform: translatex(-4px);
+    transition:all 0.2s linear;
+ }
+ .msg_pro>p:last-child{
+     color:#b2904c;
+     font-size:14px;
+ }
+
+ .msg_pro>p{
+     text-align:center;
+     margin:10px 0px;
+ }
+ 
 </style>

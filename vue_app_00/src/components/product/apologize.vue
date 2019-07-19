@@ -94,13 +94,20 @@
                 this.axios.get(url).then(result=>{
                     this.list=result.data;  
                 })
-                
+                var firsti=document.querySelector(".el-icon-caret-top");
+                var lasti=document.querySelector(".el-icon-caret-bottom");
+                firsti.style.color="red";
+                lasti.style.color="#d2d2d2";
             },
             cut(){
                 var url="apologize-priceDown";
                 this.axios.get(url).then(result=>{
                     this.list=result.data
-                })           
+                })
+                var firsti=document.querySelector(".el-icon-caret-top");
+                var lasti=document.querySelector(".el-icon-caret-bottom");
+                firsti.style.color="#d2d2d2";
+                lasti.style.color="red";                
             },
         },  
     }
@@ -196,9 +203,13 @@
      height:60px;
      box-sizing:border-box;
  }
- .main_pro:hover{
+ .main_pro{
      box-shadow: 0 0 5px #d9d9d9;
      border-radius:5px;
+ }
+ .main_pro:hover{
+    transform: translatex(-4px);
+    transition:all 0.2s linear;
  }
  .msg_pro>p:last-child{
      color:#b2904c;
