@@ -40,10 +40,11 @@ CREATE TABLE flower_user(
   uid INT PRIMARY KEY AUTO_INCREMENT,
   uname VARCHAR(32),
   upwd VARCHAR(32),
-  email VARCHAR(64),
+  spwd VARCHAR(64),
   phone VARCHAR(16),
   gender INT                  #性别  0-女  1-男
 );
+
 
 /**收货地址信息**/
 CREATE TABLE flower_receiver_address(

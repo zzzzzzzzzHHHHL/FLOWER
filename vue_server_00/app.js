@@ -73,7 +73,7 @@ var sql = "SELECT uid FROM flower_user WHERE uname=? AND upwd=?";
 server.get("/register",function(req,res){
 	var $uname=req.query.uname;
 	var $upwd=req.query.upwd;
-	var $uemail=req.query.email;
+	var $spwd=req.query.spwd;
 	var $uphone=req.query.phone;
 
 	if(!$uname){
@@ -84,8 +84,8 @@ server.get("/register",function(req,res){
 		res.send("密码不能为空");
 		return;
 	}
-	if(!$uemail){
-		res.send("邮箱不能为空");
+	if(!$spwd){
+		res.send("确认密码不能为空");
 		return;
 	}
 	if(!$uphone){
@@ -93,14 +93,14 @@ server.get("/register",function(req,res){
 		return;
 	}
 	//var sql1 = "SELECT uname,upwd,email,phone FROM flower_user";
-	var sql2 = "INSERT INTO flower_user(uname,upwd,email,phone) VALUES(?,?,?,?)";
+	var sql2 = "INSERT INTO flower_user(uname,upwd,spwd,phone) VALUES(?,?,?,?)";
 	/*pool.query(sql1,[$uname,$upwd,$uemail,$uphone],function(err,result){
 		if(err)throw err;
 		if(result.length>0){
 			res.send({code:-1,msg:"添加失败,该用户已存在，请重新输入"});
 		}
 		else{*/
-			pool.query(sql2,[$uname,$upwd,$uemail,$uphone],function(err,result){
+			pool.query(sql2,[$uname,$upwd,$spwd,$uphone],function(err,result){
 				if(err)throw err;
 				if(result.affectedRows>0){
 					res.send({code:1,msg:"添加成功"})
