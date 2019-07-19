@@ -20,7 +20,7 @@
     </div>
     <div class="my_flex main">
         <div  v-for="(elem,i) of list" :key="i" class="main_pro" >
-             <router-link :href="elem.href"><img :src="`http://127.0.0.1:3000/`+elem.pic" ></router-link>
+             <router-link :to="elem.href"><img :src="`http://127.0.0.1:3000/`+elem.pic" ></router-link>
              <div class="msg_pro">
                   <p>
                 <router-link v-text="elem.title" :to="elem.href"></router-link>
