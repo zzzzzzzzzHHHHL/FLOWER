@@ -1,6 +1,9 @@
 <template>
     <!-- 购物车组件 -->
     <div class="cartAll">
+        <header00></header00>
+        <navgitor></navgitor>
+        <div class="fjx"></div>
         <!-- 购物车有商品 -->
         <div class="cartAll1" :style="cart1">
             <!-- 顶部导航 -->
@@ -182,12 +185,20 @@
                 </ul>
             </div>
         </div>
-        
+        <footer00></footer00>
     </div>
 </template>
 
 <script>
+import Header from "../index/header/header0.vue"
+import Footer from "../index/footer/footer0.vue"
+import Nav from "./Nav.vue"
 export default {
+    components:{
+      "header00":Header,
+      "navgitor":Nav,
+      "footer00":Footer,
+     },
     data(){
         return{
             cart1:{display:"block"},
@@ -213,6 +224,12 @@ export default {
 </script>
 
 <style scoped>
+.cartAll>.fjx{
+    width: 100%;
+    border: 1px solid #d8d8d8;
+    margin-top: -17px;
+    margin-bottom: 25px;
+}
 .cartAll{
     background-color: #fff !important;
 }
@@ -398,6 +415,7 @@ input[type="number"]{ -moz-appearance: textfield; }
     margin-top: 20px;
     border: solid 1px #e8e8e8;
     padding: 0 30px;
+    margin-bottom: 30px;
 }
 .cartAll .cnxh div:nth-child(1){
     width: 100%;

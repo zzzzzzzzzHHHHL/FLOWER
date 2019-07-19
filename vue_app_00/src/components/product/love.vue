@@ -19,16 +19,6 @@
         </div>         
     </div>
     <div class="my_flex main">
-<<<<<<< HEAD
-        <div  v-for="(elem,i) of list" :key="i" class="main_pro">
-            <router-link :to="elem.href"><img :src="`http://127.0.0.1:3000/`+elem.pic" ></router-link>
-            <p >
-                <router-link v-text="elem.title" :to="elem.href"></router-link>
-            </p>
-            <p v-text="elem.price"></p>
-        </div>
-    
-=======
         <div  v-for="(elem,i) of list" :key="i" class="main_pro" >
              <router-link :to="elem.href"><img :src="`http://127.0.0.1:3000/`+elem.pic" ></router-link>
              <div class="msg_pro">
@@ -38,7 +28,6 @@
             <p v-text="`￥${elem.price}`"></p>
              </div>
         </div>   
->>>>>>> 6020bad398897c2dd5b40da3033779addc6240c1
     </div>
 </div>
     

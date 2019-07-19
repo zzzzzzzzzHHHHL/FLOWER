@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="navall">
     <div class="my_nav">
         <ul class="list-unstyled ul1">
             <li class="m-0">
@@ -159,6 +159,7 @@ export default {
 }
 </script>
 <style scoped>
+/* .navall{background-color: #fff;} */
 li+li{
     margin-left: 8px !important;
 }
