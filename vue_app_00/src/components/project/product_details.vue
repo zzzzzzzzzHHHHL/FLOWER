@@ -396,16 +396,16 @@ export default {
             })
         },
         insert(){
-            var url="InsertProduct";
-            var obj={
-                img_url:this.list.details,
-                title:this.list.title,
-                price:this.list.price,
-                count:this.num1
-            }
-            this.axios.get(url,{params:obj}).then(result=>{
-                console.log(result);
-            })
+            // var url="InsertProduct";
+            // var obj={
+            //     img_url:this.list.details,
+            //     title:this.list.title,
+            //     price:this.list.price,
+            //     count:this.num1
+            // }
+            // this.axios.get(url,{params:obj}).then(result=>{
+            //     console.log(result);
+            // })
         },
     },
     mounted(){
