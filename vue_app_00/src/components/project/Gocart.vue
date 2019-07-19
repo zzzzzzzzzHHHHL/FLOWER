@@ -120,7 +120,7 @@
                 <!-- 结算 -->
                 <div class="total">
                     <button class="iconfont icon-fanhui1" @click="jxgw"> 继续购物</button>
-                    <button>立即结算</button>
+                    <button @click="ljjs">立即结算</button>
                 </div>
             </div>
             <!-- 猜你喜欢 -->
@@ -204,6 +204,9 @@ export default {
             this.axios.get(url).then(result=>{
                console.log(result);
             })
+        },
+        ljjs(){
+            this.$router.push("/Settlement");
         }
     }
 }
