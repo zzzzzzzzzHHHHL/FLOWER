@@ -61,7 +61,7 @@
                     <textarea name="" id="" cols="30" rows="10" placeholder="贺卡留言+署名"></textarea>
                     <div>
                         <ul>
-                            <li @click="who" :class="give1">送恋人</li>
+                            <li @click="who" :class="give1" data-num="1">送恋人</li>
                             <li @click="who" :class="give2">送朋友</li>
                             <li @click="who" :class="give3">送长辈</li>
                             <li @click="who" :class="give4">送花篮</li>
