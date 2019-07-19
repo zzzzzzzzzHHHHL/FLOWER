@@ -22,6 +22,7 @@ import Login from "./components/product/login.vue"
 import Register from "./components/product/register.vue"
 import Admin from "./components/admin/admin.vue"
 import Scrollbars from "./components/scrollbars/scrollbars.vue"
+import Scoll from "./components/scrollbars/scoll.vue"
 
 // 主页面路径
 import Ceiling from "./components/index/header/Ceiling.vue"
@@ -69,6 +70,7 @@ export default new Router({
     {path:'/Login',component:Login},
     {path:'/Register',component:Register},
     {path:'/Scrollbars',component:Scrollbars},
+    {path:'/Scoll',component:Scoll},
 
     // 注册主页面路径
     {path:'/Ceiling',component:Ceiling},
