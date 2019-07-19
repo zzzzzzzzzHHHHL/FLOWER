@@ -47,9 +47,9 @@ export default {
     data(){
         return{
             s:"",
-            s1:{visibility:"hidden"},
+            s1:{visibility:"visible"},
             s2:{visibility:"hidden"},
-            s3:{visibility:"visible"},
+            s3:{visibility:"hidden"},
         }
     },
     methods:{
