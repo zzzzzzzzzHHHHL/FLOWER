@@ -115,9 +115,6 @@
      a{
         cursor: pointer;
     }
-    .app-container{
-       overflow-x: unset;
-    }
     .productFilter{
         width:1200px;
         margin:0 auto;

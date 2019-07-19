@@ -133,7 +133,7 @@ import Scrollbars from "../../scrollbars/scrollbars.vue"
 import Header from "../header/header0.vue"
 import Footer from "../footer/footer0.vue"
 import Nav from "../../project/Nav.vue"
-import Banner from "../header/Nav1.vue"
+import Banner from "../header/banner.vue"
 export default {
     components:{
       "scoll":Scrollbars,
@@ -395,10 +395,5 @@ export default {
         text-decoration: none;
     }
 
-    
-
-
-
-
-    
+     
 </style>
