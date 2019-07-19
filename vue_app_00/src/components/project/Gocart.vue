@@ -213,6 +213,9 @@ export default {
 </script>
 
 <style scoped>
+.cartAll{
+    background-color: #fff !important;
+}
 /* 去除按钮点击边框 */
 button {
 outline: none;
