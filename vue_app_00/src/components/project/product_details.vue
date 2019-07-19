@@ -10,12 +10,12 @@
                     <div class="ulheight" :style="uheight">
                     <ul class="smallimg" :style="move_ul">
                         <li><img :src="'http://127.0.0.1:3000/'+list.details" @mouseenter="select" alt=""></li>
-                        <li><img src="../../assets/Mig/2.png" @mouseenter="select" alt=""></li>
-                        <li><img src="../../assets/Mig/3.png" @mouseenter="select" alt=""></li>
-                        <li><img src="../../assets/Mig/1.png" @mouseenter="select" alt=""></li>
-                        <li><img src="../../assets/Mig/2.png" @mouseenter="select" alt=""></li>
-                        <li><img src="../../assets/Mig/3.png" @mouseenter="select" alt=""></li>
-                        <li><img src="../../assets/Mig/1.png" @mouseenter="select" alt=""></li>
+                        <li><img src="../../assets/Mig/20.jpg" @mouseenter="select" alt=""></li>
+                        <li><img src="../../assets/Mig/21.jpg" @mouseenter="select" alt=""></li>
+                        <li><img src="../../assets/Mig/22.png" @mouseenter="select" alt=""></li>
+                        <li><img src="../../assets/Mig/12.jpg" @mouseenter="select" alt=""></li>
+                        <li><img src="../../assets/Mig/13.jpg" @mouseenter="select" alt=""></li>
+                        <li><img src="../../assets/Mig/14.jpg" @mouseenter="select" alt=""></li>
                         <li><img src="../../assets/Mig/2.png" @mouseenter="select" alt=""></li>
                         <li><img src="../../assets/Mig/3.png" @mouseenter="select" alt=""></li>
                     </ul> 
@@ -170,7 +170,7 @@
                     </div>
                 </li>
                 <li>
-                    <a href="#"><img src="../../assets/Mig/1.png" alt=""></a>
+                    <a href="#"><img src="../../assets/Mig/16.jpg" alt=""></a>
                     <div>
                         <p>初遇</p>
                         <p>52朵戴安娜玫瑰</p>
@@ -237,7 +237,7 @@ export default {
             one:{display:"none"},
             two:{display:"none"},
             fixed:{xiding:false},
-            mimg:require("../../assets/Mig/1.png"),
+            mimg:"",
             mask:{
                 visibility: "hidden",
                 top:"0px",
@@ -245,7 +245,7 @@ export default {
             },
             lgimg:{
                 visibility: "hidden",
-                backgroundImage: "url(" + require("../../assets/Mig/1.png") + ") ",
+                backgroundImage:"",
                 backgroundPosition: "",
             },
             move_ul:{
@@ -391,6 +391,8 @@ export default {
             this.axios.get(url,{params:obj}).then(result=>{
                 this.list=result.data[0][0];
                 // console.log(result.data);
+                this.mimg="http://127.0.0.1:3000/"+this.list.details;
+                this.lgimg.backgroundImage="url("+"http://127.0.0.1:3000/"+this.list.details+ ") ";
             })
         },
         insert(){
