@@ -48,7 +48,7 @@ const bodyParser=require("body-parser");
 	}
   //1.1:正则表达式验证用户名或密码
   //2:sql
-var sql = "SELECT uname,upwd FROM flower_user WHERE uname=? AND upwd=?";
+var sql = "SELECT uid FROM flower_user WHERE uname=? AND upwd=?";
   //3:json
   pool.query(sql,[$uname,$upwd],(err,result)=>{
       if(err)throw err;
@@ -58,8 +58,8 @@ var sql = "SELECT uname,upwd FROM flower_user WHERE uname=? AND upwd=?";
 //??缺少一步
 //将当前登录用户uid保存session
 //result=[{id:1}]
-         req.session.uid = 
-         result[0].uid;
+        //  console.log(result);
+         req.session.uid = result[0].uid;
          res.send({code:1,msg:"登录成功"});
       }
   })
@@ -813,32 +813,66 @@ server.get("/all_product",(req,res)=>{
 
 /***************************************************************************************************/ 
 
-
-//鲜花详情查询
-server.get("/details",function(req,res){
-	var lid=req.query.lid;
-	if(!lid){res.send("请输入查询的编号");return}
-	var sql="SELECT * FROM flower_details WHERE lid=?";
-	pool.query(sql,[lid],function(err,result){
-		if(err)throw err;
-		res.send(result);
-	})
-})
-
-//鲜花大中小图片
-server.get("/pic",function(req,res){
-	var sql="SELECT * FROM flower_pic";
+server.get("/details5",function(req,res){
+	var sql="SELECT * FROM flower_details";
 	pool.query(sql,function(err,result){
 		if(err)throw err;
 		res.send(result);
 	})
 })
+//鲜花详情查询
+server.get("/details",function(req,res){
+	var lid=req.query.lid;
+	var list=[];
+	if(!lid){res.send("请输入查询的编号");return}
+	var sql1="SELECT * FROM flower_pic WHERE pid=?";
+	var sql="SELECT * FROM flower_details WHERE lid=?";
+	pool.query(sql,[lid],function(err,result){
+		if(err)throw err;
+		if(result.length>0){
+			list.push(result);
+			pool.query(sql1,[lid],function(err,result){
+				if(err)throw err;
+				list.push(result);
+				res.send(list);
+			})
+		}
+	})
+})
+
+// //鲜花大中小图片
+// server.get("/pic",function(req,res){
+// 	var sql="SELECT * FROM flower_pic";
+// 	pool.query(sql,function(err,result){
+// 		if(err)throw err;
+// 		res.send(result);
+// 	})
+// })
 
 /***************************************************************************************************/ 
+//添加购物车
+server.get("/InsertProduct",(req,res)=>{
+	// var uid = req.session.uid;
+  // if(!uid){
+  //   res.send({code:-1,msg:"请登录"});
+  //   return;
+	// } 
+	var uid=req.query.uid;
+	var img_url=req.query.img_url;
+	var title=req.query.title;
+	var price=req.query.price;
+	var count=req.query.count;
+  var sql = "INSERT INTO flower_shoppingcart_item(uid,img_url,title,price,count) VALUES(?,?,?,?)";
+  pool.query(sql,[uid,img_url,title,price,count],(err,result)=>{
+    if(err)throw err;
+    res.send({code:1,data:result})
+  })
+})
+
 
 //购物车查询
 server.get("/cart",(req,res)=>{
-  //1:参数(无参数)app.js
+  //1:参数(无参数)app.jsd
   console.log(req.session.uid);
   var uid = req.session.uid;
   if(!uid){
@@ -846,7 +880,7 @@ server.get("/cart",(req,res)=>{
     return;
   }
   //2:sql
-  var sql = "SELECT * FROM flower_shoppingcart_item WHERE user_id = ?";
+  var sql = "SELECT * FROM flower_shoppingcart_item WHERE uid = ?";
   pool.query(sql,[uid],(err,result)=>{
     if(err)throw err;
     res.send({code:1,data:result})

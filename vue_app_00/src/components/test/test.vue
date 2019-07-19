@@ -1,8 +1,9 @@
 <template>
   <div>
     <h2>this test</h2>
-    <div v-for="(elem,i) of list" :key="i">
-      <img   :src="'http://127.0.0.1:3000/'+elem.pic" >
+    <div>
+      <img   :src="'http://127.0.0.1:3000/'+this.list[0].pic" >
+      
       <!-- {{elem.pic}} -->
     </div>
   </div>

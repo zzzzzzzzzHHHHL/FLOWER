@@ -23,7 +23,11 @@
              <router-link :to="elem.href"><img :src="`http://127.0.0.1:3000/`+elem.pic" ></router-link>
              <div class="msg_pro">
                   <p>
+<<<<<<< HEAD
                 <ronter-link v-text="elem.title" :to="elem.href"></ronter-link>
+=======
+                <router-link v-text="elem.title" :to="elem.href"></router-link>
+>>>>>>> 7f345a584919c0022a3b8bada4c23929be107af1
                   </p>
             <p v-text="`￥${elem.price}`"></p>
              </div>

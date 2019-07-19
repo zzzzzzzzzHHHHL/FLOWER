@@ -1,141 +1,213 @@
 <template>
     <!-- 购物车组件 -->
     <div class="cartAll">
-        <!-- 顶部导航 -->
-        <div class="nav">
-            <ul>
-                <li>
-                    <input type="checkbox" id="qx">
-                    &nbsp;
-                    <label for="qx">全选</label>
-                </li>
-                <li>商品信息</li>
-                <li>单价</li>
-                <li>数量</li>
-                <li>小计</li>
-            </ul>
-        </div>
-        <!-- 购物车商品详情 -->
-        <div class="productAll">
-            <div>
+        <!-- 购物车有商品 -->
+        <div class="cartAll1" :style="cart1">
+            <!-- 顶部导航 -->
+            <div class="nav">
                 <ul>
-                    <!-- 商品图片 -->
                     <li>
-                        <input type="checkbox" name="">
-                        &nbsp;&nbsp;&nbsp;
-                        <a href="#">
-                        <img src="../../assets/Mig/1.png" alt="">
-                        </a>
+                        <input type="checkbox" id="qx">
+                        &nbsp;
+                        <label for="qx">全选</label>
                     </li>
-                    <!-- 商品信息 -->
-                    <li><a href="#">布拉格之恋-9朵进口红玫瑰</a></li>
-                    <!-- 单价 -->
-                    <li>￥999.00</li>
-                    <!-- 数量 -->
-                    <li class="btn">
-                        <button>-</button>
-                        <input type="number" min="1" max="12" name="quantity" value="1">
-                        <button>+</button>
-                    </li>
-                    <!-- 小计 -->
-                    <li>￥999.00</li>
-                    <!-- 删除按钮 -->
-                    <li class="delete"><a href="#">删除</a></li>
+                    <li>商品信息</li>
+                    <li>单价</li>
+                    <li>数量</li>
+                    <li>小计</li>
                 </ul>
             </div>
-            <div>
-                <ul>
-                    <!-- 商品图片 -->
+            <!-- 购物车商品详情 -->
+            <div class="productAll">
+                <div>
+                    <ul>
+                        <!-- 商品图片 -->
+                        <li>
+                            <input type="checkbox" name="">
+                            &nbsp;&nbsp;&nbsp;
+                            <a href="#">
+                            <img src="../../assets/Mig/1.png" alt="">
+                            </a>
+                        </li>
+                        <!-- 商品信息 -->
+                        <li><a href="#">布拉格之恋-9朵进口红玫瑰</a></li>
+                        <!-- 单价 -->
+                        <li>￥999.00</li>
+                        <!-- 数量 -->
+                        <li class="btn">
+                            <button>-</button>
+                            <input type="number" min="1" max="12" name="quantity" value="1">
+                            <button>+</button>
+                        </li>
+                        <!-- 小计 -->
+                        <li>￥999.00</li>
+                        <!-- 删除按钮 -->
+                        <li class="delete"><a href="#">删除</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <!-- 商品图片 -->
+                        <li>
+                            <input type="checkbox" name="">
+                            &nbsp;&nbsp;&nbsp;
+                            <a href="#">
+                            <img src="../../assets/Mig/1.png" alt="">
+                            </a>
+                        </li>
+                        <!-- 商品信息 -->
+                        <li><a href="#">布拉格之恋-9朵进口红玫瑰</a></li>
+                        <!-- 单价 -->
+                        <li>￥999.00</li>
+                        <!-- 数量 -->
+                        <li class="btn">
+                            <button>-</button>
+                            <input type="number" min="1" max="12" name="quantity" value="1">
+                            <button>+</button>
+                        </li>
+                        <!-- 小计 -->
+                        <li>￥999.00</li>
+                        <!-- 删除按钮 -->
+                        <li class="delete"><a href="#">删除</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <!-- 商品图片 -->
+                        <li>
+                            <input type="checkbox" name="">
+                            &nbsp;&nbsp;&nbsp;
+                            <a href="#">
+                            <img src="../../assets/Mig/1.png" alt="">
+                            </a>
+                        </li>
+                        <!-- 商品信息 -->
+                        <li><a href="#">布拉格之恋-9朵进口红玫瑰</a></li>
+                        <!-- 单价 -->
+                        <li>￥999.00</li>
+                        <!-- 数量 -->
+                        <li class="btn">
+                            <button>-</button>
+                            <input type="number" min="1" max="12" name="quantity" value="1">
+                            <button>+</button>
+                        </li>
+                        <!-- 小计 -->
+                        <li>￥999.00</li>
+                        <!-- 删除按钮 -->
+                        <li class="delete"><a href="#">删除</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 全选 结算 -->
+            <div class="jiesuan">
+                <!-- 全选 -->
+                <div class="quanxuan">
+                    <ul>
                     <li>
-                        <input type="checkbox" name="">
-                        &nbsp;&nbsp;&nbsp;
-                        <a href="#">
-                        <img src="../../assets/Mig/1.png" alt="">
-                        </a>
+                        <input type="checkbox" id="qx">
+                        &nbsp;
+                        <label for="qx">全选</label>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="#">删除选中商品</a>
                     </li>
-                    <!-- 商品信息 -->
-                    <li><a href="#">布拉格之恋-9朵进口红玫瑰</a></li>
-                    <!-- 单价 -->
-                    <li>￥999.00</li>
-                    <!-- 数量 -->
-                    <li class="btn">
-                        <button>-</button>
-                        <input type="number" min="1" max="12" name="quantity" value="1">
-                        <button>+</button>
-                    </li>
-                    <!-- 小计 -->
-                    <li>￥999.00</li>
-                    <!-- 删除按钮 -->
-                    <li class="delete"><a href="#">删除</a></li>
-                </ul>
-            </div>
-            <div>
-                <ul>
-                    <!-- 商品图片 -->
                     <li>
-                        <input type="checkbox" name="">
-                        &nbsp;&nbsp;&nbsp;
-                        <a href="#">
-                        <img src="../../assets/Mig/1.png" alt="">
-                        </a>
+                        已选商品 <span class="span1">3</span> 件
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        总价(不含运费)： <span class="span2">￥3000.00</span>
                     </li>
-                    <!-- 商品信息 -->
-                    <li><a href="#">布拉格之恋-9朵进口红玫瑰</a></li>
-                    <!-- 单价 -->
-                    <li>￥999.00</li>
-                    <!-- 数量 -->
-                    <li class="btn">
-                        <button>-</button>
-                        <input type="number" min="1" max="12" name="quantity" value="1">
-                        <button>+</button>
-                    </li>
-                    <!-- 小计 -->
-                    <li>￥999.00</li>
-                    <!-- 删除按钮 -->
-                    <li class="delete"><a href="#">删除</a></li>
-                </ul>
+                    </ul>
+                </div>
+                <!-- 结算 -->
+                <div class="total">
+                    <button class="iconfont icon-fanhui1" @click="jxgw"> 继续购物</button>
+                    <button @click="ljjs">立即结算</button>
+                </div>
+            </div>
+            <!-- 猜你喜欢 -->
+            <div class="cnxh">
+                <div>猜你喜欢</div>
+                <div></div>
             </div>
         </div>
-        <!-- 全选 结算 -->
-        <div class="jiesuan">
-            <!-- 全选 -->
-            <div class="quanxuan">
+        <!-- 购物车没有商品 -->
+        <div class="cartAll2" :style="cart2">
+            <!-- 购物车为空 -->
+            <div>
+                <img src="../../assets/Mig/hua.png" alt="">
+                <div>
+                    <p>您的购物车中没有商品！</p>
+                    <button>马上去逛逛</button>
+                </div>
+            </div>
+            <!-- 猜你喜欢 -->
+            <div>
+                <p>猜你喜欢</p>
                 <ul>
-                <li>
-                    <input type="checkbox" id="qx">
-                    &nbsp;
-                    <label for="qx">全选</label>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="#">删除选中商品</a>
-                </li>
-                <li>
-                    已选商品 <span class="span1">3</span> 件
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    总价(不含运费)： <span class="span2">￥3000.00</span>
-                </li>
+                    <li>
+                        <img src="../../assets/Mig/17.jpg" alt="">
+                        <p>￥599</p>
+                        <a href="javascript:;">温柔清浅-33朵红玫瑰</a>
+                        <p>已售 <span>13958</span> 件</p>
+                    </li>
+                    <li>
+                        <img src="../../assets/Mig/18.jpg" alt="">
+                        <p>￥999</p>
+                        <a href="javascript:;">布拉格之恋-9朵进口红玫瑰  </a>
+                        <p>已售 <span>9219</span> 件</p>
+                    </li>
+                    <li>
+                        <img src="../../assets/Mig/19.jpg" alt="">
+                        <p>￥599</p>
+                        <a href="javascript:;">浓情-33朵混色玫瑰</a>
+                        <p>已售 <span>13064</span> 件</p>
+                    </li>
+                    <li>
+                        <img src="../../assets/Mig/20.jpg" alt="">
+                        <p>￥599</p>
+                        <a href="javascript:;">暖暖回忆-33朵混色玫瑰</a>
+                        <p>已售 <span>12369</span> 件</p>
+                    </li>
+                    <li>
+                        <img src="../../assets/Mig/21.jpg" alt="">
+                        <p>￥599</p>
+                        <a href="javascript:;">纯真年代-33朵戴安娜玫瑰</a>
+                        <p>已售 <span>9937</span> 件</p>
+                    </li>
+                    <li>
+                        <img src="../../assets/Mig/22.png" alt="">
+                        <p>￥599</p>
+                        <a href="javascript:;">三生三世-33朵红玫瑰</a>
+                        <p>已售 <span>14111</span> 件</p>
+                    </li>
                 </ul>
             </div>
-            <!-- 结算 -->
-            <div class="total">
-                <button class="iconfont icon-fanhui1" @click="jxgw"> 继续购物</button>
-                <button>立即结算</button>
-            </div>
         </div>
-        <!-- 猜你喜欢 -->
-        <div class="cnxh">
-            <div>猜你喜欢</div>
-            <div></div>
-        </div>
+        
     </div>
 </template>
 
 <script>
 export default {
     data(){
-        return{}
+        return{
+            cart1:{display:"block"},
+            cart2:{display:"none"},
+        }
+    },
+    created(){
+        this.loadMore();
     },
     methods:{
-        jxgw(){window.history.go(-1);}
+        jxgw(){window.history.go(-1);},
+        loadMore(){
+            var url = "cart";
+            this.axios.get(url).then(result=>{
+               console.log(result);
+            })
+        },
+        ljjs(){
+            this.$router.push("/Settlement");
+        }
     }
 }
 </script>
@@ -204,7 +276,6 @@ outline: none;
     margin: 0;
     padding: 0;
     width: 100%;
-    /* padding-left: 35px; */
 }
 .productAll ul li img{
     width: 90px;
@@ -242,7 +313,7 @@ input[type="number"]{ -moz-appearance: textfield; }
     border:1px solid #d9d9d9;
     width: 23px;
     height: 22px;
-    line-height: 15px;
+    line-height: 16px;
 }
 .productAll ul .btn input{
     width: 56px;
@@ -332,5 +403,109 @@ input[type="number"]{ -moz-appearance: textfield; }
     font-size: 12px;
     color: #555555;
     border-bottom: solid 1px #e8e8e8;
+}
+.cartAll .cartAll2{
+    background-color: #f8f8f8;
+}
+.cartAll .cartAll2::before{
+    content: "";
+    display: table;
+}
+.cartAll .cartAll2>div:first-child{
+    width: 1200px;
+    height: 300px;
+    padding: 63px 0;
+    margin: 0 auto;
+    margin-top: 25px;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cartAll .cartAll2>div:first-child p{
+    font-size: 24px;
+    color: #8c8c8c;
+    font-weight: bolder;
+}
+.cartAll .cartAll2>div:first-child button{
+    width: 138px;
+    height: 38px;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    display: block;
+    float: left;
+    color: #fff;
+    font-size: 14px;
+    border-color: #333 !important;
+    background: #333;
+}
+.cartAll .cartAll2>div:first-child div{
+    margin-left: 30px;
+}
+.cartAll .cartAll2>div:nth-child(2){
+    width: 1200px;
+    margin: 0 auto;
+    /* background-color: #8c8c8c; */
+    margin-top: 50px;
+}
+.cartAll .cartAll2>div:nth-child(2)>p{
+    width: 184px;
+    height: 27px;
+    padding: 0 50px;
+    margin: 0 auto;
+    font-size: 21px;
+    color: #555555;
+    background-color: #f8f8f8;
+    line-height: 27px;
+    position: relative;
+    top:15px;
+}
+.cartAll .cartAll2>div:nth-child(2) ul{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1200px;
+    /* background-color: #ccc; */
+    padding-top: 40px;
+    border-top: 1px solid #ebebeb;
+    padding-bottom: 30px;
+}
+.cartAll .cartAll2>div:nth-child(2) ul li{
+    width: 190px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+.cartAll .cartAll2>div:nth-child(2) ul li img{
+    width: 190px;
+    opacity: 1;
+}
+.cartAll .cartAll2>div:nth-child(2) ul li img:hover{
+    opacity: 0.7;
+    transition: all 0.2s linear;
+}
+.cartAll .cartAll2>div:nth-child(2) ul li p:nth-child(2){
+    font-size: 20px;
+    color: #8c8c8c;
+    margin: 6px 0 0;
+}
+.cartAll .cartAll2>div:nth-child(2) ul li a{
+    font-size: 12px;
+    color: #333333;
+    text-decoration: none;
+}
+.cartAll .cartAll2>div:nth-child(2) ul li a:hover{
+    color: #f42424;
+}
+.cartAll .cartAll2>div:nth-child(2) ul li p:nth-child(4){
+    font-size: 12px;
+    color: #8c8c8c;
+    margin: 7px 0 0;
+}
+.cartAll .cartAll2>div:nth-child(2) ul li p:nth-child(4) span{
+    font-weight: bolder;
 }
 </style>

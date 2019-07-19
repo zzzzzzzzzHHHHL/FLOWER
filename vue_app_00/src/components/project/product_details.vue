@@ -9,13 +9,13 @@
                     <span class="iconfont icon-down fanye1" :class="arrow" @click="up"></span>
                     <div class="ulheight" :style="uheight">
                     <ul class="smallimg" :style="move_ul">
-                        <li><img src="../../assets/Mig/1.png" @mouseenter="select" alt=""></li>
-                        <li><img src="../../assets/Mig/2.png" @mouseenter="select" alt=""></li>
-                        <li><img src="../../assets/Mig/3.png" @mouseenter="select" alt=""></li>
-                        <li><img src="../../assets/Mig/1.png" @mouseenter="select" alt=""></li>
-                        <li><img src="../../assets/Mig/2.png" @mouseenter="select" alt=""></li>
-                        <li><img src="../../assets/Mig/3.png" @mouseenter="select" alt=""></li>
-                        <li><img src="../../assets/Mig/1.png" @mouseenter="select" alt=""></li>
+                        <li><img :src="'http://127.0.0.1:3000/'+list.details" @mouseenter="select" alt=""></li>
+                        <li><img src="../../assets/Mig/20.jpg" @mouseenter="select" alt=""></li>
+                        <li><img src="../../assets/Mig/21.jpg" @mouseenter="select" alt=""></li>
+                        <li><img src="../../assets/Mig/22.png" @mouseenter="select" alt=""></li>
+                        <li><img src="../../assets/Mig/12.jpg" @mouseenter="select" alt=""></li>
+                        <li><img src="../../assets/Mig/13.jpg" @mouseenter="select" alt=""></li>
+                        <li><img src="../../assets/Mig/14.jpg" @mouseenter="select" alt=""></li>
                         <li><img src="../../assets/Mig/2.png" @mouseenter="select" alt=""></li>
                         <li><img src="../../assets/Mig/3.png" @mouseenter="select" alt=""></li>
                     </ul> 
@@ -36,10 +36,10 @@
             </div>
             <!-- 右边详情 -->
             <div class="right">
-                <h3>爱在巴黎-19朵甜心玫瑰</h3>
+                <h3 v-text=list.title></h3>
                 <p class="hzj">
                     花赞价 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span class="dj">￥1499</span>&nbsp;&nbsp;&nbsp;
+                    <span class="dj" v-text="`￥${list.price}`"></span>&nbsp;&nbsp;&nbsp;
                     <span class="iconfont icon-erweima" @mouseenter="ewmshow" @mouseleave="ewmhidden"></span>&nbsp;&nbsp;&nbsp;
                     <span class="app">APP折后价</span>
                     <span class="zhj">￥1399省150元</span>
@@ -47,25 +47,25 @@
                 </p>
                 <div class="bigewm"></div>
                 <p>编&nbsp;&nbsp;&nbsp;&nbsp;号 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span>RW000042</span>
+                    <span v-text=list.serial_number></span>
                 </p>
                 <p>材&nbsp;&nbsp;&nbsp;&nbsp;料 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span>19朵甜心玫瑰，搭配适量尤加利叶装饰。</span>
+                    <span v-text=list.material></span>
                 </p>
                 <p>包&nbsp;&nbsp;&nbsp;&nbsp;装 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span>白色雾面纸韩式扇形包装，精美白色字母丝带+黑色丝带束扎。</span>
+                    <span v-text=list.pack></span>
                 </p> 
                 <p>花&nbsp;&nbsp;&nbsp;&nbsp;语 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span>只想和你忘掉一切烦恼，尽情沉醉在最浪漫的气氛中。</span>
+                    <span v-text=list.blessing></span>
                 </p>
                 <p>附&nbsp;&nbsp;&nbsp;&nbsp;赠 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span>免费附送精美贺卡，代写您的祝福。(您下单时可填写留言栏)</span>
+                    <span v-text=list.annexation></span>
                 </p>
                 <p>配&nbsp;&nbsp;&nbsp;&nbsp;送 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span>全国 （可配送至全国1000多个城市，市区免配送费）</span>
+                    <span v-text=list.distribution>全国 （可配送至全国1000多个城市，市区免配送费）</span>
                 </p>
-                <p>说&nbsp;&nbsp;&nbsp;&nbsp;明 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span>特别说明：本款为特别款进口鲜花，请至少提前1-3天预订，或订购前咨询客服。</span>
+                <p class="sm">说&nbsp;&nbsp;&nbsp;&nbsp;明 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span v-text=list.state class="shuoming"></span>
                 </p>
                 <p>数&nbsp;&nbsp;&nbsp;&nbsp;量 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <input type="number" min="1" max="12" name="quantity" v-model="num1" id="">
@@ -117,13 +117,15 @@
                 </div>
             </div>
             <div class="img">
-                <img src="../../assets/Mig/6.jpg" alt="">
+                <img :src="'http://127.0.0.1:3000/'+list.details" alt="" class="xqtp">
+                <img src="../../assets/Mig/11.jpg" alt="">
+                <!-- <img src="../../assets/Mig/6.jpg" alt="">
                 <img src="../../assets/Mig/7.jpg" alt="">
                 <img src="../../assets/Mig/8.jpg" alt="">
                 <img src="../../assets/Mig/9.jpg" alt="">
                 <img src="../../assets/Mig/10.jpg" alt="">
                 <img src="../../assets/Mig/5.jpg" alt="">
-                <img src="../../assets/Mig/11.jpg" alt="">
+                <img src="../../assets/Mig/11.jpg" alt=""> -->
             </div>
         </div>
         <!-- 猜你喜欢 -->
@@ -136,7 +138,7 @@
             </div>
             <ul class="cnxhul">
                 <li>
-                    <a href="#"><img src="../../assets/Mig/1.png" alt=""></a>
+                    <a href="#"><img src="../../assets/Mig/12.jpg" alt=""></a>
                     <div>
                         <p>小幸运</p>
                         <p>小清新礼盒装</p>
@@ -144,35 +146,35 @@
                     </div>
                 </li>
                 <li>
-                    <a href="#"><img src="../../assets/Mig/1.png" alt=""></a>
+                    <a href="#"><img src="../../assets/Mig/13.jpg" alt=""></a>
                     <div>
-                        <p>小幸运</p>
-                        <p>小清新礼盒装</p>
-                        <p>￥599</p>
+                        <p>陌上花开</p>
+                        <p>99朵粉红雪山</p>
+                        <p>￥1199</p>
                     </div>
                 </li>
                 <li>
-                    <a href="#"><img src="../../assets/Mig/1.png" alt=""></a>
+                    <a href="#"><img src="../../assets/Mig/14.jpg" alt=""></a>
                     <div>
-                        <p>小幸运</p>
-                        <p>小清新礼盒装</p>
-                        <p>￥599</p>
+                        <p>闻香识爱</p>
+                        <p>16朵戴安娜</p>
+                        <p>￥699</p>
                     </div>
                 </li>
                 <li>
-                    <a href="#"><img src="../../assets/Mig/1.png" alt=""></a>
+                    <a href="#"><img src="../../assets/Mig/15.jpg" alt=""></a>
                     <div>
-                        <p>小幸运</p>
-                        <p>小清新礼盒装</p>
-                        <p>￥599</p>
+                        <p>叶上胭脂</p>
+                        <p>19朵厄瓜多尔红玫瑰</p>
+                        <p>￥1499</p>
                     </div>
                 </li>
                 <li>
-                    <a href="#"><img src="../../assets/Mig/1.png" alt=""></a>
+                    <a href="#"><img src="../../assets/Mig/16.jpg" alt=""></a>
                     <div>
-                        <p>小幸运</p>
-                        <p>小清新礼盒装</p>
-                        <p>￥599</p>
+                        <p>初遇</p>
+                        <p>52朵戴安娜玫瑰</p>
+                        <p>￥799</p>
                     </div>
                 </li>
                
@@ -217,7 +219,6 @@
                 </div>
             </div>
         </div>
-        <!-- <img src="../../assets/Mig/ewm.png" alt=""> -->
     </div>
 </template>
 
@@ -227,14 +228,16 @@ import { setTimeout, clearInterval } from 'timers';
 export default {
     data(){
         return{
+            list:{},
+            bigimg:"",
             updown:{xdown:false},
-            num1:5,
+            num1:1,
             guodu:{tsdonghua:false},
             guodu2:{tsdonghua2:false},
             one:{display:"none"},
             two:{display:"none"},
             fixed:{xiding:false},
-            mimg:require("../../assets/Mig/1.png"),
+            mimg:"",
             mask:{
                 visibility: "hidden",
                 top:"0px",
@@ -242,7 +245,7 @@ export default {
             },
             lgimg:{
                 visibility: "hidden",
-                backgroundImage: "url(" + require("../../assets/Mig/1.png") + ") ",
+                backgroundImage:"",
                 backgroundPosition: "",
             },
             move_ul:{
@@ -264,7 +267,7 @@ export default {
         }
     },
     created(){
-        console.log(this.$route.params.lid)
+        // console.log(this.$route.params.lid)
         this.load();
     },
     methods:{
@@ -377,19 +380,33 @@ export default {
         jrgwc(){
             this.two.display="flex";
             this.guodu2.tsdonghua2=true;
+            this.insert();
         },
         ljgm(){
             this.$router.push("/Gocart");
         },
         load(){
-            
             var url = "details";
             var obj={lid:this.$route.params.lid};
+            this.axios.get(url,{params:obj}).then(result=>{
+                this.list=result.data[0][0];
+                // console.log(result.data);
+                this.mimg="http://127.0.0.1:3000/"+this.list.details;
+                this.lgimg.backgroundImage="url("+"http://127.0.0.1:3000/"+this.list.details+ ") ";
+            })
+        },
+        insert(){
+            var url="InsertProduct";
+            var obj={
+                img_url:this.list.details,
+                title:this.list.title,
+                price:this.list.price,
+                count:this.num1
+            }
             this.axios.get(url,{params:obj}).then(result=>{
                 console.log(result);
             })
         },
-
     },
     mounted(){
         var ul=document.getElementsByClassName("smallimg");
@@ -409,7 +426,7 @@ export default {
         window.addEventListener("scroll",this.handleScroll);
     },
     destroyed(){
-        window.removeEventListener("scroll",this.handleScroll)
+        window.removeEventListener("scroll",this.handleScroll);
     },     
 }
 </script>
@@ -593,7 +610,7 @@ input[type="number"]{ -moz-appearance: textfield; }
 .details .right p .btnspan button{
     width: 22px;
     height: 15px;
-    font-size: 12px;
+    font-size: 12px !important;
     line-height: 15px;
     color: #666666;
     text-align: center;
@@ -642,6 +659,9 @@ input[type="number"]{ -moz-appearance: textfield; }
     cursor: pointer;
     border-radius: 2px;
 }
+.details .right .btn button:nth-child(2):hover,.details .spxqnavfixed button:nth-child(4):hover{
+    background-color: #c53f3fed;
+}
 .details .right .btn button:nth-child(3){
     width: 43px;
     height: 43px;
@@ -652,7 +672,7 @@ input[type="number"]{ -moz-appearance: textfield; }
     line-height: 43px;
     text-align: center;
     padding: 0;
-    font-size: 24px;
+    font-size: 24px !important;
     color: #999999;
 }
 .details .right .btn button:nth-child(4){
@@ -665,7 +685,7 @@ input[type="number"]{ -moz-appearance: textfield; }
     line-height: 43px;
     text-align: center;
     padding: 0;
-    font-size: 24px;
+    font-size: 24px !important;
     color: #999999;
 }
 .details .spxqnavfixed{
@@ -677,7 +697,7 @@ input[type="number"]{ -moz-appearance: textfield; }
     top: 1px;
 }
 .icon-erweima{
-    font-size: 27px;
+    font-size: 27px !important;
     color: #333 !important;
     line-height: 27.5px;
     position: relative;
@@ -866,7 +886,7 @@ outline: none;
 .details .one>div div:first-child a{
     color: #333 !important;
     font-weight: bold;
-    font-size: 12px;
+    font-size: 12px !important;
     position: relative;
     left: 170px;
 }
@@ -880,7 +900,7 @@ outline: none;
 }
 .details .one>div div:nth-child(2) span:first-child{
     color: #ffaa15;
-    font-size: 40px;
+    font-size: 40px !important;
 }
 .details .one>div div:nth-child(3){
     height: 48px;
@@ -944,7 +964,7 @@ outline: none;
 .details .two>div div:first-child a{
     color: #333 !important;
     font-weight: bold;
-    font-size: 12px;
+    font-size: 12px !important;
     position: relative;
     left: 380px;
 }
@@ -1005,6 +1025,19 @@ outline: none;
 .xdown{
     color: #333 !important;
     font-weight: bold !important;
+}
+.details .right p:nth-child(4) span,.details .right p:nth-child(5) span,.details .right p:nth-child(6) span,.details .right p:nth-child(7) span,.details .right p:nth-child(8) span,.details .right p:nth-child(9) span,.details .right p:nth-child(10) span{
+    display: inline-block;
+    width:440px;
+}
+.details .right p:nth-child(4),.details .right p:nth-child(5),.details .right p:nth-child(6),.details .right p:nth-child(7),.details .right p:nth-child(8),.details .right p:nth-child(9),.details .right p:nth-child(10){
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: auto;
+}
+.details .xqtp{
+    width:960px;
 }
 </style>
 

@@ -69,7 +69,7 @@ export default {
 </script>
 <style>
       #carousel{
-        width: 70%;
+        width: 1200px;
         margin: 0 auto;
       }
       #carousel ol{

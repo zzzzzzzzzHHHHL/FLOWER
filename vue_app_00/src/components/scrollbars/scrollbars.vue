@@ -1,6 +1,6 @@
 <template>
-    <div id="div1">
-        <ul>
+    <div id="scrollbars">
+        <ul id="scrollbars-ul">
           <li><img src="./img/scrollbars/h1.jpg"></li>
           <li><img src="./img/scrollbars/h2.jpg"></li>
           <li><img src="./img/scrollbars/h3.jpg"></li>
@@ -21,10 +21,11 @@ export default {
   data(){
     return{}
   },
-  created(){
-    window.onload = function(){
-				var oDiv = document.getElementById('div1');
-				var oUl = oDiv.getElementsByTagName('ul')[0];
+  
+	created(){
+		window.onload = function(){
+				var oDiv = document.getElementById('scrollbars');
+				var oUl = document.getElementById('scrollbars-ul');
 				var aLi = oUl.getElementsByTagName('li');
 				var iSpeed = 1;//正左负右
 				var timer = null;
@@ -47,32 +48,32 @@ export default {
 					timer =setInterval(Slider,30);
 				}
 			};
-  }
+	}
 }
 </script>
 <style scoped>
   *{margin:0;padding:0;box-sizing:border-box;}
-		#div1{
+		#scrollbars{
 			position: relative;
 			width: 1200px;
 			margin: 20px auto;
 			height: 250px;
 			overflow: hidden;
 		}
-		#div1 ul{
+		#scrollbars ul{
 			position: absolute;
 			width:2880px;
 			height:100%;
 		}
 
-		#div1 ul li{
+		#scrollbars ul li{
 			padding: 5px;
 			list-style: none;
 			width: 240px;
 			height: 250px;
 			float: left;
 		}
-		#div1 ul li img{
+		#scrollbars ul li img{
 			width: 210px;
 			height: 210px;
 		}

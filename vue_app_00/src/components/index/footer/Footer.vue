@@ -121,7 +121,7 @@ export default {
     },
 }
 </script>
-<style>
+<style scoped>
 /* 黑杠 */
     .footer{
         height: 300px;
