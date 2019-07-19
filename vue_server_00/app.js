@@ -857,12 +857,13 @@ server.get("/InsertProduct",(req,res)=>{
   //   res.send({code:-1,msg:"请登录"});
   //   return;
 	// } 
+	var uid=req.query.uid;
 	var img_url=req.query.img_url;
 	var title=req.query.title;
 	var price=req.query.price;
 	var count=req.query.count;
-  var sql = "INSERT INTO flower_shoppingcart_item(img_url,title,price,count) VALUES(?,?,?,?)";
-  pool.query(sql,[img_url,title,price,count],(err,result)=>{
+  var sql = "INSERT INTO flower_shoppingcart_item(uid,img_url,title,price,count) VALUES(?,?,?,?)";
+  pool.query(sql,[uid,img_url,title,price,count],(err,result)=>{
     if(err)throw err;
     res.send({code:1,data:result})
   })
@@ -871,7 +872,7 @@ server.get("/InsertProduct",(req,res)=>{
 
 //购物车查询
 server.get("/cart",(req,res)=>{
-  //1:参数(无参数)app.js
+  //1:参数(无参数)app.jsd
   console.log(req.session.uid);
   var uid = req.session.uid;
   if(!uid){
