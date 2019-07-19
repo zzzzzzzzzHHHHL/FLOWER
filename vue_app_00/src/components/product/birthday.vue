@@ -37,11 +37,37 @@
         data(){
             return{
                 list:[],
-               pno:1,ps:16
+               pno:1,ps:16,
             }
         },
         mounted() {
-           
+            var ulStyle=document.querySelector(".el-pager")
+            var firstLi=ulStyle.children[0];
+            var secondLi=ulStyle.children[1];
+            var lastLi=ulStyle.children[2];
+            var url="birthday_product";
+            firstLi.onclick=()=>{
+                this.pno=1;
+                var obj={pno:this.pno,ps:this.ps}
+                this.axios.get(url,{params:obj}).then(result=>{
+                  this.list=result.data.data
+                })
+            },
+            secondLi.onclick=()=>{
+                this.pno=2;
+                var obj={pno:this.pno,ps:this.ps}
+                this.axios.get(url,{params:obj}).then(result=>{
+                  this.list=result.data.data
+                })
+                
+            } ,
+            lastLi.onclick=()=>{
+                this.pno=3;
+                var obj={pno:this.pno,ps:this.ps}
+                this.axios.get(url,{params:obj}).then(result=>{
+                  this.list=result.data.data
+                })    
+            }       
         },
         created() {
               var url="birthday";
@@ -79,17 +105,24 @@
                 })
             },
               add(){
-                var url="birthday-priceUp";
+                var url="apologize-priceUp";
                 this.axios.get(url).then(result=>{
                     this.list=result.data;  
                 })
-                
+                var firsti=document.querySelector(".el-icon-caret-top");
+                var lasti=document.querySelector(".el-icon-caret-bottom");
+                firsti.style.color="red";
+                lasti.style.color="#d2d2d2";
             },
             cut(){
-                var url="birthday-priceDown";
+                var url="apologize-priceDown";
                 this.axios.get(url).then(result=>{
                     this.list=result.data
-                })           
+                })
+                var firsti=document.querySelector(".el-icon-caret-top");
+                var lasti=document.querySelector(".el-icon-caret-bottom");
+                firsti.style.color="#d2d2d2";
+                lasti.style.color="red";                
             },
         },  
     }
@@ -108,6 +141,7 @@
         border-top: 1px solid #d2d2d2;
         height:57px;
         margin-top:40px;
+       
     }
     ul{
         line-height:57px;
@@ -184,4 +218,22 @@
      height:60px;
      box-sizing:border-box;
  }
+ .main_pro{
+     box-shadow: 0 0 5px #d9d9d9;
+     border-radius:5px;
+ }
+ .main_pro:hover{
+    transform: translatex(-4px);
+    transition:all 0.2s linear;
+ }
+ .msg_pro>p:last-child{
+     color:#b2904c;
+     font-size:14px;
+ }
+
+ .msg_pro>p{
+     text-align:center;
+     margin:10px 0px;
+ }
+ 
 </style>

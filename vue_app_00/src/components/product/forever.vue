@@ -1,5 +1,5 @@
 <template>
-    <div>
+<div>
     <div class="productFilter my_flex">
         <div class="left_pro">
             <ul class="my_flex">
@@ -8,17 +8,28 @@
                 <li><a>人气</a></li>  
                 <li><a>价格</a> </li>
                 <li>
-                    <a><i class="el-icon-caret-top"></i></a>
-                    <a><i class="el-icon-caret-bottom"></i></a>   
+                    <a><i class="el-icon-caret-top" @click="add"></i></a>
+                    <a><i class="el-icon-caret-bottom"  @click="cut"></i></a>   
                 </li>      
             </ul>
         </div>
         <div class="right_pro">
             <span>27个结果</span>
-            <el-pagination  background  layout="prev, pager, next" :total="20"  ></el-pagination>
+            <el-pagination  background  layout="prev, pager, next" :total="20" @prev-click="last" @next-click="next" ></el-pagination>
         </div>         
     </div>
     <div class="my_flex main">
+<<<<<<< HEAD
+        <div  v-for="(elem,i) of list" :key="i" class="main_pro" >
+             <router-link :to="elem.href"><img :src="`http://127.0.0.1:3000/`+elem.pic" ></router-link>
+             <div class="msg_pro">
+                  <p>
+                <router-link v-text="elem.title" :to="elem.href"></router-link>
+                  </p>
+            <p v-text="`￥${elem.price}`"></p>
+             </div>
+        </div>   
+=======
         <div  v-for="(elem,i) of list" :key="i" class="main_pro">
             <router-link :to="elem.href"><img :src="`http://127.0.0.1:3000/`+elem.pic" ></router-link>
             <p >
@@ -27,6 +38,7 @@
             <p v-text="elem.price"></p>
         </div>
     
+>>>>>>> 7f345a584919c0022a3b8bada4c23929be107af1
     </div>
 </div>
     
@@ -36,17 +48,76 @@
         data(){
             return{
                 list:[],
-               
+               pno:1,ps:16
             }
         },
-        
+        mounted() {
+            var ulStyle=document.querySelector(".el-pager")
+            var firstLi=ulStyle.children[0];
+            var lastLi=ulStyle.children[1]
+            firstLi.onclick=()=>{
+                this.last()
+            }
+            lastLi.onclick=()=>{
+                this.next()
+            }       
+        },
         created() {
               var url="forever";
                 this.axios.get(url).then(result=>{
                     console.log(result);
-                     this.list=result.data
+                     this.list=result.data.slice(0,16)
+                    // setTimeout(function(){
+                      //  var divMain=document.querySelectorAll(".main_pro");
+                       // console.log(divMain)
+                     //},10)
                 })
-        },     
+        },
+    
+        methods: {
+            last(){
+                var url="forever_product";
+                this.pno--;
+                var obj={pno:this.pno,ps:this.ps}
+                this.axios.get(url,{params:obj}).then(result=>{
+               // var rows=this.list.concat(result.data.data)
+                //console.log(rows)
+                  // this.list=rows
+                  this.list=result.data.data
+                })
+            },
+            next(){
+                var url="forever_product";
+                this.pno++;
+                var obj={pno:this.pno,ps:this.ps}
+                this.axios.get(url,{params:obj}).then(result=>{
+               // var rows=this.list.concat(result.data.data)
+                //console.log(rows)
+                  // this.list=rows
+                  this.list=result.data.data
+                })
+            },
+              add(){
+                var url="forever-priceUp";
+                this.axios.get(url).then(result=>{
+                    this.list=result.data;  
+                })
+                var firsti=document.querySelector(".el-icon-caret-top");
+                var lasti=document.querySelector(".el-icon-caret-bottom");
+                firsti.style.color="red";
+                lasti.style.color="#d2d2d2";
+            },
+            cut(){
+                var url="forever-priceDown";
+                this.axios.get(url).then(result=>{
+                    this.list=result.data
+                })
+                var firsti=document.querySelector(".el-icon-caret-top");
+                var lasti=document.querySelector(".el-icon-caret-bottom");
+                firsti.style.color="#d2d2d2";
+                lasti.style.color="red";           
+            },
+        },  
     }
 </script>
 <style scoped>
@@ -63,6 +134,7 @@
         border-top: 1px solid #d2d2d2;
         height:57px;
         margin-top:40px;
+       
     }
     ul{
         line-height:57px;
@@ -138,6 +210,23 @@
      width:280px;
      height:60px;
      box-sizing:border-box;
-    
  }
+ .main_pro{
+     box-shadow: 0 0 5px #d9d9d9;
+     border-radius:5px;
+ }
+ .main_pro:hover{
+    transform: translatex(-4px);
+    transition:all 0.2s linear;
+ }
+ .msg_pro>p:last-child{
+     color:#b2904c;
+     font-size:14px;
+ }
+
+ .msg_pro>p{
+     text-align:center;
+     margin:10px 0px;
+ }
+ 
 </style>
