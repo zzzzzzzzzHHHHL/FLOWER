@@ -8,7 +8,7 @@
                     <a href="javascirpt:;">首页</a>
                 </div>
                 <div class="tow">
-                    <a href="javascirpt:;">首页</a>
+                    <a href="Middle.vue">首页</a>
                 </div>
                 </div>
                 <span>/</span> 
@@ -19,7 +19,7 @@
                     <a href="javascirpt:;">进口鲜花</a>
                 </div>
                 <div class="tow">
-                    <a href="javascirpt:;">进口鲜花</a>
+                    <router-link :to="`/Import`">进口鲜花</router-link>
                 </div>
                 </div>
                 <span>/</span> 
@@ -30,7 +30,8 @@
                     <a href="javascirpt:;">爱情鲜花</a>
                 </div>
                 <div class="tow">
-                    <a href="javascirpt:;">爱情鲜花</a>
+                    
+                    <router-link :to="`/Love`">爱情鲜花</router-link>
                 </div>
                 </div>
                 <span>/</span> 
@@ -41,7 +42,7 @@
                     <a href="javascirpt:;">生日鲜花</a>
                 </div>
                 <div class="tow">
-                    <a href="javascirpt:;">生日鲜花</a>
+                    <router-link :to="`/Birthday`">生日鲜花</router-link>
                 </div>
                 </div>
                 <span>/</span> 
@@ -52,7 +53,7 @@
                     <a href="javascirpt:;">问候长辈</a>
                 </div>
                 <div class="tow">
-                    <a href="javascirpt:;">问候长辈</a>
+                    <router-link :to="`/Extend`">问候长辈</router-link>
                 </div>
                 </div>
                 <span>/</span> 
@@ -63,7 +64,7 @@
                     <a href="javascirpt:;">祝福庆贺</a>
                 </div>
                 <div class="tow">
-                    <a href="javascirpt:;">祝福庆贺</a>
+                    <router-link :to="`/Blessing`">祝福庆贺</router-link>
                 </div>
                 </div>
                 <span>/</span> 
@@ -74,7 +75,7 @@
                     <a href="javascirpt:;">探病慰问</a>
                 </div>
                 <div class="tow">
-                    <a href="javascirpt:;">探病慰问</a>
+                    <router-link :to="`/Condole`">探病慰问</router-link>
                 </div>
                 </div>
                 <span>/</span> 
@@ -85,7 +86,7 @@
                     <a href="javascirpt:;">道歉鲜花</a>
                 </div>
                 <div class="tow">
-                    <a href="javascirpt:;">道歉鲜花</a>
+                    <router-link :to="`/Apologize`">道歉鲜花</router-link>
                 </div>
                 </div>
                 <span>/</span> 
@@ -96,7 +97,7 @@
                     <a href="javascirpt:;">生活鲜花</a>
                 </div>
                 <div class="tow">
-                    <a href="javascirpt:;">生活鲜花</a>
+                    <router-link :to="`/Life`">生活鲜花</router-link>
                 </div>
                 </div>
                 <span>/</span> 
@@ -107,7 +108,7 @@
                     <a href="javascirpt:;">全部鲜花</a>
                 </div>
                 <div class="tow">
-                    <a href="javascirpt:;">全部鲜花</a>
+                    <router-link :to="`/All`">全部鲜花</router-link>
                 </div>
                 </div>
                 <span>/</span> 
@@ -118,7 +119,7 @@
                     <a href="javascirpt:;">开业花篮</a>
                 </div>
                 <div class="tow">
-                    <a href="javascirpt:;">开业花篮</a>
+                    <router-link :to="`/Opening`">开业花篮</router-link>
                 </div>
                 </div>
                 <span>/</span> 
@@ -129,7 +130,7 @@
                     <a href="javascirpt:;">永生花</a>
                 </div>
                 <div class="tow">
-                    <a href="javascirpt:;">永生花</a>
+                    <router-link :to="`/Forever`">永生花</router-link>
                 </div>
                 </div>
                 <span>/</span> 
@@ -140,7 +141,7 @@
                     <a href="javascirpt:;">礼品</a>
                 </div>
                 <div class="tow">
-                    <a href="javascirpt:;">礼品</a>
+                    <router-link :to="`/Gift`">礼品</router-link>
                 </div>
                 </div>
             </li>

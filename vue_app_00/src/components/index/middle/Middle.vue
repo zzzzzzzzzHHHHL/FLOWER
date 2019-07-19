@@ -123,8 +123,8 @@
                </div>
             </div>
             <!-- 9F滚动图 -->
-            <scrollbars></scrollbars>
        </div> 
+       <scoll></scoll>
        <footer00></footer00>
     </div>
 </template>
@@ -135,7 +135,13 @@ import Footer from "../footer/footer0.vue"
 import Nav from "../../project/Nav.vue"
 import Banner from "../header/Nav1.vue"
 export default {
-    
+    components:{
+      "scoll":Scrollbars,
+      "header00":Header,
+      "navgitor":Nav,
+      "footer00":Footer,
+      "banner":Banner
+     },
     data() {
         return {
            list:[],
@@ -150,9 +156,9 @@ export default {
     created(){
         var url="index"
         this.axios.get(url).then(result=>{
-        console.log(result);
+        // console.log(result);
         this.list=result.data;
-        console.log(this.list);
+        // console.log(this.list);
         this.list_1F=this.list.slice(2,10);
         this.list_2F=this.list.slice(10,18);
         this.list_3F=this.list.slice(18,26);
@@ -161,19 +167,13 @@ export default {
         this.list_6F=this.list.slice(44,49);
         })
   },
-  components:{
-      "scrollbars":Scrollbars,
-      "header00":Header,
-      "navgitor":Nav,
-      "footer00":Footer,
-      "banner":Banner
-  }
+  
 }
 </script>
 <style>
     *{margin:0;padding:0;box-sizing: border-box;}
-    .clear_fix{
-         clear: both; 
+    body{
+        background-color: #f1f7f1;
     }
     /* 1F */
     #floor{
@@ -392,6 +392,7 @@ export default {
     .floor_5thrd-div .a1:hover{
         background-color: #333;
         color:#fff;
+        text-decoration: none;
     }
 
     

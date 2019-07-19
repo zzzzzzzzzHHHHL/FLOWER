@@ -1,6 +1,6 @@
 <template>
-    <div id="scrollbars">
-        <ul id="scrollbars-ul">
+  <div id="scoll">
+    <ul>
           <li><img src="./img/scrollbars/h1.jpg"></li>
           <li><img src="./img/scrollbars/h2.jpg"></li>
           <li><img src="./img/scrollbars/h3.jpg"></li>
@@ -13,19 +13,18 @@
           <li><img src="./img/scrollbars/h10.jpg"></li>
           <li><img src="./img/scrollbars/h11.jpg"></li>
           <li><img src="./img/scrollbars/h12.jpg"></li>
-        </ul>
-		</div>
+    </ul>
+  </div>
 </template>
 <script>
 export default {
   data(){
     return{}
   },
-  
-	created(){
+  mounted(){
 		window.onload = function(){
-				var oDiv = document.getElementById('scrollbars');
-				var oUl = document.getElementById('scrollbars-ul');
+				var oDiv = document.getElementById('scoll');
+				var oUl = oDiv.getElementsByTagName('ul')[0];
 				var aLi = oUl.getElementsByTagName('li');
 				var iSpeed = 1;//正左负右
 				var timer = null;
@@ -53,29 +52,30 @@ export default {
 </script>
 <style scoped>
   *{margin:0;padding:0;box-sizing:border-box;}
-		#scrollbars{
+		#scoll{
 			position: relative;
 			width: 1200px;
 			margin: 20px auto;
 			height: 250px;
 			overflow: hidden;
 		}
-		#scrollbars ul{
+		#scoll ul{
 			position: absolute;
 			width:2880px;
 			height:100%;
 		}
 
-		#scrollbars ul li{
+		#scoll ul li{
 			padding: 5px;
 			list-style: none;
 			width: 240px;
 			height: 250px;
 			float: left;
 		}
-		#scrollbars ul li img{
+		#scoll ul li img{
 			width: 210px;
 			height: 210px;
 		}
 </style>
+
 
