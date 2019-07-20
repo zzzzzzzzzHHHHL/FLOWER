@@ -16,40 +16,23 @@
                 </ul>
             </div>
             <div class="right_pro">
-                <span>26个结果</span>
-                <el-pagination  background  layout="prev, pager, next" :total="20" @prev-click="last" @next-click="next" ></el-pagination>
+                <span>431个结果</span>
+                <el-pagination  background  layout="prev, pager, next" :total="270" @prev-click="last" @next-click="next" ></el-pagination>
             </div>         
         </div>
         <div class="my_flex main">
-            <div  v-for="(elem,i) of list" :key="i" class="main_pro">
+            <div  v-for="(elem,i) of list" :key="i" class="main_pro" >
                 <router-link :to="elem.href"><img :src="`http://127.0.0.1:3000/`+elem.pic" ></router-link>
                 <div class="msg_pro">
                     <p>
                     <router-link v-text="elem.title" :to="elem.href"></router-link>
                     </p>
-                    <p v-text="`￥${elem.price}`"></p>
-                </div>
-            </div>
-        </div> 
-        <footer00></footer00>
-    </div>
-        <!-- <div class="right_pro">
-            <span>26个结果</span>
-            <el-pagination  background  layout="prev, pager, next" :total="20" @prev-click="last" @next-click="next" ></el-pagination>
-        </div>         
-    </div>
-    <div class="my_flex main">
-        <div  v-for="(elem,i) of list" :key="i" class="main_pro">
-            <router-link :to="elem.href"><img :src="`http://127.0.0.1:3000/`+elem.pic" ></router-link>
-             <div class="msg_pro">
-                  <p>
-                <router-link v-text="elem.title" :to="elem.href"></router-link>
-                  </p>
                 <p v-text="`￥${elem.price}`"></p>
-             </div>
+                </div>
+            </div>   
         </div>
         <footer00></footer00>
-    </div> -->
+    </div>
 </template>
 <script>
     import Header from "../index/header/header0.vue"
@@ -64,22 +47,40 @@
         data(){
             return{
                 list:[],
-               pno:1,ps:16
+               pno:1,ps:16,
             }
         },
         mounted() {
             var ulStyle=document.querySelector(".el-pager")
             var firstLi=ulStyle.children[0];
-            var lastLi=ulStyle.children[1]
+            var secondLi=ulStyle.children[1];
+            var lastLi=ulStyle.children[2];
+            var url="birthday_product";
             firstLi.onclick=()=>{
-                this.last()
-            }
+                this.pno=1;
+                var obj={pno:this.pno,ps:this.ps}
+                this.axios.get(url,{params:obj}).then(result=>{
+                  this.list=result.data.data
+                })
+            },
+            secondLi.onclick=()=>{
+                this.pno=2;
+                var obj={pno:this.pno,ps:this.ps}
+                this.axios.get(url,{params:obj}).then(result=>{
+                  this.list=result.data.data
+                })
+                
+            } ,
             lastLi.onclick=()=>{
-                this.next()
+                this.pno=3;
+                var obj={pno:this.pno,ps:this.ps}
+                this.axios.get(url,{params:obj}).then(result=>{
+                  this.list=result.data.data
+                })    
             }       
         },
         created() {
-              var url="gift";
+              var url="all";
                 this.axios.get(url).then(result=>{
                     console.log(result);
                      this.list=result.data.slice(0,16)
@@ -92,7 +93,7 @@
     
         methods: {
             last(){
-                var url="gift_product";
+                var url="all_product";
                 this.pno--;
                 var obj={pno:this.pno,ps:this.ps}
                 this.axios.get(url,{params:obj}).then(result=>{
@@ -103,7 +104,7 @@
                 })
             },
             next(){
-                var url="gift_product";
+                var url="all_product";
                 this.pno++;
                 var obj={pno:this.pno,ps:this.ps}
                 this.axios.get(url,{params:obj}).then(result=>{
@@ -114,7 +115,7 @@
                 })
             },
               add(){
-                var url="gift-priceUp";
+                var url="all-priceUp";
                 this.axios.get(url).then(result=>{
                     this.list=result.data;  
                 })
@@ -124,14 +125,14 @@
                 lasti.style.color="#d2d2d2";
             },
             cut(){
-                var url="gift-priceDown";
+                var url="all-priceDown";
                 this.axios.get(url).then(result=>{
                     this.list=result.data
                 })
                 var firsti=document.querySelector(".el-icon-caret-top");
                 var lasti=document.querySelector(".el-icon-caret-bottom");
                 firsti.style.color="#d2d2d2";
-                lasti.style.color="red";           
+                lasti.style.color="red";                
             },
         },  
     }

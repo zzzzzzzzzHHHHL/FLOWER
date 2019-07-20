@@ -91,6 +91,7 @@ export default {
   .footer{
     width:100%;
     height:350px;
+    margin-top:50px;
   }
   .content{
     width:100%;

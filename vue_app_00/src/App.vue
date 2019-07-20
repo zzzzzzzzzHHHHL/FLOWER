@@ -42,4 +42,9 @@
 
     background-color:#333 !important    ;
 }
+.app-container {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    overflow-x: unset;
+}
 </style>
