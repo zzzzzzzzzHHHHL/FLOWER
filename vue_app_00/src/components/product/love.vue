@@ -19,7 +19,7 @@
         </div>         
     </div>
     <div class="my_flex main">
-<<<<<<< HEAD
+
         <div  v-for="(elem,i) of list" :key="i" class="main_pro" >
              <router-link :to="elem.href"><img :src="`http://127.0.0.1:3000/`+elem.pic" ></router-link>
              <div class="msg_pro">
@@ -29,7 +29,7 @@
             <p v-text="`￥${elem.price}`"></p>
              </div>
         </div>   
-=======
+
         <div  v-for="(elem,i) of list" :key="i" class="main_pro">
             <router-link :to="elem.href"><img :src="`http://127.0.0.1:3000/`+elem.pic" ></router-link>
             <p >
@@ -38,7 +38,7 @@
             <p v-text="elem.price"></p>
         </div>
     
->>>>>>> 7f345a584919c0022a3b8bada4c23929be107af1
+
     </div>
 </div>
     
@@ -150,9 +150,7 @@
      a{
         cursor: pointer;
     }
-    .app-container{
-       overflow-x: unset;
-    }
+   
     .productFilter{
         width:1200px;
         margin:0 auto;

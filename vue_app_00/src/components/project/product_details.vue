@@ -390,7 +390,7 @@ export default {
             var obj={lid:this.$route.params.lid};
             this.axios.get(url,{params:obj}).then(result=>{
                 this.list=result.data[0][0];
-                // console.log(result.data);
+                console.log(result.data);
                 this.mimg="http://127.0.0.1:3000/"+this.list.details;
                 this.lgimg.backgroundImage="url("+"http://127.0.0.1:3000/"+this.list.details+ ") ";
             })

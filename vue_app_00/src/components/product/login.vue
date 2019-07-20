@@ -1,11 +1,13 @@
 <template>
     <div>
+        <header00></header00>
+        <navgitor></navgitor>
         <div class="container">
         <div class="main">
             <div class="login_box">
                 <div class="swich_type" >
                     <a href="#" data-toggle="tab" data-id="content1" class="active">账号登录</a>
-                    <a href="#" data-toggle="tab" data-id="content1">用户注册</a>
+                    <a href="#" data-toggle="tab" data-id="content2">用户注册</a>
                 </div>
                 <div class="login_in" id="content1">
                     <div class="mobile_yzm">
@@ -54,10 +56,20 @@
             </div>
         </div>
     </div>
+    <footer00></footer00>
     </div>
 </template>
 <script>
+import Header from '../index/header/header0.vue'
+import Nav from '../project/Nav.vue'
+import Footer from '../index/footer/footer0.vue'
 export default {
+    components:{
+      //"scoll":Scrollbars,
+      "header00":Header,
+      "navgitor":Nav,
+      "footer00":Footer,
+     },
     data(){
         return{
             uname:"",upwd:"",
@@ -101,7 +113,7 @@ export default {
             this.axios.get(url,{params:obj}).then(result=>{
                var code=result.data.code;
                if(code>0){
-                   this.$router.push({path:'birthday'})
+                   this.$router.push({path:'Middle'})
                }else{
                     this.$message.error('账户名密码不符');
                }
@@ -225,6 +237,7 @@ body{
     background-repeat:no-repeat;
     width:1903px;height: 530px;
     position:relative;
+    margin-bottom:50px;
 }
 .login_box{
     width:307px;height: 317px;
