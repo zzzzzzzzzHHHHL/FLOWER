@@ -47,7 +47,7 @@
                             <button>+</button>
                         </li>
                         <!-- 小计 -->
-                        <li>￥999.00</li>
+                        <li v-text="`￥${Number(elem.price)*elem.count}`"></li>
                         <!-- 删除按钮 -->
                         <li class="delete"><a href="#">删除</a></li>
                     </ul>
@@ -111,7 +111,7 @@
                 <img src="../../assets/Mig/hua.png" alt="">
                 <div>
                     <p>您的购物车中没有商品！</p>
-                    <button>马上去逛逛</button>
+                    <button @click="msqgg">马上去逛逛</button>
                 </div>
             </div>
             <!-- 猜你喜欢 -->
@@ -174,7 +174,7 @@ export default {
     data(){
         return{
             list:[],
-            cart1:{display:"block"},
+            cart1:{display:"none"},
             cart2:{display:"none"},
         }
     },
@@ -188,12 +188,20 @@ export default {
             this.axios.get(url).then(result=>{
                //console.log(result.data.data);
                this.list=result.data.data;
-               console.log(this.list);
+            //    console.log(this.list.length);
+               if(!this.list.length){
+                   this.cart2.display="block";
+                   this.cart1.display="none";
+               }else{
+                   this.cart1.display="block";
+                   this.cart2.display="none";
+               }
             })
         },
         ljjs(){
             this.$router.push("/Settlement");
-        }
+        },
+        msqgg(){this.$router.push("/Middle")},
     }
 }
 </script>
@@ -402,6 +410,7 @@ input[type="number"]{ -moz-appearance: textfield; }
 }
 .cartAll .cartAll2{
     background-color: #f8f8f8;
+    margin-top: -25px;
 }
 .cartAll .cartAll2::before{
     content: "";
