@@ -58,7 +58,7 @@
             <div class="message">
                 <p>贺卡留言+署名</p>
                 <div>
-                    <textarea name="" id="" cols="30" rows="10" placeholder="贺卡留言+署名"></textarea>
+                    <textarea name="" id="" cols="30" rows="10" placeholder="贺卡留言+署名" v-model="by"></textarea>
                     <div>
                         <ul>
                             <li @click="who" :class="give1" data-who="w1">送恋人</li>
@@ -66,7 +66,7 @@
                             <li @click="who" :class="give3" data-who="w3">送长辈</li>
                             <li @click="who" :class="give4" data-who="w4">送花篮</li>
                         </ul>
-                        <div class="biaoyu">
+                        <div class="biaoyu" @click="selectby">
                             <!--送恋人-->
                             <ul :style="biaoyu1">
                                 <li data-content="我多么希望，有一个门口，早晨，阳光照在草上，我们站着，扶着自己的门扇，门很低，但太阳是明亮的。草在结它的种子，风在摇它的叶子，我们站着，不说话，就十分美好。">
@@ -224,6 +224,7 @@ export default {
             biaoyu2:{display:"none"},
             biaoyu3:{display:"none"},
             biaoyu4:{display:"none"},
+            by:"",
         }
     },
     methods:{
@@ -287,6 +288,10 @@ export default {
                 this.biaoyu4.display="block";
             }
         },
+        selectby(e){
+            // console.log(e.target.attributes[1].value);
+            this.by=e.target.attributes[1].value;
+        }
     },
 
 }
@@ -541,10 +546,13 @@ input[type="date"]::-webkit-clear-button{
 }
 .settlement .message>div>div .biaoyu>ul>li{
     width: 464px;
-    height: 20px;
+    height: 25px;
     overflow: hidden;
     font-size: 13px;
     color: #888888;
-    margin: 6px 0;
+    padding: 6px 0;
+}
+.settlement .message>div>div .biaoyu>ul>li:hover{
+    cursor: default;
 }
 </style>
