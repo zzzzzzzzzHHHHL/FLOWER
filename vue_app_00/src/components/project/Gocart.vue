@@ -10,7 +10,7 @@
             <div class="nav">
                 <ul>
                     <li>
-                        <input type="checkbox" id="qx">
+                        <input type="checkbox" id="qx" @click="selectAll" v-model="t">
                         &nbsp;
                         <label for="qx">全选</label>
                     </li>
@@ -22,11 +22,11 @@
             </div>
             <!-- 购物车商品详情 -->
             <div class="productAll">
-                <div v-for="(elem,i) of list" :key="i">
+                <div v-for="(elem,i) of list" :key="i" :data-lid="elem.lid">
                     <ul>
                         <!-- 商品图片 -->
                         <li>
-                            <input type="checkbox" name="">
+                            <input type="checkbox" name="" v-model="elem.is_checked" @click="select" :data-lid="elem.lid">
                             &nbsp;&nbsp;&nbsp;
                             <router-link :to="'product_details/'+elem.lid">
                             <img :src="'http://127.0.0.1:3000/'+elem.img_url" alt="">
@@ -37,19 +37,18 @@
                             <router-link :to="'product_details/'+elem.lid" v-text="elem.title">
                             </router-link>
                         </li>
-                        <!-- <li><a href="#" v-text="elem.title"></a></li> -->
                         <!-- 单价 -->
                         <li v-text="`￥${elem.price}`"></li>
                         <!-- 数量 -->
                         <li class="btn">
-                            <button>-</button>
+                            <button @click="jian" :data-lid="elem.lid" :data-count="elem.count">-</button>
                             <input type="number" min="1" max="12" name="quantity" v-model="elem.count">
-                            <button>+</button>
+                            <button @click="jia" :data-lid="elem.lid" :data-count="elem.count">+</button>
                         </li>
                         <!-- 小计 -->
                         <li v-text="`￥${Number(elem.price)*elem.count}`"></li>
                         <!-- 删除按钮 -->
-                        <li class="delete"><a href="#" @click="one1">删除</a></li>
+                        <li class="delete"><a href="javascript:;" @click="one1" :data-lid="elem.lid">删除</a></li>
                     </ul>
                 </div>
                 <!-- <div>
@@ -79,11 +78,12 @@
                 <div class="quanxuan">
                     <ul>
                     <li>
-                        <input type="checkbox" id="qx">
+                        <input type="checkbox" id="qx" @click="selectAll" v-model="t">
                         &nbsp;
                         <label for="qx">全选</label>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="#">删除选中商品</a>
+                        <a href="javascript:;" @click="two1">删除选中商品</a>
+                        <!-- @click="delproduct" -->
                     </li>
                     <li>
                         已选商品 <span class="span1">3</span> 件
@@ -157,25 +157,46 @@
                 </ul>
             </div>
         </div>
-        <!-- 确认删除商品提示框 -->
+        <!-- 确认删除商品提示框1 -->
         <div class="one" :style="one">
-                <!-- 提示框 -->
-                <div :class="guodu">
-                    <div>
-                        <span>系统提示</span>
-                        <a href="javascript:;" class="iconfont icon-tishikuangguanbi" @click="close"></a>
-                    </div>
-                    <div>
-                        <span class="iconfont icon-ruotishikuang-jinggaotishitubiao"></span>
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        <span style="font-size:14px">您确定要把商品移除购物车吗？</span>
-                    </div>
-                    <div>
-                        <button @click="close">取消</button>
-                        <button @click="close">确定</button>   
-                    </div>
+            <!-- 提示框 -->
+            <div>
+                <div>
+                    <span>系统提示</span>
+                    <a href="javascript:;" class="iconfont icon-tishikuangguanbi" @click="close"></a>
+                </div>
+                <div>
+                    <span class="iconfont icon-ruotishikuang-jinggaotishitubiao"></span>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span style="font-size:14px">您确定要把商品移除购物车吗？</span>
+                </div>
+                <div>
+                    <button @click="close">取消</button>
+                    <button  @click="deletelid">确定</button>   
                 </div>
             </div>
+        </div>
+        <!-- 确认删除商品提示框2 -->
+        <div class="two" :style="two">
+            <!-- 提示框 -->
+            <div>
+                <div>
+                    <span>系统提示</span>
+                    <a href="javascript:;" class="iconfont icon-tishikuangguanbi" @click="close1"></a>
+                </div>
+                <div>
+                    <span class="iconfont icon-ruotishikuang-jinggaotishitubiao"></span>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span style="font-size:14px">您确定要把商品移除购物车吗？</span>
+                </div>
+                <div>
+                    <button @click="close1">取消</button>
+                    <button  @click="delproduct">确定</button>   
+                </div>
+            </div>
+        </div>
+        
+        
         <footer00></footer00>
     </div>
 </template>
@@ -196,6 +217,12 @@ export default {
             cart1:{display:"none"},
             cart2:{display:"none"},
             one:{display:"none"},
+            two:{display:"none"},
+            t:false,
+            delletelid:"",
+            delobj:[],
+            // plus:"",
+            // reduce:"",
         }
     },
     created(){
@@ -208,7 +235,11 @@ export default {
             this.axios.get(url).then(result=>{
                //console.log(result.data.data);
                this.list=result.data.data;
-            //    console.log(this.list.length);
+            //    console.log(this.list);
+               for(var item of this.list){
+                item.is_checked=false;
+                }
+            //    console.log(this.list);
                if(!this.list.length){
                    this.cart2.display="block";
                    this.cart1.display="none";
@@ -217,15 +248,119 @@ export default {
                    this.cart2.display="none";
                }
             })
+            
         },
         ljjs(){
             this.$router.push("/Settlement");
         },
         msqgg(){this.$router.push("/Middle")},
-        close(){
+        close(){this.one.display="none";},
+        close1(){this.two.display="none";},
+        deletelid(e){
             this.one.display="none";
+            // console.log(e.currentTarget.dataset.lid)
+            var url = "delItem";
+            var obj = {
+                lid:this.delletelid
+            };
+            // console.log(obj);
+            this.axios.get(url,{params:obj}).then(result=>{
+                //重新加载数据相当刷新
+                this.loadMore();
+            })
         },
-        one1(){this.one.display="flex"},
+        delproduct(e){
+            this.two.display="none";
+            for(var i=0;i<this.list.length;i++){
+                console.log(this.list[i].is_checked);
+                if(this.list[i].is_checked==true){
+                    var n=0;
+                    for(var k=0;k<this.delobj.length;k++){
+                        if(this.delobj[k]!==this.list[i].lid){n+=1;}
+                    }
+                    if(n==this.delobj.length){this.delobj.push(this.list[i].lid);}
+                    // this.delobj.push(e.target.dataset.lid); 
+                }
+            }
+            console.log(this.delobj);
+            if(this.delobj.length>=1){
+                var url = "delAll";
+                var obj = {
+                    lids:this.delobj
+                };
+                // console.log(obj);
+                this.axios.get(url,{params:obj}).then(result=>{
+                    //重新加载数据相当刷新
+                    this.loadMore();
+                })
+            }
+        },
+        one1(e){
+            this.one.display="flex";
+            // console.log(e.target.dataset.lid);
+            this.delletelid=e.target.dataset.lid;
+            // console.log(this.delletelid)
+        },
+        two1(){
+            var n=0;
+            for(var i=0;i<this.list.length;i++){
+                if(this.list[i].is_checked==true){n+=1}
+            }
+            if(n>=1){this.two.display="flex";}
+            
+        },
+        selectAll(e){
+            var cb =  e.target.checked;
+            this.t=cb;
+            // console.log(cb);
+            for(var item of this.list){
+                item.is_checked=cb;
+                // console.log(this.list.is_checked);
+            }
+        },
+        select(e){
+            // console.log(e.target.checked);
+            if(e.target.checked==false){this.t=false;}
+            // console.log(e.target.checked==true)
+            else {
+                var n=0;
+                for(var i=0;i<this.list.length;i++){
+                    if(this.list[i].is_checked==true){
+                        n+=1;
+                    }
+                }
+                if(n+1==this.list.length){this.t=true}
+            }
+        },
+        jia(e){
+            console.log(e.target.dataset.lid);
+            var i=e.target.dataset.lid;
+            var url = "plus";
+            var obj = {
+                lid:i
+            };
+            // console.log(obj);
+            this.axios.get(url,{params:obj}).then(result=>{
+                //重新加载数据相当刷新
+                this.loadMore();
+            })
+        },
+        jian(e){
+            // console.log(e.target.dataset.lid);
+            // console.log(e.target.dataset.count);
+            if(e.target.dataset.count>1){
+            var i=e.target.dataset.lid;
+            var url = "reduce";
+            var obj = {
+                lid:i
+            };
+            // console.log(obj);
+            this.axios.get(url,{params:obj}).then(result=>{
+                //重新加载数据相当刷新
+                this.loadMore();
+            })
+            }
+        },
     }
 }
 </script>
@@ -616,6 +751,90 @@ input[type="number"]{ -moz-appearance: textfield; }
     cursor: pointer;
 }
 .cartAll .one>div div:nth-child(3) button:first-child{
+    border: 1px solid #dedede;
+    background-color: #f1f1f1;
+    color: #333;
+    border-radius: 2px;
+}
+
+
+/* 提示框two */
+.cartAll .two{
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #33333375;
+    z-index: 900;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* display: none; */
+}
+.cartAll .two>div{
+    width: 276px;
+    height: 195px;
+    /* width: 0;
+    height: 0; */
+    background-color: #fff;
+    position: fixed;
+    box-shadow: 0px 0px 0px 10px rgba(0, 0, 0, 0.144);
+    overflow: hidden;
+    opacity: 1;
+    transition: all 0.2s ease-out;
+    /* display: none; */
+}
+.cartAll .two>div div:first-child{
+    width: 100%;
+    height: 43px;
+    padding-left: 20px;
+    background-color: #f8f8f8;
+}
+.cartAll .two>div div:first-child span{
+    font-size: 14px !important;
+    color: #333333;
+    line-height: 43px;
+}
+.cartAll .two>div div:first-child a{
+    color: #333 !important;
+    font-weight: bold;
+    font-size: 12px !important;
+    position: relative;
+    left: 170px;
+}
+.cartAll .two>div div:nth-child(2){
+    width: 100%;
+    height: 88px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cartAll .two>div div:nth-child(2) span:first-child{
+    color: #ffaa15;
+    font-size: 40px !important;
+}
+.cartAll .two>div div:nth-child(3){
+    height: 48px;
+    padding: 0 10px 12px;
+}
+.cartAll .two>div div:nth-child(3) button{
+    width: 56px;
+    height: 30px;
+    border-color: #333;
+    background-color: #333;
+    color: #fff;
+    float: right;
+    margin-right: 10px;
+    margin-top: 15px;
+    font-size: 12px;
+    border-radius: 2px;
+    font-weight: 400;
+    cursor: pointer;
+}
+.cartAll .two>div div:nth-child(3) button:first-child{
     border: 1px solid #dedede;
     background-color: #f1f1f1;
     color: #333;

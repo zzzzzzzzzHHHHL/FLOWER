@@ -217,7 +217,7 @@
                         </p>
                     </div>
                     <div>
-                        <button @click="ljgm">去结算</button>
+                        <button @click="ljgm1">去结算</button>
                         <button @click="close">继续购物</button>
                     </div>
                 </div>
@@ -352,8 +352,7 @@ export default {
                 }
                 top=(top+62)+"px";
                 this.move_ul.top=top;
-            }
-            
+            }  
         },
         ewmshow(){
             this.ewm.visibility="visible"
@@ -398,6 +397,9 @@ export default {
             this.insert();
             this.$router.push("/Gocart");
         },
+        ljgm1(){
+            this.$router.push("/Gocart");
+        },
         load(){
             var url = "details";
             var obj={lid:this.$route.params.lid};
@@ -419,7 +421,7 @@ export default {
             }
             // console.log(obj);
             this.axios.get(url,{params:obj}).then(result=>{
-                // console.log(result);
+                console.log(result);
             })
         },
     },
