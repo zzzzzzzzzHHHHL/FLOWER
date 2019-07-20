@@ -195,9 +195,7 @@
                 </div>
             </div>
         </div>
-        
-        
-        <footer00></footer00>
+        <footer00 class="footer"></footer00>
     </div>
 </template>
 
@@ -366,6 +364,9 @@ export default {
 </script>
 
 <style scoped>
+.footer{
+    margin-top: -15px !important;
+}
 .cartAll>.fjx{
     width: 100%;
     border: 1px solid #d8d8d8;
@@ -557,7 +558,7 @@ input[type="number"]{ -moz-appearance: textfield; }
     margin-top: 20px;
     border: solid 1px #e8e8e8;
     padding: 0 30px;
-    margin-bottom: 30px;
+    margin-bottom: 50px !important;
 }
 .cartAll .cnxh div:nth-child(1){
     width: 100%;

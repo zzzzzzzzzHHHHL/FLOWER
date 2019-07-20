@@ -223,7 +223,7 @@
                 </div>
             </div>
         </div>
-        <footer00></footer00>
+        <footer00 class="footer"></footer00>
     </div>
 </template>
 <script>
@@ -1066,6 +1066,16 @@ outline: none;
 }
 .details .xqtp{
     width:960px;
+}
+.details .top{
+    margin-top: 25px !important;
+}
+.details {
+    margin-top: -15px !important;
+    border-top: 1px solid #d4d4d4;
+}
+.footer{
+    margin-top: 0px !important;
 }
 </style>
 
