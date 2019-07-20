@@ -395,6 +395,7 @@ export default {
             this.insert();
         },
         ljgm(){
+            this.insert();
             this.$router.push("/Gocart");
         },
         load(){
