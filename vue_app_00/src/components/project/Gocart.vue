@@ -49,7 +49,7 @@
                         <!-- 小计 -->
                         <li v-text="`￥${Number(elem.price)*elem.count}`"></li>
                         <!-- 删除按钮 -->
-                        <li class="delete"><a href="#">删除</a></li>
+                        <li class="delete"><a href="#" @click="one1">删除</a></li>
                     </ul>
                 </div>
                 <!-- <div>
@@ -157,6 +157,25 @@
                 </ul>
             </div>
         </div>
+        <!-- 确认删除商品提示框 -->
+        <div class="one" :style="one">
+                <!-- 提示框 -->
+                <div :class="guodu">
+                    <div>
+                        <span>系统提示</span>
+                        <a href="javascript:;" class="iconfont icon-tishikuangguanbi" @click="close"></a>
+                    </div>
+                    <div>
+                        <span class="iconfont icon-ruotishikuang-jinggaotishitubiao"></span>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <span style="font-size:14px">您确定要把商品移除购物车吗？</span>
+                    </div>
+                    <div>
+                        <button @click="close">取消</button>
+                        <button @click="close">确定</button>   
+                    </div>
+                </div>
+            </div>
         <footer00></footer00>
     </div>
 </template>
@@ -176,6 +195,7 @@ export default {
             list:[],
             cart1:{display:"none"},
             cart2:{display:"none"},
+            one:{display:"none"},
         }
     },
     created(){
@@ -202,6 +222,10 @@ export default {
             this.$router.push("/Settlement");
         },
         msqgg(){this.$router.push("/Middle")},
+        close(){
+            this.one.display="none";
+        },
+        one1(){this.one.display="flex"},
     }
 }
 </script>
@@ -512,5 +536,89 @@ input[type="number"]{ -moz-appearance: textfield; }
 }
 .cartAll .cartAll2>div:nth-child(2) ul li p:nth-child(4) span{
     font-weight: bolder;
+}
+
+/* 提示框 */
+/* 提示框one */
+.cartAll .one{
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #33333375;
+    z-index: 900;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* display: none; */
+}
+.cartAll .one>div{
+    width: 276px;
+    height: 195px;
+    /* width: 0;
+    height: 0; */
+    background-color: #fff;
+    position: fixed;
+    box-shadow: 0px 0px 0px 10px rgba(0, 0, 0, 0.144);
+    overflow: hidden;
+    opacity: 1;
+    transition: all 0.2s ease-out;
+    /* display: none; */
+}
+.cartAll .one>div div:first-child{
+    width: 100%;
+    height: 43px;
+    padding-left: 20px;
+    background-color: #f8f8f8;
+}
+.cartAll .one>div div:first-child span{
+    font-size: 14px !important;
+    color: #333333;
+    line-height: 43px;
+}
+.cartAll .one>div div:first-child a{
+    color: #333 !important;
+    font-weight: bold;
+    font-size: 12px !important;
+    position: relative;
+    left: 170px;
+}
+.cartAll .one>div div:nth-child(2){
+    width: 100%;
+    height: 88px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cartAll .one>div div:nth-child(2) span:first-child{
+    color: #ffaa15;
+    font-size: 40px !important;
+}
+.cartAll .one>div div:nth-child(3){
+    height: 48px;
+    padding: 0 10px 12px;
+}
+.cartAll .one>div div:nth-child(3) button{
+    width: 56px;
+    height: 30px;
+    border-color: #333;
+    background-color: #333;
+    color: #fff;
+    float: right;
+    margin-right: 10px;
+    margin-top: 15px;
+    font-size: 12px;
+    border-radius: 2px;
+    font-weight: 400;
+    cursor: pointer;
+}
+.cartAll .one>div div:nth-child(3) button:first-child{
+    border: 1px solid #dedede;
+    background-color: #f1f1f1;
+    color: #333;
+    border-radius: 2px;
 }
 </style>
