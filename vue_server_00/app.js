@@ -852,21 +852,45 @@ server.get("/details",function(req,res){
 /***************************************************************************************************/ 
 //添加购物车
 server.get("/InsertProduct",(req,res)=>{
-	// var uid = req.session.uid;
-  // if(!uid){
-  //   res.send({code:-1,msg:"请登录"});
-  //   return;
-	// } 
-	var uid=req.query.uid;
+	var uid = req.session.uid;
+  if(!uid){
+    res.send({code:-1,msg:"请登录"});
+    return;
+	} 
+	var lid=Number(req.query.lid);
 	var img_url=req.query.img_url;
 	var title=req.query.title;
-	var price=req.query.price;
-	var count=req.query.count;
-  var sql = "INSERT INTO flower_shoppingcart_item(uid,img_url,title,price,count) VALUES(?,?,?,?)";
-  pool.query(sql,[uid,img_url,title,price,count],(err,result)=>{
-    if(err)throw err;
-    res.send({code:1,data:result})
-  })
+	var price=Number(req.query.price);
+	var count=Number(req.query.count);
+	// console.log(req.query);
+	// console.log(req.session.uid);
+	var sql1="SELECT * FROM flower_shoppingcart_item WHERE uid=? AND lid=?"
+	pool.query(sql1,[uid,lid],(err,result)=>{
+		if(err)throw err;
+		// console.log(result.length);
+		if(!result.length){
+			var sql = "INSERT INTO flower_shoppingcart_item(uid,lid,img_url,title,price,count) VALUES(?,?,?,?,?,?)";
+			pool.query(sql,[uid,lid,img_url,title,price,count],(err,result)=>{
+				if(err)throw err;
+				res.send({code:1,data:result})
+			})
+		}else{
+			// console.log(result);
+			// console.log(result[0].count);
+			var num=Number(result[0].count)+count;
+			var sql2="UPDATE flower_shoppingcart_item SET count=? WHERE uid=? AND lid=?";
+			pool.query(sql2,[num,uid,lid],(err,result)=>{
+				if(err)throw err;
+				res.send({code:1,data:result})
+			})
+		}
+	})
+
+  // var sql = "INSERT INTO flower_shoppingcart_item(uid,lid,img_url,title,price,count) VALUES(?,?,?,?,?,?)";
+  // pool.query(sql,[uid,lid,img_url,title,price,count],(err,result)=>{
+  //   if(err)throw err;
+  //   res.send({code:1,data:result})
+  // })
 })
 
 

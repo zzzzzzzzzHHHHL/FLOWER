@@ -404,22 +404,24 @@ export default {
             var obj={lid:this.$route.params.lid};
             this.axios.get(url,{params:obj}).then(result=>{
                 this.list=result.data[0][0];
-                console.log(result.data);
+                // console.log(this.list);
                 this.mimg="http://127.0.0.1:3000/"+this.list.details;
                 this.lgimg.backgroundImage="url("+"http://127.0.0.1:3000/"+this.list.details+ ") ";
             })
         },
         insert(){
-            // var url="InsertProduct";
-            // var obj={
-            //     img_url:this.list.details,
-            //     title:this.list.title,
-            //     price:this.list.price,
-            //     count:this.num1
-            // }
-            // this.axios.get(url,{params:obj}).then(result=>{
-            //     console.log(result);
-            // })
+            var url="InsertProduct";
+            var obj={
+                lid:this.list.lid,
+                img_url:this.list.details,
+                title:this.list.title,
+                price:this.list.price,
+                count:this.num1
+            }
+            // console.log(obj);
+            this.axios.get(url,{params:obj}).then(result=>{
+                // console.log(result);
+            })
         },
     },
     mounted(){
