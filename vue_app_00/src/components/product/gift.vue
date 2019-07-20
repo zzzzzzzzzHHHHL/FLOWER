@@ -1,38 +1,48 @@
 <template>
-<div>
-    <div class="productFilter my_flex">
-        <div class="left_pro">
-            <ul class="my_flex">
-                <li><a>排序:</a></li>
-                <li><a>新品</a></li>  
-                <li><a>人气</a></li>  
-                <li><a>价格</a> </li>
-                <li>
-                    <a><i class="el-icon-caret-top" @click="add"></i></a>
-                    <a><i class="el-icon-caret-bottom"  @click="cut"></i></a>   
-                </li>      
-            </ul>
+    <div>
+        <header00></header00>
+        <navgitor></navgitor>
+        <div class="productFilter my_flex">
+            <div class="left_pro">
+                <ul class="my_flex">
+                    <li><a>排序:</a></li>
+                    <li><a>新品</a></li>  
+                    <li><a>人气</a></li>  
+                    <li><a>价格</a> </li>
+                    <li>
+                        <a><i class="el-icon-caret-top" @click="add"></i></a>
+                        <a><i class="el-icon-caret-bottom"  @click="cut"></i></a>   
+                    </li>      
+                </ul>
+            </div>
+            <div class="right_pro">
+                <span>26个结果</span>
+                <el-pagination  background  layout="prev, pager, next" :total="20" @prev-click="last" @next-click="next" ></el-pagination>
+            </div>         
         </div>
-        <div class="right_pro">
-            <span>26个结果</span>
-            <el-pagination  background  layout="prev, pager, next" :total="20" @prev-click="last" @next-click="next" ></el-pagination>
-        </div>         
-    </div>
-    <div class="my_flex main">
-        <div  v-for="(elem,i) of list" :key="i" class="main_pro">
-            <router-link :to="elem.href"><img :src="`http://127.0.0.1:3000/`+elem.pic" ></router-link>
-            <p >
-                <router-link v-text="elem.title" :to="elem.href"></router-link>
-            </p>
-            <p v-text="elem.price"></p>
+        <div class="my_flex main">
+            <div  v-for="(elem,i) of list" :key="i" class="main_pro">
+                <router-link :to="elem.href"><img :src="`http://127.0.0.1:3000/`+elem.pic" ></router-link>
+                <p >
+                    <router-link v-text="elem.title" :to="elem.href"></router-link>
+                </p>
+                <p v-text="elem.price"></p>
+            </div>
+        
         </div>
-    
+        <footer00></footer00>
     </div>
-</div>
-    
 </template>
 <script>
+    import Header from "../index/header/header0.vue"
+    import Nav from "../project/Nav.vue"
+    import Footer from "../index/footer/footer0.vue"
   export default{
+      components:{
+        "header00":Header,
+        "navgitor":Nav,
+        "footer00":Footer
+    },
         data(){
             return{
                 list:[],

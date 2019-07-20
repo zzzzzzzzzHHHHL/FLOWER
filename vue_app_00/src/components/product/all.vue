@@ -16,8 +16,8 @@
                 </ul>
             </div>
             <div class="right_pro">
-                <span>32个结果</span>
-                <el-pagination  background  layout="prev, pager, next" :total="20" @prev-click="last" @next-click="next" ></el-pagination>
+                <span>431个结果</span>
+                <el-pagination  background  layout="prev, pager, next" :total="270" @prev-click="last" @next-click="next" ></el-pagination>
             </div>         
         </div>
         <div class="my_flex main">
@@ -47,14 +47,40 @@
         data(){
             return{
                 list:[],
-               pno:1,ps:16
+               pno:1,ps:16,
             }
         },
         mounted() {
-           
+            var ulStyle=document.querySelector(".el-pager")
+            var firstLi=ulStyle.children[0];
+            var secondLi=ulStyle.children[1];
+            var lastLi=ulStyle.children[2];
+            var url="birthday_product";
+            firstLi.onclick=()=>{
+                this.pno=1;
+                var obj={pno:this.pno,ps:this.ps}
+                this.axios.get(url,{params:obj}).then(result=>{
+                  this.list=result.data.data
+                })
+            },
+            secondLi.onclick=()=>{
+                this.pno=2;
+                var obj={pno:this.pno,ps:this.ps}
+                this.axios.get(url,{params:obj}).then(result=>{
+                  this.list=result.data.data
+                })
+                
+            } ,
+            lastLi.onclick=()=>{
+                this.pno=3;
+                var obj={pno:this.pno,ps:this.ps}
+                this.axios.get(url,{params:obj}).then(result=>{
+                  this.list=result.data.data
+                })    
+            }       
         },
         created() {
-              var url="apologize";
+              var url="all";
                 this.axios.get(url).then(result=>{
                     console.log(result);
                      this.list=result.data.slice(0,16)
@@ -64,21 +90,10 @@
                      //},10)
                 })
         },
-         mounted() {
-            var ulStyle=document.querySelector(".el-pager")
-            var firstLi=ulStyle.children[0];
-            var lastLi=ulStyle.children[1]
-            firstLi.onclick=()=>{
-                this.last()
-            }
-            lastLi.onclick=()=>{
-                this.next()
-            }       
-        },
     
         methods: {
             last(){
-                var url="apologize_product";
+                var url="all_product";
                 this.pno--;
                 var obj={pno:this.pno,ps:this.ps}
                 this.axios.get(url,{params:obj}).then(result=>{
@@ -89,7 +104,7 @@
                 })
             },
             next(){
-                var url="apologize_product";
+                var url="all_product";
                 this.pno++;
                 var obj={pno:this.pno,ps:this.ps}
                 this.axios.get(url,{params:obj}).then(result=>{
@@ -100,7 +115,7 @@
                 })
             },
               add(){
-                var url="apologize-priceUp";
+                var url="all-priceUp";
                 this.axios.get(url).then(result=>{
                     this.list=result.data;  
                 })
@@ -110,7 +125,7 @@
                 lasti.style.color="#d2d2d2";
             },
             cut(){
-                var url="apologize-priceDown";
+                var url="all-priceDown";
                 this.axios.get(url).then(result=>{
                     this.list=result.data
                 })

@@ -1,231 +1,243 @@
 <template>
-    <div class="details">
-        <!-- 商品详情页 -->
-        <div class="top">
-            <!-- 放大镜 -->
-            <div class="left all">
-                <!-- 小图 竖形列表li -->
-                <div class="my_li">
-                    <span class="iconfont icon-down fanye1" :class="arrow" @click="up"></span>
-                    <div class="ulheight" :style="uheight">
-                    <ul class="smallimg" :style="move_ul">
-                        <li><img :src="'http://127.0.0.1:3000/'+list.details" @mouseenter="select" alt=""></li>
-                        <li><img src="../../assets/Mig/20.jpg" @mouseenter="select" alt=""></li>
-                        <li><img src="../../assets/Mig/21.jpg" @mouseenter="select" alt=""></li>
-                        <li><img src="../../assets/Mig/22.png" @mouseenter="select" alt=""></li>
-                        <li><img src="../../assets/Mig/12.jpg" @mouseenter="select" alt=""></li>
-                        <li><img src="../../assets/Mig/13.jpg" @mouseenter="select" alt=""></li>
-                        <li><img src="../../assets/Mig/14.jpg" @mouseenter="select" alt=""></li>
-                        <li><img src="../../assets/Mig/2.png" @mouseenter="select" alt=""></li>
-                        <li><img src="../../assets/Mig/3.png" @mouseenter="select" alt=""></li>
-                    </ul> 
+    <div>
+        <header00></header00>
+        <navgitor></navgitor>
+        <div class="details">
+            <!-- 商品详情页 -->
+            <div class="top">
+                <!-- 放大镜 -->
+                <div class="left all">
+                    <!-- 小图 竖形列表li -->
+                    <div class="my_li">
+                        <span class="iconfont icon-down fanye1" :class="arrow" @click="up"></span>
+                        <div class="ulheight" :style="uheight">
+                        <ul class="smallimg" :style="move_ul">
+                            <li><img :src="'http://127.0.0.1:3000/'+list.details" @mouseenter="select" alt=""></li>
+                            <li><img src="../../assets/Mig/20.jpg" @mouseenter="select" alt=""></li>
+                            <li><img src="../../assets/Mig/21.jpg" @mouseenter="select" alt=""></li>
+                            <li><img src="../../assets/Mig/22.png" @mouseenter="select" alt=""></li>
+                            <li><img src="../../assets/Mig/12.jpg" @mouseenter="select" alt=""></li>
+                            <li><img src="../../assets/Mig/13.jpg" @mouseenter="select" alt=""></li>
+                            <li><img src="../../assets/Mig/14.jpg" @mouseenter="select" alt=""></li>
+                            <li><img src="../../assets/Mig/2.png" @mouseenter="select" alt=""></li>
+                            <li><img src="../../assets/Mig/3.png" @mouseenter="select" alt=""></li>
+                        </ul> 
+                        </div>
+                        <span class="iconfont icon-down fanye2" :class="arrow1" @click="down"></span>
                     </div>
-                    <span class="iconfont icon-down fanye2" :class="arrow1" @click="down"></span>
-                </div>
-                <!-- 中图 -->
-                <div class="m_img" >
-                    <!-- 遮罩层 -->
-                    <div class="mask" :style="mask"></div>
-                    <div class="mask2" @mousemove="move" @mouseleave="leave"></div>
-                    <img :src="mimg" alt="" >
-                </div>
-                <!-- <img src="../../assets/Mig/1.png"> -->
-                <!-- 大图 -->
-                <div class="l_img" :style="lgimg">
-                </div>
-            </div>
-            <!-- 右边详情 -->
-            <div class="right">
-                <h3 v-text=list.title></h3>
-                <p class="hzj">
-                    花赞价 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span class="dj" v-text="`￥${list.price}`"></span>&nbsp;&nbsp;&nbsp;
-                    <span class="iconfont icon-erweima" @mouseenter="ewmshow" @mouseleave="ewmhidden"></span>&nbsp;&nbsp;&nbsp;
-                    <span class="app">APP折后价</span>
-                    <span class="zhj">￥1399省150元</span>
-                    <img src="../../assets/Mig/ewm.png" alt="" class="bigewm" :style="ewm">
-                </p>
-                <div class="bigewm"></div>
-                <p>编&nbsp;&nbsp;&nbsp;&nbsp;号 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span v-text=list.serial_number></span>
-                </p>
-                <p>材&nbsp;&nbsp;&nbsp;&nbsp;料 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span v-text=list.material></span>
-                </p>
-                <p>包&nbsp;&nbsp;&nbsp;&nbsp;装 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span v-text=list.pack></span>
-                </p> 
-                <p>花&nbsp;&nbsp;&nbsp;&nbsp;语 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span v-text=list.blessing></span>
-                </p>
-                <p>附&nbsp;&nbsp;&nbsp;&nbsp;赠 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span v-text=list.annexation></span>
-                </p>
-                <p>配&nbsp;&nbsp;&nbsp;&nbsp;送 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span v-text=list.distribution>全国 （可配送至全国1000多个城市，市区免配送费）</span>
-                </p>
-                <p class="sm">说&nbsp;&nbsp;&nbsp;&nbsp;明 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span v-text=list.state class="shuoming"></span>
-                </p>
-                <p>数&nbsp;&nbsp;&nbsp;&nbsp;量 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="number" min="1" max="12" name="quantity" v-model="num1" id="">
-                    <span class="btnspan">
-                    <button class="iconfont icon-right fanye2" @click="one2"></button>
-                    <button class="iconfont icon-down fanye2" @click="one1" :class="updown"></button>
-                    </span>
-                </p>
-                <div class="btn">
-                    <button @click="jrgwc">加入购物车</button>
-                    <button @click="ljgm">立即购买</button>
-                    <button class="iconfont icon-shoucang-copy"></button>
-                    <button class="iconfont icon-fenxiang"></button>
-                </div>
-                
-            </div>
-        </div>
-        <!-- 商品详情 售后保障 -->
-        <div class="spxqnav">
-            <a href="#">商品详情</a>
-            <a href="#">售后保障</a>
-        </div>
-        <!-- 商品详情 吸顶div -->
-        <div class="spxqnav spxqnavfixed" id="xd" :class="fixed">
-            <a href="#">商品详情</a>
-            <a href="#">售后保障</a>
-            <button @click="jrgwc">加入购物车</button>
-            <button @click="ljgm">立即购买</button>
-        </div>
-        <!-- 品牌故事 -->
-        <div class="ppgs">
-            <div class="d1">
-                <div>
-                <p>Brand Story</p>
-                <p>品牌故事</p>
-                </div>
-            </div>
-            <div class="d2">
-                <span>Rosewin寓意花赞，鲜花礼赞爱情，专注于轻奢鲜花创意设计，10余年成就全国知名品牌。Rosewin精心打造的APP，订花更便捷：精准推荐设计师款，精心呈现每个细节，同时提供专业定制，致敬生活美学，将浪漫做到极致。</span>
-                <img src="../../assets/Mig/zimu.png" alt="">
-            </div>
-        </div>
-        <!-- 商品详情 -->
-        <div class="spxq" >
-            <div class="d1">
-                <div>
-                <p>Product Details</p>
-                <p>商品详情</p>
-                </div>
-            </div>
-            <div class="img">
-                <img :src="'http://127.0.0.1:3000/'+list.details" alt="" class="xqtp">
-                <img src="../../assets/Mig/11.jpg" alt="">
-                <!-- <img src="../../assets/Mig/6.jpg" alt="">
-                <img src="../../assets/Mig/7.jpg" alt="">
-                <img src="../../assets/Mig/8.jpg" alt="">
-                <img src="../../assets/Mig/9.jpg" alt="">
-                <img src="../../assets/Mig/10.jpg" alt="">
-                <img src="../../assets/Mig/5.jpg" alt="">
-                <img src="../../assets/Mig/11.jpg" alt=""> -->
-            </div>
-        </div>
-        <!-- 猜你喜欢 -->
-        <div class="cnxh">
-            <div class="d1">
-                <div>
-                <p>Guess Your Like</p>
-                <p>猜你喜欢</p>
-                </div>
-            </div>
-            <ul class="cnxhul">
-                <li>
-                    <a href="#"><img src="../../assets/Mig/12.jpg" alt=""></a>
-                    <div>
-                        <p>小幸运</p>
-                        <p>小清新礼盒装</p>
-                        <p>￥599</p>
+                    <!-- 中图 -->
+                    <div class="m_img" >
+                        <!-- 遮罩层 -->
+                        <div class="mask" :style="mask"></div>
+                        <div class="mask2" @mousemove="move" @mouseleave="leave"></div>
+                        <img :src="mimg" alt="" >
                     </div>
-                </li>
-                <li>
-                    <a href="#"><img src="../../assets/Mig/13.jpg" alt=""></a>
-                    <div>
-                        <p>陌上花开</p>
-                        <p>99朵粉红雪山</p>
-                        <p>￥1199</p>
+                    <!-- <img src="../../assets/Mig/1.png"> -->
+                    <!-- 大图 -->
+                    <div class="l_img" :style="lgimg">
                     </div>
-                </li>
-                <li>
-                    <a href="#"><img src="../../assets/Mig/14.jpg" alt=""></a>
-                    <div>
-                        <p>闻香识爱</p>
-                        <p>16朵戴安娜</p>
-                        <p>￥699</p>
-                    </div>
-                </li>
-                <li>
-                    <a href="#"><img src="../../assets/Mig/15.jpg" alt=""></a>
-                    <div>
-                        <p>叶上胭脂</p>
-                        <p>19朵厄瓜多尔红玫瑰</p>
-                        <p>￥1499</p>
-                    </div>
-                </li>
-                <li>
-                    <a href="#"><img src="../../assets/Mig/16.jpg" alt=""></a>
-                    <div>
-                        <p>初遇</p>
-                        <p>52朵戴安娜玫瑰</p>
-                        <p>￥799</p>
-                    </div>
-                </li>
-               
-            </ul>
-        </div>
-        <!-- 消息提示框 最少一个 -->
-        <!-- 遮罩 -->
-        <div class="one" :style="one">
-            <!-- 提示框 -->
-            <div :class="guodu">
-                <div>
-                    <span>系统提示</span>
-                    <a href="javascript:;" class="iconfont icon-tishikuangguanbi" @click="close"></a>
                 </div>
-                <div>
-                    <span class="iconfont icon-ruotishikuang-jinggaotishitubiao"></span>
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <span>最低购买数量为：1</span>
-                </div>
-                <div>
-                    <button @click="close">确定</button>
-                </div>
-            </div>
-        </div>
-        <!-- 消息提示框 加入购物车 -->
-        <!-- 遮罩 -->
-        <div class="two" :style="two">
-            <div :class="guodu2">
-                <div>
-                    <span>系统提示</span>
-                    <a href="javascript:;" class="iconfont icon-tishikuangguanbi" @click="close"></a>
-                </div>
-                <div>
-                    <p>宝贝已成功添加到购物车</p>
-                    <p>
-                        购物车共有 <span class="geshu">1</span> 件宝贝，总金额为：<span class="jine">￥599.00</span>
+                <!-- 右边详情 -->
+                <div class="right">
+                    <h3 v-text=list.title></h3>
+                    <p class="hzj">
+                        花赞价 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="dj" v-text="`￥${list.price}`"></span>&nbsp;&nbsp;&nbsp;
+                        <span class="iconfont icon-erweima" @mouseenter="ewmshow" @mouseleave="ewmhidden"></span>&nbsp;&nbsp;&nbsp;
+                        <span class="app">APP折后价</span>
+                        <span class="zhj">￥1399省150元</span>
+                        <img src="../../assets/Mig/ewm.png" alt="" class="bigewm" :style="ewm">
                     </p>
+                    <div class="bigewm"></div>
+                    <p>编&nbsp;&nbsp;&nbsp;&nbsp;号 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span v-text=list.serial_number></span>
+                    </p>
+                    <p>材&nbsp;&nbsp;&nbsp;&nbsp;料 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span v-text=list.material></span>
+                    </p>
+                    <p>包&nbsp;&nbsp;&nbsp;&nbsp;装 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span v-text=list.pack></span>
+                    </p> 
+                    <p>花&nbsp;&nbsp;&nbsp;&nbsp;语 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span v-text=list.blessing></span>
+                    </p>
+                    <p>附&nbsp;&nbsp;&nbsp;&nbsp;赠 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span v-text=list.annexation></span>
+                    </p>
+                    <p>配&nbsp;&nbsp;&nbsp;&nbsp;送 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span v-text=list.distribution>全国 （可配送至全国1000多个城市，市区免配送费）</span>
+                    </p>
+                    <p class="sm">说&nbsp;&nbsp;&nbsp;&nbsp;明 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span v-text=list.state class="shuoming"></span>
+                    </p>
+                    <p>数&nbsp;&nbsp;&nbsp;&nbsp;量 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="number" min="1" max="12" name="quantity" v-model="num1" id="">
+                        <span class="btnspan">
+                        <button class="iconfont icon-right fanye2" @click="one2"></button>
+                        <button class="iconfont icon-down fanye2" @click="one1" :class="updown"></button>
+                        </span>
+                    </p>
+                    <div class="btn">
+                        <button @click="jrgwc">加入购物车</button>
+                        <button @click="ljgm">立即购买</button>
+                        <button class="iconfont icon-shoucang-copy"></button>
+                        <button class="iconfont icon-fenxiang"></button>
+                    </div>
+                    
                 </div>
-                <div>
-                    <button @click="ljgm">去结算</button>
-                    <button @click="close">继续购物</button>
+            </div>
+            <!-- 商品详情 售后保障 -->
+            <div class="spxqnav">
+                <a href="#">商品详情</a>
+                <a href="#">售后保障</a>
+            </div>
+            <!-- 商品详情 吸顶div -->
+            <div class="spxqnav spxqnavfixed" id="xd" :class="fixed">
+                <a href="#">商品详情</a>
+                <a href="#">售后保障</a>
+                <button @click="jrgwc">加入购物车</button>
+                <button @click="ljgm">立即购买</button>
+            </div>
+            <!-- 品牌故事 -->
+            <div class="ppgs">
+                <div class="d1">
+                    <div>
+                    <p>Brand Story</p>
+                    <p>品牌故事</p>
+                    </div>
+                </div>
+                <div class="d2">
+                    <span>Rosewin寓意花赞，鲜花礼赞爱情，专注于轻奢鲜花创意设计，10余年成就全国知名品牌。Rosewin精心打造的APP，订花更便捷：精准推荐设计师款，精心呈现每个细节，同时提供专业定制，致敬生活美学，将浪漫做到极致。</span>
+                    <img src="../../assets/Mig/zimu.png" alt="">
+                </div>
+            </div>
+            <!-- 商品详情 -->
+            <div class="spxq" >
+                <div class="d1">
+                    <div>
+                    <p>Product Details</p>
+                    <p>商品详情</p>
+                    </div>
+                </div>
+                <div class="img">
+                    <img :src="'http://127.0.0.1:3000/'+list.details" alt="" class="xqtp">
+                    <img src="../../assets/Mig/11.jpg" alt="">
+                    <!-- <img src="../../assets/Mig/6.jpg" alt="">
+                    <img src="../../assets/Mig/7.jpg" alt="">
+                    <img src="../../assets/Mig/8.jpg" alt="">
+                    <img src="../../assets/Mig/9.jpg" alt="">
+                    <img src="../../assets/Mig/10.jpg" alt="">
+                    <img src="../../assets/Mig/5.jpg" alt="">
+                    <img src="../../assets/Mig/11.jpg" alt=""> -->
+                </div>
+            </div>
+            <!-- 猜你喜欢 -->
+            <div class="cnxh">
+                <div class="d1">
+                    <div>
+                    <p>Guess Your Like</p>
+                    <p>猜你喜欢</p>
+                    </div>
+                </div>
+                <ul class="cnxhul">
+                    <li>
+                        <a href="#"><img src="../../assets/Mig/12.jpg" alt=""></a>
+                        <div>
+                            <p>小幸运</p>
+                            <p>小清新礼盒装</p>
+                            <p>￥599</p>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#"><img src="../../assets/Mig/13.jpg" alt=""></a>
+                        <div>
+                            <p>陌上花开</p>
+                            <p>99朵粉红雪山</p>
+                            <p>￥1199</p>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#"><img src="../../assets/Mig/14.jpg" alt=""></a>
+                        <div>
+                            <p>闻香识爱</p>
+                            <p>16朵戴安娜</p>
+                            <p>￥699</p>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#"><img src="../../assets/Mig/15.jpg" alt=""></a>
+                        <div>
+                            <p>叶上胭脂</p>
+                            <p>19朵厄瓜多尔红玫瑰</p>
+                            <p>￥1499</p>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#"><img src="../../assets/Mig/16.jpg" alt=""></a>
+                        <div>
+                            <p>初遇</p>
+                            <p>52朵戴安娜玫瑰</p>
+                            <p>￥799</p>
+                        </div>
+                    </li>
+                
+                </ul>
+            </div>
+            <!-- 消息提示框 最少一个 -->
+            <!-- 遮罩 -->
+            <div class="one" :style="one">
+                <!-- 提示框 -->
+                <div :class="guodu">
+                    <div>
+                        <span>系统提示</span>
+                        <a href="javascript:;" class="iconfont icon-tishikuangguanbi" @click="close"></a>
+                    </div>
+                    <div>
+                        <span class="iconfont icon-ruotishikuang-jinggaotishitubiao"></span>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <span>最低购买数量为：1</span>
+                    </div>
+                    <div>
+                        <button @click="close">确定</button>
+                    </div>
+                </div>
+            </div>
+            <!-- 消息提示框 加入购物车 -->
+            <!-- 遮罩 -->
+            <div class="two" :style="two">
+                <div :class="guodu2">
+                    <div>
+                        <span>系统提示</span>
+                        <a href="javascript:;" class="iconfont icon-tishikuangguanbi" @click="close"></a>
+                    </div>
+                    <div>
+                        <p>宝贝已成功添加到购物车</p>
+                        <p>
+                            购物车共有 <span class="geshu">1</span> 件宝贝，总金额为：<span class="jine">￥599.00</span>
+                        </p>
+                    </div>
+                    <div>
+                        <button @click="ljgm">去结算</button>
+                        <button @click="close">继续购物</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+        <footer00></footer00>
+    </div> 
 </template>
-
 <script>
 import { setTimeout, clearInterval } from 'timers';
 // import { constants } from 'crypto';
+    import Header from "../index/header/header0.vue"
+    import Nav from "../project/Nav.vue"
+    import Footer from "../index/footer/footer0.vue"
 export default {
+    components:{
+        "header00":Header,
+        "navgitor":Nav,
+        "footer00":Footer
+    },
     data(){
         return{
             list:{},

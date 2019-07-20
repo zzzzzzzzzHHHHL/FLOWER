@@ -8,7 +8,7 @@
                     <a href="javascirpt:;">首页</a>
                 </div>
                 <div class="tow">
-                    <a href="Middle.vue">首页</a>
+                    <router-link :to="`/Middle`">首页</router-link>
                 </div>
                 </div>
                 <span>/</span> 

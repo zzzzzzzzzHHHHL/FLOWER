@@ -15,6 +15,7 @@ import Blessing from "./components/product/blessing.vue"
 import Condole from "./components/product/condole.vue"
 import Apologize from "./components/product/apologize.vue"
 import Life from "./components/product/life.vue"
+import All from "./components/product/all.vue"
 import Opening from "./components/product/opening.vue"
 import Forever from "./components/product/forever.vue"
 import Gift from "./components/product/gift.vue"
@@ -49,13 +50,9 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {path:'/',component:HelloContainer},
-    {path:'/header0',component:header0},
-    {path:'/footer0',component:footer0},
+    //后台
     {path:'/Admin',component:Admin},
-    // {path:'/Test',component:Test},
-    // {path:'/Test4',component:Test4},
-    // {path:'/Test1',component:Test1},
-    // {path:'/Test3',component:Test3},
+    //其他页面
     {path:'/Import',component:Import},
     {path:'/Love',component:Love},
     {path:'/Birthday',component:Birthady},
@@ -64,22 +61,20 @@ export default new Router({
     {path:'/Condole',component:Condole},
     {path:'/Apologize',component:Apologize},
     {path:'/Life',component:Life},
+    {path:'/All',component:All},
     {path:'/Opening',component:Opening},
     {path:'/Forever',component:Forever},
     {path:'/Gift',component:Gift},
     {path:'/Login',component:Login},
     {path:'/Register',component:Register},
+    //滚动图
     {path:'/Scrollbars',component:Scrollbars},
     {path:'/Scoll',component:Scoll},
-
     // 注册主页面路径
-    // {path:'/Ceiling',component:Ceiling},
-    // {path:'/Header',component:Header},
-    // {path:'/Input',component:Input},
     {path:'/Banner',component:Banner},
-    // {path:'/Navbar',component:Navbar},
     {path:'/Middle',component:Middle},
-    // {path:'/Footer',component:Footer},
+    {path:'/header0',component:header0},
+    {path:'/footer0',component:footer0},
 
     // 张旭项目分界线=
     {path:'/Nav',component:Nav},
