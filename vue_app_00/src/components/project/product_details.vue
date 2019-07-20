@@ -1,5 +1,10 @@
 <template>
     <div class="details">
+        <header00 style="background:#fff"></header00>
+        <div class="navstyle">
+            <navgitor ></navgitor>
+        </div>
+        <div class="fjx"></div>
         <!-- 商品详情页 -->
         <div class="top">
             <!-- 放大镜 -->
@@ -219,13 +224,22 @@
                 </div>
             </div>
         </div>
+        <footer00></footer00>
     </div>
 </template>
 
 <script>
 import { setTimeout, clearInterval } from 'timers';
 // import { constants } from 'crypto';
+import Header from "../index/header/header0.vue"
+import Footer from "../index/footer/footer0.vue"
+import Nav from "./Nav.vue"
 export default {
+    components:{
+      "header00":Header,
+      "navgitor":Nav,
+      "footer00":Footer,
+     },
     data(){
         return{
             list:{},
@@ -354,7 +368,7 @@ export default {
             // console.log(scrollTop);
             // let offsetTop=document.querySelector("#xd").offsetTop;
             // console.log(offsetTop);
-            scrollTop>600?this.fixed.xiding=true:this.fixed.xiding=false;
+            scrollTop>835?this.fixed.xiding=true:this.fixed.xiding=false;
             // console.log(this.fixed.xiding)
         },
         one1(){
@@ -396,16 +410,16 @@ export default {
             })
         },
         insert(){
-            var url="InsertProduct";
-            var obj={
-                img_url:this.list.details,
-                title:this.list.title,
-                price:this.list.price,
-                count:this.num1
-            }
-            this.axios.get(url,{params:obj}).then(result=>{
-                console.log(result);
-            })
+            // var url="InsertProduct";
+            // var obj={
+            //     img_url:this.list.details,
+            //     title:this.list.title,
+            //     price:this.list.price,
+            //     count:this.num1
+            // }
+            // this.axios.get(url,{params:obj}).then(result=>{
+            //     console.log(result);
+            // })
         },
     },
     mounted(){
@@ -431,6 +445,16 @@ export default {
 }
 </script>
 <style scoped>
+.navstyle{
+    width: 100%;
+    background-color: #fff;
+    height: 105px;
+}
+.details>.fjx{
+    width: 100%;
+    border: 1px solid #d8d8d8;
+    margin-bottom: 25px;
+}
 /* 放大镜样式 */
 .arrowup{
     color: #666 !important;
@@ -800,6 +824,7 @@ input[type="number"]{ -moz-appearance: textfield; }
 }
 .details .cnxh{
     margin-top:40px;
+    margin-bottom: 30px;
 }
 .details .cnxh .cnxhul{
     list-style: none;

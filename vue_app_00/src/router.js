@@ -3,10 +3,10 @@ import Vue from 'vue'
 import Router from 'vue-router'
 //自定义组件
 import HelloContainer from "./components/HelloWorld.vue"
-import Test from "./components/test/test.vue"
-import Test1 from "./components/test/test1.vue"
-import Test3 from "./components/test/test3.vue"
-import Test4 from "./components/test/test4.vue"
+// import Test from "./components/test/test.vue"
+// import Test1 from "./components/test/test1.vue"
+// import Test3 from "./components/test/test3.vue"
+// import Test4 from "./components/test/test4.vue"
 import Import from "./components/product/import.vue"
 import Love from "./components/product/love.vue"
 import Birthady from "./components/product/birthday.vue"
@@ -25,13 +25,13 @@ import Scrollbars from "./components/scrollbars/scrollbars.vue"
 import Scoll from "./components/scrollbars/scoll.vue"
 
 // 主页面路径
-import Ceiling from "./components/index/header/Ceiling.vue"
-import Header from "./components/index/header/Header.vue"
-import Input from "./components/index/header/Input.vue"
-import Nav1 from "./components/index/header/Nav1.vue"
-import Navbar from "./components/index/header/Navbar.vue"
+// import Ceiling from "./components/index/header/Ceiling.vue"
+// import Header from "./components/index/header/Header.vue"
+// import Input from "./components/index/header/Input.vue"
+import Banner from "./components/index/header/banner.vue"
+// import Navbar from "./components/index/header/Navbar.vue"
 import Middle from "./components/index/middle/Middle.vue"
-import Footer from "./components/index/footer/Footer.vue"
+// import Footer from "./components/index/footer/Footer.vue"
 
 // 张旭项目引用分界线
 import Nav from "./components/project/Nav.vue"
@@ -52,10 +52,10 @@ export default new Router({
     {path:'/header0',component:header0},
     {path:'/footer0',component:footer0},
     {path:'/Admin',component:Admin},
-    {path:'/Test',component:Test},
-    {path:'/Test4',component:Test4},
-    {path:'/Test1',component:Test1},
-    {path:'/Test3',component:Test3},
+    // {path:'/Test',component:Test},
+    // {path:'/Test4',component:Test4},
+    // {path:'/Test1',component:Test1},
+    // {path:'/Test3',component:Test3},
     {path:'/Import',component:Import},
     {path:'/Love',component:Love},
     {path:'/Birthday',component:Birthady},
@@ -73,13 +73,13 @@ export default new Router({
     {path:'/Scoll',component:Scoll},
 
     // 注册主页面路径
-    {path:'/Ceiling',component:Ceiling},
-    {path:'/Header',component:Header},
-    {path:'/Input',component:Input},
-    {path:'/Nav1',component:Nav1},
-    {path:'/Navbar',component:Navbar},
+    // {path:'/Ceiling',component:Ceiling},
+    // {path:'/Header',component:Header},
+    // {path:'/Input',component:Input},
+    {path:'/Banner',component:Banner},
+    // {path:'/Navbar',component:Navbar},
     {path:'/Middle',component:Middle},
-    {path:'/Footer',component:Footer},
+    // {path:'/Footer',component:Footer},
 
     // 张旭项目分界线=
     {path:'/Nav',component:Nav},

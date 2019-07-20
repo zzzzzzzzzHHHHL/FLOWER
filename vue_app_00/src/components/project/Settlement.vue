@@ -58,17 +58,17 @@
             <div class="message">
                 <p>贺卡留言+署名</p>
                 <div>
-                    <textarea name="" id="" cols="30" rows="10" placeholder="贺卡留言+署名"></textarea>
+                    <textarea name="" id="" cols="30" rows="10" placeholder="贺卡留言+署名" v-model="by"></textarea>
                     <div>
                         <ul>
-                            <li @click="who" :class="give1" data-num="1">送恋人</li>
-                            <li @click="who" :class="give2">送朋友</li>
-                            <li @click="who" :class="give3">送长辈</li>
-                            <li @click="who" :class="give4">送花篮</li>
+                            <li @click="who" :class="give1" data-who="w1">送恋人</li>
+                            <li @click="who" :class="give2" data-who="w2">送朋友</li>
+                            <li @click="who" :class="give3" data-who="w3">送长辈</li>
+                            <li @click="who" :class="give4" data-who="w4">送花篮</li>
                         </ul>
-                        <div class="biaoyu">
+                        <div class="biaoyu" @click="selectby">
                             <!--送恋人-->
-                            <ul>
+                            <ul :style="biaoyu1">
                                 <li data-content="我多么希望，有一个门口，早晨，阳光照在草上，我们站着，扶着自己的门扇，门很低，但太阳是明亮的。草在结它的种子，风在摇它的叶子，我们站着，不说话，就十分美好。">
                                     1.我多么希望，有一个门口，早晨，阳光照在草上，我们站着，扶着自己的门扇，门很低，但太阳是明亮的。草在结它的种子，风在摇它的叶子，我们站着，不说话，就十分美好。
                                 </li>
@@ -101,7 +101,7 @@
                                 </li>
                             </ul>
                             <!-- 送朋友 -->
-                            <ul>
+                            <ul :style="biaoyu2">
                                 <li data-content="生日快乐么么哒，恭祝兄弟仙福永享寿与天齐。">
                                     1.生日快乐么么哒，恭祝兄弟仙福永享寿与天齐。
                                 </li>
@@ -134,7 +134,7 @@
                                 </li>
                             </ul>
                             <!-- 送长辈 -->
-                            <ul>
+                            <ul :style="biaoyu3">
                                 <li data-content="您是经霜的枫树老更红历尽悲欢，愈显得襟怀坦荡。衷心祝愿您生命之树常青！">
                                     1.您是经霜的枫树老更红历尽悲欢，愈显得襟怀坦荡。衷心祝愿您生命之树常青！
                                 </li>
@@ -167,7 +167,7 @@
                                 </li>
                             </ul>
                             <!-- 送花篮 -->
-                            <ul>
+                            <ul :style="biaoyu4">
                                 <li data-content="恒心有恒业，隆德享隆名。">
                                     1.恒心有恒业，隆德享隆名。
                                 </li>
@@ -217,9 +217,14 @@ export default {
             s2:{visibility:"hidden"},
             s3:{visibility:"hidden"},
             give1:{givewho:true},
-            give2:{},
-            give3:{},
-            give4:{},
+            give2:{givewho:false},
+            give3:{givewho:false},
+            give4:{givewho:false},
+            biaoyu1:{display:"block"},
+            biaoyu2:{display:"none"},
+            biaoyu3:{display:"none"},
+            biaoyu4:{display:"none"},
+            by:"",
         }
     },
     methods:{
@@ -242,14 +247,60 @@ export default {
             }
         },
         who(e){
-            console.log(e.currentTarget);
+            // console.log(e.currentTarget);
+            var w=e.currentTarget.dataset.who;
+            // console.log(w);
+            if(w=="w1"){
+                this.give1.givewho=true;
+                this.give2.givewho=false;
+                this.give3.givewho=false;
+                this.give4.givewho=false;
+                this.biaoyu1.display="block";
+                this.biaoyu2.display="none";
+                this.biaoyu3.display="none";
+                this.biaoyu4.display="none";
+            }else if(w=="w2"){
+                this.give1.givewho=false;
+                this.give2.givewho=true;
+                this.give3.givewho=false;
+                this.give4.givewho=false;
+                this.biaoyu1.display="none";
+                this.biaoyu2.display="block";
+                this.biaoyu3.display="none";
+                this.biaoyu4.display="none";
+            }else if(w=="w3"){
+                this.give1.givewho=false;
+                this.give2.givewho=false;
+                this.give3.givewho=true;
+                this.give4.givewho=false;
+                this.biaoyu1.display="none";
+                this.biaoyu2.display="none";
+                this.biaoyu3.display="block";
+                this.biaoyu4.display="none";
+            }else if(w=="w4"){
+                this.give1.givewho=false;
+                this.give2.givewho=false;
+                this.give3.givewho=false;
+                this.give4.givewho=true;
+                this.biaoyu1.display="none";
+                this.biaoyu2.display="none";
+                this.biaoyu3.display="none";
+                this.biaoyu4.display="block";
+            }
         },
+        selectby(e){
+            // console.log(e.target.attributes[1].value);
+            this.by=e.target.attributes[1].value;
+        }
     },
 
 }
 </script>
 
 <style scoped>
+.settlement{
+    background-color: #fff !important;
+}
 .givewho{
     background: #333 !important;
     color: #fff !important;
@@ -495,10 +546,13 @@ input[type="date"]::-webkit-clear-button{
 }
 .settlement .message>div>div .biaoyu>ul>li{
     width: 464px;
-    height: 20px;
+    height: 25px;
     overflow: hidden;
     font-size: 13px;
     color: #888888;
-    margin: 6px 0;
+    padding: 6px 0;
+}
+.settlement .message>div>div .biaoyu>ul>li:hover{
+    cursor: default;
 }
 </style>

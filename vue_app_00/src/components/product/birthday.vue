@@ -131,7 +131,6 @@
      a{
         cursor: pointer;
     }
-   
     .productFilter{
         width:1200px;
         margin:0 auto;
