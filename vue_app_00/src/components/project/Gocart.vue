@@ -22,24 +22,28 @@
             </div>
             <!-- 购物车商品详情 -->
             <div class="productAll">
-                <div>
+                <div v-for="(elem,i) of list" :key="i">
                     <ul>
                         <!-- 商品图片 -->
                         <li>
                             <input type="checkbox" name="">
                             &nbsp;&nbsp;&nbsp;
-                            <a href="#">
-                            <img src="../../assets/Mig/1.png" alt="">
-                            </a>
+                            <router-link :to="'product_details/'+elem.lid">
+                            <img :src="'http://127.0.0.1:3000/'+elem.img_url" alt="">
+                            </router-link>
                         </li>
                         <!-- 商品信息 -->
-                        <li><a href="#">布拉格之恋-9朵进口红玫瑰</a></li>
+                        <li>
+                            <router-link :to="'product_details/'+elem.lid" v-text="elem.title">
+                            </router-link>
+                        </li>
+                        <!-- <li><a href="#" v-text="elem.title"></a></li> -->
                         <!-- 单价 -->
-                        <li>￥999.00</li>
+                        <li v-text="`￥${elem.price}`"></li>
                         <!-- 数量 -->
                         <li class="btn">
                             <button>-</button>
-                            <input type="number" min="1" max="12" name="quantity" value="1">
+                            <input type="number" min="1" max="12" name="quantity" v-model="elem.count">
                             <button>+</button>
                         </li>
                         <!-- 小计 -->
@@ -48,9 +52,8 @@
                         <li class="delete"><a href="#">删除</a></li>
                     </ul>
                 </div>
-                <div>
+                <!-- <div>
                     <ul>
-                        <!-- 商品图片 -->
                         <li>
                             <input type="checkbox" name="">
                             &nbsp;&nbsp;&nbsp;
@@ -58,48 +61,17 @@
                             <img src="../../assets/Mig/1.png" alt="">
                             </a>
                         </li>
-                        <!-- 商品信息 -->
                         <li><a href="#">布拉格之恋-9朵进口红玫瑰</a></li>
-                        <!-- 单价 -->
                         <li>￥999.00</li>
-                        <!-- 数量 -->
                         <li class="btn">
                             <button>-</button>
                             <input type="number" min="1" max="12" name="quantity" value="1">
                             <button>+</button>
                         </li>
-                        <!-- 小计 -->
                         <li>￥999.00</li>
-                        <!-- 删除按钮 -->
                         <li class="delete"><a href="#">删除</a></li>
                     </ul>
-                </div>
-                <div>
-                    <ul>
-                        <!-- 商品图片 -->
-                        <li>
-                            <input type="checkbox" name="">
-                            &nbsp;&nbsp;&nbsp;
-                            <a href="#">
-                            <img src="../../assets/Mig/1.png" alt="">
-                            </a>
-                        </li>
-                        <!-- 商品信息 -->
-                        <li><a href="#">布拉格之恋-9朵进口红玫瑰</a></li>
-                        <!-- 单价 -->
-                        <li>￥999.00</li>
-                        <!-- 数量 -->
-                        <li class="btn">
-                            <button>-</button>
-                            <input type="number" min="1" max="12" name="quantity" value="1">
-                            <button>+</button>
-                        </li>
-                        <!-- 小计 -->
-                        <li>￥999.00</li>
-                        <!-- 删除按钮 -->
-                        <li class="delete"><a href="#">删除</a></li>
-                    </ul>
-                </div>
+                </div> -->
             </div>
             <!-- 全选 结算 -->
             <div class="jiesuan">
@@ -201,6 +173,7 @@ export default {
      },
     data(){
         return{
+            list:[],
             cart1:{display:"block"},
             cart2:{display:"none"},
         }
@@ -213,7 +186,9 @@ export default {
         loadMore(){
             var url = "cart";
             this.axios.get(url).then(result=>{
-               console.log(result);
+               //console.log(result.data.data);
+               this.list=result.data.data;
+               console.log(this.list);
             })
         },
         ljjs(){

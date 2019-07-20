@@ -64,9 +64,10 @@ CREATE TABLE flower_receiver_address(
 
 /**购物车条目**/
 CREATE TABLE flower_shoppingcart_item(
-  lid INT PRIMARY KEY AUTO_INCREMENT,
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  lid INT,                  #商品编号
   uid INT,                  #用户编号
-  img_url VARCHAR(25),		
+  img_url VARCHAR(64),		
   title VARCHAR(64),	    #商品详情
   price DECIMAL(10,2),
   count INT,                #购买数量
