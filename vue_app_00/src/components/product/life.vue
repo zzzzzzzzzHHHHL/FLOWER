@@ -207,6 +207,7 @@
      width:280px;
      height:60px;
      box-sizing:border-box;
+     padding: 0 15px;
  }
  .main_pro{
      box-shadow: 0 0 5px #d9d9d9;
@@ -225,5 +226,10 @@
      text-align:center;
      margin:10px 0px;
  }
- 
+ .msg_pro>p:first-child{
+     overflow: hidden;
+     text-overflow: ellipsis;
+     white-space: nowrap;
+     
+ }
 </style>
