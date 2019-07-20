@@ -41,9 +41,9 @@
                         <li v-text="`￥${elem.price}`"></li>
                         <!-- 数量 -->
                         <li class="btn">
-                            <button @click="jian" :data-lid="elem.lid" :data-count="elem.count">-</button>
-                            <input type="number" min="1" max="12" name="quantity" v-model="elem.count">
-                            <button @click="jia" :data-lid="elem.lid" :data-count="elem.count">+</button>
+                            <button @click="jian" :data-lid="elem.lid" :data-count="elem.count" :data-price="elem.price">-</button>
+                            <input type="number" min="1" max="12" name="quantity" v-model="elem.count" disabled="disabled" class="numinput">
+                            <button @click="jia" :data-lid="elem.lid" :data-count="elem.count" :data-price="elem.price">+</button>
                         </li>
                         <!-- 小计 -->
                         <li v-text="`￥${Number(elem.price)*elem.count}`"></li>
@@ -86,9 +86,9 @@
                         <!-- @click="delproduct" -->
                     </li>
                     <li>
-                        已选商品 <span class="span1">3</span> 件
+                        已选商品 <span class="span1" v-text="total"></span> 件
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        总价(不含运费)： <span class="span2">￥3000.00</span>
+                        总价(不含运费)： <span class="span2" v-text="`￥${sum}`"></span>
                     </li>
                     </ul>
                 </div>
@@ -219,8 +219,8 @@ export default {
             t:false,
             delletelid:"",
             delobj:[],
-            // plus:"",
-            // reduce:"",
+            total:0,
+            sum:0,
         }
     },
     created(){
@@ -245,8 +245,21 @@ export default {
                    this.cart1.display="block";
                    this.cart2.display="none";
                }
+               // 求和
+               this.sum=0;
+               var k=0;
+                for(var i=0;i<this.list.length;i++){
+                    // console.log(typeof(this.list[i].price));
+                    this.sum+=(this.list[i].count*this.list[i].price);
+                    k+=Number(this.list[i].count);
+                    // console.log(k);
+                }
+                // vuex数据存贮
+                this.$store.commit("set1",k);
+                this.$store.commit("set2",this.sum);
             })
             
+            // console.log(this.sum);
         },
         ljjs(){
             this.$router.push("/Settlement");
@@ -270,7 +283,7 @@ export default {
         delproduct(e){
             this.two.display="none";
             for(var i=0;i<this.list.length;i++){
-                console.log(this.list[i].is_checked);
+                // console.log(this.list[i].is_checked);
                 if(this.list[i].is_checked==true){
                     var n=0;
                     for(var k=0;k<this.delobj.length;k++){
@@ -280,7 +293,7 @@ export default {
                     // this.delobj.push(e.target.dataset.lid); 
                 }
             }
-            console.log(this.delobj);
+            // console.log(this.delobj);
             if(this.delobj.length>=1){
                 var url = "delAll";
                 var obj = {
@@ -315,12 +328,20 @@ export default {
                 item.is_checked=cb;
                 // console.log(this.list.is_checked);
             }
+            if(e.target.checked==true){
+                this.total=0;
+                this.total+=this.list.length
+            }else{this.total-=this.list.length}
         },
         select(e){
             // console.log(e.target.checked);
-            if(e.target.checked==false){this.t=false;}
+            if(e.target.checked==false){
+                this.t=false;
+                this.total-=1;
+            }
             // console.log(e.target.checked==true)
             else {
+                this.total+=1;
                 var n=0;
                 for(var i=0;i<this.list.length;i++){
                     if(this.list[i].is_checked==true){
@@ -329,9 +350,10 @@ export default {
                 }
                 if(n+1==this.list.length){this.t=true}
             }
+            // console.log(this.total);
         },
         jia(e){
-            console.log(e.target.dataset.lid);
+            // console.log(e.target.dataset.lid);
             var i=e.target.dataset.lid;
             var url = "plus";
             var obj = {
@@ -364,6 +386,9 @@ export default {
 </script>
 
 <style scoped>
+.cartAll .numinput{
+    background-color: #fff;
+}
 .footer{
     margin-top: -15px !important;
 }
