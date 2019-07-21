@@ -213,17 +213,17 @@
                     <div>
                         <p>宝贝已成功添加到购物车</p>
                         <p>
-                            购物车共有 <span class="geshu">1</span> 件宝贝，总金额为：<span class="jine">￥599.00</span>
+                            购物车共有 <span class="geshu">{{$store.getters.get[0]}}</span> 件宝贝，总金额为：<span class="jine">￥{{$store.getters.get[1]}}</span>
                         </p>
                     </div>
                     <div>
-                        <button @click="ljgm">去结算</button>
+                        <button @click="ljgm1">去结算</button>
                         <button @click="close">继续购物</button>
                     </div>
                 </div>
             </div>
         </div>
-        <footer00></footer00>
+        <footer00 class="footer"></footer00>
     </div>
 </template>
 <script>
@@ -352,8 +352,7 @@ export default {
                 }
                 top=(top+62)+"px";
                 this.move_ul.top=top;
-            }
-            
+            }  
         },
         ewmshow(){
             this.ewm.visibility="visible"
@@ -393,9 +392,19 @@ export default {
             this.two.display="flex";
             this.guodu2.tsdonghua2=true;
             this.insert();
+            var c=this.num1;
+            var p=this.list.price;
+            p=this.num1*this.list.price;
+            // console.log(c,p);
+            this.$store.commit("plus1",c);
+            this.$store.commit("plus2",p);
+            
         },
         ljgm(){
             this.insert();
+            this.$router.push("/Gocart");
+        },
+        ljgm1(){
             this.$router.push("/Gocart");
         },
         load(){
@@ -407,6 +416,24 @@ export default {
                 this.mimg="http://127.0.0.1:3000/"+this.list.details;
                 this.lgimg.backgroundImage="url("+"http://127.0.0.1:3000/"+this.list.details+ ") ";
             })
+
+            // 获取购物车数量及价格
+            var url2 = "cart";
+            this.axios.get(url2).then(result=>{
+               var lis=result.data.data;
+               // 求和
+               var s=0;
+               var k=0;
+                for(var i=0;i<lis.length;i++){
+                    s+=(lis[i].count*lis[i].price);
+                    k+=Number(lis[i].count);
+                }
+                // vuex数据存贮
+                // console.log(k,s)
+                this.$store.commit("set1",k);
+                this.$store.commit("set2",s);
+            })
+
         },
         insert(){
             var url="InsertProduct";
@@ -1064,6 +1091,16 @@ outline: none;
 }
 .details .xqtp{
     width:960px;
+}
+.details .top{
+    margin-top: 25px !important;
+}
+.details {
+    margin-top: -15px !important;
+    border-top: 1px solid #d4d4d4;
+}
+.footer{
+    margin-top: 0px !important;
 }
 </style>
 

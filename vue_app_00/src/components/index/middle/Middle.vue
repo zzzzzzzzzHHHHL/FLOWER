@@ -174,7 +174,7 @@ export default {
 <style>
     *{margin:0;padding:0;box-sizing: border-box;}
     body{
-        background-color: #f1f7f1;
+        /* background-color: #f1f7f1; */
     }
     /* 1F */
     #floor{
