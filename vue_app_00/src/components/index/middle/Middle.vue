@@ -135,13 +135,7 @@ import Footer from "../footer/footer0.vue"
 import Nav from "../../project/Nav.vue"
 import Banner from "../header/banner.vue"
 export default {
-    components:{
-      "scoll":Scrollbars,
-      "header00":Header,
-      "navgitor":Nav,
-      "footer00":Footer,
-      "banner":Banner
-     },
+    
     data() {
         return {
            list:[],
@@ -167,13 +161,20 @@ export default {
         this.list_6F=this.list.slice(44,49);
         })
   },
+  components:{
+      "scoll":Scrollbars,
+      "header00":Header,
+      "navgitor":Nav,
+      "footer00":Footer,
+      "banner":Banner
+     }
   
 }
 </script>
 <style>
     *{margin:0;padding:0;box-sizing: border-box;}
     body{
-        background-color: #f1f7f1;
+        /* background-color: #f1f7f1; */
     }
     /* 1F */
     #floor{

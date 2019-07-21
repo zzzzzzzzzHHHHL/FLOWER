@@ -813,13 +813,13 @@ server.get("/all_product",(req,res)=>{
 
 /***************************************************************************************************/ 
 
-server.get("/details5",function(req,res){
-	var sql="SELECT * FROM flower_details";
-	pool.query(sql,function(err,result){
-		if(err)throw err;
-		res.send(result);
-	})
-})
+// server.get("/details5",function(req,res){
+// 	var sql="SELECT * FROM flower_details";
+// 	pool.query(sql,function(err,result){
+// 		if(err)throw err;
+// 		res.send(result);
+// 	})
+// })
 //鲜花详情查询
 server.get("/details",function(req,res){
 	var lid=req.query.lid;
@@ -857,6 +857,7 @@ server.get("/InsertProduct",(req,res)=>{
     res.send({code:-1,msg:"请登录"});
     return;
 	} 
+	console.log(req.query);
 	var lid=Number(req.query.lid);
 	var img_url=req.query.img_url;
 	var title=req.query.title;
@@ -885,12 +886,6 @@ server.get("/InsertProduct",(req,res)=>{
 			})
 		}
 	})
-
-  // var sql = "INSERT INTO flower_shoppingcart_item(uid,lid,img_url,title,price,count) VALUES(?,?,?,?,?,?)";
-  // pool.query(sql,[uid,lid,img_url,title,price,count],(err,result)=>{
-  //   if(err)throw err;
-  //   res.send({code:1,data:result})
-  // })
 })
 
 
@@ -915,12 +910,15 @@ server.get("/cart",(req,res)=>{
 
 //删除购物车的商品
 server.get("/delItem",(req,res)=>{
-  //1:参数购物车id
-  var id = req.query.id;
+  // //1:参数购物车id
+	// var id = req.query.id;
+	var uid = req.session.uid;
+	var lid = Number(req.query.lid);
+	// console.log(uid,lid);
   //2:sql 删除指定数据
-  var sql = "DELETE flower_shoppingcart_item WHERE lid = ?";
+  var sql = "DELETE FROM flower_shoppingcart_item WHERE uid=? AND lid = ?";
   //3:json
-  pool.query(sql,[id],(err,result)=>{
+  pool.query(sql,[uid,lid],(err,result)=>{
    if(err)throw err;
    //affectedRows 操作影响行数
    if(result.affectedRows>0){
@@ -934,10 +932,11 @@ server.get("/delItem",(req,res)=>{
 
 //删除多个选中商品
 server.get("/delAll",(req,res)=>{
-  var ids = req.query.ids;
-  var sql = `DELETE FROM flower_shoppingcart_item WHERE lid IN (${ids})`;
+	var uid = req.session.uid;
+  var lids = req.query.lids;
+  var sql = `DELETE FROM flower_shoppingcart_item WHERE lid IN (${lids}) AND uid=?` ;
   //3:json
-  pool.query(sql,(err,result)=>{
+  pool.query(sql,[uid],(err,result)=>{
     if(err)throw err;
     if(result.affectedRows>0){
       res.send({code:1,msg:"删除成功"});
@@ -961,4 +960,52 @@ server.get("/dim",function(req,res){
 })
 
 
+// 购物车商品数量加
+server.get("/plus",(req,res)=>{
+	var uid = req.session.uid;
+  if(!uid){
+    res.send({code:-1,msg:"请登录"});
+    return;
+	} 
+	// console.log(req.query);
+	var lid=Number(req.query.lid);
+	console.log(req.query);
+	// console.log(req.session.uid);
+	var sql1="SELECT * FROM flower_shoppingcart_item WHERE uid=? AND lid=?"
+	pool.query(sql1,[uid,lid],(err,result)=>{
+		if(err)throw err;
+		// console.log(result);
+		var num=Number(result[0].count)+1;
+		// console.log(num);
+		var sql2="UPDATE flower_shoppingcart_item SET count=? WHERE uid=? AND lid=?";
+		pool.query(sql2,[num,uid,lid],(err,result)=>{
+			if(err)throw err;
+			res.send({code:1,data:result})
+		})
+	})
+})
 
+// 购物车商品数量减
+server.get("/reduce",(req,res)=>{
+	var uid = req.session.uid;
+  if(!uid){
+    res.send({code:-1,msg:"请登录"});
+    return;
+	} 
+	// console.log(req.query);
+	var lid=Number(req.query.lid);
+	console.log(req.query);
+	// console.log(req.session.uid);
+	var sql1="SELECT * FROM flower_shoppingcart_item WHERE uid=? AND lid=?"
+	pool.query(sql1,[uid,lid],(err,result)=>{
+		if(err)throw err;
+		// console.log(result);
+		var num=Number(result[0].count)-1;
+		// console.log(num);
+		var sql2="UPDATE flower_shoppingcart_item SET count=? WHERE uid=? AND lid=?";
+		pool.query(sql2,[num,uid,lid],(err,result)=>{
+			if(err)throw err;
+			res.send({code:1,data:result})
+		})
+	})
+})

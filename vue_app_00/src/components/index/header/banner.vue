@@ -28,18 +28,18 @@
                       <div class="carousel-caption d-none d-md-block"></div>
                     </div>
                 </div>
-                <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                <router-link class="carousel-control-prev" :to="`#carouselExampleCaptions`" role="button" data-slide="prev">
                   <div class="span-bg">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="sr-only">Previous</span>
                   </div>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                </router-link>
+                <router-link class="carousel-control-next" :to="`#carouselExampleCaptions`" role="button" data-slide="next">
                   <div class="span-bg">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
                   </div>
-                </a>
+                </router-link>
             </div>
           </div>
        </div>

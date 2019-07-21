@@ -25,36 +25,36 @@
         <div class="bottom-left">
           <div class="bottom-left-top">
             <ul>
-              <li><a href="javascript:;">购物说明</a></li>
-              <li><a href="javascript:;">APP专享介绍</a></li>
-              <li><a href="javascript:;">购物流程</a></li>
-              <li><a href="javascript:;">支付说明</a></li>
+              <li><router-link :to="`javascript:;`">购物说明</router-link></li>
+              <li><router-link :to="`javascript:;`">aPP专享介绍</router-link></li>
+              <li><router-link :to="`javascript:;`">购物流程</router-link></li>
+              <li><router-link :to="`javascript:;`">支付说明</router-link></li>
             </ul>
             <ul>
-              <li><a href="javascript:;">配送说明</a></li>
-              <li><a href="javascript:;">配送范围</a></li>
-              <li><a href="javascript:;">配送费用</a></li>
-              <li><a href="javascript:;">配送时间</a></li>
+              <li><router-link :to="`javascript:;`">配送说明</router-link></li>
+              <li><router-link :to="`javascript:;`">配送范围</router-link></li>
+              <li><router-link :to="`javascript:;`">配送费用</router-link></li>
+              <li><router-link :to="`javascript:;`">配送时间</router-link></li>
             </ul>
             <ul>
-              <li><a href="javascript:;">售后保障</a></li>
-              <li><a href="javascript:;">取消/修改订单</a></li>
-              <li><a href="javascript:;">关于签收</a></li>
-              <li><a href="javascript:;">关于投诉</a></li>
+              <li><router-link :to="`javascript:;`">售后保障</router-link></li>
+              <li><router-link :to="`javascript:;`">取消/修改订单</router-link></li>
+              <li><router-link :to="`javascript:;`">关于签收</router-link></li>
+              <li><router-link :to="`javascript:;`">关于投诉</router-link></li>
             </ul>
             <ul>
-              <li><a href="javascript:;">关于我们</a></li>
-              <li><a href="javascript:;">品牌介绍</a></li>
-              <li><a href="javascript:;">实力证明</a></li>
-              <li><a href="javascript:;">花语大全</a></li>
-              <li><a href="javascript:;">鲜花百科</a></li>
+              <li><router-link :to="`javascript:;`">关于我们</router-link></li>
+              <li><router-link :to="`javascript:;`">品牌介绍</router-link></li>
+              <li><router-link :to="`javascript:;`">实力证明</router-link></li>
+              <li><router-link :to="`javascript:;`">花语大全</router-link></li>
+              <li><router-link :to="`javascript:;`">鲜花百科</router-link></li>
             </ul>
             <ul>
-              <li><a href="javascript:;">同城配送</a></li>
-              <li><a href="javascript:;">北京鲜花</a></li>
-              <li><a href="javascript:;">上海鲜花</a></li>
-              <li><a href="javascript:;">广州鲜花</a></li>
-              <li><a href="javascript:;">更多城市</a></li>
+              <li><router-link :to="`javascript:;`">同城配送</router-link></li>
+              <li><router-link :to="`javascript:;`">北京鲜花</router-link></li>
+              <li><router-link :to="`javascript:;`">上海鲜花</router-link></li>
+              <li><router-link :to="`javascript:;`">广州鲜花</router-link></li>
+              <li><router-link :to="`javascript:;`">更多城市</router-link></li>
             </ul>
           </div>
           <div class="bottom-left-bottom">
@@ -70,9 +70,9 @@
         <div class="bottom-right">
           <div class="bottom-right-div">
             <div><p>Iphone下载</p><img src="./img/ios.jpg" alt=""></div>
-            <div><p>Android下载</p><img src="./img/and.jpg" alt=""></div>
+            <div><p>android下载</p><img src="./img/and.jpg" alt=""></div>
           </div>
-          <p>手机扫码即可下载Rosewin鲜花APP</p>
+          <p>手机扫码即可下载Rosewin鲜花aPP</p>
         </div>
       </div>
     </div>
