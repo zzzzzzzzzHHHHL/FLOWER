@@ -1,6 +1,8 @@
 <template>
     <div class="settlement"><!-- 购物车结算组件 -->
-    <br><br><br>
+        <header00></header00>
+        <navgitor></navgitor>
+        <div class="fjx"></div>
         <!-- Nav -->
         <div class="topnav">
             <div></div>
@@ -203,13 +205,109 @@
                     </div>
                 </div>
             </div>
-            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <!-- 支付方式 -->
+            <div class="payway">
+                <p>支付方式</p>
+                <div>
+                    <p>
+                        <span  @click="zf">
+                            <img src="../../assets/Mig/zfb.png" alt="" data-zf="zfb">
+                        </span>
+                        <span @click="zf">
+                            <img src="../../assets/Mig/wx.png" alt="" data-zf="wx">
+                        </span>
+                    </p>
+                    <p>
+                        <span class="iconfont icon-xuanzhongkuang" :style="zf1"></span>
+                        <span class="iconfont icon-xuanzhongkuang" :style="zf2"></span>
+                    </p>
+                </div>
+            </div>
+            <!-- 商品信息 -->
+            <div class="spxx">
+                <p>商品信息 <span @click="fhgwc">返回购物车</span></p>
+                <div>
+                    <!-- 单件商品 -->
+                    <div>
+                        <!-- 左边 -->
+                        <div>
+                            <a href="#">
+                                <img src="../../assets/Mig/15.jpg" alt="">
+                            </a>
+                            <span><a href="#">爱之物语-14朵红玫瑰</a></span>
+                            
+                        </div>
+                        <!-- 右边 -->
+                        <div>
+                            <span>￥499.00</span>
+                            <span>x1</span>
+                            <span>有货</span>
+                            <span>￥499.00</span>
+                        </div>
+                    </div>
+                    <div>
+                        <!-- 左边 -->
+                        <div>
+                            <a href="#">
+                                <img src="../../assets/Mig/15.jpg" alt="">
+                            </a>
+                            <span><a href="#">爱之物语-14朵红玫瑰</a></span>
+                            
+                        </div>
+                        <!-- 右边 -->
+                        <div>
+                            <span>￥499.00</span>
+                            <span>x1</span>
+                            <span>有货</span>
+                            <span>￥499.00</span>
+                        </div>
+                    </div>
+                    <div>
+                        <!-- 左边 -->
+                        <div>
+                            <a href="#">
+                                <img src="../../assets/Mig/15.jpg" alt="">
+                            </a>
+                            <span><a href="#">爱之物语-14朵红玫瑰</a></span>
+                            
+                        </div>
+                        <!-- 右边 -->
+                        <div>
+                            <span>￥499.00</span>
+                            <span>x1</span>
+                            <span>有货</span>
+                            <span>￥499.00</span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <!-- 订单备注 -->
+            <div class="ddbz">
+                <input type="text" placeholder="订单备注 限60个字">
+                <span>提示：请勿填写有关支付、收货等信息</span>
+            </div>
+            <!-- 订单提交 -->
+            <div class="ddtj">
+                <p>商品总价：<span>￥898.00</span> </p>
+                <p>应付款金额：<span>￥898.00</span> </p>
+                <button>提交订单</button>
+            </div>
         </div>
+        <footer00 class="footer"></footer00>
     </div>
 </template>
 
 <script>
+import Header from "../index/header/header0.vue"
+import Footer from "../index/footer/footer0.vue"
+import Nav from "./Nav.vue"
 export default {
+    components:{
+      "header00":Header,
+      "navgitor":Nav,
+      "footer00":Footer,
+     },
     data(){
         return{
             s:"",
@@ -225,6 +323,8 @@ export default {
             biaoyu3:{display:"none"},
             biaoyu4:{display:"none"},
             by:"",
+            zf1:{display:"block"},
+            zf2:{display:"none"},
         }
     },
     methods:{
@@ -291,13 +391,32 @@ export default {
         selectby(e){
             // console.log(e.target.attributes[1].value);
             this.by=e.target.attributes[1].value;
-        }
+        },
+        zf(e){
+            // console.log(e.target.dataset.zf);
+            if(e.target.dataset.zf=="zfb"){
+                this.zf1.display="block";
+                this.zf2.display="none";
+            }else{
+                this.zf1.display="none";
+                this.zf2.display="block";
+            }
+
+        },
+        fhgwc(){this.$router.push("/Gocart");}
     },
 
 }
 </script>
 
 <style scoped>
+.settlement .fjx{
+    width: 100%;
+    border-top: 1px solid #d2d2d2;
+    position: relative;
+    margin-bottom: 10px;
+    top: -20px;
+}
 .settlement{
     background-color: #fff !important;
 }
@@ -554,5 +673,179 @@ input[type="date"]::-webkit-clear-button{
 }
 .settlement .message>div>div .biaoyu>ul>li:hover{
     cursor: default;
+}
+.settlement .payway>p{
+    height: 51px;
+    padding: 20px 0 10px;
+    font-size: 18px;
+    color: #555555;
+    border-bottom: 1px solid #d2d2d2;
+    margin-top: 20px;
+    line-height: 20px;
+}
+.settlement .payway>div{
+    margin-top: 25px !important;
+}
+.settlement .payway>div img{
+    height: 34px;
+    position: relative;
+    z-index: 5;
+}
+.settlement .payway>div p:nth-child(1) span{
+    width: 160.18px;
+    height: 40px;
+    padding: 0 25px;
+    margin-right: 20px;
+}
+.settlement .payway>div p:nth-child(2){
+    position: relative;
+}
+.settlement .payway>div p:nth-child(2) span{
+    font-size: 45px;
+    position: absolute;
+    top: -67px;
+    left: 10px;
+    background: transparent;
+}
+.settlement .payway>div p:nth-child(2) span:nth-child(2){
+    left: 170px;
+    /* display: none; */
+}
+.settlement .spxx>p{
+    height: 51px;
+    padding: 20px 0 10px;
+    font-size: 18px;
+    color: #555555;
+    border-bottom: 1px solid #d2d2d2;
+    margin-top: 30px;
+    line-height: 20px;
+    position: relative;
+}
+.settlement .spxx>p span{
+    float: right;
+    color: #438cde;
+    font-size: 12px;
+}
+.settlement .spxx>p span:hover{
+    cursor: pointer;
+    color: #f42424;
+}
+.settlement .spxx>div{
+    margin-top: 20px;
+    background-color: #f8f8f8;
+    padding: 10px 0;
+}
+.settlement .spxx>div>div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 30px;
+    padding: 20px 0;
+}
+.settlement .spxx>div>div:not(:last-child){
+    border-bottom: 1px dashed #d2d2d2;
+}
+.settlement .spxx>div div img{
+    width: 48px;
+}
+.settlement .spxx>div>div>div:nth-child(1) span{
+    font-size: 13px;
+    color: #333;
+    display: inline-block;
+    margin-left: 20px;
+}
+.settlement .spxx>div>div>div:nth-child(1) span a{
+    color: #333 !important;
+}
+.settlement .spxx>div>div>div:nth-child(1) span a:hover{
+    text-decoration: none;
+    color: #f42424!important;
+}
+.settlement .spxx>div>div>div:nth-child(2) span{
+    display: inline-block;
+}
+.settlement .spxx>div>div>div:nth-child(2) span:nth-child(1){
+    color: #f42424;
+    font-size: 16px;
+    margin-right: 30px;
+}
+.settlement .spxx>div>div>div:nth-child(2) span:nth-child(2){
+    font-size: 16px;
+    color: #666666;
+    margin-right: 50px;
+}
+.settlement .spxx>div>div>div:nth-child(2) span:nth-child(3){
+    font-size: 14px;
+    color: #666666;
+    margin-right: 50px;
+}
+.settlement .spxx>div>div>div:nth-child(2) span:nth-child(4){
+    font-size: 16px;
+    color: #f42424;
+    font-weight: bold;
+}
+.settlement .ddbz{
+    margin-top: 40px;
+}
+.settlement .ddbz input{
+    width: 856px;
+    height: 40px;
+    padding: 0 12px;
+    background-color: #fff;
+    border: 1px solid #d2d2d2;
+    font-size: 14px;
+    color:  #d2d2d2;
+}
+.settlement .ddbz input:focus{
+    outline: none;
+}
+.settlement .ddbz span{
+    display: inline-block;
+    font-size: 12px;
+    color: #8c8c8c;
+    margin-left: 18px;
+}
+.settlement .ddtj{
+    margin-top: 50px;
+    text-align: right;
+}
+.settlement .ddtj p{
+    text-align: right;
+    font-size: 14px;
+    color: #8c8c8c;
+    margin: 10px 20px;
+    margin-right: 10px;
+}
+.settlement .ddtj p:nth-child(1) span{
+    display: inline-block;
+    margin-left: 25px;
+    font-size: 16px !important;
+    color: #333;
+    font-weight: 500;
+}
+.settlement .ddtj p:nth-child(2) span{
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #f42424;
+}
+.settlement .ddtj button{
+    height: 50px;
+    line-height: 50px;
+    background-color: #c43f40;
+    width: 160px;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    border: none;
+    margin-top: 25px;
+    margin-bottom: 40px;
+}
+.settlement input:focus{
+    outline: none !important;
+}
+.settlement select:focus{
+    outline: none;
 }
 </style>
