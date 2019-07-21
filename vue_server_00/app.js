@@ -813,13 +813,13 @@ server.get("/all_product",(req,res)=>{
 
 /***************************************************************************************************/ 
 
-server.get("/details5",function(req,res){
-	var sql="SELECT * FROM flower_details";
-	pool.query(sql,function(err,result){
-		if(err)throw err;
-		res.send(result);
-	})
-})
+// server.get("/details5",function(req,res){
+// 	var sql="SELECT * FROM flower_details";
+// 	pool.query(sql,function(err,result){
+// 		if(err)throw err;
+// 		res.send(result);
+// 	})
+// })
 //鲜花详情查询
 server.get("/details",function(req,res){
 	var lid=req.query.lid;
