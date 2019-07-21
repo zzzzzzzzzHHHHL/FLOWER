@@ -20,6 +20,7 @@ import Opening from "./components/product/opening.vue"
 import Forever from "./components/product/forever.vue"
 import Gift from "./components/product/gift.vue"
 import Login from "./components/product/login.vue"
+
 import Register from "./components/product/register.vue"
 import Admin from "./components/admin/admin.vue"
 import Scrollbars from "./components/scrollbars/scrollbars.vue"
@@ -81,6 +82,7 @@ export default new Router({
     {path:'/Gocart',component:Gocart},
     {path:'/Settlement',component:Settlement},
     {path:'/product_details/:lid',component:product_details,props:true},
+
 
   ]
 })

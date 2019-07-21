@@ -47,11 +47,26 @@
         data(){
             return{
                 list:[],
-               pno:1,ps:16,
+               pno:1,ps:16,n:0
             }
         },
         mounted() {
             var ulStyle=document.querySelector(".el-pager")
+            var lis=ulStyle.children 
+            console.log(lis)       
+            for(var li of lis){
+                li.onclick=function(){  
+                    var n=parseInt(li.innerHTML)
+                    this.pno=n;
+                    console.log(this.pno)
+                    var obj={pno:this.pno,ps:this.ps};
+                    var url="all"
+                    this.axios.get(url,{params:obj}).then(result=>{
+                        this.list=result.data.data
+                    })
+                }
+            }
+            /*
             var firstLi=ulStyle.children[0];
             var secondLi=ulStyle.children[1];
             var lastLi=ulStyle.children[2];
@@ -77,7 +92,7 @@
                 this.axios.get(url,{params:obj}).then(result=>{
                   this.list=result.data.data
                 })    
-            }       
+            }    */   
         },
         created() {
               var url="all";
