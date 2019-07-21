@@ -279,7 +279,6 @@ export default {
         }
     },
     created(){
-        // console.log(this.$route.params.lid)
         this.load();
     },
     methods:{
@@ -450,6 +449,15 @@ export default {
             })
         },
     },
+    watch:{
+        num1(){
+            if(this.num1<1){
+                this.num1=1;
+                this.one.display="flex";
+                this.guodu.tsdonghua=true;
+            }
+        }
+    }, 
     mounted(){
         var ul=document.getElementsByClassName("smallimg");
         // console.log(ul[0].children.length);
@@ -469,7 +477,8 @@ export default {
     },
     destroyed(){
         window.removeEventListener("scroll",this.handleScroll);
-    },     
+    },
+  
 }
 </script>
 <style scoped>

@@ -71,7 +71,7 @@ CREATE TABLE flower_shoppingcart_item(
   title VARCHAR(64),	    #商品详情
   price DECIMAL(10,2),
   count INT,                #购买数量
-  is_checked BOOLEAN        #是否已勾选，确定购买
+  is_checked BOOL DEFAULT 0  #是否已勾选，确定购买
 );
 
 /**用户订单**/
