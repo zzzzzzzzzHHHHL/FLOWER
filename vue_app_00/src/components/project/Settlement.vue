@@ -12,11 +12,26 @@
             <!-- 收货人信息 -->
             <div class="Consignee">
                 <p>收货人信息</p>
-                <!-- 添加新地址 -->
-                <div class="address">
-                    <img src="../../assets/Mig/location.png" alt="">
-                    <p>添加新地址</p>
+                <div class="addressAll">
+                    <!-- 已有收货地址 -->
+                    <div class="address1">
+                        <p class="text-truncate">收货人: <span>张三</span> </p>
+                        <p class="text-truncate">收货人手机号: <span>18623222222</span> </p>
+                        <p class="text-truncate">收货地址: <span>闪电发货时刻打开速度刷卡费多少公里数顺丰控股方大化工肯定是个符号是大法官狂欢节</span> </p>
+                        <p class="text-truncate">订购人: <span>李四</span> </p>
+                        <p class="text-truncate">订购人手机号: <span>18656566565</span> </p>
+                        <a href="javacript:;">修改</a>
+                        <a href="javacript:;">删除</a>
+                        <span class="iconfont icon-xuanzhongkuang1"></span>
+                    </div>
+                    <!-- 添加新地址 -->
+                    <div class="address">
+                        <img src="../../assets/Mig/location.png" alt="">
+                        <p>添加新地址</p>
+                    </div>
                 </div>
+                
+                
             </div>
             <!-- 配送费用 -->
             <div class="cost">
@@ -293,6 +308,74 @@
                 <p>应付款金额：<span>￥898.00</span> </p>
                 <button>提交订单</button>
             </div>
+            <!-- 新增收货人地址 -->
+            <!-- 遮罩 -->
+            <div class="inputaddress">
+                <!-- 表单框 -->
+                <div class="input1">
+                    <!-- 新增收货人地址标题 -->
+                    <div>
+                        <span>新增收货人地址</span>
+                        <span class="iconfont icon-tishikuangguanbi"></span>
+                    </div>
+                    <!-- 表单 -->
+                    <p>
+                        <span><span>*</span>收货人姓名</span>
+                        <input type="text" name="" id="">
+                    </p>
+                    <p>
+                        <span><span>*</span>收货人手机号</span>
+                        <input type="text" name="" id="">
+                    </p>
+                    <p>
+                        <span><span>*</span>所在地区</span>
+                        <select name="province" style="border:1px solid #ccc;height:28px;">
+                            <option value="">请选择省</option>
+                            <option value="2">北京</option>
+                            <option value="3">天津</option>
+                            <option value="4">河北省</option>
+                            <option value="5">山西省</option>
+                            <option value="6">内蒙古</option>
+                            <option value="7">辽宁省</option>
+                            <option value="8">吉林省</option>
+                            <option value="9">黑龙江省</option>
+                            <option value="10">上海</option>
+                            <option value="11">江苏省</option>
+                            <option value="12">浙江省</option>
+                            <option value="13">安徽省</option>
+                            <option value="14">福建省</option>
+                            <option value="15">江西省</option>
+                            <option value="16">山东省</option>
+                            <option value="17">河南省</option>
+                            <option value="18">湖北省</option>
+                            <option value="19">湖南省</option>
+                            <option value="20">广东省</option>
+                            <option value="21">广西省</option>
+                            <option value="22">海南省</option>
+                            <option value="23">重庆</option>
+                            <option value="24">四川省</option>
+                            <option value="25">贵州省</option>
+                            <option value="26">云南省</option>
+                            <option value="27">西藏</option>
+                            <option value="28">陕西省</option>
+                            <option value="29">甘肃省</option>
+                            <option value="30">青海省</option>
+                            <option value="31">宁夏</option>
+                            <option value="32">新疆</option>
+                            <option value="33">台湾</option>
+                            <option value="34">香港特别行政区</option>
+                            <option value="35">澳门特别行政区</option>
+                            <option value="36">海外</option>
+                        </select>
+                        <select name="city" style="border:1px solid #ccc;height:28px;">
+                            <option value="">请选择市</option>
+                        </select>
+                        <select name="district" style="border:1px solid #ccc;height:28px;width:132px;">
+                            <option value="">请选择区</option>
+                        </select>
+                    </p>
+                </div>
+            </div>
         </div>
         <footer00 class="footer"></footer00>
     </div>
@@ -459,6 +542,53 @@ export default {
     border-bottom: 1px solid #d2d2d2;
     line-height: 20px;
 }
+.settlement .information .Consignee .addressAll{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.settlement .information .Consignee .addressAll .address1 p{
+    font-size: 14px;
+    color: #8c8c8c;
+    margin: 0;
+    width: 288px;
+    height: 23px;
+    line-height: 23px;
+    /* overflow: hidden; */
+    
+}
+.settlement .information .Consignee .addressAll p:first-child{
+    font-size: 18px;
+    color: #555555;
+}
+.settlement .information .Consignee .addressAll .address1{
+    width: 330px;
+    height: 146px;
+    margin-top: 30px;
+    /* background-color: #ccc; */
+    margin-right: 20px;
+    padding: 8px 18px 18px 22px;
+    position: relative;
+    border: 1px dashed #333;
+    /* border-color: #d2d2d2; */
+}
+.settlement .information .Consignee .addressAll .address1 a{
+    position: absolute;
+    font-size: 14px;
+    color: #333 !important;
+    top: 10px;
+    left: 240px;
+}
+.settlement .information .Consignee .addressAll .address1>span{
+    float: right;
+    font-size: 22px;
+    margin-top: -5px;
+    margin-right: -19px;
+}
+.settlement .information .Consignee .addressAll .address1 a:nth-child(7){
+    left: 280px;
+}
 .settlement .information .Consignee .address{
     width: 330px;
     height: 146px;
@@ -473,6 +603,10 @@ export default {
     margin-top: 5px;
    font-size: 14px;
    color: #8c8c8c;
+}
+.settlement .information .Consignee .address p:hover{
+    color: #333;
+    cursor: pointer;
 }
 .settlement .information .cost{
     margin-top: 30px;
@@ -847,5 +981,40 @@ input[type="date"]::-webkit-clear-button{
 }
 .settlement select:focus{
     outline: none;
+}
+.settlement button{
+    outline: none;
+}
+.settlement .inputaddress{
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #33333375;
+    z-index: 900;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+.settlement .inputaddress .input1{
+    width: 986px;
+    height: 397px;
+    background-color: #fff;
+    box-shadow: 0px 0px 0px 10px rgba(0, 0, 0, 0.144);
+}
+.settlement .inputaddress .input1>div:nth-child(1){
+    height: 43px;
+    padding: 0 20px 0 20px;
+    color: #333;
+    font-size: 14px;
+    background-color: #f8f8f8;
+    line-height: 43px;
+}
+.settlement .inputaddress .input1>div:nth-child(1) span:nth-child(2){
+    float: right;
+    font-size: 12px;
 }
 </style>
