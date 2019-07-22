@@ -948,7 +948,7 @@ server.get("/delAll",(req,res)=>{
 
 /***************************************************************************************************/ 
 
-//  
+//模糊查询  
 server.get("/dim",function(req,res){
 	var msg=req.query.msg;
 	if(!msg){res.send("请输入查找值");return}

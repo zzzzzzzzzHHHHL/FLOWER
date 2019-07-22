@@ -1262,7 +1262,7 @@ INSERT INTO flower_all_product VALUES
 (NULL, '甜蜜圣诞-红玫瑰+苹果圣诞礼盒', 'img/all-product/love-product/l32.jpg', 799, 'product_details/105'),
 (NULL, '爱你在身边-33朵红玫瑰', 'img/all-product/love-product/l33.jpg', 599, 'product_details/106'),
 (NULL, '相濡以沫-新娘手捧花', 'img/all-product/love-product/l34.jpg', 599, 'product_details/107'),
-(NULL, '甜蜜圣诞-红玫瑰+苹果圣诞礼盒', 'img/all-product/love-product/l35.jpg', 799, 'product_details/108'),
+(NULL, '甜蜜圣诞-红玫瑰+苹果圣诞礼盒', 'img/all-product/love-product/l35.png', 799, 'product_details/108'),
 (NULL, '温柔月色-33朵粉玫瑰', 'img/all-product/love-product/l36.jpg', 599, 'product_details/109'),
 (NULL, '浅语花开-33朵粉玫瑰', 'img/all-product/love-product/l37.jpg', 599, 'product_details/110'),
 (NULL, '心动的感觉-99朵混色玫瑰', 'img/all-product/love-product/l38.jpg', 999, 'product_details/111'),
