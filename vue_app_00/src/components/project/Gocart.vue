@@ -79,9 +79,9 @@
                 <div class="quanxuan">
                     <ul>
                     <li>
-                        <input type="checkbox" id="qx" @click="selectAll" v-model="t">
+                        <input type="checkbox" id="qx1" @click="selectAll" v-model="t">
                         &nbsp;
-                        <label for="qx">全选</label>
+                        <label for="qx1">全选</label>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <a href="javascript:;" @click="two1">删除选中商品</a>
                         <!-- @click="delproduct" -->

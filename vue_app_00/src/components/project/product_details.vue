@@ -400,8 +400,21 @@ export default {
             
         },
         ljgm(){
-            this.insert();
-            this.$router.push("/Gocart");
+            // this.insert();
+            var url="InsertProduct";
+            var obj={
+                lid:this.list.lid,
+                img_url:this.list.details,
+                title:this.list.title,
+                price:this.list.price,
+                count:this.num1
+            }
+            // console.log(obj);
+            this.axios.get(url,{params:obj}).then(result=>{
+                // console.log(result);
+                if(result.data.code==1){this.$router.push("/Gocart");}
+            })
+            
         },
         ljgm1(){
             this.$router.push("/Gocart");
@@ -445,7 +458,7 @@ export default {
             }
             // console.log(obj);
             this.axios.get(url,{params:obj}).then(result=>{
-                // console.log(result);
+                console.log(result);
             })
         },
     },
