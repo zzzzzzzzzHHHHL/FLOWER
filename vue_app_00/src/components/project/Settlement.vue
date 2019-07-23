@@ -323,7 +323,7 @@
                         <p> 
                             <span><span>*</span> 收货人姓名</span>
                             <input type="text" name="" id="" v-model="shname" onkeyup="this.value=this.value.replace(/\s+/g,'')">
-                            <span class="Tips animated fadeIn" v-text="name1" :style="name1style"></span>
+                            <span class="Tips animated fadeIn" v-text="name1" :style="name1style" id="Tips1"></span>
                             <!-- infinite -->
                         </p>
                         <p>
@@ -368,6 +368,7 @@ import Header from "../index/header/header0.vue"
 import Footer from "../index/footer/footer0.vue"
 import VDistpicker from 'v-distpicker'
 import Nav from "./Nav.vue"
+import { clearTimeout } from 'timers';
 export default {
     components:{
       "header00":Header,
@@ -502,13 +503,24 @@ export default {
             this.addressmask.display="none";
         },
         save(){
-            console.log(this.shname);
+            // console.log(this.shname);
             // 验证收货人姓名（不能为空）
+            var tips1=document.getElementById("Tips1");
             if(this.shname==""){
                 this.name1="收货人姓名不能为空";
                 // console.log(this.name1)
                 this.name1style.display="inline-block";
-                var timer=setTimeout();
+                var timer=setTimeout(()=>{
+                    tips1.classList.add('animated', 'fadeOut');
+                    window.clearTimeout(timer); 
+                    // tips1.addEventListener('animationend',()=>{
+                    //     console.log(this.adress1);
+                    //     this.name1style.display="none";
+                    //     tips1.classList.remove('animated', 'fadeOut');
+                    //     window.clearTimeout(timer); 
+                    //     // tips1.removeEventListener('animationend');
+                    // })
+                },3000);
             }
         },
     },
