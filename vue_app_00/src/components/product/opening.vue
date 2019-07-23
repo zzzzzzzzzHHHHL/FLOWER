@@ -148,8 +148,7 @@
         border-bottom: 1px solid #d2d2d2;
         border-top: 1px solid #d2d2d2;
         height:57px;
-        margin-top:40px;
-       
+        margin-top:40px; 
     }
     ul{
         line-height:57px;
