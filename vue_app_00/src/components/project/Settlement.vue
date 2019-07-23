@@ -27,7 +27,7 @@
                     <!-- 添加新地址 -->
                     <div class="address">
                         <img src="../../assets/Mig/location.png" alt="">
-                        <p>添加新地址</p>
+                        <p @click="insertaddress">添加新地址</p>
                     </div>
                 </div>
                 
@@ -310,70 +310,52 @@
             </div>
             <!-- 新增收货人地址 -->
             <!-- 遮罩 -->
-            <div class="inputaddress">
+            <div class="inputaddress" :style="addressmask">
                 <!-- 表单框 -->
-                <div class="input1">
+                <div class="input1 animated zoomIn">
                     <!-- 新增收货人地址标题 -->
                     <div>
                         <span>新增收货人地址</span>
-                        <span class="iconfont icon-tishikuangguanbi"></span>
+                        <span class="iconfont icon-tishikuangguanbi" @click="closemask"></span>
                     </div>
                     <!-- 表单 -->
-                    <p>
-                        <span><span>*</span>收货人姓名</span>
-                        <input type="text" name="" id="">
-                    </p>
-                    <p>
-                        <span><span>*</span>收货人手机号</span>
-                        <input type="text" name="" id="">
-                    </p>
-                    <p>
-                        <span><span>*</span>所在地区</span>
-                        <select name="province" style="border:1px solid #ccc;height:28px;">
-                            <option value="">请选择省</option>
-                            <option value="2">北京</option>
-                            <option value="3">天津</option>
-                            <option value="4">河北省</option>
-                            <option value="5">山西省</option>
-                            <option value="6">内蒙古</option>
-                            <option value="7">辽宁省</option>
-                            <option value="8">吉林省</option>
-                            <option value="9">黑龙江省</option>
-                            <option value="10">上海</option>
-                            <option value="11">江苏省</option>
-                            <option value="12">浙江省</option>
-                            <option value="13">安徽省</option>
-                            <option value="14">福建省</option>
-                            <option value="15">江西省</option>
-                            <option value="16">山东省</option>
-                            <option value="17">河南省</option>
-                            <option value="18">湖北省</option>
-                            <option value="19">湖南省</option>
-                            <option value="20">广东省</option>
-                            <option value="21">广西省</option>
-                            <option value="22">海南省</option>
-                            <option value="23">重庆</option>
-                            <option value="24">四川省</option>
-                            <option value="25">贵州省</option>
-                            <option value="26">云南省</option>
-                            <option value="27">西藏</option>
-                            <option value="28">陕西省</option>
-                            <option value="29">甘肃省</option>
-                            <option value="30">青海省</option>
-                            <option value="31">宁夏</option>
-                            <option value="32">新疆</option>
-                            <option value="33">台湾</option>
-                            <option value="34">香港特别行政区</option>
-                            <option value="35">澳门特别行政区</option>
-                            <option value="36">海外</option>
-                        </select>
-                        <select name="city" style="border:1px solid #ccc;height:28px;">
-                            <option value="">请选择市</option>
-                        </select>
-                        <select name="district" style="border:1px solid #ccc;height:28px;width:132px;">
-                            <option value="">请选择区</option>
-                        </select>
-                    </p>
+                    <div>
+                        <p> 
+                            <span><span>*</span> 收货人姓名</span>
+                            <input type="text" name="" id="" v-model="shname" onkeyup="this.value=this.value.replace(/\s+/g,'')">
+                            <span class="Tips animated fadeIn" v-text="name1" :style="name1style"></span>
+                            <!-- infinite -->
+                        </p>
+                        <p>
+                            <span><span>*</span> 收货人手机号</span>
+                            <input type="text" name="" id="" v-model="shphone" onkeyup="this.value=this.value.replace(/\s+/g,'')">
+                            <span class="Tips" v-text="phone1"></span>
+                        </p>
+                        <p>
+                            <span><span>*</span> 所在地区</span>
+                            <v-distpicker :placeholders="placeholders" class="disrpicker" @selected="selectdress"></v-distpicker>
+                            <span class="Tips tipsderss" v-text="adress1"></span>
+                        </p>
+                        <p>
+                            <span> <span>*</span> 详细街道地址 </span>
+                            <input type="text" v-model="adressdetail" onkeyup="this.value=this.value.replace(/\s+/g,'')">
+                            <span class="Tips" v-text="adress2"></span>
+                        </p>
+                        <p>
+                            <span> <span>*</span> 订购人姓名 </span>
+                            <input type="text" name="" id="" v-model="dgname" onkeyup="this.value=this.value.replace(/\s+/g,'')">
+                            <span class="Tips" v-text="name2"></span>
+                        </p>
+                        <p>
+                            <span> <span>*</span> 订购人手机号 </span>
+                            <input type="text" v-model="dgphone" onkeyup="this.value=this.value.replace(/\s+/g,'')">
+                            <span class="Tips" v-text="phone2">asdfafds</span>
+                        </p>
+                    </div>
+                    <div>
+                        <button @click="save">保存</button>
+                        <button @click="closemask">取消</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -384,12 +366,14 @@
 <script>
 import Header from "../index/header/header0.vue"
 import Footer from "../index/footer/footer0.vue"
+import VDistpicker from 'v-distpicker'
 import Nav from "./Nav.vue"
 export default {
     components:{
       "header00":Header,
       "navgitor":Nav,
       "footer00":Footer,
+      VDistpicker
      },
     data(){
         return{
@@ -408,6 +392,25 @@ export default {
             by:"",
             zf1:{display:"block"},
             zf2:{display:"none"},
+            placeholders: {
+              province: '请选择省',
+              city: '请选择市',
+              area: '请选择区',
+            },
+            addressmask:{display:"none"},
+            name1:"",
+            name2:"订购人姓名不能为空",
+            phone1:"手机号码格式不正确",
+            phone2:"手机号码格式不正确",
+            adress1:"请输入完整地区",
+            adress2:"详细地址不能为空",
+            shname:"",
+            shphone:"",
+            adress:{},
+            adressdetail:"",
+            dgname:"",
+            dgphone:"",
+            name1style:{display:"none"},
         }
     },
     methods:{
@@ -486,7 +489,28 @@ export default {
             }
 
         },
-        fhgwc(){this.$router.push("/Gocart");}
+        fhgwc(){this.$router.push("/Gocart");},
+        selectdress(a){
+            // console.log(a);
+            this.adress=a;
+            console.log(this.adress);
+        },
+        insertaddress(){
+            this.addressmask.display="flex";
+        },
+        closemask(){
+            this.addressmask.display="none";
+        },
+        save(){
+            console.log(this.shname);
+            // 验证收货人姓名（不能为空）
+            if(this.shname==""){
+                this.name1="收货人姓名不能为空";
+                // console.log(this.name1)
+                this.name1style.display="inline-block";
+                var timer=setTimeout();
+            }
+        },
     },
 
 }
@@ -804,6 +828,7 @@ input[type="date"]::-webkit-clear-button{
     font-size: 13px;
     color: #888888;
     padding: 6px 0;
+    line-height: 25px;
 }
 .settlement .message>div>div .biaoyu>ul>li:hover{
     cursor: default;
@@ -997,7 +1022,7 @@ input[type="date"]::-webkit-clear-button{
     display: flex;
     justify-content: center;
     align-items: center;
-    display: none;
+    /* display: none; */
 }
 .settlement .inputaddress .input1{
     width: 986px;
@@ -1016,5 +1041,118 @@ input[type="date"]::-webkit-clear-button{
 .settlement .inputaddress .input1>div:nth-child(1) span:nth-child(2){
     float: right;
     font-size: 12px;
+}
+.settlement .inputaddress .input1>div:nth-child(1) span:nth-child(2):hover{
+    cursor: pointer;
+}
+.settlement .inputaddress .input1>div:nth-child(2){
+    height: 282px;
+    color: #555555;
+    font-size: 14px;
+    padding: 1px 0;
+}
+.settlement .inputaddress .input1>div:nth-child(2) p{
+    height: 34px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #555555;
+    line-height: 34px;
+}
+.settlement .inputaddress .input1>div:nth-child(2) p .Tips{
+    display: inline-block;
+    height: 32px;
+    background: url("../../assets/Mig/tips.png") no-repeat;
+    background-position: left center;
+    background-size: cover;
+    position: relative;
+    padding: 0 20px 0 25px;
+    line-height: 32px;
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+}
+.settlement .inputaddress .input1>div:nth-child(2) p .tipsderss{
+    margin-left: 10px;
+}
+.settlement .inputaddress .input1>div:nth-child(2) p>span:nth-child(1){
+    display: inline-block;
+    width: 138px;
+    height: 30px;
+    text-align: right;
+    line-height: 30px;
+    font-size: 14px;
+    color: #555555;
+    padding: 4px 9px;
+}
+
+.settlement .inputaddress .input1>div:nth-child(2) p>input{
+    width: 200px;
+    padding: 0 10px;
+    margin: 0 10px 0 0;
+    background-color: #fff;
+    border: 1px solid #d2d2d2;
+    height: 32px;
+    line-height: 32px;
+    font-size: 12px;
+}
+.settlement .inputaddress .input1>div:nth-child(2) p:nth-child(4)>input{
+    width: 522px;
+}
+.settlement .inputaddress .input1>div:nth-child(2) p>span>span{
+    color: #f42828;
+}
+.settlement .inputaddress .input1>div:nth-child(3){
+    width: 100%;
+    margin: 0 0 0 137px;
+}
+.settlement .inputaddress .input1>div:nth-child(3) button:first-child{
+    background-color: #333;
+    border-color: #333;
+    height: 38px;
+    line-height: 38px;
+    font-size: 14px;
+    color: #fff;
+    width: 100px;
+    margin-right: 10px;
+    padding: 0 14px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    font-weight: 400;
+    border-radius: 3px;
+}
+.settlement .inputaddress .input1>div:nth-child(3) button:nth-child(2){
+    height: 38px;
+    line-height: 38px;
+    font-size: 14px;
+    width: 60px;
+    text-align: center;
+    margin-right: 10px;
+    display: inline-block;
+    padding: 0 14px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    font-weight: 400;
+    border-radius: 3px;
+    background-color: #fff;
+}
+.settlement .inputaddress input:focus{
+    outline: none;
+}
+
+/* 修改地址选择器样式 */
+.distpicker-address-wrapper >>> select {
+    padding: 0px 2px;
+    width: 118px;
+    border: 1px solid #ccc;
+    height: 32px;
+    font-size: 14px;
+    color: #555555;
+    border-radius: 0;
+    overflow: hidden;
+    display: inline-block;
+    line-height: 32px;
+}
+.settlement .disrpicker{
+    display: inline-block;
 }
 </style>

@@ -161,7 +161,7 @@
         <!-- 确认删除商品提示框1 -->
         <div class="one" :style="one">
             <!-- 提示框 -->
-            <div>
+            <div class="animated zoomIn">
                 <div>
                     <span>系统提示</span>
                     <a href="javascript:;" class="iconfont icon-tishikuangguanbi" @click="close"></a>
@@ -180,7 +180,7 @@
         <!-- 确认删除商品提示框2 -->
         <div class="two" :style="two">
             <!-- 提示框 -->
-            <div>
+            <div class="animated zoomIn">
                 <div>
                     <span>系统提示</span>
                     <a href="javascript:;" class="iconfont icon-tishikuangguanbi" @click="close1"></a>
@@ -199,7 +199,7 @@
         <!-- 请选择删除的商品提示框 -->
         <div class="one" :style="there">
             <!-- 提示框 -->
-            <div>
+            <div class="animated zoomIn">
                 <div>
                     <span>系统提示</span>
                     <a href="javascript:;" class="iconfont icon-tishikuangguanbi" @click="close2"></a>
@@ -218,7 +218,7 @@
         <!-- 遮罩 -->
             <div class="one" :style="four">
                 <!-- 提示框 -->
-                <div>
+                <div class="animated zoomIn">
                     <div>
                         <span>系统提示</span>
                         <a href="javascript:;" class="iconfont icon-tishikuangguanbi" @click="close3"></a>
