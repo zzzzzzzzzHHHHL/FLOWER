@@ -187,7 +187,7 @@
             <!-- 遮罩 -->
             <div class="one" :style="one">
                 <!-- 提示框 -->
-                <div :class="guodu">
+                <div :class="guodu" class="animated zoomIn">
                     <div>
                         <span>系统提示</span>
                         <a href="javascript:;" class="iconfont icon-tishikuangguanbi" @click="close"></a>
@@ -205,7 +205,7 @@
             <!-- 消息提示框 加入购物车 -->
             <!-- 遮罩 -->
             <div class="two" :style="two">
-                <div :class="guodu2">
+                <div :class="guodu2" class="animated zoomIn">
                     <div>
                         <span>系统提示</span>
                         <a href="javascript:;" class="iconfont icon-tishikuangguanbi" @click="close"></a>
@@ -279,7 +279,6 @@ export default {
         }
     },
     created(){
-        // console.log(this.$route.params.lid)
         this.load();
     },
     methods:{
@@ -401,8 +400,21 @@ export default {
             
         },
         ljgm(){
-            this.insert();
-            this.$router.push("/Gocart");
+            // this.insert();
+            var url="InsertProduct";
+            var obj={
+                lid:this.list.lid,
+                img_url:this.list.details,
+                title:this.list.title,
+                price:this.list.price,
+                count:this.num1
+            }
+            // console.log(obj);
+            this.axios.get(url,{params:obj}).then(result=>{
+                // console.log(result);
+                if(result.data.code==1){this.$router.push("/Gocart");}
+            })
+            
         },
         ljgm1(){
             this.$router.push("/Gocart");
@@ -446,10 +458,19 @@ export default {
             }
             // console.log(obj);
             this.axios.get(url,{params:obj}).then(result=>{
-                // console.log(result);
+                console.log(result);
             })
         },
     },
+    watch:{
+        num1(){
+            if(this.num1<1){
+                this.num1=1;
+                this.one.display="flex";
+                this.guodu.tsdonghua=true;
+            }
+        }
+    }, 
     mounted(){
         var ul=document.getElementsByClassName("smallimg");
         // console.log(ul[0].children.length);
@@ -469,7 +490,8 @@ export default {
     },
     destroyed(){
         window.removeEventListener("scroll",this.handleScroll);
-    },     
+    },
+  
 }
 </script>
 <style scoped>
@@ -913,10 +935,10 @@ outline: none;
     /* display: none; */
 }
 .details .one>div{
-    /* width: 276px;
-    height: 195px; */
-    width: 0;
-    height: 0;
+    width: 276px;
+    height: 195px;
+    /* width: 0;
+    height: 0; */
     background-color: #fff;
     position: fixed;
     box-shadow: 0px 0px 0px 10px rgba(0, 0, 0, 0.144);
@@ -995,10 +1017,10 @@ outline: none;
     /* display: none; */
 }
 .details .two>div{
-    /* width: 482px;
-    height:229px; */
-    width: 0px;
-    height:0px;
+    width: 482px;
+    height:229px;
+    /* width: 0px;
+    height:0px; */
     background-color: #fff;
     position: fixed;
     box-shadow: 0px 0px 0px 10px rgba(0, 0, 0, 0.144);

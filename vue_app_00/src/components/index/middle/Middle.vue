@@ -123,13 +123,27 @@
                </div>
             </div>
             <!-- 9F滚动图 -->
+            <div id="scoll">
+                <ul>
+                    <li><img src="../../scrollbars/img/scrollbars/h1.jpg"></li>
+                    <li><img src="../../scrollbars/img/scrollbars/h2.jpg"></li>
+                    <li><img src="../../scrollbars/img/scrollbars/h3.jpg"></li>
+                    <li><img src="../../scrollbars/img/scrollbars/h4.jpg"></li>
+                    <li><img src="../../scrollbars/img/scrollbars/h5.jpg"></li>
+                    <li><img src="../../scrollbars/img/scrollbars/h6.jpg"></li>
+                    <li><img src="../../scrollbars/img/scrollbars/h7.jpg"></li>
+                    <li><img src="../../scrollbars/img/scrollbars/h8.jpg"></li>
+                    <li><img src="../../scrollbars/img/scrollbars/h9.jpg"></li>
+                    <li><img src="../../scrollbars/img/scrollbars/h10.jpg"></li>
+                    <li><img src="../../scrollbars/img/scrollbars/h11.jpg"></li>
+                    <li><img src="../../scrollbars/img/scrollbars/h12.jpg"></li>
+                </ul>
+            </div>
        </div> 
-       <scoll></scoll>
        <footer00></footer00>
     </div>
 </template>
 <script>
-import Scrollbars from "../../scrollbars/scrollbars.vue"
 import Header from "../header/header0.vue"
 import Footer from "../footer/footer0.vue"
 import Nav from "../../project/Nav.vue"
@@ -159,23 +173,50 @@ export default {
         this.list_4F=this.list.slice(26,34);
         this.list_5F=this.list.slice(34,42);
         this.list_6F=this.list.slice(44,49);
-        })
+        })	
   },
   components:{
-      "scoll":Scrollbars,
       "header00":Header,
       "navgitor":Nav,
       "footer00":Footer,
       "banner":Banner
-     }
+     },
+     mounted(){
+		window.onload = function(){
+				var oDiv = document.getElementById('scoll');
+				var oUl = oDiv.getElementsByTagName('ul')[0];
+				var aLi = oUl.getElementsByTagName('li');
+				var iSpeed = 1;//正左负右
+				var timer = null;
+				oUl.innerHTML += oUl.innerHTML+oUl.innerHTML;
+				oUl.style.width = aLi[0].offsetWidth*aLi.length+'px';
+				function Slider(){
+					if (oUl.offsetLeft<-oUl.offsetWidth/2) {
+						oUl.style.left = 0;
+					}else if(oUl.offsetLeft>0){
+						oUl.style.left =-oUl.offsetWidth/2+'px';
+					}
+					oUl.style.left = oUl.offsetLeft-iSpeed+'px';//正负为方向
+				}
+				timer =setInterval(Slider,30);
+
+				oDiv.onmouseover = function(){
+					clearInterval(timer);
+				}
+				oDiv.onmouseout = function(){
+					timer =setInterval(Slider,30);
+				}
+		};
+	
+    }
   
 }
 </script>
 <style>
     *{margin:0;padding:0;box-sizing: border-box;}
-    body{
+     /* body{
         /* background-color: #f1f7f1; */
-    }
+    /* }   */
     /* 1F */
     #floor{
         width: 1200px;
@@ -396,5 +437,28 @@ export default {
         text-decoration: none;
     }
 
-     
+     #scoll{
+			position: relative;
+			width: 1200px;
+			margin: 20px auto;
+			height: 250px;
+			overflow: hidden;
+		}
+		#scoll ul{
+			position: absolute;
+			width:2880px;
+			height:100%;
+		}
+
+		#scoll ul li{
+			padding: 5px;
+			list-style: none;
+			width: 240px;
+			height: 250px;
+			float: left;
+		}
+		#scoll ul li img{
+			width: 210px;
+			height: 210px;
+		}
 </style>

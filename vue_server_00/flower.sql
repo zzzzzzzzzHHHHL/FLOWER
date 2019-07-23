@@ -71,7 +71,7 @@ CREATE TABLE flower_shoppingcart_item(
   title VARCHAR(64),	    #商品详情
   price DECIMAL(10,2),
   count INT,                #购买数量
-  is_checked BOOLEAN        #是否已勾选，确定购买
+  is_checked BOOL DEFAULT 0  #是否已勾选，确定购买
 );
 
 /**用户订单**/
@@ -1048,9 +1048,9 @@ INSERT INTO flower_life_product VALUES
 (NULL, '静悄悄-洋桔梗混搭（送花瓶）', 'img/life-product/lp21.jpg', 299, 'product_details/286'),
 (NULL, '纯玫瑰包月鲜花共4束（送花瓶）', 'img/life-product/lp22.jpg', 499, 'product_details/287'),
 (NULL, '我乐意-香槟玫瑰+康乃馨混搭（送花瓶）', 'img/life-product/lp23.jpg', 299, 'product_details/288'),
-(NULL, '最好的陪伴-红玫瑰+康乃馨混搭（送花瓶）', 'img/life-product/lp24.jpg', 299, 'product_details/289'),
-(NULL, '生机勃勃-向日葵+小雏菊混搭（送花瓶）', 'img/life-product/lp25.jpg', 299, 'product_details/290'),
-(NULL, '玉洁冰清-黄玫瑰+绿绣球混搭（送花瓶）', 'img/life-product/lp26.jpg', 359, 'product_details/291');
+(NULL, '最好的陪伴-红玫瑰+康乃馨混搭（送花瓶）', 'img/life-product/lp24.jpg', 299, 'product_details/289');
+/*(NULL, '生机勃勃-向日葵+小雏菊混搭（送花瓶）', 'img/life-product/lp25.jpg', 299, 'product_details/290'),
+(NULL, '玉洁冰清-黄玫瑰+绿绣球混搭（送花瓶）', 'img/life-product/lp26.jpg', 359, 'product_details/291');*/
 
 
 
@@ -1115,10 +1115,10 @@ INSERT INTO flower_forever_product VALUES
 (NULL, '双子座守护花-巨型永生花礼盒', 'img/forever-product/fp21.jpg', 359, 'product_details/344'),
 (NULL, '水平座守护花-巨型永生花礼盒', 'img/forever-product/fp22.jpg', 359, 'product_details/345'),
 (NULL, '天蝎座守护花-巨型永生花礼盒', 'img/forever-product/fp23.jpg', 359, 'product_details/346'),
-(NULL, '巨蟹座守护花-巨型永生花礼盒', 'img/forever-product/fp24.jpg', 359, 'product_details/347'),
-(NULL, '金牛座守护花-巨型永生花礼盒', 'img/forever-product/fp25.jpg', 359, 'product_details/348'),
+(NULL, '巨蟹座守护花-巨型永生花礼盒', 'img/forever-product/fp24.jpg', 359, 'product_details/347');
+/*(NULL, '金牛座守护花-巨型永生花礼盒', 'img/forever-product/fp25.jpg', 359, 'product_details/348'),
 (NULL, '白羊座守护花-巨型永生花礼盒', 'img/forever-product/fp26.jpg', 359, 'product_details/349'),
-(NULL, '处女座守护花-巨型永生花礼盒', 'img/forever-product/fp27.jpg', 359, 'product_details/350');
+(NULL, '处女座守护花-巨型永生花礼盒', 'img/forever-product/fp27.jpg', 359, 'product_details/350');*/
 
 
 
@@ -1147,9 +1147,9 @@ INSERT INTO flower_gift_product VALUES
 (NULL, '创意雪花摆件-水晶球（春天）', 'img/gift-product/gp21.jpg', 299, 'product_details/371'),
 (NULL, 'MENS WEAR香味-香薰蜡烛', 'img/gift-product/gp22.jpg', 199, 'product_details/372'),
 (NULL, '一路有你-鹿头项链', 'img/gift-product/gp23.jpg', 399, 'product_details/373'),
-(NULL, '春日樱茶-香薰蜡烛', 'img/gift-product/gp24.jpg', 159, 'product_details/374'),
-(NULL, '创意雪花摆件-水晶球（秋天）', 'img/gift-product/gp25.jpg', 299, 'product_details/375'),
-(NULL, '创意雪花摆件-水晶球（冬天）', 'img/gift-product/gp26.jpg', 299, 'product_details/376');
+(NULL, '春日樱茶-香薰蜡烛', 'img/gift-product/gp24.jpg', 159, 'product_details/374');
+/*(NULL, '创意雪花摆件-水晶球（秋天）', 'img/gift-product/gp25.jpg', 299, 'product_details/375'),*/
+/*(NULL, '创意雪花摆件-水晶球（冬天）', 'img/gift-product/gp26.jpg', 299, 'product_details/376');*/
 
 
 
@@ -1203,31 +1203,31 @@ INSERT INTO flower_all_product VALUES
 (NULL, '宝贝对不起-39朵白玫瑰', 'img/all-product/index-product/ip46.jpg', 699 , 'product_details/46'),
 (NULL, '心上人-13朵混色玫瑰韩式混搭', 'img/all-product/index-product/ip47.jpg', 499, 'product_details/47'),
 (NULL, '倩影翩翩-12朵甜心玫瑰', 'img/all-product/index-product/ip48.jpg', 1499, 'product_details/48'),
-(NULL, '红豆相思-99朵红玫瑰', 'img/all-product/index-product/ip47.jpg', 1199, 'product_details/49'),
-(NULL, '爱在巴黎-19朵甜心玫瑰', 'img/all-product/index-product/ip42.jpg', 1499, 'product_details/50'),
-(NULL, '青春之歌-11朵甜心玫瑰', 'img/all-product/index-product/ip42.jpg', 1499, 'product_details/50'),
-(NULL, '悦动你心-19朵厄瓜多尔甜心玫瑰', 'img/all-product/index-product/ip42.jpg', 1799, 'product_details/50'),
-(NULL, '生命的主角-天空玫瑰韩式混搭', 'img/all-product/index-product/ip42.jpg', 1999, 'product_details/50'),
-(NULL, '天使的心跳-9朵澳洲玫瑰', 'img/all-product/index-product/ip42.jpg', 899, 'product_details/50'),
-(NULL, '清水美嘉-9朵肯尼亚进口玫瑰', 'img/all-product/index-product/ip42.jpg', 1499, 'product_details/50'),
-(NULL, '倩影翩翩-12朵甜心玫瑰', 'img/all-product/index-product/ip42.jpg', 1499, 'product_details/50'),
-(NULL, '花月佳期-12朵天空玫瑰', 'img/all-product/index-product/ip42.jpg', 1799, 'product_details/50'),
-(NULL, '美好如初-进口绿玫瑰海芋韩式混搭', 'img/all-product/index-product/ip42.jpg', 1599, 'product_details/50'),
-(NULL, '缘如花-9朵红玫瑰', 'img/all-product/index-product/ip42.jpg', 1499, 'product_details/50'),
-(NULL, '叶上胭脂-19朵厄瓜多尔红玫瑰', 'img/all-product/index-product/ip42.jpg', 1499, 'product_details/50'),
-(NULL, '爱情印记-14朵进口厄瓜多尔甜心玫瑰', 'img/all-product/index-product/ip42.jpg', 1499, 'product_details/50'),
-(NULL, '时光舞步-10朵甜心玫瑰', 'img/all-product/index-product/ip42.jpg', 1499, 'product_details/50'),
-(NULL, '梦幻星空-11朵七彩玫瑰', 'img/all-product/index-product/ip42.jpg', 1299, 'product_details/50'),
-(NULL, '飞花似梦-19朵进口厄瓜多尔甜心玫瑰', 'img/all-product/index-product/ip42.jpg', 1799, 'product_details/50'),
-(NULL, '爱的期许-11朵进口厄瓜多尔红玫瑰', 'img/all-product/index-product/ip42.jpg', 999, 'product_details/50'),
-(NULL, '简爱-6朵厄瓜多尔粉白玫瑰', 'img/all-product/index-product/ip42.jpg', 999, 'product_details/50'),
-(NULL, '无尽的爱-9朵肯尼亚卡布奇诺玫瑰', 'img/all-product/index-product/ip42.jpg', 899, 'product_details/50'),
-(NULL, '纯美花开-11朵厄瓜多尔蓝色玫瑰', 'img/all-product/index-product/ip42.jpg', 1999, 'product_details/50'),
-(NULL, '你是对的人-新娘手捧花', 'img/all-product/index-product/ip42.jpg', 999, 'product_details/50'),
-(NULL, '布拉格之恋-9朵进口红玫瑰', 'img/all-product/index-product/ip42.jpg', 999, 'product_details/50'),
-(NULL, '梦境丛林—森系高档礼盒装', 'img/all-product/index-product/ip42.jpg', 1599, 'product_details/50'),
-(NULL, '倾情于你-9朵薄荷玫瑰', 'img/all-product/index-product/ip42.jpg', 1799, 'product_details/50'),
-(NULL, '异域风情-进口花材混搭（送花瓶）', 'img/all-product/index-product/ip42.jpg', 799, 'product_details/50'),
+(NULL, '红豆相思-99朵红玫瑰', 'img/all-product/index-product/ip49.jpg', 1199, 'product_details/49'),
+(NULL, '爱在巴黎-19朵甜心玫瑰', 'img/all-product/jinkou-product/jk1.jpg', 1499, 'product_details/50'),
+(NULL, '青春之歌-11朵甜心玫瑰', 'img/all-product/jinkou-product/jk2.jpg', 1499, 'product_details/51'),
+(NULL, '悦动你心-19朵厄瓜多尔甜心玫瑰', 'img/all-product/jinkou-product/jk3.jpg', 1799, 'product_details/52'),
+(NULL, '生命的主角-天空玫瑰韩式混搭', 'img/all-product/jinkou-product/jk4.jpg', 1999, 'product_details/53'),
+(NULL, '天使的心跳-9朵澳洲玫瑰', 'img/all-product/jinkou-product/jk5.jpg', 899, 'product_details/54'),
+(NULL, '清水美嘉-9朵肯尼亚进口玫瑰', 'img/all-product/jinkou-product/jk6.jpg', 1499, 'product_details/55'),
+(NULL, '倩影翩翩-12朵甜心玫瑰', 'img/all-product/jinkou-product/jk7.jpg', 1499, 'product_details/56'),
+(NULL, '花月佳期-12朵天空玫瑰', 'img/all-product/jinkou-product/jk8.jpg', 1799, 'product_details/57'),
+(NULL, '美好如初-进口绿玫瑰海芋韩式混搭', 'img/all-product/jinkou-product/jk9.jpg', 1599, 'product_details/58'),
+(NULL, '缘如花-9朵红玫瑰', 'img/all-product/jinkou-product/jk10.jpg', 1499, 'product_details/59'),
+(NULL, '叶上胭脂-19朵厄瓜多尔红玫瑰', 'img/all-product/jinkou-product/jk11.jpg', 1499, 'product_details/60'),
+(NULL, '爱情印记-14朵进口厄瓜多尔甜心玫瑰', 'img/all-product/jinkou-product/jk12.jpg', 1499, 'product_details/61'),
+(NULL, '时光舞步-10朵甜心玫瑰', 'img/all-product/jinkou-product/jk13.jpg', 1499, 'product_details/62'),
+(NULL, '梦幻星空-11朵七彩玫瑰', 'img/all-product/jinkou-product/jk14.jpg', 1299, 'product_details/63'),
+(NULL, '飞花似梦-19朵进口厄瓜多尔甜心玫瑰', 'img/all-product/jinkou-product/jk15.jpg', 1799, 'product_details/64'),
+(NULL, '爱的期许-11朵进口厄瓜多尔红玫瑰', 'img/all-product/jinkou-product/jk16.jpg', 999, 'product_details/65'),
+(NULL, '简爱-6朵厄瓜多尔粉白玫瑰', 'img/all-product/jinkou-product/jk17.jpg', 999, 'product_details/66'),
+(NULL, '无尽的爱-9朵肯尼亚卡布奇诺玫瑰', 'img/all-product/jinkou-product/jk18.jpg', 899, 'product_details/67'),
+(NULL, '纯美花开-11朵厄瓜多尔蓝色玫瑰', 'img/all-product/jinkou-product/jk19.jpg', 1999, 'product_details/68'),
+(NULL, '你是对的人-新娘手捧花', 'img/all-product/jinkou-product/jk20.jpg', 999, 'product_details/69'),
+(NULL, '布拉格之恋-9朵进口红玫瑰', 'img/all-product/jinkou-product/jk21.jpg', 999, 'product_details/70'),
+(NULL, '梦境丛林—森系高档礼盒装', 'img/all-product/jinkou-product/jk22.jpg', 1599, 'product_details/71'),
+(NULL, '倾情于你-9朵薄荷玫瑰', 'img/all-product/jinkou-product/jk23.jpg', 1799, 'product_details/72'),
+(NULL, '异域风情-进口花材混搭（送花瓶）', 'img/all-product/jinkou-product/jk24.jpg', 799, 'product_details/73'),
 (NULL, '爱的勇气-19朵红玫瑰', 'img/all-product/love-product/l1.jpg', 499, 'product_details/74'),
 (NULL, '一见倾心-19朵红玫瑰', 'img/all-product/love-product/l2.jpg', 399, 'product_details/75'),
 (NULL, '心上人-13朵混色玫瑰韩式混搭', 'img/all-product/love-product/l3.jpg', 499, 'product_details/76'),
@@ -1262,7 +1262,7 @@ INSERT INTO flower_all_product VALUES
 (NULL, '甜蜜圣诞-红玫瑰+苹果圣诞礼盒', 'img/all-product/love-product/l32.jpg', 799, 'product_details/105'),
 (NULL, '爱你在身边-33朵红玫瑰', 'img/all-product/love-product/l33.jpg', 599, 'product_details/106'),
 (NULL, '相濡以沫-新娘手捧花', 'img/all-product/love-product/l34.jpg', 599, 'product_details/107'),
-(NULL, '甜蜜圣诞-红玫瑰+苹果圣诞礼盒', 'img/all-product/love-product/l35.jpg', 799, 'product_details/108'),
+(NULL, '甜蜜圣诞-红玫瑰+苹果圣诞礼盒', 'img/all-product/love-product/l35.png', 799, 'product_details/108'),
 (NULL, '温柔月色-33朵粉玫瑰', 'img/all-product/love-product/l36.jpg', 599, 'product_details/109'),
 (NULL, '浅语花开-33朵粉玫瑰', 'img/all-product/love-product/l37.jpg', 599, 'product_details/110'),
 (NULL, '心动的感觉-99朵混色玫瑰', 'img/all-product/love-product/l38.jpg', 999, 'product_details/111'),

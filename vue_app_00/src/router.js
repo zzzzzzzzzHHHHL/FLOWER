@@ -40,11 +40,18 @@ import Nav from "./components/project/Nav.vue"
 import Gocart from "./components/project/Gocart.vue"
 import product_details from "./components/project/product_details.vue"
 import Settlement from "./components/project/Settlement.vue"
+import City from "./components/project/City.vue"
 //header
 import header0 from "./components/index/header/header0.vue"
 //footer
 import footer0 from "./components/index/footer/footer0.vue"
 
+//模糊查询
+import Serr from "./components/select/select-err.vue"
+import Rose from "./components/select/rose.vue"
+import Whitelily from "./components/select/whitelily.vue"
+import Sunflor from "./components/select/sunflor.vue"
+import Kangnaixin from "./components/select/kangnaixin.vue"
 
 
 Vue.use(Router)
@@ -81,8 +88,15 @@ export default new Router({
     {path:'/Nav',component:Nav},
     {path:'/Gocart',component:Gocart},
     {path:'/Settlement',component:Settlement},
+    {path:'/City',component:City},
     {path:'/product_details/:lid',component:product_details,props:true},
 
+    //模糊查询
+    {path:'/Serr',component:Serr},
+    {path:'/Rose',component:Rose},
+    {path:'/Whitelily',component:Whitelily},
+    {path:'/Sunflor',component:Sunflor},
+    {path:'/Kangnaixin',component:Kangnaixin},
 
   ]
 })

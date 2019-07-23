@@ -1,8 +1,6 @@
 <template>
-    <div>
-        <header00></header00>
-        <navgitor></navgitor>
-        <div class="productFilter my_flex">
+  <div>
+        <div class="productFilter my_flex"> 
             <div class="left_pro">
                 <ul class="my_flex">
                     <li><a>排序:</a></li>
@@ -11,41 +9,30 @@
                     <li><a>价格</a> </li>
                     <li>
                         <a><i class="el-icon-caret-top" @click="add"></i></a>
-                        <a><i class="el-icon-caret-bottom"  @click="cut"></i></a>   
+                        <a><i class="el-icon-caret-bottom" @click="cut"></i></a>   
                     </li>      
                 </ul>
             </div>
             <div class="right_pro">
-                <span>24个结果</span>
-                <el-pagination  background  layout="prev, pager, next" :total="20" @prev-click="last" @next-click="next" ></el-pagination>
+                <span>14个结果</span>
+                <el-pagination  background  layout="prev, pager, next" :total="10" @prev-click="last" @next-click="next" ></el-pagination>
             </div>         
         </div>
         <div class="my_flex main">
             <div  v-for="(elem,i) of list" :key="i" class="main_pro">
                 <router-link :to="elem.href"><img :src="`http://127.0.0.1:3000/`+elem.pic" ></router-link>
-                 <div class="msg_pro">
-                    <p>
+                <p >
                     <router-link v-text="elem.title" :to="elem.href"></router-link>
-                    </p>
-                    <p v-text="`￥${elem.price}`"></p>
-                </div>
+                </p>
+                <p v-text="elem.price"></p>
             </div>
         
         </div>
-        <footer00></footer00>
-    </div>
+  </div>
 </template>
 <script>
-    import Header from "../index/header/header0.vue"
-    import Nav from "../project/Nav.vue"
-    import Footer from "../index/footer/footer0.vue"
-  export default{
-      components:{
-        "header00":Header,
-        "navgitor":Nav,
-        "footer00":Footer
-    },
-        data(){
+export default {
+  data(){
             return{
                 list:[],
                pno:1,ps:16
@@ -63,14 +50,12 @@
             }       
         },
         created() {
-              var url="forever";
-                this.axios.get(url).then(result=>{
-                    console.log(result);
-                     this.list=result.data.slice(0,16)
-                    // setTimeout(function(){
-                      //  var divMain=document.querySelectorAll(".main_pro");
-                       // console.log(divMain)
-                     //},10)
+              var msg="白百合";
+              var url="dim";
+              var obj={msg};
+              this.axios.get(url,{params:obj}).then(result=>{
+                console.log(result.data);
+              this.list=result.data.slice(0,16);
                 })
         },
     
@@ -80,9 +65,6 @@
                 this.pno--;
                 var obj={pno:this.pno,ps:this.ps}
                 this.axios.get(url,{params:obj}).then(result=>{
-               // var rows=this.list.concat(result.data.data)
-                //console.log(rows)
-                  // this.list=rows
                   this.list=result.data.data
                 })
             },
@@ -91,13 +73,10 @@
                 this.pno++;
                 var obj={pno:this.pno,ps:this.ps}
                 this.axios.get(url,{params:obj}).then(result=>{
-               // var rows=this.list.concat(result.data.data)
-                //console.log(rows)
-                  // this.list=rows
                   this.list=result.data.data
                 })
             },
-              add(){
+             add(){
                 var url="forever-priceUp";
                 this.axios.get(url).then(result=>{
                     this.list=result.data;  
@@ -116,12 +95,14 @@
                 var lasti=document.querySelector(".el-icon-caret-bottom");
                 firsti.style.color="#d2d2d2";
                 lasti.style.color="red";           
-            },
+            } 
+           
         },  
-    }
+
+}
 </script>
-<style scoped>
-     a{
+<style>
+  a{
         cursor: pointer;
     }
     .productFilter{
@@ -225,5 +206,6 @@
      text-align:center;
      margin:10px 0px;
  }
- 
 </style>
+
+

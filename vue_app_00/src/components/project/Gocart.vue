@@ -26,7 +26,7 @@
                     <ul>
                         <!-- 商品图片 -->
                         <li>
-                            <input type="checkbox" name="" v-model="elem.is_checked" @click="select" :data-lid="elem.lid">
+                            <input type="checkbox" name="" v-model="elem.is_checked" @click="select" :data-lid="elem.lid" :data-count="elem.count" :data-price="elem.price">
                             &nbsp;&nbsp;&nbsp;
                             <router-link :to="'product_details/'+elem.lid">
                             <img :src="'http://127.0.0.1:3000/'+elem.img_url" alt="">
@@ -41,9 +41,10 @@
                         <li v-text="`￥${elem.price}`"></li>
                         <!-- 数量 -->
                         <li class="btn">
-                            <button @click="jian" :data-lid="elem.lid" :data-count="elem.count" :data-price="elem.price">-</button>
-                            <input type="number" min="1" max="12" name="quantity" v-model="elem.count" disabled="disabled" class="numinput">
-                            <button @click="jia" :data-lid="elem.lid" :data-count="elem.count" :data-price="elem.price">+</button>
+                            <button @click="jian" :data-lid="elem.lid" :data-count="elem.count" :data-price="elem.price" :data-checked="elem.is_checked">-</button>
+                            <input type="number" min="1" max="12" name="quantity" v-model="elem.count"  class="numinput" @blur="bulr" @keyup.13="bulr" :data-lid="elem.lid" :data-count="elem.count" :data-price="elem.price" :data-checked="elem.is_checked">
+                            <!-- disabled="disabled"  @keyup.13="bulr"-->
+                            <button @click="jia" :data-lid="elem.lid" :data-count="elem.count" :data-price="elem.price" :data-checked="elem.is_checked">+</button>
                         </li>
                         <!-- 小计 -->
                         <li v-text="`￥${Number(elem.price)*elem.count}`"></li>
@@ -78,9 +79,9 @@
                 <div class="quanxuan">
                     <ul>
                     <li>
-                        <input type="checkbox" id="qx" @click="selectAll" v-model="t">
+                        <input type="checkbox" id="qx1" @click="selectAll" v-model="t">
                         &nbsp;
-                        <label for="qx">全选</label>
+                        <label for="qx1">全选</label>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <a href="javascript:;" @click="two1">删除选中商品</a>
                         <!-- @click="delproduct" -->
@@ -88,7 +89,7 @@
                     <li>
                         已选商品 <span class="span1" v-text="total"></span> 件
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        总价(不含运费)： <span class="span2" v-text="`￥${sum}`"></span>
+                        总价(不含运费)： <span class="span2" v-text="`￥${sum2}`"></span>
                     </li>
                     </ul>
                 </div>
@@ -160,7 +161,7 @@
         <!-- 确认删除商品提示框1 -->
         <div class="one" :style="one">
             <!-- 提示框 -->
-            <div>
+            <div class="animated zoomIn">
                 <div>
                     <span>系统提示</span>
                     <a href="javascript:;" class="iconfont icon-tishikuangguanbi" @click="close"></a>
@@ -179,7 +180,7 @@
         <!-- 确认删除商品提示框2 -->
         <div class="two" :style="two">
             <!-- 提示框 -->
-            <div>
+            <div class="animated zoomIn">
                 <div>
                     <span>系统提示</span>
                     <a href="javascript:;" class="iconfont icon-tishikuangguanbi" @click="close1"></a>
@@ -195,6 +196,44 @@
                 </div>
             </div>
         </div>
+        <!-- 请选择删除的商品提示框 -->
+        <div class="one" :style="there">
+            <!-- 提示框 -->
+            <div class="animated zoomIn">
+                <div>
+                    <span>系统提示</span>
+                    <a href="javascript:;" class="iconfont icon-tishikuangguanbi" @click="close2"></a>
+                </div>
+                <div>
+                    <span class="iconfont icon-ruotishikuang-jinggaotishitubiao"></span>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span>请选中要删除的商品</span>
+                </div>
+                <div>
+                    <button class="xzspqd" @click="close2">确定</button>
+                </div>
+            </div>
+        </div>
+        <!-- 商品最少数量为1 提示框 -->
+        <!-- 遮罩 -->
+            <div class="one" :style="four">
+                <!-- 提示框 -->
+                <div class="animated zoomIn">
+                    <div>
+                        <span>系统提示</span>
+                        <a href="javascript:;" class="iconfont icon-tishikuangguanbi" @click="close3"></a>
+                    </div>
+                    <div>
+                        <span class="iconfont icon-ruotishikuang-jinggaotishitubiao"></span>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <span>最低购买数量为：1</span>
+                    </div>
+                    <div>
+                        <button class="xzspqd" @click="close3">确定</button>
+                    </div>
+                </div>
+            </div>
+
         <footer00 class="footer"></footer00>
     </div>
 </template>
@@ -216,11 +255,14 @@ export default {
             cart2:{display:"none"},
             one:{display:"none"},
             two:{display:"none"},
+            there:{display:"none"},
+            four:{display:"none"},
             t:false,
             delletelid:"",
             delobj:[],
             total:0,
             sum:0,
+            sum2:0,
         }
     },
     created(){
@@ -231,13 +273,17 @@ export default {
         loadMore(){
             var url = "cart";
             this.axios.get(url).then(result=>{
-               //console.log(result.data.data);
-               this.list=result.data.data;
-            //    console.log(this.list);
-               for(var item of this.list){
-                item.is_checked=false;
+                //console.log(result.data.data);
+                this.list=result.data.data;
+                var n=0;
+                for(var i=0;i<this.list.length;i++){
+                    if(this.list[i].is_checked==1){
+                        n+=1;
+                    }
                 }
-            //    console.log(this.list);
+                // console.log(n);
+                if(n==this.list.length){this.t=true}
+
                if(!this.list.length){
                    this.cart2.display="block";
                    this.cart1.display="none";
@@ -245,18 +291,28 @@ export default {
                    this.cart1.display="block";
                    this.cart2.display="none";
                }
-               // 求和
+               // 求和sum
                this.sum=0;
-               var k=0;
+               var k=0; //购物车总数
+               var k1=0; //选中的商品总数
+               var sum2=0; //选中商品总价
                 for(var i=0;i<this.list.length;i++){
                     // console.log(typeof(this.list[i].price));
                     this.sum+=(this.list[i].count*this.list[i].price);
                     k+=Number(this.list[i].count);
-                    // console.log(k);
+                    if(this.list[i].is_checked==1){
+                        k1+=1;
+                        sum2+=Number(this.list[i].count)*Number(this.list[i].price);
+                    }
                 }
+                this.sum2=sum2;
+                this.total=k1;
+                // console.log(this.total,this.sum2);
                 // vuex数据存贮
                 this.$store.commit("set1",k);
                 this.$store.commit("set2",this.sum);
+                
+
             })
             
             // console.log(this.sum);
@@ -267,6 +323,8 @@ export default {
         msqgg(){this.$router.push("/Middle")},
         close(){this.one.display="none";},
         close1(){this.two.display="none";},
+        close2(){this.there.display="none";},
+        close3(){this.four.display="none";},
         deletelid(e){
             this.one.display="none";
             // console.log(e.currentTarget.dataset.lid)
@@ -317,8 +375,9 @@ export default {
             for(var i=0;i<this.list.length;i++){
                 if(this.list[i].is_checked==true){n+=1}
             }
-            if(n>=1){this.two.display="flex";}
-            
+            if(n>=1){this.two.display="flex";}else{
+                this.there.display="flex";
+            }
         },
         selectAll(e){
             var cb =  e.target.checked;
@@ -332,14 +391,32 @@ export default {
                 this.total=0;
                 this.total+=this.list.length
             }else{this.total-=this.list.length}
+
+            // 选中状态改变更改所有商品状态
+            //  console.log(this.t);
+            var is_checked=(this.t)?1:0
+            //  console.log(is_checked);
+            var url = "checkAll";
+            var obj = {
+                is_checked:is_checked
+            };
+            // console.log(obj);
+            this.axios.get(url,{params:obj}).then(result=>{
+                //重新加载数据相当刷新
+                this.loadMore(); 
+            })
         },
         select(e){
-            // console.log(e.target.checked);
+            var count=e.target.dataset.count;
+            var price=e.target.dataset.price;
+            var lid=e.target.dataset.lid;
+            var check=0;
             if(e.target.checked==false){
                 this.t=false;
                 this.total-=1;
+                this.sum2-=count*price;
+                check=0;
             }
-            // console.log(e.target.checked==true)
             else {
                 this.total+=1;
                 var n=0;
@@ -349,39 +426,92 @@ export default {
                     }
                 }
                 if(n+1==this.list.length){this.t=true}
+                this.sum2+=count*price;
+                check=1;
             }
-            // console.log(this.total);
+            // 更改商品选中状态
+            // console.log(count,price,lid,check);
+            var url = "checkone";
+            var obj = {
+                lid:lid,
+                is_checked:check
+            };
+            // console.log(obj);
+            this.axios.get(url,{params:obj}).then(result=>{
+                //重新加载数据相当刷新
+                this.loadMore(); 
+            })
         },
         jia(e){
             // console.log(e.target.dataset.lid);
+            // console.log(e.target.dataset.checked);
+            var c=0;
             var i=e.target.dataset.lid;
+            if(e.target.dataset.checked=='true'||e.target.dataset.checked=='1'){c=1}
+            // console.log(c,c,c);
             var url = "plus";
             var obj = {
-                lid:i
+                lid:i,
+                is_checked:c
             };
             // console.log(obj);
             this.axios.get(url,{params:obj}).then(result=>{
                 //重新加载数据相当刷新
-                this.loadMore();
+                this.loadMore(); 
             })
         },
         jian(e){
-            // console.log(e.target.dataset.lid);
-            // console.log(e.target.dataset.count);
+            var c=0;
+            if(e.target.dataset.checked=='true'||e.target.dataset.checked=='1'){c=1}
             if(e.target.dataset.count>1){
-            var i=e.target.dataset.lid;
-            var url = "reduce";
-            var obj = {
-                lid:i
-            };
-            // console.log(obj);
-            this.axios.get(url,{params:obj}).then(result=>{
-                //重新加载数据相当刷新
-                this.loadMore();
-            })
-            }
+                var i=e.target.dataset.lid;
+                var url = "reduce";
+                var obj = {
+                    lid:i,
+                    is_checked:c
+                };
+                this.axios.get(url,{params:obj}).then(result=>{
+                    //重新加载数据相当刷新
+                    this.loadMore();
+                })
+            }else{this.four.display="flex"}
         },
-    }
+        bulr(e){
+            var count=e.target.value;
+            var lid=e.target.dataset.lid;
+            var checked=e.target.dataset.checked;
+            // console.log(count,lid,checked);
+            if(count<1){
+                e.target.value=1;
+                count=1;
+                console.log(count)
+                var url = "changeone";
+                var obj = {
+                    lid:lid,
+                    is_checked:checked,
+                    count:count
+                };
+                this.axios.get(url,{params:obj}).then(result=>{
+                    //重新加载数据相当刷新
+                    this.loadMore(); 
+                    this.four.display="flex"
+                })
+            }else{
+                var url = "changeone";
+                var obj = {
+                    lid:lid,
+                    is_checked:checked,
+                    count:count
+                };
+                this.axios.get(url,{params:obj}).then(result=>{
+                    //重新加载数据相当刷新
+                    this.loadMore(); 
+                })
+            }
+        }
+    },
+     watch:{
+     }
 }
 </script>
 
@@ -865,5 +995,10 @@ input[type="number"]{ -moz-appearance: textfield; }
     background-color: #f1f1f1;
     color: #333;
     border-radius: 2px;
+}
+.cartAll .xzspqd{
+    border-color: #333 !important;
+    background-color: #333 !important;
+    color: #fff !important;
 }
 </style>

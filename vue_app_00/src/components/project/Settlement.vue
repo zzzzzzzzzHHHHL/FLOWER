@@ -1,6 +1,8 @@
 <template>
     <div class="settlement"><!-- 购物车结算组件 -->
-    <br><br><br>
+        <header00></header00>
+        <navgitor></navgitor>
+        <div class="fjx"></div>
         <!-- Nav -->
         <div class="topnav">
             <div></div>
@@ -10,11 +12,26 @@
             <!-- 收货人信息 -->
             <div class="Consignee">
                 <p>收货人信息</p>
-                <!-- 添加新地址 -->
-                <div class="address">
-                    <img src="../../assets/Mig/location.png" alt="">
-                    <p>添加新地址</p>
+                <div class="addressAll">
+                    <!-- 已有收货地址 -->
+                    <div class="address1">
+                        <p class="text-truncate">收货人: <span>张三</span> </p>
+                        <p class="text-truncate">收货人手机号: <span>18623222222</span> </p>
+                        <p class="text-truncate">收货地址: <span>闪电发货时刻打开速度刷卡费多少公里数顺丰控股方大化工肯定是个符号是大法官狂欢节</span> </p>
+                        <p class="text-truncate">订购人: <span>李四</span> </p>
+                        <p class="text-truncate">订购人手机号: <span>18656566565</span> </p>
+                        <a href="javacript:;">修改</a>
+                        <a href="javacript:;">删除</a>
+                        <span class="iconfont icon-xuanzhongkuang1"></span>
+                    </div>
+                    <!-- 添加新地址 -->
+                    <div class="address">
+                        <img src="../../assets/Mig/location.png" alt="">
+                        <p @click="insertaddress">添加新地址</p>
+                    </div>
                 </div>
+                
+                
             </div>
             <!-- 配送费用 -->
             <div class="cost">
@@ -203,13 +220,161 @@
                     </div>
                 </div>
             </div>
-            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <!-- 支付方式 -->
+            <div class="payway">
+                <p>支付方式</p>
+                <div>
+                    <p>
+                        <span  @click="zf">
+                            <img src="../../assets/Mig/zfb.png" alt="" data-zf="zfb">
+                        </span>
+                        <span @click="zf">
+                            <img src="../../assets/Mig/wx.png" alt="" data-zf="wx">
+                        </span>
+                    </p>
+                    <p>
+                        <span class="iconfont icon-xuanzhongkuang" :style="zf1"></span>
+                        <span class="iconfont icon-xuanzhongkuang" :style="zf2"></span>
+                    </p>
+                </div>
+            </div>
+            <!-- 商品信息 -->
+            <div class="spxx">
+                <p>商品信息 <span @click="fhgwc">返回购物车</span></p>
+                <div>
+                    <!-- 单件商品 -->
+                    <div>
+                        <!-- 左边 -->
+                        <div>
+                            <a href="#">
+                                <img src="../../assets/Mig/15.jpg" alt="">
+                            </a>
+                            <span><a href="#">爱之物语-14朵红玫瑰</a></span>
+                            
+                        </div>
+                        <!-- 右边 -->
+                        <div>
+                            <span>￥499.00</span>
+                            <span>x1</span>
+                            <span>有货</span>
+                            <span>￥499.00</span>
+                        </div>
+                    </div>
+                    <div>
+                        <!-- 左边 -->
+                        <div>
+                            <a href="#">
+                                <img src="../../assets/Mig/15.jpg" alt="">
+                            </a>
+                            <span><a href="#">爱之物语-14朵红玫瑰</a></span>
+                            
+                        </div>
+                        <!-- 右边 -->
+                        <div>
+                            <span>￥499.00</span>
+                            <span>x1</span>
+                            <span>有货</span>
+                            <span>￥499.00</span>
+                        </div>
+                    </div>
+                    <div>
+                        <!-- 左边 -->
+                        <div>
+                            <a href="#">
+                                <img src="../../assets/Mig/15.jpg" alt="">
+                            </a>
+                            <span><a href="#">爱之物语-14朵红玫瑰</a></span>
+                            
+                        </div>
+                        <!-- 右边 -->
+                        <div>
+                            <span>￥499.00</span>
+                            <span>x1</span>
+                            <span>有货</span>
+                            <span>￥499.00</span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <!-- 订单备注 -->
+            <div class="ddbz">
+                <input type="text" placeholder="订单备注 限60个字">
+                <span>提示：请勿填写有关支付、收货等信息</span>
+            </div>
+            <!-- 订单提交 -->
+            <div class="ddtj">
+                <p>商品总价：<span>￥898.00</span> </p>
+                <p>应付款金额：<span>￥898.00</span> </p>
+                <button>提交订单</button>
+            </div>
+            <!-- 新增收货人地址 -->
+            <!-- 遮罩 -->
+            <div class="inputaddress" :style="addressmask">
+                <!-- 表单框 -->
+                <div class="input1 animated zoomIn">
+                    <!-- 新增收货人地址标题 -->
+                    <div>
+                        <span>新增收货人地址</span>
+                        <span class="iconfont icon-tishikuangguanbi" @click="closemask"></span>
+                    </div>
+                    <!-- 表单 -->
+                    <div>
+                        <p> 
+                            <span><span>*</span> 收货人姓名</span>
+                            <input type="text" name="" id="" v-model="shname" onkeyup="this.value=this.value.replace(/\s+/g,'')">
+                            <span class="Tips animated fadeIn" v-text="name1" :style="name1style"></span>
+                            <!-- infinite -->
+                        </p>
+                        <p>
+                            <span><span>*</span> 收货人手机号</span>
+                            <input type="text" name="" id="" v-model="shphone" onkeyup="this.value=this.value.replace(/\s+/g,'')">
+                            <span class="Tips" v-text="phone1"></span>
+                        </p>
+                        <p>
+                            <span><span>*</span> 所在地区</span>
+                            <v-distpicker :placeholders="placeholders" class="disrpicker" @selected="selectdress"></v-distpicker>
+                            <span class="Tips tipsderss" v-text="adress1"></span>
+                        </p>
+                        <p>
+                            <span> <span>*</span> 详细街道地址 </span>
+                            <input type="text" v-model="adressdetail" onkeyup="this.value=this.value.replace(/\s+/g,'')">
+                            <span class="Tips" v-text="adress2"></span>
+                        </p>
+                        <p>
+                            <span> <span>*</span> 订购人姓名 </span>
+                            <input type="text" name="" id="" v-model="dgname" onkeyup="this.value=this.value.replace(/\s+/g,'')">
+                            <span class="Tips" v-text="name2"></span>
+                        </p>
+                        <p>
+                            <span> <span>*</span> 订购人手机号 </span>
+                            <input type="text" v-model="dgphone" onkeyup="this.value=this.value.replace(/\s+/g,'')">
+                            <span class="Tips" v-text="phone2">asdfafds</span>
+                        </p>
+                    </div>
+                    <div>
+                        <button @click="save">保存</button>
+                        <button @click="closemask">取消</button>
+                    </div>
+                </div>
+            </div>
         </div>
+        <footer00 class="footer"></footer00>
     </div>
 </template>
 
 <script>
+import Header from "../index/header/header0.vue"
+import Footer from "../index/footer/footer0.vue"
+import VDistpicker from 'v-distpicker'
+import Nav from "./Nav.vue"
 export default {
+    components:{
+      "header00":Header,
+      "navgitor":Nav,
+      "footer00":Footer,
+      VDistpicker
+     },
     data(){
         return{
             s:"",
@@ -225,6 +390,27 @@ export default {
             biaoyu3:{display:"none"},
             biaoyu4:{display:"none"},
             by:"",
+            zf1:{display:"block"},
+            zf2:{display:"none"},
+            placeholders: {
+              province: '请选择省',
+              city: '请选择市',
+              area: '请选择区',
+            },
+            addressmask:{display:"none"},
+            name1:"",
+            name2:"订购人姓名不能为空",
+            phone1:"手机号码格式不正确",
+            phone2:"手机号码格式不正确",
+            adress1:"请输入完整地区",
+            adress2:"详细地址不能为空",
+            shname:"",
+            shphone:"",
+            adress:{},
+            adressdetail:"",
+            dgname:"",
+            dgphone:"",
+            name1style:{display:"none"},
         }
     },
     methods:{
@@ -291,13 +477,53 @@ export default {
         selectby(e){
             // console.log(e.target.attributes[1].value);
             this.by=e.target.attributes[1].value;
-        }
+        },
+        zf(e){
+            // console.log(e.target.dataset.zf);
+            if(e.target.dataset.zf=="zfb"){
+                this.zf1.display="block";
+                this.zf2.display="none";
+            }else{
+                this.zf1.display="none";
+                this.zf2.display="block";
+            }
+
+        },
+        fhgwc(){this.$router.push("/Gocart");},
+        selectdress(a){
+            // console.log(a);
+            this.adress=a;
+            console.log(this.adress);
+        },
+        insertaddress(){
+            this.addressmask.display="flex";
+        },
+        closemask(){
+            this.addressmask.display="none";
+        },
+        save(){
+            console.log(this.shname);
+            // 验证收货人姓名（不能为空）
+            if(this.shname==""){
+                this.name1="收货人姓名不能为空";
+                // console.log(this.name1)
+                this.name1style.display="inline-block";
+                var timer=setTimeout();
+            }
+        },
     },
 
 }
 </script>
 
 <style scoped>
+.settlement .fjx{
+    width: 100%;
+    border-top: 1px solid #d2d2d2;
+    position: relative;
+    margin-bottom: 10px;
+    top: -20px;
+}
 .settlement{
     background-color: #fff !important;
 }
@@ -340,6 +566,53 @@ export default {
     border-bottom: 1px solid #d2d2d2;
     line-height: 20px;
 }
+.settlement .information .Consignee .addressAll{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.settlement .information .Consignee .addressAll .address1 p{
+    font-size: 14px;
+    color: #8c8c8c;
+    margin: 0;
+    width: 288px;
+    height: 23px;
+    line-height: 23px;
+    /* overflow: hidden; */
+    
+}
+.settlement .information .Consignee .addressAll p:first-child{
+    font-size: 18px;
+    color: #555555;
+}
+.settlement .information .Consignee .addressAll .address1{
+    width: 330px;
+    height: 146px;
+    margin-top: 30px;
+    /* background-color: #ccc; */
+    margin-right: 20px;
+    padding: 8px 18px 18px 22px;
+    position: relative;
+    border: 1px dashed #333;
+    /* border-color: #d2d2d2; */
+}
+.settlement .information .Consignee .addressAll .address1 a{
+    position: absolute;
+    font-size: 14px;
+    color: #333 !important;
+    top: 10px;
+    left: 240px;
+}
+.settlement .information .Consignee .addressAll .address1>span{
+    float: right;
+    font-size: 22px;
+    margin-top: -5px;
+    margin-right: -19px;
+}
+.settlement .information .Consignee .addressAll .address1 a:nth-child(7){
+    left: 280px;
+}
 .settlement .information .Consignee .address{
     width: 330px;
     height: 146px;
@@ -354,6 +627,10 @@ export default {
     margin-top: 5px;
    font-size: 14px;
    color: #8c8c8c;
+}
+.settlement .information .Consignee .address p:hover{
+    color: #333;
+    cursor: pointer;
 }
 .settlement .information .cost{
     margin-top: 30px;
@@ -551,8 +828,331 @@ input[type="date"]::-webkit-clear-button{
     font-size: 13px;
     color: #888888;
     padding: 6px 0;
+    line-height: 25px;
 }
 .settlement .message>div>div .biaoyu>ul>li:hover{
     cursor: default;
+}
+.settlement .payway>p{
+    height: 51px;
+    padding: 20px 0 10px;
+    font-size: 18px;
+    color: #555555;
+    border-bottom: 1px solid #d2d2d2;
+    margin-top: 20px;
+    line-height: 20px;
+}
+.settlement .payway>div{
+    margin-top: 25px !important;
+}
+.settlement .payway>div img{
+    height: 34px;
+    position: relative;
+    z-index: 5;
+}
+.settlement .payway>div p:nth-child(1) span{
+    width: 160.18px;
+    height: 40px;
+    padding: 0 25px;
+    margin-right: 20px;
+}
+.settlement .payway>div p:nth-child(2){
+    position: relative;
+}
+.settlement .payway>div p:nth-child(2) span{
+    font-size: 45px;
+    position: absolute;
+    top: -67px;
+    left: 10px;
+    background: transparent;
+}
+.settlement .payway>div p:nth-child(2) span:nth-child(2){
+    left: 170px;
+    /* display: none; */
+}
+.settlement .spxx>p{
+    height: 51px;
+    padding: 20px 0 10px;
+    font-size: 18px;
+    color: #555555;
+    border-bottom: 1px solid #d2d2d2;
+    margin-top: 30px;
+    line-height: 20px;
+    position: relative;
+}
+.settlement .spxx>p span{
+    float: right;
+    color: #438cde;
+    font-size: 12px;
+}
+.settlement .spxx>p span:hover{
+    cursor: pointer;
+    color: #f42424;
+}
+.settlement .spxx>div{
+    margin-top: 20px;
+    background-color: #f8f8f8;
+    padding: 10px 0;
+}
+.settlement .spxx>div>div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 30px;
+    padding: 20px 0;
+}
+.settlement .spxx>div>div:not(:last-child){
+    border-bottom: 1px dashed #d2d2d2;
+}
+.settlement .spxx>div div img{
+    width: 48px;
+}
+.settlement .spxx>div>div>div:nth-child(1) span{
+    font-size: 13px;
+    color: #333;
+    display: inline-block;
+    margin-left: 20px;
+}
+.settlement .spxx>div>div>div:nth-child(1) span a{
+    color: #333 !important;
+}
+.settlement .spxx>div>div>div:nth-child(1) span a:hover{
+    text-decoration: none;
+    color: #f42424!important;
+}
+.settlement .spxx>div>div>div:nth-child(2) span{
+    display: inline-block;
+}
+.settlement .spxx>div>div>div:nth-child(2) span:nth-child(1){
+    color: #f42424;
+    font-size: 16px;
+    margin-right: 30px;
+}
+.settlement .spxx>div>div>div:nth-child(2) span:nth-child(2){
+    font-size: 16px;
+    color: #666666;
+    margin-right: 50px;
+}
+.settlement .spxx>div>div>div:nth-child(2) span:nth-child(3){
+    font-size: 14px;
+    color: #666666;
+    margin-right: 50px;
+}
+.settlement .spxx>div>div>div:nth-child(2) span:nth-child(4){
+    font-size: 16px;
+    color: #f42424;
+    font-weight: bold;
+}
+.settlement .ddbz{
+    margin-top: 40px;
+}
+.settlement .ddbz input{
+    width: 856px;
+    height: 40px;
+    padding: 0 12px;
+    background-color: #fff;
+    border: 1px solid #d2d2d2;
+    font-size: 14px;
+    color:  #d2d2d2;
+}
+.settlement .ddbz input:focus{
+    outline: none;
+}
+.settlement .ddbz span{
+    display: inline-block;
+    font-size: 12px;
+    color: #8c8c8c;
+    margin-left: 18px;
+}
+.settlement .ddtj{
+    margin-top: 50px;
+    text-align: right;
+}
+.settlement .ddtj p{
+    text-align: right;
+    font-size: 14px;
+    color: #8c8c8c;
+    margin: 10px 20px;
+    margin-right: 10px;
+}
+.settlement .ddtj p:nth-child(1) span{
+    display: inline-block;
+    margin-left: 25px;
+    font-size: 16px !important;
+    color: #333;
+    font-weight: 500;
+}
+.settlement .ddtj p:nth-child(2) span{
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #f42424;
+}
+.settlement .ddtj button{
+    height: 50px;
+    line-height: 50px;
+    background-color: #c43f40;
+    width: 160px;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    border: none;
+    margin-top: 25px;
+    margin-bottom: 40px;
+}
+.settlement input:focus{
+    outline: none !important;
+}
+.settlement select:focus{
+    outline: none;
+}
+.settlement button{
+    outline: none;
+}
+.settlement .inputaddress{
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #33333375;
+    z-index: 900;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* display: none; */
+}
+.settlement .inputaddress .input1{
+    width: 986px;
+    height: 397px;
+    background-color: #fff;
+    box-shadow: 0px 0px 0px 10px rgba(0, 0, 0, 0.144);
+}
+.settlement .inputaddress .input1>div:nth-child(1){
+    height: 43px;
+    padding: 0 20px 0 20px;
+    color: #333;
+    font-size: 14px;
+    background-color: #f8f8f8;
+    line-height: 43px;
+}
+.settlement .inputaddress .input1>div:nth-child(1) span:nth-child(2){
+    float: right;
+    font-size: 12px;
+}
+.settlement .inputaddress .input1>div:nth-child(1) span:nth-child(2):hover{
+    cursor: pointer;
+}
+.settlement .inputaddress .input1>div:nth-child(2){
+    height: 282px;
+    color: #555555;
+    font-size: 14px;
+    padding: 1px 0;
+}
+.settlement .inputaddress .input1>div:nth-child(2) p{
+    height: 34px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #555555;
+    line-height: 34px;
+}
+.settlement .inputaddress .input1>div:nth-child(2) p .Tips{
+    display: inline-block;
+    height: 32px;
+    background: url("../../assets/Mig/tips.png") no-repeat;
+    background-position: left center;
+    background-size: cover;
+    position: relative;
+    padding: 0 20px 0 25px;
+    line-height: 32px;
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+}
+.settlement .inputaddress .input1>div:nth-child(2) p .tipsderss{
+    margin-left: 10px;
+}
+.settlement .inputaddress .input1>div:nth-child(2) p>span:nth-child(1){
+    display: inline-block;
+    width: 138px;
+    height: 30px;
+    text-align: right;
+    line-height: 30px;
+    font-size: 14px;
+    color: #555555;
+    padding: 4px 9px;
+}
+
+.settlement .inputaddress .input1>div:nth-child(2) p>input{
+    width: 200px;
+    padding: 0 10px;
+    margin: 0 10px 0 0;
+    background-color: #fff;
+    border: 1px solid #d2d2d2;
+    height: 32px;
+    line-height: 32px;
+    font-size: 12px;
+}
+.settlement .inputaddress .input1>div:nth-child(2) p:nth-child(4)>input{
+    width: 522px;
+}
+.settlement .inputaddress .input1>div:nth-child(2) p>span>span{
+    color: #f42828;
+}
+.settlement .inputaddress .input1>div:nth-child(3){
+    width: 100%;
+    margin: 0 0 0 137px;
+}
+.settlement .inputaddress .input1>div:nth-child(3) button:first-child{
+    background-color: #333;
+    border-color: #333;
+    height: 38px;
+    line-height: 38px;
+    font-size: 14px;
+    color: #fff;
+    width: 100px;
+    margin-right: 10px;
+    padding: 0 14px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    font-weight: 400;
+    border-radius: 3px;
+}
+.settlement .inputaddress .input1>div:nth-child(3) button:nth-child(2){
+    height: 38px;
+    line-height: 38px;
+    font-size: 14px;
+    width: 60px;
+    text-align: center;
+    margin-right: 10px;
+    display: inline-block;
+    padding: 0 14px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    font-weight: 400;
+    border-radius: 3px;
+    background-color: #fff;
+}
+.settlement .inputaddress input:focus{
+    outline: none;
+}
+
+/* 修改地址选择器样式 */
+.distpicker-address-wrapper >>> select {
+    padding: 0px 2px;
+    width: 118px;
+    border: 1px solid #ccc;
+    height: 32px;
+    font-size: 14px;
+    color: #555555;
+    border-radius: 0;
+    overflow: hidden;
+    display: inline-block;
+    line-height: 32px;
+}
+.settlement .disrpicker{
+    display: inline-block;
 }
 </style>

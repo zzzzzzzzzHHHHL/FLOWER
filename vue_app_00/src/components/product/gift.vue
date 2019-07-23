@@ -16,7 +16,7 @@
                 </ul>
             </div>
             <div class="right_pro">
-                <span>26个结果</span>
+                <span>24个结果</span>
                 <el-pagination  background  layout="prev, pager, next" :total="20" @prev-click="last" @next-click="next" ></el-pagination>
             </div>         
         </div>

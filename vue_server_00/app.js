@@ -857,7 +857,7 @@ server.get("/InsertProduct",(req,res)=>{
     res.send({code:-1,msg:"请登录"});
     return;
 	} 
-	console.log(req.query);
+	// console.log(req.query);
 	var lid=Number(req.query.lid);
 	var img_url=req.query.img_url;
 	var title=req.query.title;
@@ -948,7 +948,7 @@ server.get("/delAll",(req,res)=>{
 
 /***************************************************************************************************/ 
 
-//  
+//模糊查询  
 server.get("/dim",function(req,res){
 	var msg=req.query.msg;
 	if(!msg){res.send("请输入查找值");return}
@@ -963,13 +963,15 @@ server.get("/dim",function(req,res){
 // 购物车商品数量加
 server.get("/plus",(req,res)=>{
 	var uid = req.session.uid;
-  if(!uid){
-    res.send({code:-1,msg:"请登录"});
-    return;
+	var is_checked=Number(req.query.is_checked);
+	if(!uid){
+		res.send({code:-1,msg:"请登录"});
+		return;
 	} 
 	// console.log(req.query);
 	var lid=Number(req.query.lid);
-	console.log(req.query);
+	// console.log(req.query);
+	// console.log(uid,is_checked);
 	// console.log(req.session.uid);
 	var sql1="SELECT * FROM flower_shoppingcart_item WHERE uid=? AND lid=?"
 	pool.query(sql1,[uid,lid],(err,result)=>{
@@ -977,8 +979,8 @@ server.get("/plus",(req,res)=>{
 		// console.log(result);
 		var num=Number(result[0].count)+1;
 		// console.log(num);
-		var sql2="UPDATE flower_shoppingcart_item SET count=? WHERE uid=? AND lid=?";
-		pool.query(sql2,[num,uid,lid],(err,result)=>{
+		var sql2="UPDATE flower_shoppingcart_item SET count=?,is_checked=? WHERE uid=? AND lid=?";
+		pool.query(sql2,[num,is_checked,uid,lid],(err,result)=>{
 			if(err)throw err;
 			res.send({code:1,data:result})
 		})
@@ -988,13 +990,14 @@ server.get("/plus",(req,res)=>{
 // 购物车商品数量减
 server.get("/reduce",(req,res)=>{
 	var uid = req.session.uid;
-  if(!uid){
-    res.send({code:-1,msg:"请登录"});
-    return;
-	} 
+	var is_checked=Number(req.query.is_checked);
+	if(!uid){
+		res.send({code:-1,msg:"请登录"});
+		return;
+		} 
 	// console.log(req.query);
 	var lid=Number(req.query.lid);
-	console.log(req.query);
+	// console.log(req.query);
 	// console.log(req.session.uid);
 	var sql1="SELECT * FROM flower_shoppingcart_item WHERE uid=? AND lid=?"
 	pool.query(sql1,[uid,lid],(err,result)=>{
@@ -1002,10 +1005,58 @@ server.get("/reduce",(req,res)=>{
 		// console.log(result);
 		var num=Number(result[0].count)-1;
 		// console.log(num);
-		var sql2="UPDATE flower_shoppingcart_item SET count=? WHERE uid=? AND lid=?";
-		pool.query(sql2,[num,uid,lid],(err,result)=>{
+		var sql2="UPDATE flower_shoppingcart_item SET count=?,is_checked=? WHERE uid=? AND lid=?";
+		pool.query(sql2,[num,is_checked,uid,lid],(err,result)=>{
 			if(err)throw err;
 			res.send({code:1,data:result})
 		})
+	})
+})
+
+// 修改购物车所有商品选中状态
+server.get("/checkAll",(req,res)=>{
+	var uid = req.session.uid;
+	var is_checked=Number(req.query.is_checked);
+	if(!uid){
+		res.send({code:-1,msg:"请登录"});
+		return;
+	} 
+	var sql="UPDATE flower_shoppingcart_item SET is_checked=? WHERE uid=?"
+	pool.query(sql,[is_checked,uid],(err,result)=>{
+		if(err)throw err;
+		res.send({code:1,data:result})
+	})
+})
+
+// 更改购物车单个选中状态
+server.get("/checkone",(req,res)=>{
+	var uid = req.session.uid;
+	var lid = req.query.lid;
+	var is_checked=Number(req.query.is_checked);
+	if(!uid){
+		res.send({code:-1,msg:"请登录"});
+		return;
+	} 
+	var sql="UPDATE flower_shoppingcart_item SET is_checked=? WHERE uid=? AND lid=?"
+	pool.query(sql,[is_checked,uid,lid],(err,result)=>{
+		if(err)throw err;
+		res.send({code:1,data:result})
+	})
+})
+
+// 更改购物车某商品个数
+server.get("/changeone",(req,res)=>{
+	var uid = req.session.uid;
+	var is_checked=Number(req.query.is_checked);
+	var count=Number(req.query.count);
+	var lid=Number(req.query.lid);
+	if(!uid){
+		res.send({code:-1,msg:"请登录"});
+		return;
+	} 
+	var sql="UPDATE flower_shoppingcart_item SET count=?,is_checked=? WHERE uid=? AND lid=?"
+	pool.query(sql,[count,is_checked,uid,lid],(err,result)=>{
+		if(err)throw err;
+		res.send({code:1,data:result})
 	})
 })
