@@ -187,17 +187,17 @@ export default {
     justify-content: space-between;
     margin-bottom:70px;
   }
-  .bottom-left-top ul{
-    list-style: none;
-    width:124px;
-    height:108px;
+  .bottom-left-top>ul{
+    list-style: none !important;
+    width:124px !important;
+    height:108px !important;
   }
-   .bottom-left-top ul li{
-     margin-top:5px;
+   .bottom-left-top>ul li{
+     margin-top:5px !important;
    }
-   .bottom-left-top ul li a:first-child{
-     color:#333;
-     font-size: 14px;
+   .bottom-left-top>ul li a:first-child{
+     color:#333 !important;
+     font-size: 14px !important;
    }
    .bottom-left-bottom{
      width:550px;

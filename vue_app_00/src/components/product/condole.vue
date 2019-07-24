@@ -132,10 +132,10 @@
         margin-top:40px;
        
     }
-    ul{
+    .left_pro>ul{
         line-height:57px;
     }
-    ul li{
+    .left_pro>ul li{
         list-style:none
     }
     .my_flex{

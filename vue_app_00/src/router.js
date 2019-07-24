@@ -57,7 +57,7 @@ import Kangnaixin from "./components/select/kangnaixin.vue"
 Vue.use(Router)
 export default new Router({
   routes: [
-    {path:'/',component:HelloContainer},
+    {path:'/',component:Middle},
     //后台
     {path:'/Admin',component:Admin},
     //其他页面
