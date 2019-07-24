@@ -323,7 +323,7 @@
                         <p> 
                             <span><span>*</span> 收货人姓名</span>
                             <input type="text" name="" id="" v-model="shname" onkeyup="this.value=this.value.replace(/\s+/g,'')">
-                            <span class="Tips animated fadeIn" v-text="name1" :style="name1style"></span>
+                            <span class="Tips animated" :class="{fadeIn:isfadeIn1,fadeOut:isfadeOut1}" v-text="name1" :style="name1style" id="Tips1"></span>
                             <!-- infinite -->
                         </p>
                         <p>
@@ -368,6 +368,7 @@ import Header from "../index/header/header0.vue"
 import Footer from "../index/footer/footer0.vue"
 import VDistpicker from 'v-distpicker'
 import Nav from "./Nav.vue"
+import { clearTimeout, setTimeout } from 'timers';
 export default {
     components:{
       "header00":Header,
@@ -411,6 +412,8 @@ export default {
             dgname:"",
             dgphone:"",
             name1style:{display:"none"},
+            isfadeIn1:false,
+            isfadeOut1:false,
         }
     },
     methods:{
@@ -503,13 +506,21 @@ export default {
         },
         save(){
             console.log(this.shname);
-            // 验证收货人姓名（不能为空）
-            if(this.shname==""){
+            if(this.shname==""||this.shname==" "){
                 this.name1="收货人姓名不能为空";
-                // console.log(this.name1)
                 this.name1style.display="inline-block";
-                var timer=setTimeout();
+                this.isfadeOut1=false;
+                this.isfadeIn1=true;
+                var timer=setTimeout(()=>{
+                    this.isfadeOut1=true;
+                    this.isfadeIn1=false;
+                    var timer2=setTimeout(()=>{
+                        this.name1style.display="none";
+                    },1000)
+                },3000)
+               
             }
+            
         },
     },
 

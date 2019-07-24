@@ -222,6 +222,24 @@
                     </div>
                 </div>
             </div>
+            <!-- 请登录提示框 -->
+            <div class="one" :style="three">
+                <!-- 提示框 -->
+                <div class="animated zoomIn">
+                    <div>
+                        <span>系统提示</span>
+                        <a href="javascript:;" class="iconfont icon-tishikuangguanbi" @click="close"></a>
+                    </div>
+                    <div>
+                        <span class="iconfont icon-ruotishikuang-jinggaotishitubiao"></span>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <span>用户未登录，请登录！</span>
+                    </div>
+                    <div>
+                        <button @click="login">登 陆</button>
+                    </div>
+                </div>
+            </div>
         </div>
         <footer00 class="footer"></footer00>
     </div>
@@ -248,6 +266,7 @@ export default {
             guodu2:{tsdonghua2:false},
             one:{display:"none"},
             two:{display:"none"},
+            three:{display:"none"},
             fixed:{xiding:false},
             mimg:"",
             mask:{
@@ -304,6 +323,9 @@ export default {
             this.mask.top=top+"px";
             this.mask.left=left+"px";
             this.lgimg.backgroundPosition=`${-left*2}px ${-top*2}px`
+        },
+        login(){
+            this.$router.push("/login");
         },
         leave(){
             this.mask.visibility="hidden"
@@ -384,20 +406,35 @@ export default {
         close(){
             this.one.display="none";
             this.two.display="none";
+            this.three.display="none";
             this.guodu.tsdonghua=false;
             this.guodu2.tsdonghua2=false;
         },
         jrgwc(){
-            this.two.display="flex";
-            this.guodu2.tsdonghua2=true;
-            this.insert();
-            var c=this.num1;
-            var p=this.list.price;
-            p=this.num1*this.list.price;
-            // console.log(c,p);
-            this.$store.commit("plus1",c);
-            this.$store.commit("plus2",p);
-            
+            var url="InsertProduct";
+            var obj={
+                lid:this.list.lid,
+                img_url:this.list.details,
+                title:this.list.title,
+                price:this.list.price,
+                count:this.num1
+            }
+            this.axios.get(url,{params:obj}).then(result=>{
+                // console.log(result.data.code);
+                if(result.data.code==-1){
+                    this.three.display="flex";
+                }else{
+                    this.two.display="flex";
+                    this.guodu2.tsdonghua2=true;
+                    // this.insert();
+                    var c=this.num1;
+                    var p=this.list.price;
+                    p=this.num1*this.list.price;
+                    // console.log(c,p);
+                    this.$store.commit("plus1",c);
+                    this.$store.commit("plus2",p);
+                }
+            })  
         },
         ljgm(){
             // this.insert();
@@ -412,7 +449,9 @@ export default {
             // console.log(obj);
             this.axios.get(url,{params:obj}).then(result=>{
                 // console.log(result);
-                if(result.data.code==1){this.$router.push("/Gocart");}
+                if(result.data.code==1){this.$router.push("/Gocart");}else{
+                    this.three.display="flex";
+                }
             })
             
         },
@@ -432,20 +471,21 @@ export default {
             // 获取购物车数量及价格
             var url2 = "cart";
             this.axios.get(url2).then(result=>{
-               var lis=result.data.data;
-               // 求和
-               var s=0;
-               var k=0;
-                for(var i=0;i<lis.length;i++){
-                    s+=(lis[i].count*lis[i].price);
-                    k+=Number(lis[i].count);
+                if(result.data.code==1){
+                    var lis=result.data.data;
+                    // 求和
+                    var s=0;
+                    var k=0;
+                    for(var i=0;i<lis.length;i++){
+                        s+=(lis[i].count*lis[i].price);
+                        k+=Number(lis[i].count);
+                    }
+                    // vuex数据存贮
+                    // console.log(k,s)
+                    this.$store.commit("set1",k);
+                    this.$store.commit("set2",s);
                 }
-                // vuex数据存贮
-                // console.log(k,s)
-                this.$store.commit("set1",k);
-                this.$store.commit("set2",s);
             })
-
         },
         insert(){
             var url="InsertProduct";
@@ -458,7 +498,7 @@ export default {
             }
             // console.log(obj);
             this.axios.get(url,{params:obj}).then(result=>{
-                console.log(result);
+                // console.log(result);
             })
         },
     },

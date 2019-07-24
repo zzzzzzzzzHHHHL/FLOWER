@@ -158,6 +158,59 @@
                 </ul>
             </div>
         </div>
+        <!-- 未登录状态 -->
+        <div class="cartAll2" :style="cart3">
+            <!-- 未登录 -->
+            <div>
+                <img src="../../assets/Mig/hua.png" alt="">
+                <div>
+                    <p>请登录！</p>
+                    <button @click="gologin">马上去登录</button>
+                </div>
+            </div>
+            <!-- 猜你喜欢 -->
+            <div>
+                <p>猜你喜欢</p>
+                <ul>
+                    <li>
+                        <img src="../../assets/Mig/17.jpg" alt="">
+                        <p>￥599</p>
+                        <a href="javascript:;">温柔清浅-33朵红玫瑰</a>
+                        <p>已售 <span>13958</span> 件</p>
+                    </li>
+                    <li>
+                        <img src="../../assets/Mig/18.jpg" alt="">
+                        <p>￥999</p>
+                        <a href="javascript:;">布拉格之恋-9朵进口红玫瑰  </a>
+                        <p>已售 <span>9219</span> 件</p>
+                    </li>
+                    <li>
+                        <img src="../../assets/Mig/19.jpg" alt="">
+                        <p>￥599</p>
+                        <a href="javascript:;">浓情-33朵混色玫瑰</a>
+                        <p>已售 <span>13064</span> 件</p>
+                    </li>
+                    <li>
+                        <img src="../../assets/Mig/20.jpg" alt="">
+                        <p>￥599</p>
+                        <a href="javascript:;">暖暖回忆-33朵混色玫瑰</a>
+                        <p>已售 <span>12369</span> 件</p>
+                    </li>
+                    <li>
+                        <img src="../../assets/Mig/21.jpg" alt="">
+                        <p>￥599</p>
+                        <a href="javascript:;">纯真年代-33朵戴安娜玫瑰</a>
+                        <p>已售 <span>9937</span> 件</p>
+                    </li>
+                    <li>
+                        <img src="../../assets/Mig/22.png" alt="">
+                        <p>￥599</p>
+                        <a href="javascript:;">三生三世-33朵红玫瑰</a>
+                        <p>已售 <span>14111</span> 件</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
         <!-- 确认删除商品提示框1 -->
         <div class="one" :style="one">
             <!-- 提示框 -->
@@ -216,23 +269,41 @@
         </div>
         <!-- 商品最少数量为1 提示框 -->
         <!-- 遮罩 -->
-            <div class="one" :style="four">
-                <!-- 提示框 -->
-                <div class="animated zoomIn">
-                    <div>
-                        <span>系统提示</span>
-                        <a href="javascript:;" class="iconfont icon-tishikuangguanbi" @click="close3"></a>
-                    </div>
-                    <div>
-                        <span class="iconfont icon-ruotishikuang-jinggaotishitubiao"></span>
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        <span>最低购买数量为：1</span>
-                    </div>
-                    <div>
-                        <button class="xzspqd" @click="close3">确定</button>
-                    </div>
+        <div class="one" :style="four">
+            <!-- 提示框 -->
+            <div class="animated zoomIn">
+                <div>
+                    <span>系统提示</span>
+                    <a href="javascript:;" class="iconfont icon-tishikuangguanbi" @click="close3"></a>
+                </div>
+                <div>
+                    <span class="iconfont icon-ruotishikuang-jinggaotishitubiao"></span>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span>最低购买数量为：1</span>
+                </div>
+                <div>
+                    <button class="xzspqd" @click="close3">确定</button>
                 </div>
             </div>
+        </div>
+        <!-- 请选择结算的商品提示框 -->
+        <div class="one" :style="five">
+            <!-- 提示框 -->
+            <div class="animated zoomIn">
+                <div>
+                    <span>系统提示</span>
+                    <a href="javascript:;" class="iconfont icon-tishikuangguanbi" @click="close4"></a>
+                </div>
+                <div>
+                    <span class="iconfont icon-ruotishikuang-jinggaotishitubiao"></span>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span>请选择结算的商品！</span>
+                </div>
+                <div>
+                    <button class="xzspqd" @click="close4">确定</button>
+                </div>
+            </div>
+        </div>
 
         <footer00 class="footer"></footer00>
     </div>
@@ -253,10 +324,12 @@ export default {
             list:[],
             cart1:{display:"none"},
             cart2:{display:"none"},
+            cart3:{display:"none"},
             one:{display:"none"},
             two:{display:"none"},
             there:{display:"none"},
             four:{display:"none"},
+            five:{display:"none"},
             t:false,
             delletelid:"",
             delobj:[],
@@ -273,58 +346,73 @@ export default {
         loadMore(){
             var url = "cart";
             this.axios.get(url).then(result=>{
-                //console.log(result.data.data);
-                this.list=result.data.data;
-                var n=0;
-                for(var i=0;i<this.list.length;i++){
-                    if(this.list[i].is_checked==1){
-                        n+=1;
+                // console.log(result.data.code);
+                if(result.data.code==-1){
+                    this.cart1.display="none";
+                    this.cart2.display="none";
+                    this.cart3.display="block";
+                }else{
+                    this.list=result.data.data;
+                    var n=0;
+                    for(var i=0;i<this.list.length;i++){
+                        if(this.list[i].is_checked==1){
+                            n+=1;
+                        }
                     }
-                }
-                // console.log(n);
-                if(n==this.list.length){this.t=true}
-
-               if(!this.list.length){
-                   this.cart2.display="block";
-                   this.cart1.display="none";
-               }else{
-                   this.cart1.display="block";
-                   this.cart2.display="none";
-               }
-               // 求和sum
-               this.sum=0;
-               var k=0; //购物车总数
-               var k1=0; //选中的商品总数
-               var sum2=0; //选中商品总价
-                for(var i=0;i<this.list.length;i++){
-                    // console.log(typeof(this.list[i].price));
-                    this.sum+=(this.list[i].count*this.list[i].price);
-                    k+=Number(this.list[i].count);
-                    if(this.list[i].is_checked==1){
-                        k1+=1;
-                        sum2+=Number(this.list[i].count)*Number(this.list[i].price);
+                    // console.log(n);
+                    if(n==this.list.length){this.t=true}
+                    if(!this.list.length){
+                        this.cart2.display="block";
+                        this.cart1.display="none";
+                        this.cart3.display="none";
+                    }else{
+                        this.cart1.display="block";
+                        this.cart2.display="none";
+                        this.cart3.display="none";
                     }
+                    // 求和sum
+                    this.sum=0;
+                    var k=0; //购物车总数
+                    var k1=0; //选中的商品总数
+                    var sum2=0; //选中商品总价
+                    for(var i=0;i<this.list.length;i++){
+                        // console.log(typeof(this.list[i].price));
+                        this.sum+=(this.list[i].count*this.list[i].price);
+                        k+=Number(this.list[i].count);
+                        if(this.list[i].is_checked==1){
+                            k1+=1;
+                            sum2+=Number(this.list[i].count)*Number(this.list[i].price);
+                        }
+                    }
+                    this.sum2=sum2;
+                    this.total=k1;
+                    // console.log(this.total,this.sum2);
+                    // vuex数据存贮
+                    this.$store.commit("set1",k);
+                    this.$store.commit("set2",this.sum);
                 }
-                this.sum2=sum2;
-                this.total=k1;
-                // console.log(this.total,this.sum2);
-                // vuex数据存贮
-                this.$store.commit("set1",k);
-                this.$store.commit("set2",this.sum);
                 
-
             })
-            
             // console.log(this.sum);
         },
         ljjs(){
-            this.$router.push("/Settlement");
+            var n=0;
+            for(var i=0;i<this.list.length;i++){
+                if(this.list[i].is_checked==1){
+                    n+=1;
+                }
+            }
+            if(n!==0){this.$router.push("/Settlement");}else{
+                this.five.display="flex";
+            }   
         },
         msqgg(){this.$router.push("/Middle")},
         close(){this.one.display="none";},
         close1(){this.two.display="none";},
         close2(){this.there.display="none";},
         close3(){this.four.display="none";},
+        close4(){this.five.display="none";},
+        gologin(){this.$router.push("/login");},
         deletelid(e){
             this.one.display="none";
             // console.log(e.currentTarget.dataset.lid)
@@ -811,11 +899,15 @@ input[type="number"]{ -moz-appearance: textfield; }
     font-size: 20px;
     color: #8c8c8c;
     margin: 6px 0 0;
+    height: 30px;
+    line-height: 30px;
 }
 .cartAll .cartAll2>div:nth-child(2) ul li a{
     font-size: 12px;
     color: #333333;
     text-decoration: none;
+    height: 20px;
+    line-height: 20px;
 }
 .cartAll .cartAll2>div:nth-child(2) ul li a:hover{
     color: #f42424;
@@ -824,6 +916,8 @@ input[type="number"]{ -moz-appearance: textfield; }
     font-size: 12px;
     color: #8c8c8c;
     margin: 7px 0 0;
+    height: 18px;
+    line-height: 18px;
 }
 .cartAll .cartAll2>div:nth-child(2) ul li p:nth-child(4) span{
     font-weight: bolder;
