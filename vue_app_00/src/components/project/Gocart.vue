@@ -286,7 +286,24 @@
                 </div>
             </div>
         </div>
-        
+        <!-- 请选择结算的商品提示框 -->
+        <div class="one" :style="five">
+            <!-- 提示框 -->
+            <div class="animated zoomIn">
+                <div>
+                    <span>系统提示</span>
+                    <a href="javascript:;" class="iconfont icon-tishikuangguanbi" @click="close4"></a>
+                </div>
+                <div>
+                    <span class="iconfont icon-ruotishikuang-jinggaotishitubiao"></span>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span>请选择结算的商品！</span>
+                </div>
+                <div>
+                    <button class="xzspqd" @click="close4">确定</button>
+                </div>
+            </div>
+        </div>
 
         <footer00 class="footer"></footer00>
     </div>
@@ -312,6 +329,7 @@ export default {
             two:{display:"none"},
             there:{display:"none"},
             four:{display:"none"},
+            five:{display:"none"},
             t:false,
             delletelid:"",
             delobj:[],
@@ -378,13 +396,22 @@ export default {
             // console.log(this.sum);
         },
         ljjs(){
-            this.$router.push("/Settlement");
+            var n=0;
+            for(var i=0;i<this.list.length;i++){
+                if(this.list[i].is_checked==1){
+                    n+=1;
+                }
+            }
+            if(n!==0){this.$router.push("/Settlement");}else{
+                this.five.display="flex";
+            }   
         },
         msqgg(){this.$router.push("/Middle")},
         close(){this.one.display="none";},
         close1(){this.two.display="none";},
         close2(){this.there.display="none";},
         close3(){this.four.display="none";},
+        close4(){this.five.display="none";},
         gologin(){this.$router.push("/login");},
         deletelid(e){
             this.one.display="none";
