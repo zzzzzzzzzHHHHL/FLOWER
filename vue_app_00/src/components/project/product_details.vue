@@ -745,7 +745,10 @@ input[type="number"]{ -moz-appearance: textfield; }
     color: #ff8f22;
 }
 .details .right .btn{
-    margin-top: 35px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .details .right .btn button:first-child,.details .spxqnavfixed button:nth-child(3){
     background: #333;
