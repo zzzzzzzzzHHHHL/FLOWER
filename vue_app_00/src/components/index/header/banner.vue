@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="container-banner">
        <div id="carousel">
           <div class="bd-example">
             <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
@@ -55,6 +55,9 @@ export default {
 }
 </script>
 <style>
+      #container-banner{
+        min-width: 1200px;
+      }
       #carousel{
         width: 1200px;
         margin: 0 auto;

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container-details">
         <header00></header00>
         <navgitor></navgitor>
         <div class="details">
@@ -535,6 +535,9 @@ export default {
 }
 </script>
 <style scoped>
+.container-details{
+    min-width: 1200px;
+}
 .navstyle{
     width: 100%;
     background-color: #fff;

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container-all">
         <header00></header00>
         <navgitor></navgitor>
         <div class="productFilter my_flex">
@@ -99,10 +99,6 @@
                 this.axios.get(url).then(result=>{
                     console.log(result);
                      this.list=result.data.slice(0,16)
-                    // setTimeout(function(){
-                      //  var divMain=document.querySelectorAll(".main_pro");
-                       // console.log(divMain)
-                     //},10)
                 })
         },
     
@@ -153,6 +149,9 @@
     }
 </script>
 <style scoped>
+    .container-all{
+        min-width: 1200px;
+    }
      a{
         cursor: pointer;
     }

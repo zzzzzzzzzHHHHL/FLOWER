@@ -235,7 +235,7 @@ body{
 .main{
     background-image: url(../../img/login_bg3.jpg) ;
     background-repeat:no-repeat;
-    width:1903px;height: 530px;
+    min-width:1903px;height: 530px;
     position:relative;
     margin-bottom:50px;
 }

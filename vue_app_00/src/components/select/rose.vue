@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container-rose">
         <div class="productFilter my_flex">
             <div class="left_pro">
                 <ul class="my_flex">
@@ -8,14 +8,14 @@
                     <li><a>人气</a></li>  
                     <li><a>价格</a> </li>
                     <li>
-                        <a><i class="el-icon-caret-top" @click="add"></i></a>
-                        <a><i class="el-icon-caret-bottom"  @click="cut"></i></a>   
+                        <a><i class="el-icon-caret-top"></i></a>
+                        <a><i class="el-icon-caret-bottom"></i></a>   
                     </li>      
                 </ul>
             </div>
             <div class="right_pro">
                 <span>234个结果</span>
-                <el-pagination  background  layout="prev, pager, next" :total="150" @prev-click="last" @next-click="next" ></el-pagination>
+                <el-pagination  background  layout="prev, pager, next" :total="150"></el-pagination>
             </div>         
         </div>
         <div class="my_flex main">
@@ -35,8 +35,7 @@
 export default {
   data(){
     return{
-      list:[],
-      pno:1,ps:16,n:0
+      list:[]
     }
   },
   created(){
@@ -44,76 +43,16 @@ export default {
     var url="dim";
     var obj={msg};
     this.axios.get(url,{params:obj}).then(result=>{
-      this.list=result.data.slice(0,16);
-      // console.log(this.list);
-      // console.log(result);
+      this.list=result.data;
     })
   },
-  mounted() {
-            var ulStyle=document.querySelector(".el-pager")
-            var lis=ulStyle.children 
-            console.log(lis)       
-            for(var li of lis){
-                li.onclick=function(){  
-                    var n=parseInt(li.innerHTML)
-                    this.pno=n;
-                    console.log(this.pno)
-                    var obj={pno:this.pno,ps:this.ps};
-                    var url="all"
-                    this.axios.get(url,{params:obj}).then(result=>{
-                        this.list=result.data.data
-                    })
-                }
-              }
-          },
 
-  methods: {
-            last(){
-                var url="all_product";
-                this.pno--;
-                var obj={pno:this.pno,ps:this.ps}
-                this.axios.get(url,{params:obj}).then(result=>{
-               // var rows=this.list.concat(result.data.data)
-                //console.log(rows)
-                  // this.list=rows
-                  this.list=result.data.data
-                })
-            },
-            next(){
-                var url="all_product";
-                this.pno++;
-                var obj={pno:this.pno,ps:this.ps}
-                this.axios.get(url,{params:obj}).then(result=>{
-               // var rows=this.list.concat(result.data.data)
-                //console.log(rows)
-                  // this.list=rows
-                  this.list=result.data.data
-                })
-            },
-              add(){
-                var url="all-priceUp";
-                this.axios.get(url).then(result=>{
-                    this.list=result.data;  
-                })
-                var firsti=document.querySelector(".el-icon-caret-top");
-                var lasti=document.querySelector(".el-icon-caret-bottom");
-                firsti.style.color="red";
-                lasti.style.color="#d2d2d2";
-            },
-            cut(){
-                var url="all-priceDown";
-                this.axios.get(url).then(result=>{
-                    this.list=result.data
-                })
-                var firsti=document.querySelector(".el-icon-caret-top");
-                var lasti=document.querySelector(".el-icon-caret-bottom");
-                firsti.style.color="#d2d2d2";
-                lasti.style.color="red";                
-            },
-        },
 }
 </script>
 <style>
+    .container-rose{
+        min-width: 1200px;
+    }
   a{
         cursor: pointer;
     }
@@ -171,7 +110,7 @@ export default {
      }
      .el-pagination{
         height:53px;
-        padding: 14px 0px;
+        padding: 14px 0px !important;
      }
 
   .main{

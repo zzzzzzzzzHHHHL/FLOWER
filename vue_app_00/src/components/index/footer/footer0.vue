@@ -89,7 +89,7 @@ export default {
 <style>
   *{margin:0;padding:0;box-sizing: border-box;}
   .footer{
-    width:100%;
+    min-width:1200px;
     height:350px;
     margin-top:50px;
   }

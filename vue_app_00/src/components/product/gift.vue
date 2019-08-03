@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container-gift">
         <header00></header00>
         <navgitor></navgitor>
         <div class="productFilter my_flex">
@@ -33,23 +33,6 @@
         </div> 
         <footer00></footer00>
     </div>
-        <!-- <div class="right_pro">
-            <span>26个结果</span>
-            <el-pagination  background  layout="prev, pager, next" :total="20" @prev-click="last" @next-click="next" ></el-pagination>
-        </div>         
-    </div>
-    <div class="my_flex main">
-        <div  v-for="(elem,i) of list" :key="i" class="main_pro">
-            <router-link :to="elem.href"><img :src="`http://127.0.0.1:3000/`+elem.pic" ></router-link>
-             <div class="msg_pro">
-                  <p>
-                <router-link v-text="elem.title" :to="elem.href"></router-link>
-                  </p>
-                <p v-text="`￥${elem.price}`"></p>
-             </div>
-        </div>
-        <footer00></footer00>
-    </div> -->
 </template>
 <script>
     import Header from "../index/header/header0.vue"
@@ -83,10 +66,6 @@
                 this.axios.get(url).then(result=>{
                     console.log(result);
                      this.list=result.data.slice(0,16)
-                    // setTimeout(function(){
-                      //  var divMain=document.querySelectorAll(".main_pro");
-                       // console.log(divMain)
-                     //},10)
                 })
         },
     
@@ -96,9 +75,6 @@
                 this.pno--;
                 var obj={pno:this.pno,ps:this.ps}
                 this.axios.get(url,{params:obj}).then(result=>{
-               // var rows=this.list.concat(result.data.data)
-                //console.log(rows)
-                  // this.list=rows
                   this.list=result.data.data
                 })
             },
@@ -107,9 +83,6 @@
                 this.pno++;
                 var obj={pno:this.pno,ps:this.ps}
                 this.axios.get(url,{params:obj}).then(result=>{
-               // var rows=this.list.concat(result.data.data)
-                //console.log(rows)
-                  // this.list=rows
                   this.list=result.data.data
                 })
             },
@@ -137,6 +110,9 @@
     }
 </script>
 <style scoped>
+    .container-gift{
+        min-width: 1200px;
+    }
      a{
         cursor: pointer;
     }

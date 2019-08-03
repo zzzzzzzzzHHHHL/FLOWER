@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container-forever">
         <header00></header00>
         <navgitor></navgitor>
         <div class="productFilter my_flex">
@@ -67,10 +67,6 @@
                 this.axios.get(url).then(result=>{
                     console.log(result);
                      this.list=result.data.slice(0,16)
-                    // setTimeout(function(){
-                      //  var divMain=document.querySelectorAll(".main_pro");
-                       // console.log(divMain)
-                     //},10)
                 })
         },
     
@@ -80,9 +76,6 @@
                 this.pno--;
                 var obj={pno:this.pno,ps:this.ps}
                 this.axios.get(url,{params:obj}).then(result=>{
-               // var rows=this.list.concat(result.data.data)
-                //console.log(rows)
-                  // this.list=rows
                   this.list=result.data.data
                 })
             },
@@ -91,9 +84,6 @@
                 this.pno++;
                 var obj={pno:this.pno,ps:this.ps}
                 this.axios.get(url,{params:obj}).then(result=>{
-               // var rows=this.list.concat(result.data.data)
-                //console.log(rows)
-                  // this.list=rows
                   this.list=result.data.data
                 })
             },
@@ -121,6 +111,9 @@
     }
 </script>
 <style scoped>
+    .container-forever{
+        min-width: 1200px;
+    }
      a{
         cursor: pointer;
     }

@@ -618,6 +618,7 @@ export default {
 }
 .cartAll{
     background-color: #fff !important;
+    min-width: 1200px;
 }
 /* 去除按钮点击边框 */
 button {

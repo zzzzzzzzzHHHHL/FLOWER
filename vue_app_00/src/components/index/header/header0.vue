@@ -10,11 +10,8 @@
         </el-input>
       </div>
       <div class="right">
-        <!-- <a href="javascript:;">登录</a> -->
         <router-link :to="`/Login`">登录</router-link>
-        <!-- <a href="javascript:;">注册</a> -->
         <router-link :to="`/Register`">注册</router-link>
-        <!-- <a href="javascript:;"><i class="el-icon-shopping-cart-2"></i>我的购物车<i class="el-icon-chat-square"></i></a> -->
         <router-link :to="`/Gocart`"><i class="el-icon-shopping-cart-2"></i>我的购物车<i class="el-icon-chat-square"></i></router-link>
       </div>
     </div>
@@ -91,7 +88,7 @@ export default {
 <style>
   *{margin:0;padding:0;box-sizing: border-box;}
   .header_div{
-    width:100%;
+    min-width:1200px;
     height:100px;
   }
   .wrap_div{

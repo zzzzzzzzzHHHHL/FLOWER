@@ -5,7 +5,6 @@
             <li class="m-0">
                 <div class="hove">
                 <div class="one">
-                    <!-- <a href="javascirpt:;">首页</a> -->
                     <router-link :to="`/Middle`">首页</router-link>
                 </div>
                 <div class="tow">
@@ -17,7 +16,6 @@
             <li class="m-0">
                 <div class="hove">
                 <div class="one">
-                    <!-- <a href="javascirpt:;">进口鲜花</a> -->
                     <router-link :to="`/Import`">进口鲜花</router-link>
                 </div>
                 <div class="tow">
@@ -29,7 +27,6 @@
              <li class="m-0">
                 <div class="hove">
                 <div class="one">
-                    <!-- <a href="javascirpt:;">爱情鲜花</a> -->
                     <router-link :to="`/Love`">爱情鲜花</router-link>
                 </div>
                 <div class="tow">
@@ -42,7 +39,6 @@
              <li class="m-0">
                 <div class="hove">
                 <div class="one">
-                    <!-- <a href="javascirpt:;">生日鲜花</a> -->
                     <router-link :to="`/Birthday`">生日鲜花</router-link>
                 </div>
                 <div class="tow">
@@ -54,7 +50,6 @@
              <li class="m-0">
                 <div class="hove">
                 <div class="one">
-                    <!-- <a href="javascirpt:;">问候长辈</a> -->
                     <router-link :to="`/Extend`">问候长辈</router-link>
                 </div>
                 <div class="tow">
@@ -66,7 +61,6 @@
              <li class="m-0">
                 <div class="hove">
                 <div class="one">
-                    <!-- <a href="javascirpt:;">祝福庆贺</a> -->
                     <router-link :to="`/Blessing`">祝福庆贺</router-link>
                 </div>
                 <div class="tow">
@@ -78,7 +72,6 @@
              <li class="m-0">
                 <div class="hove">
                 <div class="one">
-                    <!-- <a href="javascirpt:;">探病慰问</a> -->
                     <router-link :to="`/Condole`">探病慰问</router-link>
                 </div>
                 <div class="tow">
@@ -90,7 +83,6 @@
              <li class="m-0">
                 <div class="hove">
                 <div class="one">
-                    <!-- <a href="javascirpt:;">道歉鲜花</a> -->
                     <router-link :to="`/Apologize`">道歉鲜花</router-link>
                 </div>
                 <div class="tow">
@@ -102,7 +94,6 @@
              <li class="m-0">
                 <div class="hove">
                 <div class="one">
-                    <!-- <a href="javascirpt:;">生活鲜花</a> -->
                     <router-link :to="`/Life`">生活鲜花</router-link>
                 </div>
                 <div class="tow">
@@ -114,7 +105,6 @@
              <li class="m-0">
                 <div class="hove">
                 <div class="one">
-                    <!-- <a href="javascirpt:;">全部鲜花</a> -->
                     <router-link :to="`/All`">全部鲜花</router-link>
                 </div>
                 <div class="tow">
@@ -126,7 +116,6 @@
              <li class="m-0">
                 <div class="hove">
                 <div class="one">
-                    <!-- <a href="javascirpt:;">开业花篮</a> -->
                     <router-link :to="`/Opening`">开业花篮</router-link>
                 </div>
                 <div class="tow">
@@ -138,7 +127,6 @@
              <li class="m-0">
                 <div class="hove">
                 <div class="one">
-                    <!-- <a href="javascirpt:;">永生花</a> -->
                     <router-link :to="`/Forever`">永生花</router-link>
                 </div>
                 <div class="tow">
@@ -150,7 +138,6 @@
              <li class="m-0">
                 <div class="hove">
                 <div class="one">
-                    <!-- <a href="javascirpt:;">礼品</a> -->
                     <router-link :to="`/Gift`">礼品</router-link>
                 </div>
                 <div class="tow">
@@ -172,7 +159,6 @@ export default {
 }
 </script>
 <style scoped>
-/* .navall{background-color: #fff;} */
 li+li{
     margin-left: 8px !important;
 }
@@ -233,5 +219,8 @@ li{
     width: 1200px;
     padding: 0 5px;
     margin:30px auto;
+}
+.navall{
+    min-width: 1200px;
 }
 </style>
