@@ -46,7 +46,7 @@ CREATE TABLE flower_user(
 );
 
 
-/**收货地址信息**/
+/**收货地址信息
 CREATE TABLE flower_receiver_address(
   aid INT PRIMARY KEY AUTO_INCREMENT,
   user_id INT,                #用户编号
@@ -60,7 +60,23 @@ CREATE TABLE flower_receiver_address(
   postcode CHAR(6),           #邮编
   tag VARCHAR(16),            #标签名
   is_default BOOLEAN          #是否为当前用户的默认收货地址
+);**/
+
+/*收货地址信息*/
+CREATE TABLE flower_receiver_address(
+  aid INT PRIMARY KEY AUTO_INCREMENT,
+  user_id INT,                #用户编号
+  receiver VARCHAR(16),       #接收人姓名
+  subscriber VARCHAR(16),     #订购人姓名
+  province VARCHAR(16),       #省
+  city VARCHAR(16),           #市
+  county VARCHAR(16),         #县
+  address VARCHAR(128),       #详细地址
+  receiverphone VARCHAR(16),  #接收人手机
+  subscriberphone VARCHAR(16),  #订购人手机
+  is_default BOOLEAN          #是否为当前用户的默认收货地址
 );
+
 
 /**购物车条目**/
 CREATE TABLE flower_shoppingcart_item(
