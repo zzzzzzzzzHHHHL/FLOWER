@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container-import">
         <header00></header00>
         <navgitor></navgitor>
         <div class="productFilter my_flex">
@@ -122,6 +122,9 @@
     }
 </script>
 <style scoped>
+    .container-import{
+        min-width: 1200px;
+    }
      a{
         cursor: pointer;
     }

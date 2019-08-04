@@ -1,5 +1,5 @@
 <template>
-  <div class="container-sunflor">
+  <div class="container-prose">
         <div class="productFilter my_flex">
             <div class="left_pro">
                 <ul class="my_flex">
@@ -14,8 +14,8 @@
                 </ul>
             </div>
             <div class="right_pro">
-                <span>20个结果</span>
-                <el-pagination  background  layout="prev, pager, next" :total="20"></el-pagination>
+                <span>46个结果</span>
+                <el-pagination  background  layout="prev, pager, next" :total="30"></el-pagination>
             </div>         
         </div>
         <div class="my_flex main">
@@ -39,7 +39,7 @@ export default {
     }
   },
   created(){
-    var msg="向日葵";
+    var msg="粉玫瑰";
     var url="dim";
     var obj={msg};
     this.axios.get(url,{params:obj}).then(result=>{
@@ -51,7 +51,7 @@ export default {
 }
 </script>
 <style>
-    .container-sunflor{
+    .container-prose{
         min-width: 1200px;
     }
   a{

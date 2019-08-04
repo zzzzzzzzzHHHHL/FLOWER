@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container-details">
         <header00></header00>
         <navgitor></navgitor>
         <div class="details">
@@ -535,6 +535,9 @@ export default {
 }
 </script>
 <style scoped>
+.container-details{
+    min-width: 1200px;
+}
 .navstyle{
     width: 100%;
     background-color: #fff;
@@ -745,7 +748,10 @@ input[type="number"]{ -moz-appearance: textfield; }
     color: #ff8f22;
 }
 .details .right .btn{
-    margin-top: 35px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .details .right .btn button:first-child,.details .spxqnavfixed button:nth-child(3){
     background: #333;

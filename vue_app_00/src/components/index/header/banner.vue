@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="container-banner">
        <div id="carousel">
           <div class="bd-example">
             <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
@@ -28,18 +28,18 @@
                       <div class="carousel-caption d-none d-md-block"></div>
                     </div>
                 </div>
-                <router-link class="carousel-control-prev" :to="`#carouselExampleCaptions`" role="button" data-slide="prev">
+                <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
                   <div class="span-bg">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="sr-only">Previous</span>
                   </div>
-                </router-link>
-                <router-link class="carousel-control-next" :to="`#carouselExampleCaptions`" role="button" data-slide="next">
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
                   <div class="span-bg">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
                   </div>
-                </router-link>
+                </a>
             </div>
           </div>
        </div>
@@ -55,6 +55,9 @@ export default {
 }
 </script>
 <style>
+      #container-banner{
+        min-width: 1200px;
+      }
       #carousel{
         width: 1200px;
         margin: 0 auto;

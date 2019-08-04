@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container-middle">
         <header00></header00>
         <navgitor></navgitor>
         <banner></banner>
@@ -111,34 +111,8 @@
                     <router-link class="a1" :to="`${elem.href}`">加入购物车</router-link>
                 </div>       
             </div>
-            
-            <div class="floor_4thrd">
-               <div class="caption">
-                   <div class="caption_line"></div>
-                   <p>
-                       <span>花品展示</span>
-                       <br>
-                       <span>Flower product display</span>
-                   </p>
-               </div>
-            </div>
             <!-- 9F滚动图 -->
-            <div id="scoll">
-                <ul>
-                    <li><img src="../../scrollbars/img/scrollbars/h1.jpg"></li>
-                    <li><img src="../../scrollbars/img/scrollbars/h2.jpg"></li>
-                    <li><img src="../../scrollbars/img/scrollbars/h3.jpg"></li>
-                    <li><img src="../../scrollbars/img/scrollbars/h4.jpg"></li>
-                    <li><img src="../../scrollbars/img/scrollbars/h5.jpg"></li>
-                    <li><img src="../../scrollbars/img/scrollbars/h6.jpg"></li>
-                    <li><img src="../../scrollbars/img/scrollbars/h7.jpg"></li>
-                    <li><img src="../../scrollbars/img/scrollbars/h8.jpg"></li>
-                    <li><img src="../../scrollbars/img/scrollbars/h9.jpg"></li>
-                    <li><img src="../../scrollbars/img/scrollbars/h10.jpg"></li>
-                    <li><img src="../../scrollbars/img/scrollbars/h11.jpg"></li>
-                    <li><img src="../../scrollbars/img/scrollbars/h12.jpg"></li>
-                </ul>
-            </div>
+
        </div> 
        <footer00></footer00>
     </div>
@@ -180,36 +154,8 @@ export default {
       "navgitor":Nav,
       "footer00":Footer,
       "banner":Banner
-     },
-     mounted(){
-		window.onload = function(){
-				var oDiv = document.getElementById('scoll');
-				var oUl = oDiv.getElementsByTagName('ul')[0];
-				var aLi = oUl.getElementsByTagName('li');
-				var iSpeed = 1;//正左负右
-				var timer = null;
-				oUl.innerHTML += oUl.innerHTML+oUl.innerHTML;
-				oUl.style.width = aLi[0].offsetWidth*aLi.length+'px';
-				function Slider(){
-					if (oUl.offsetLeft<-oUl.offsetWidth/2) {
-						oUl.style.left = 0;
-					}else if(oUl.offsetLeft>0){
-						oUl.style.left =-oUl.offsetWidth/2+'px';
-					}
-					oUl.style.left = oUl.offsetLeft-iSpeed+'px';//正负为方向
-				}
-				timer =setInterval(Slider,30);
+     }
 
-				oDiv.onmouseover = function(){
-					clearInterval(timer);
-				}
-				oDiv.onmouseout = function(){
-					timer =setInterval(Slider,30);
-				}
-		};
-	
-    }
-  
 }
 </script>
 <style>
@@ -218,6 +164,9 @@ export default {
         /* background-color: #f1f7f1; */
     /* }   */
     /* 1F */
+    .container-middle{
+        min-width: 1200px;
+    }
     #floor{
         width: 1200px;
         margin: 0 auto;
@@ -226,6 +175,7 @@ export default {
     .floor_1{
         width:100%;
         height:700px;
+        margin: 0 auto;
         display: flex;
         justify-content: space-between;
     }
@@ -284,6 +234,7 @@ export default {
     .floor_2{
         width:1200px;
         height:828px;
+        margin: 0 auto;
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
@@ -314,8 +265,9 @@ export default {
 
 
     .floor_3trd{
-        width:100%;
+        width:1200px;
         height:800px;
+        margin: 0 auto;
         padding-top: 30px;
         display: flex;
         justify-content: space-between;
@@ -366,8 +318,9 @@ export default {
 
     /* 新品推荐 */
     .floor_4thrd{
-        width: 100%;
+        width: 1200px;
         height: 54px;
+        margin: 0 auto;
         margin-bottom: 50px;
     }
     .floor_4thrd .caption{
@@ -397,8 +350,9 @@ export default {
     }
 
     .floor_5thrd{
-        width:100%;
+        width:1200px;
         height:290px;
+        margin: 0 auto;
         display: flex;
         justify-content: space-between;
     }
@@ -436,29 +390,4 @@ export default {
         color:#fff;
         text-decoration: none;
     }
-
-     #scoll{
-			position: relative;
-			width: 1200px;
-			margin: 20px auto;
-			height: 250px;
-			overflow: hidden;
-		}
-		#scoll ul{
-			position: absolute;
-			width:2880px;
-			height:100%;
-		}
-
-		#scoll ul li{
-			padding: 5px;
-			list-style: none;
-			width: 240px;
-			height: 250px;
-			float: left;
-		}
-		#scoll ul li img{
-			width: 210px;
-			height: 210px;
-		}
 </style>

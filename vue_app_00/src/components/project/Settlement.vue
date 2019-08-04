@@ -329,27 +329,27 @@
                         <p>
                             <span><span>*</span> 收货人手机号</span>
                             <input type="text" name="" id="" v-model="shphone" onkeyup="this.value=this.value.replace(/\s+/g,'')">
-                            <span class="Tips" v-text="phone1"></span>
+                            <span class="Tips animated" :class="{fadeIn:isfadeIn2,fadeOut:isfadeOut2}" v-text="phone1" :style="phone1style"></span>
                         </p>
                         <p>
                             <span><span>*</span> 所在地区</span>
-                            <v-distpicker :placeholders="placeholders" class="disrpicker" @selected="selectdress"></v-distpicker>
-                            <span class="Tips tipsderss" v-text="adress1"></span>
+                            <v-distpicker :placeholders="placeholders" class="disrpicker" @province="chooseprovince" @city="choosecity" @area="choosearea" @selected="selectdress"></v-distpicker>
+                            <span class="Tips tipsderss animated" :class="{fadeIn:isfadeIn6,fadeOut:isfadeOut6}" v-text="adress1" :style="adress1style"></span>
                         </p>
                         <p>
                             <span> <span>*</span> 详细街道地址 </span>
                             <input type="text" v-model="adressdetail" onkeyup="this.value=this.value.replace(/\s+/g,'')">
-                            <span class="Tips" v-text="adress2"></span>
+                            <span class="Tips animated" :class="{fadeIn:isfadeIn4,fadeOut:isfadeOut4}" v-text="adress2" :style="adress2style"></span>
                         </p>
                         <p>
                             <span> <span>*</span> 订购人姓名 </span>
                             <input type="text" name="" id="" v-model="dgname" onkeyup="this.value=this.value.replace(/\s+/g,'')">
-                            <span class="Tips" v-text="name2"></span>
+                            <span class="Tips animated" :class="{fadeIn:isfadeIn5,fadeOut:isfadeOut5}" v-text="name2" :style="name2style"></span>
                         </p>
                         <p>
                             <span> <span>*</span> 订购人手机号 </span>
                             <input type="text" v-model="dgphone" onkeyup="this.value=this.value.replace(/\s+/g,'')">
-                            <span class="Tips" v-text="phone2">asdfafds</span>
+                            <span class="Tips animated" :class="{fadeIn:isfadeIn3,fadeOut:isfadeOut3}" v-text="phone2" :style="phone2style"></span>
                         </p>
                     </div>
                     <div>
@@ -400,11 +400,11 @@ export default {
             },
             addressmask:{display:"none"},
             name1:"",
-            name2:"订购人姓名不能为空",
-            phone1:"手机号码格式不正确",
-            phone2:"手机号码格式不正确",
-            adress1:"请输入完整地区",
-            adress2:"详细地址不能为空",
+            name2:"",
+            phone1:"",
+            phone2:"",
+            adress1:"",
+            adress2:"",
             shname:"",
             shphone:"",
             adress:{},
@@ -412,8 +412,24 @@ export default {
             dgname:"",
             dgphone:"",
             name1style:{display:"none"},
+            name2style:{display:"none"},
+            phone1style:{display:"none"},
+            phone2style:{display:"none"},
+            adress1style:{display:"none"},
+            adress2style:{display:"none"},
             isfadeIn1:false,
+            isfadeIn2:false,
+            isfadeIn3:false,
+            isfadeIn4:false,
+            isfadeIn5:false,
+            isfadeIn6:false,
             isfadeOut1:false,
+            isfadeOut2:false,
+            isfadeOut3:false,
+            isfadeOut4:false,
+            isfadeOut5:false,
+            isfadeOut6:false,
+            alladress:[],
         }
     },
     methods:{
@@ -496,7 +512,7 @@ export default {
         selectdress(a){
             // console.log(a);
             this.adress=a;
-            console.log(this.adress);
+            // console.log(this.adress);
         },
         insertaddress(){
             this.addressmask.display="flex";
@@ -505,22 +521,107 @@ export default {
             this.addressmask.display="none";
         },
         save(){
-            console.log(this.shname);
-            if(this.shname==""||this.shname==" "){
+            let shname=this.shname.replace(/(^\s*)|(\s*$)/g,"");
+            let dgname=this.dgname.replace(/(^\s*)|(\s*$)/g,"");
+            let adress2=this.adressdetail.replace(/(^\s*)|(\s*$)/g,"");
+            let reg=/^1[3-9]\d{9}$/; 
+            let phone1=reg.test(this.shphone);
+            let phone2=reg.test(this.dgphone);
+            // let phone2=reg.test(this.phone2);
+            if(shname==""){
                 this.name1="收货人姓名不能为空";
                 this.name1style.display="inline-block";
                 this.isfadeOut1=false;
                 this.isfadeIn1=true;
-                var timer=setTimeout(()=>{
+                let timer=setTimeout(()=>{
                     this.isfadeOut1=true;
                     this.isfadeIn1=false;
-                    var timer2=setTimeout(()=>{
+                    let timer2=setTimeout(()=>{
                         this.name1style.display="none";
                     },1000)
                 },3000)
-               
+            }
+            if(adress2==""){
+                this.adress2="详细地址不能为空";
+                this.adress2style.display="inline-block";
+                this.isfadeOut4=false;
+                this.isfadeIn4=true;
+                let timer=setTimeout(()=>{
+                    this.isfadeOut4=true;
+                    this.isfadeIn4=false;
+                    let timer2=setTimeout(()=>{
+                        this.adress2style.display="none";
+                    },1000)
+                },3000)
+            }
+            if(dgname==""){
+                this.name2="订购人姓名不能为空";
+                this.name2style.display="inline-block";
+                this.isfadeOut5=false;
+                this.isfadeIn5=true;
+                let timer=setTimeout(()=>{
+                    this.isfadeOut5=true;
+                    this.isfadeIn5=false;
+                    let timer2=setTimeout(()=>{
+                        this.name2style.display="none";
+                    },1000)
+                },3000)
+            }
+            if(!phone1){
+                this.phone1="手机号码格式不正确";
+                this.phone1style.display="inline-block";
+                this.isfadeOut2=false;
+                this.isfadeIn2=true;
+                let timer=setTimeout(()=>{
+                    this.isfadeOut2=true;
+                    this.isfadeIn2=false;
+                    let timer2=setTimeout(()=>{
+                        this.phone1style.display="none";
+                    },1000)
+                },3000) 
+            }
+            if(!phone2){
+                this.phone2="手机号码格式不正确";
+                this.phone2style.display="inline-block";
+                this.isfadeOut3=false;
+                this.isfadeIn3=true;
+                let timer=setTimeout(()=>{
+                    this.isfadeOut3=true;
+                    this.isfadeIn3=false;
+                    let timer2=setTimeout(()=>{
+                        this.phone2style.display="none";
+                    },1000)
+                },3000) 
+            }
+            if(this.alladress.length<3||this.alladress[0].value=="请选择省"||this.alladress[1].value=="请选择市"||this.alladress[2].value=="请选择区"){
+                this.adress1="请输入完整地区";
+                this.adress1style.display="inline-block";
+                this.isfadeOut6=false;
+                this.isfadeIn6=true;
+                let timer=setTimeout(()=>{
+                    this.isfadeOut6=true;
+                    this.isfadeIn6=false;
+                    let timer2=setTimeout(()=>{
+                        this.adress1style.display="none";
+                    },1000)
+                },3000)
             }
             
+        },
+        chooseprovince(a){
+            // console.log(a)
+            this.alladress[0]=a;
+            console.log(this.alladress);
+        },
+        choosecity(a){
+            // console.log(a)
+            this.alladress[1]=a;
+            console.log(this.alladress);
+        },
+        choosearea(a){
+            // console.log(a)
+            this.alladress[2]=a;   
+            console.log(this.alladress); 
         },
     },
 
