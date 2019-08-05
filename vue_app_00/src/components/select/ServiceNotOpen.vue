@@ -19,7 +19,7 @@
           <div class="serr-div">
             <img src="./img/e1.png" alt="">
             <div>
-              <p>抱歉，没有找到符合条件的数据</p>
+              <p>抱歉，该服务尚未开通</p>
               <router-link :to="`/Middle`">随便逛逛</router-link>
             </div>
           </div>
