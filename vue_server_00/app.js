@@ -1060,3 +1060,44 @@ server.get("/changeone",(req,res)=>{
 		res.send({code:1,data:result})
 	})
 })
+
+// 添加收货人地址
+server.get("/adress",(req,res)=>{
+	var user_id = req.session.uid;
+	var receiver=req.query.receiver;
+	var subscriber=req.query.subscriber;
+	var province=req.query.province;
+	var city=req.query.city;
+	var county=req.query.county;
+	var address=req.query.address;
+	var receiverphone=req.query.receiverphone;
+	var subscriberphone=req.query.subscriberphone;
+	var is_default=Number(req.query.is_default);
+	if(!user_id){
+		res.send({code:-1,msg:"请登录"});
+		return;
+	} 
+	// console.log(req.query)
+	// 再创建一个sql语句update将该用户的is_default全部改为0再插入新的地址
+	var sql="INSERT INTO flower_receiver_address(user_id,receiver,subscriber,province,city,county,address,receiverphone,subscriberphone,is_default) VALUES(?,?,?,?,?,?,?,?,?,?)"
+	pool.query(sql,[user_id,receiver,subscriber,province,city,county,address,receiverphone,subscriberphone,is_default],(err,result)=>{
+		if(err)throw err;
+		res.send({code:1,data:result})
+	})
+})
+
+// 查询收货地址信息
+server.get("/selectAdress",(req,res)=>{
+	var user_id = req.session.uid;
+	if(!user_id){
+		res.send({code:-1,msg:"请登录"});
+		return;
+	} 
+	var sql="SELECT * FROM flower_receiver_address WHERE user_id=?"
+	pool.query(sql,[user_id],(err,result)=>{
+		if(err)throw err;
+		res.send({code:1,data:result})
+	})
+})
+
+// 修改is_default的值

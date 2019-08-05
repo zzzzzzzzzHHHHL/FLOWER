@@ -12,18 +12,20 @@
             <!-- 收货人信息 -->
             <div class="Consignee">
                 <p>收货人信息</p>
-                <div class="addressAll">
+                <div class="addressAll" @click="chooseadress">
                     <!-- 已有收货地址 -->
-                    <div class="address1">
-                        <p class="text-truncate">收货人: <span>张三</span> </p>
-                        <p class="text-truncate">收货人手机号: <span>18623222222</span> </p>
-                        <p class="text-truncate">收货地址: <span>闪电发货时刻打开速度刷卡费多少公里数顺丰控股方大化工肯定是个符号是大法官狂欢节</span> </p>
-                        <p class="text-truncate">订购人: <span>李四</span> </p>
-                        <p class="text-truncate">订购人手机号: <span>18656566565</span> </p>
-                        <a href="javacript:;">修改</a>
-                        <a href="javacript:;">删除</a>
-                        <span class="iconfont icon-xuanzhongkuang1"></span>
+                    <div class="address1" v-for="(elem,i) of adresslist" :key="i" :class="{selectedAdress:selecti==i}" >
+                        <p class="text-truncate">收货人: <span v-text="elem.receiver"></span> </p>
+                        <p class="text-truncate">收货人手机号: <span v-text="elem.receiverphone"></span> </p>
+                        <p class="text-truncate">收货地址: <span v-text="elem.province+elem.city+elem.county+elem.address"></span> </p>
+                        <p class="text-truncate">订购人: <span v-text="elem.subscriber"></span> </p>
+                        <p class="text-truncate">订购人手机号: <span v-text="elem.subscriberphone"></span> </p>
+                        <a href="javacript:;" v-if="xgsc==i+1" :data-id="i" @mouseenter="xgscShow" @mouseleave="xgscHidden">修改</a>
+                        <a href="javacript:;" v-if="xgsc==i+1" :data-id="i" @mouseenter="xgscShow" @mouseleave="xgscHidden">删除</a>
+                        <span class="iconfont icon-xuanzhongkuang1" :class="{xuanzhongkuang1:selecti==i}"></span>
+                        <div class="adressmask" :data-default="elem.is_default" @mouseenter="xgscShow" @mouseleave="xgscHidden" :data-id="i" :data-aid="elem.aid"></div>
                     </div>
+                    
                     <!-- 添加新地址 -->
                     <div class="address">
                         <img src="../../assets/Mig/location.png" alt="">
@@ -378,6 +380,7 @@ export default {
      },
     data(){
         return{
+            selecti:'',
             s:"",
             s1:{visibility:"visible"},
             s2:{visibility:"hidden"},
@@ -417,6 +420,7 @@ export default {
             phone2style:{display:"none"},
             adress1style:{display:"none"},
             adress2style:{display:"none"},
+            xgsc:'',
             isfadeIn1:false,
             isfadeIn2:false,
             isfadeIn3:false,
@@ -430,7 +434,15 @@ export default {
             isfadeOut5:false,
             isfadeOut6:false,
             alladress:[],
+            province:'',
+            city:'',
+            county:'',
+            adresslist:[],
+            addressID:''
         }
+    },
+    created(){
+        this.load();
     },
     methods:{
         feiyong(e){
@@ -540,32 +552,7 @@ export default {
                         this.name1style.display="none";
                     },1000)
                 },3000)
-            }
-            if(adress2==""){
-                this.adress2="详细地址不能为空";
-                this.adress2style.display="inline-block";
-                this.isfadeOut4=false;
-                this.isfadeIn4=true;
-                let timer=setTimeout(()=>{
-                    this.isfadeOut4=true;
-                    this.isfadeIn4=false;
-                    let timer2=setTimeout(()=>{
-                        this.adress2style.display="none";
-                    },1000)
-                },3000)
-            }
-            if(dgname==""){
-                this.name2="订购人姓名不能为空";
-                this.name2style.display="inline-block";
-                this.isfadeOut5=false;
-                this.isfadeIn5=true;
-                let timer=setTimeout(()=>{
-                    this.isfadeOut5=true;
-                    this.isfadeIn5=false;
-                    let timer2=setTimeout(()=>{
-                        this.name2style.display="none";
-                    },1000)
-                },3000)
+                return;
             }
             if(!phone1){
                 this.phone1="手机号码格式不正确";
@@ -579,19 +566,7 @@ export default {
                         this.phone1style.display="none";
                     },1000)
                 },3000) 
-            }
-            if(!phone2){
-                this.phone2="手机号码格式不正确";
-                this.phone2style.display="inline-block";
-                this.isfadeOut3=false;
-                this.isfadeIn3=true;
-                let timer=setTimeout(()=>{
-                    this.isfadeOut3=true;
-                    this.isfadeIn3=false;
-                    let timer2=setTimeout(()=>{
-                        this.phone2style.display="none";
-                    },1000)
-                },3000) 
+                return;
             }
             if(this.alladress.length<3||this.alladress[0].value=="请选择省"||this.alladress[1].value=="请选择市"||this.alladress[2].value=="请选择区"){
                 this.adress1="请输入完整地区";
@@ -605,30 +580,162 @@ export default {
                         this.adress1style.display="none";
                     },1000)
                 },3000)
+                return;
             }
+            if(adress2==""){
+                this.adress2="详细地址不能为空";
+                this.adress2style.display="inline-block";
+                this.isfadeOut4=false;
+                this.isfadeIn4=true;
+                let timer=setTimeout(()=>{
+                    this.isfadeOut4=true;
+                    this.isfadeIn4=false;
+                    let timer2=setTimeout(()=>{
+                        this.adress2style.display="none";
+                    },1000)
+                },3000)
+                return;
+            }
+            if(dgname==""){
+                this.name2="订购人姓名不能为空";
+                this.name2style.display="inline-block";
+                this.isfadeOut5=false;
+                this.isfadeIn5=true;
+                let timer=setTimeout(()=>{
+                    this.isfadeOut5=true;
+                    this.isfadeIn5=false;
+                    let timer2=setTimeout(()=>{
+                        this.name2style.display="none";
+                    },1000)
+                },3000)
+                return;
+            }
+            if(!phone2){
+                this.phone2="手机号码格式不正确";
+                this.phone2style.display="inline-block";
+                this.isfadeOut3=false;
+                this.isfadeIn3=true;
+                let timer=setTimeout(()=>{
+                    this.isfadeOut3=true;
+                    this.isfadeIn3=false;
+                    let timer2=setTimeout(()=>{
+                        this.phone2style.display="none";
+                    },1000)
+                },3000) 
+                return;
+            }
+            //发送请求 插入收货地址数据
+            let receiver=this.shname;
+            let receiverphone=this.shphone;
+            let province=this.province;
+            let city=this.city;
+            let county=this.county;
+            let address=this.adressdetail;
+            let subscriber=this.dgname;
+            let subscriberphone=this.dgphone;
+            let is_default=1;
+            var url = "adress";
+            var obj={
+                receiver,
+                receiverphone,
+                province,
+                city,
+                county,
+                address,
+                subscriber,
+                subscriberphone,
+                is_default
+            };
+            this.axios.get(url,{params:obj}).then(result=>{
+               if(result.data.code==1){
+                   this.addressmask.display="none";
+                   this.load();
+                }
+            })
+
+
+
+
+        },
+        xgscShow(e){
+            // this.xgsc.visibility="visible"
+            let i=e.target.dataset.id;
+            // console.log(i)
+            if(i==0){
+                this.xgsc='1'
+            }
+            else if(i==1){this.xgsc='2'}
+            else if(i==2){this.xgsc='3'}
+            else if(i==3){this.xgsc='4'}
+            else if(i==4){this.xgsc='5'}
+            else if(i==5){this.xgsc='6'}
+            // else if(i==5){this.xgsc5.visibility="visible"}
             
         },
+        xgscHidden(){
+            this.xgsc='';
+        },
         chooseprovince(a){
-            // console.log(a)
             this.alladress[0]=a;
-            console.log(this.alladress);
+            this.province=a.value;
+            console.log(this.province)
         },
         choosecity(a){
-            // console.log(a)
             this.alladress[1]=a;
-            console.log(this.alladress);
+            this.city=a.value;
+            console.log(this.city)
         },
         choosearea(a){
-            // console.log(a)
+            this.county=a.value;
             this.alladress[2]=a;   
-            console.log(this.alladress); 
+            console.log(this.county)
         },
+        load(){
+            var url = "selectAdress";
+            this.axios.get(url).then(result=>{
+               if(result.data.code==1){
+                   this.adresslist=result.data.data;
+                   console.log(this.adresslist)
+               }
+            })
+
+        },
+        chooseadress(e){
+            console.log(e.target.dataset);
+            // 获取到了用户选择的是哪一个地址
+            // 发送请求修改默认地址
+            // 在lode(){}中循环遍历数组  看谁的is_default值为1  给对应的xgsc selecti赋值
+            this.addressID=e.target.dataset.aid;
+            console.log(this.addressID)
+            let i=e.target.dataset.id
+            if(i==0){this.selecti=0}
+            else if(i==1){this.selecti=1}
+            else if(i==2){this.selecti=2}
+            else if(i==3){this.selecti=3}
+            else if(i==4){this.selecti=4}
+            else if(i==5){this.selecti=5}
+        }
     },
 
 }
 </script>
 
 <style scoped>
+.xuanzhongkuang1{
+    visibility: visible !important;
+}
+.selectedAdress{
+    border: 1px dashed #333 !important;
+}
+.settlement .adressmask{
+    width: 330px;
+    height: 146px;
+    background-color:transparent;
+    position: absolute;
+    top:-1px;
+    left: -1px;
+    z-index: 9;
+}
 .settlement .fjx{
     width: 100%;
     border-top: 1px solid #d2d2d2;
@@ -706,7 +813,8 @@ export default {
     margin-right: 20px;
     padding: 8px 18px 18px 22px;
     position: relative;
-    border: 1px dashed #333;
+    /* border: 1px dashed #333; */
+    border: 1px dashed #d2d2d2;
     /* border-color: #d2d2d2; */
 }
 .settlement .information .Consignee .addressAll .address1 a{
@@ -715,12 +823,14 @@ export default {
     color: #333 !important;
     top: 10px;
     left: 240px;
+    z-index: 10;
 }
 .settlement .information .Consignee .addressAll .address1>span{
     float: right;
     font-size: 22px;
     margin-top: -5px;
     margin-right: -19px;
+    visibility: hidden;
 }
 .settlement .information .Consignee .addressAll .address1 a:nth-child(7){
     left: 280px;
