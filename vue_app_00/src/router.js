@@ -47,6 +47,12 @@ import Sunflor from "./components/select/sunflor.vue"
 import Kangnaixin from "./components/select/kangnaixin.vue"
 import Daisy from "./components/select/daisy.vue"
 import PinkMt from "./components/select/pinkMt.vue"
+import Hugtong from "./components/select/Hugtong.vue"
+import Chocolate from "./components/select/chocolate.vue"
+import Babysbreath from "./components/select/babysbreath.vue"
+import Aromatherapy  from "./components/select/aromatherapy.vue"
+import ServiceNotOpen  from "./components/select/ServiceNotOpen.vue"
+import Usercenter  from "./components/usercenter/usercenter.vue"
 Vue.use(Router)
 export default new Router({
   routes: [
@@ -94,5 +100,13 @@ export default new Router({
     {path:'/Kangnaixin',component:Kangnaixin},
     {path:'/Daisy',component:Daisy},
     {path:'/PinkMt',component:PinkMt},
+    {path:'/Hugtong',component:Hugtong},
+    {path:'/Chocolate',component:Chocolate},
+    {path:'/Babysbreath',component:Babysbreath},
+    {path:'/Aromatherapy',component:Aromatherapy},
+    {path:'/ServiceNotOpen',component:ServiceNotOpen},
+
+    //用户中心
+    {path:'/Usercenter',component:Usercenter},
   ]
 })

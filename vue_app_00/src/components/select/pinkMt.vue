@@ -1,5 +1,7 @@
 <template>
   <div class="container-pinkMt">
+        <header00></header00>
+        <navgitor></navgitor>
         <div class="productFilter my_flex">
             <div class="left_pro">
                 <ul class="my_flex">
@@ -15,7 +17,6 @@
             </div>
             <div class="right_pro">
                 <span>9个结果</span>
-                <el-pagination  background  layout="prev, pager, next" :total="10"></el-pagination>
             </div>         
         </div>
         <div class="my_flex main">
@@ -29,10 +30,19 @@
                 </div>
             </div>   
         </div>
+        <footer00></footer00>
   </div>
 </template>
 <script>
+    import Header from "../index/header/header0.vue"
+    import Nav from "../project/Nav.vue"
+    import Footer from "../index/footer/footer0.vue"
 export default {
+    components:{
+        "header00":Header,
+        "navgitor":Nav,
+        "footer00":Footer
+    },
   data(){
     return{
       list:[]
@@ -44,7 +54,6 @@ export default {
     var obj={msg};
     this.axios.get(url,{params:obj}).then(result=>{
       this.list=result.data;
-      console.log(this.list)
     })
   },
 

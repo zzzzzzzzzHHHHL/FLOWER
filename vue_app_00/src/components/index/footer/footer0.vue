@@ -25,36 +25,36 @@
         <div class="bottom-left">
           <div class="bottom-left-top">
             <ul>
-              <li><router-link :to="`javascript:;`">购物说明</router-link></li>
-              <li><router-link :to="`javascript:;`">aPP专享介绍</router-link></li>
-              <li><router-link :to="`javascript:;`">购物流程</router-link></li>
-              <li><router-link :to="`javascript:;`">支付说明</router-link></li>
+              <li><router-link :to="`/ServiceNotOpen`">购物说明</router-link></li>
+              <li><router-link :to="`/ServiceNotOpen`">aPP专享介绍</router-link></li>
+              <li><router-link :to="`/ServiceNotOpen`">购物流程</router-link></li>
+              <li><router-link :to="`/ServiceNotOpen`">支付说明</router-link></li>
             </ul>
             <ul>
-              <li><router-link :to="`javascript:;`">配送说明</router-link></li>
-              <li><router-link :to="`javascript:;`">配送范围</router-link></li>
-              <li><router-link :to="`javascript:;`">配送费用</router-link></li>
-              <li><router-link :to="`javascript:;`">配送时间</router-link></li>
+              <li><router-link :to="`/ServiceNotOpen`">配送说明</router-link></li>
+              <li><router-link :to="`/ServiceNotOpen`">配送范围</router-link></li>
+              <li><router-link :to="`/ServiceNotOpen`">配送费用</router-link></li>
+              <li><router-link :to="`/ServiceNotOpen`">配送时间</router-link></li>
             </ul>
             <ul>
-              <li><router-link :to="`javascript:;`">售后保障</router-link></li>
-              <li><router-link :to="`javascript:;`">取消/修改订单</router-link></li>
-              <li><router-link :to="`javascript:;`">关于签收</router-link></li>
-              <li><router-link :to="`javascript:;`">关于投诉</router-link></li>
+              <li><router-link :to="`/ServiceNotOpen`">售后保障</router-link></li>
+              <li><router-link :to="`/ServiceNotOpen`">取消/修改订单</router-link></li>
+              <li><router-link :to="`/ServiceNotOpen`">关于签收</router-link></li>
+              <li><router-link :to="`/ServiceNotOpen`">关于投诉</router-link></li>
             </ul>
             <ul>
-              <li><router-link :to="`javascript:;`">关于我们</router-link></li>
-              <li><router-link :to="`javascript:;`">品牌介绍</router-link></li>
-              <li><router-link :to="`javascript:;`">实力证明</router-link></li>
-              <li><router-link :to="`javascript:;`">花语大全</router-link></li>
-              <li><router-link :to="`javascript:;`">鲜花百科</router-link></li>
+              <li><router-link :to="`/ServiceNotOpen`">关于我们</router-link></li>
+              <li><router-link :to="`/ServiceNotOpen`">品牌介绍</router-link></li>
+              <li><router-link :to="`/ServiceNotOpen`">实力证明</router-link></li>
+              <li><router-link :to="`/ServiceNotOpen`">花语大全</router-link></li>
+              <li><router-link :to="`/ServiceNotOpen`">鲜花百科</router-link></li>
             </ul>
             <ul>
-              <li><router-link :to="`javascript:;`">同城配送</router-link></li>
-              <li><router-link :to="`javascript:;`">北京鲜花</router-link></li>
-              <li><router-link :to="`javascript:;`">上海鲜花</router-link></li>
-              <li><router-link :to="`javascript:;`">广州鲜花</router-link></li>
-              <li><router-link :to="`javascript:;`">更多城市</router-link></li>
+              <li><router-link :to="`/ServiceNotOpen`">同城配送</router-link></li>
+              <li><router-link :to="`/ServiceNotOpen`">北京鲜花</router-link></li>
+              <li><router-link :to="`/ServiceNotOpen`">上海鲜花</router-link></li>
+              <li><router-link :to="`/ServiceNotOpen`">广州鲜花</router-link></li>
+              <li><router-link :to="`/ServiceNotOpen`">更多城市</router-link></li>
             </ul>
           </div>
           <div class="bottom-left-bottom">

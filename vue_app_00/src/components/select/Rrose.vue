@@ -1,5 +1,7 @@
 <template>
   <div class="container-Rrose">
+        <header00></header00>
+        <navgitor></navgitor>
         <div class="productFilter my_flex">
             <div class="left_pro">
                 <ul class="my_flex">
@@ -14,12 +16,11 @@
                 </ul>
             </div>
             <div class="right_pro">
-                <span>70个结果</span>
-                <el-pagination  background  layout="prev, pager, next" :total="50"></el-pagination>
+                <span>68个结果</span>
             </div>         
         </div>
         <div class="my_flex main">
-            <div  v-for="(elem,i) of list" :key="i" class="main_pro" >
+            <div  v-for="(elem,i) of list2" :key="i" class="main_pro" >
                 <router-link :to="elem.href"><img :src="`http://127.0.0.1:3000/`+elem.pic" ></router-link>
                 <div class="msg_pro">
                     <p>
@@ -29,13 +30,23 @@
                 </div>
             </div>   
         </div>
+        <footer00></footer00>
   </div>
 </template>
 <script>
+    import Header from "../index/header/header0.vue"
+    import Nav from "../project/Nav.vue"
+    import Footer from "../index/footer/footer0.vue"
 export default {
+    components:{
+        "header00":Header,
+        "navgitor":Nav,
+        "footer00":Footer
+    },
   data(){
     return{
-      list:[]
+      list:[],
+      list2:[]
     }
   },
   created(){
@@ -44,7 +55,7 @@ export default {
     var obj={msg};
     this.axios.get(url,{params:obj}).then(result=>{
       this.list=result.data;
-      console.log(this.list)
+      this.list2=this.list.slice(0,68);
     })
   },
 

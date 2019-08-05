@@ -15,7 +15,7 @@
                     </div>
                     <div class="item_info">
                         <i class="iconfont icon-44"></i>
-                        <input type="text" placeholder="请输入用户名" v-model="uname" @blur="unameBlur" @focus="unameFocus">
+                        <input type="text" placeholder="请输入用户名"  id="uname" v-model="uname" @blur="unameBlur" @focus="unameFocus">
                     </div>
                     <div class="item">
                             <i class="iconfont icon-suo"></i>
@@ -105,6 +105,7 @@ export default {
     methods: { 
         login(){
             var uname=this.uname;
+            sessionStorage.setItem("uname",uname);
             var upwd=this.upwd;
             var reg=/^[a-z0-9_]{3,12}$/i;
             var url="login";
