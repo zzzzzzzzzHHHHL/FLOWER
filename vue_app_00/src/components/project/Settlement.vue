@@ -12,7 +12,7 @@
             <!-- 收货人信息 -->
             <div class="Consignee">
                 <p>收货人信息</p>
-                <div class="addressAll" @click="chooseadress">
+                <div class="addressAll">
                     <!-- 已有收货地址 -->
                     <div class="address1" v-for="(elem,i) of adresslist" :key="i" :class="{selectedAdress:selecti==i}" >
                         <p class="text-truncate">收货人: <span v-text="elem.receiver"></span> </p>
@@ -20,10 +20,10 @@
                         <p class="text-truncate">收货地址: <span v-text="elem.province+elem.city+elem.county+elem.address"></span> </p>
                         <p class="text-truncate">订购人: <span v-text="elem.subscriber"></span> </p>
                         <p class="text-truncate">订购人手机号: <span v-text="elem.subscriberphone"></span> </p>
-                        <a href="javacript:;" v-if="xgsc==i+1" :data-id="i" @mouseenter="xgscShow" @mouseleave="xgscHidden">修改</a>
-                        <a href="javacript:;" v-if="xgsc==i+1" :data-id="i" @mouseenter="xgscShow" @mouseleave="xgscHidden">删除</a>
+                        <a href="javacript:;" v-show="xgsc==i+1" :data-id="i" :data-aid="elem.aid" @mouseenter="xgscShow" @mouseleave="xgscHidden">修改</a>
+                        <a href="javacript:;" v-show="xgsc==i+1" :data-id="i" @mouseenter="xgscShow" @mouseleave="xgscHidden" @click="deleteAdress" :data-aid="elem.aid">删除</a>
                         <span class="iconfont icon-xuanzhongkuang1" :class="{xuanzhongkuang1:selecti==i}"></span>
-                        <div class="adressmask" :data-default="elem.is_default" @mouseenter="xgscShow" @mouseleave="xgscHidden" :data-id="i" :data-aid="elem.aid"></div>
+                        <div class="adressmask" :data-default="elem.is_default" @mouseenter="xgscShow" @mouseleave="xgscHidden" :data-id="i" :data-aid="elem.aid" @click="chooseadress"></div>
                     </div>
                     
                     <!-- 添加新地址 -->
@@ -360,6 +360,28 @@
                     </div>
                 </div>
             </div>
+            <!-- 是否确认删除该收货地址 -->
+            <!-- 遮罩 -->
+            <div class="one" :style="one">
+            <!-- 提示框 -->
+                <div class="animated zoomIn">
+                    <div>
+                        <span>系统提示</span>
+                        <a href="javascript:;" class="iconfont icon-tishikuangguanbi" @click="closeOne"></a>
+                    </div>
+                    <div>
+                        <span class="iconfont icon-ruotishikuang-jinggaotishitubiao"></span>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <span style="font-size:14px">您确定要把该收货地址删除吗？</span>
+                    </div>
+                    <div>
+                        <button @click="closeOne">取消</button>
+                        <button @click="sureDelAddress">确定</button>   
+                    </div>
+                </div>
+            </div>
+
+
         </div>
         <footer00 class="footer"></footer00>
     </div>
@@ -380,6 +402,7 @@ export default {
      },
     data(){
         return{
+            one:{display:"none"},
             selecti:'',
             s:"",
             s1:{visibility:"visible"},
@@ -438,13 +461,36 @@ export default {
             city:'',
             county:'',
             adresslist:[],
-            addressID:''
+            addressID:'',
+            deleteAid:-1
         }
     },
     created(){
         this.load();
     },
     methods:{
+        closeOne(){
+            this.one.display="none"
+        },
+        deleteAdress(e){
+            this.one.display="flex"
+            // console.log(e.target.dataset.aid);
+            this.deleteAid=e.target.dataset.aid;   
+        },
+        sureDelAddress(){
+            // 发送请求删除地址
+            var url = "delAddress";
+            var obj={
+                aid:this.deleteAid
+            };
+            this.axios.get(url,{params:obj}).then(result=>{
+               if(result.data.code==1){
+                   this.one.display="none"
+                   this.load();
+                }
+            // console.log(result)
+            })
+        },
         feiyong(e){
             // console.log(e.currentTarget.dataset.num);
             this.s=e.currentTarget.dataset.num;
@@ -678,42 +724,50 @@ export default {
         chooseprovince(a){
             this.alladress[0]=a;
             this.province=a.value;
-            console.log(this.province)
+            // console.log(this.province)
         },
         choosecity(a){
             this.alladress[1]=a;
             this.city=a.value;
-            console.log(this.city)
+            // console.log(this.city)
         },
         choosearea(a){
             this.county=a.value;
             this.alladress[2]=a;   
-            console.log(this.county)
+            // console.log(this.county)
         },
         load(){
             var url = "selectAdress";
             this.axios.get(url).then(result=>{
                if(result.data.code==1){
                    this.adresslist=result.data.data;
-                   console.log(this.adresslist)
+                   //在lode(){}中循环遍历数组看谁的is_default值为1 给对应的selecti赋值 
+                   for(var i=0;i<this.adresslist.length;i++){
+                       if(this.adresslist[i].is_default==1){
+                           this.selecti=i;
+                       }
+                   }  
+                //    console.log(this.adresslist)
                }
             })
 
         },
         chooseadress(e){
-            console.log(e.target.dataset);
+            // console.log(e.target.dataset);
             // 获取到了用户选择的是哪一个地址
-            // 发送请求修改默认地址
-            // 在lode(){}中循环遍历数组  看谁的is_default值为1  给对应的xgsc selecti赋值
             this.addressID=e.target.dataset.aid;
-            console.log(this.addressID)
-            let i=e.target.dataset.id
-            if(i==0){this.selecti=0}
-            else if(i==1){this.selecti=1}
-            else if(i==2){this.selecti=2}
-            else if(i==3){this.selecti=3}
-            else if(i==4){this.selecti=4}
-            else if(i==5){this.selecti=5}
+            // 发送请求修改默认地址
+            var url = "updateDefault";
+            var obj={
+                is_default:1,
+                aid:this.addressID
+            }
+            this.axios.get(url,{params:obj}).then(result=>{
+               if(result.data.code==1){
+                    this.load()
+               }
+            })
+
         }
     },
 
@@ -1377,4 +1431,93 @@ input[type="date"]::-webkit-clear-button{
 .settlement .disrpicker{
     display: inline-block;
 }
+/* 提示框 */
+.settlement .one{
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #33333375;
+    z-index: 900;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* display: none; */
+}
+.settlement .one>div{
+    width: 276px;
+    height: 195px;
+    /* width: 0;
+    height: 0; */
+    background-color: #fff;
+    position: fixed;
+    box-shadow: 0px 0px 0px 10px rgba(0, 0, 0, 0.144);
+    overflow: hidden;
+    opacity: 1;
+    transition: all 0.2s ease-out;
+    /* display: none; */
+}
+.settlement .one>div div:first-child{
+    width: 100%;
+    height: 43px;
+    padding-left: 20px;
+    background-color: #f8f8f8;
+}
+.settlement .one>div div:first-child span{
+    font-size: 14px !important;
+    color: #333333;
+    line-height: 43px;
+}
+.settlement .one>div div:first-child a{
+    color: #333 !important;
+    font-weight: bold;
+    font-size: 12px !important;
+    position: relative;
+    left: 170px;
+}
+.settlement .one>div div:nth-child(2){
+    width: 100%;
+    height: 88px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.settlement .one>div div:nth-child(2) span:first-child{
+    color: #ffaa15;
+    font-size: 40px !important;
+}
+.settlement .one>div div:nth-child(3){
+    height: 48px;
+    padding: 0 10px 12px;
+}
+.settlement .one>div div:nth-child(3) button{
+    width: 56px;
+    height: 30px;
+    border-color: #333;
+    background-color: #333;
+    color: #fff;
+    float: right;
+    margin-right: 10px;
+    margin-top: 15px;
+    font-size: 12px;
+    border-radius: 2px;
+    font-weight: 400;
+    cursor: pointer;
+}
+.settlement .one>div div:nth-child(3) button:first-child{
+    border: 1px solid #dedede;
+    background-color: #f1f1f1;
+    color: #333;
+    border-radius: 2px;
+}
+
+
+
+
+
+
+
 </style>

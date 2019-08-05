@@ -892,7 +892,7 @@ server.get("/InsertProduct",(req,res)=>{
 //购物车查询
 server.get("/cart",(req,res)=>{
   //1:参数(无参数)app.jsd
-  console.log(req.session.uid);
+  // console.log(req.session.uid);
   var uid = req.session.uid;
   if(!uid){
     res.send({code:-1,msg:"请登录"});
@@ -1079,10 +1079,14 @@ server.get("/adress",(req,res)=>{
 	} 
 	// console.log(req.query)
 	// 再创建一个sql语句update将该用户的is_default全部改为0再插入新的地址
+	var sql1="UPDATE flower_receiver_address SET is_default=? WHERE user_id=?"
 	var sql="INSERT INTO flower_receiver_address(user_id,receiver,subscriber,province,city,county,address,receiverphone,subscriberphone,is_default) VALUES(?,?,?,?,?,?,?,?,?,?)"
-	pool.query(sql,[user_id,receiver,subscriber,province,city,county,address,receiverphone,subscriberphone,is_default],(err,result)=>{
+	pool.query(sql1,[0,user_id],(err,result)=>{
 		if(err)throw err;
-		res.send({code:1,data:result})
+		pool.query(sql,[user_id,receiver,subscriber,province,city,county,address,receiverphone,subscriberphone,is_default],(err,result)=>{
+			if(err)throw err;
+			res.send({code:1,data:result})
+		})
 	})
 })
 
@@ -1101,3 +1105,41 @@ server.get("/selectAdress",(req,res)=>{
 })
 
 // 修改is_default的值
+server.get("/updateDefault",(req,res)=>{
+	var user_id = req.session.uid;
+	var is_default =Number(req.query.is_default);
+	var aid = Number(req.query.aid);
+	if(!user_id){
+		res.send({code:-1,msg:"请登录"});
+		return;
+	} 
+	var sql1="UPDATE flower_receiver_address SET is_default=? WHERE user_id=?"
+	var sql="UPDATE flower_receiver_address SET is_default=? WHERE user_id=? AND aid=?"
+	pool.query(sql1,[0,user_id],(err,result)=>{
+		if(err)throw err;
+		pool.query(sql,[is_default,user_id,aid],(err,result)=>{
+			if(err)throw err;
+			res.send({code:1,data:result})
+		})
+	})
+})
+
+// 删除用户的收货地址
+server.get("/delAddress",(req,res)=>{
+	var user_id = req.session.uid;
+	var aid = Number(req.query.aid);
+	if(!user_id){
+		res.send({code:-1,msg:"请登录"});
+		return;
+	} 
+  var sql = "DELETE FROM flower_receiver_address WHERE user_id=? AND aid = ?";
+  //3:json
+  pool.query(sql,[user_id,aid],(err,result)=>{
+   if(err)throw err;
+   if(result.affectedRows>0){
+    res.send({code:1,msg:"删除成功"});
+   }else{
+    res.send({code:-1,msg:"删除失败"}) 
+   }
+  })
+});
