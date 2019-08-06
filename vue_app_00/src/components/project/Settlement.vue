@@ -1,6 +1,6 @@
 <template>
     <div class="settlement"><!-- 购物车结算组件 -->
-        <header00></header00>
+        <!-- <header00></header00> -->
         <navgitor></navgitor>
         <div class="fjx"></div>
         <!-- Nav -->
@@ -20,16 +20,24 @@
                         <p class="text-truncate">收货地址: <span v-text="elem.province+elem.city+elem.county+elem.address"></span> </p>
                         <p class="text-truncate">订购人: <span v-text="elem.subscriber"></span> </p>
                         <p class="text-truncate">订购人手机号: <span v-text="elem.subscriberphone"></span> </p>
-                        <a href="javacript:;" v-show="xgsc==i+1" :data-id="i" :data-aid="elem.aid" @mouseenter="xgscShow" @mouseleave="xgscHidden">修改</a>
+                        <a href="javacript:;" v-show="xgsc==i+1" :data-id="i" :data-aid="elem.aid" @mouseenter="xgscShow" @mouseleave="xgscHidden" @click="insertaddress" data-mode="xg"
+                        :data-receiver="elem.receiver" :data-receiverphone="elem.receiverphone"
+                        :data-province="elem.province"
+                        :data-city="elem.city"
+                        :data-county="elem.county"
+                        :data-address="elem.address"
+                        :data-subscriber="elem.subscriber"
+                        :data-subscriberphone="elem.subscriberphone"
+                        >修改</a>
                         <a href="javacript:;" v-show="xgsc==i+1" :data-id="i" @mouseenter="xgscShow" @mouseleave="xgscHidden" @click="deleteAdress" :data-aid="elem.aid">删除</a>
                         <span class="iconfont icon-xuanzhongkuang1" :class="{xuanzhongkuang1:selecti==i}"></span>
                         <div class="adressmask" :data-default="elem.is_default" @mouseenter="xgscShow" @mouseleave="xgscHidden" :data-id="i" :data-aid="elem.aid" @click="chooseadress"></div>
                     </div>
                     
                     <!-- 添加新地址 -->
-                    <div class="address">
+                    <div class="address" :style="addAddress">
                         <img src="../../assets/Mig/location.png" alt="">
-                        <p @click="insertaddress">添加新地址</p>
+                        <p @click="insertaddress" data-mode="insert">添加新地址</p>
                     </div>
                 </div>
                 
@@ -317,7 +325,7 @@
                 <div class="input1 animated zoomIn">
                     <!-- 新增收货人地址标题 -->
                     <div>
-                        <span>新增收货人地址</span>
+                        <span v-text="maskTitle"></span>
                         <span class="iconfont icon-tishikuangguanbi" @click="closemask"></span>
                     </div>
                     <!-- 表单 -->
@@ -335,7 +343,7 @@
                         </p>
                         <p>
                             <span><span>*</span> 所在地区</span>
-                            <v-distpicker :placeholders="placeholders" class="disrpicker" @province="chooseprovince" @city="choosecity" @area="choosearea" @selected="selectdress"></v-distpicker>
+                            <v-distpicker :placeholders="placeholders" class="disrpicker" @province="chooseprovince" @city="choosecity" @area="choosearea" @selected="selectdress" :province="temp.addressprovince" :city="temp.addresscity" :area="temp.addressdist"></v-distpicker>
                             <span class="Tips tipsderss animated" :class="{fadeIn:isfadeIn6,fadeOut:isfadeOut6}" v-text="adress1" :style="adress1style"></span>
                         </p>
                         <p>
@@ -355,7 +363,7 @@
                         </p>
                     </div>
                     <div>
-                        <button @click="save">保存</button>
+                        <button @click="save" data-mode='save'>保存</button>
                         <button @click="closemask">取消</button>
                     </div>
                 </div>
@@ -402,6 +410,12 @@ export default {
      },
     data(){
         return{
+            maskTitle:'',
+            temp: {  //要随选择的值发送改变
+                addressprovince: '',
+                addresscity: '',
+                addressdist: '',
+            },
             one:{display:"none"},
             selecti:'',
             s:"",
@@ -443,6 +457,7 @@ export default {
             phone2style:{display:"none"},
             adress1style:{display:"none"},
             adress2style:{display:"none"},
+            addAddress:{display:"none"},
             xgsc:'',
             isfadeIn1:false,
             isfadeIn2:false,
@@ -466,7 +481,8 @@ export default {
         }
     },
     created(){
-        this.load();
+        this.loadAddress();
+        console.log(1111111111)
     },
     methods:{
         closeOne(){
@@ -486,7 +502,7 @@ export default {
             this.axios.get(url,{params:obj}).then(result=>{
                if(result.data.code==1){
                    this.one.display="none"
-                   this.load();
+                   this.loadAddress();
                 }
             // console.log(result)
             })
@@ -571,8 +587,30 @@ export default {
             // console.log(a);
             this.adress=a;
             // console.log(this.adress);
+            
         },
-        insertaddress(){
+        insertaddress(e){
+            // 根据不同模式选择不同的处理方法 insert/xg
+            let mode=e.target.dataset.mode;
+            if(mode=='insert'){
+                //将所有的填写的内容赋值为空 每次选值要改变temp中的内容，不然只有第一次生效
+                this.shname=''
+                this.shphone=''
+                this.temp.addressprovince =this.placeholders.province
+                this.temp.addresscity = this.placeholders.city
+                this.temp.addressdist =this.placeholders.area
+                this.adressdetail=''
+                this.dgname=''
+                this.dgphone=''
+                this.maskTitle='新增收货人地址'
+            }else if(mode=='xg'){
+                this.maskTitle='修改收货人地址'
+                // 将选中的值给绑定在表单中
+
+            }else{
+                this.maskTitle='收货人地址'
+            }
+            console.log(e.target.dataset.mode)
             this.addressmask.display="flex";
         },
         closemask(){
@@ -695,7 +733,8 @@ export default {
             this.axios.get(url,{params:obj}).then(result=>{
                if(result.data.code==1){
                    this.addressmask.display="none";
-                   this.load();
+                   this.loadAddress();
+                    
                 }
             })
 
@@ -705,6 +744,15 @@ export default {
         },
         xgscShow(e){
             // this.xgsc.visibility="visible"
+            // console.log(e.target.dataset);
+            this.shname=e.target.dataset.receiver;
+            this.shphone=e.target.dataset.receiverphone;
+            this.temp.addressprovince=e.target.dataset.province
+            this.temp.addresscity=e.target.dataset.city
+            this.temp.addressdist=e.target.dataset.county
+            this.adressdetail=e.target.dataset.address
+            this.dgname=e.target.dataset.subscriber
+            this.dgphone=e.target.dataset.subscriberphone
             let i=e.target.dataset.id;
             // console.log(i)
             if(i==0){
@@ -725,29 +773,37 @@ export default {
             this.alladress[0]=a;
             this.province=a.value;
             // console.log(this.province)
+            this.temp.addressprovince=a.value
         },
         choosecity(a){
             this.alladress[1]=a;
             this.city=a.value;
             // console.log(this.city)
+            this.temp.addresscity=a.value
         },
         choosearea(a){
             this.county=a.value;
             this.alladress[2]=a;   
             // console.log(this.county)
+            this.temp.addressdist=a.value
         },
-        load(){
+        loadAddress(){
             var url = "selectAdress";
             this.axios.get(url).then(result=>{
                if(result.data.code==1){
                    this.adresslist=result.data.data;
-                   //在lode(){}中循环遍历数组看谁的is_default值为1 给对应的selecti赋值 
+                   //最多可以写6个地址    
+                   if(this.adresslist.length !=6){
+                       this.addAddress.display="flex"
+                   }else if(this.adresslist.length==6){
+                       this.addAddress.display="none"
+                   }
+                   //循环遍历数组看谁的is_default值为1 给对应的selecti赋值 
                    for(var i=0;i<this.adresslist.length;i++){
                        if(this.adresslist[i].is_default==1){
                            this.selecti=i;
                        }
                    }  
-                //    console.log(this.adresslist)
                }
             })
 
@@ -764,7 +820,7 @@ export default {
             }
             this.axios.get(url,{params:obj}).then(result=>{
                if(result.data.code==1){
-                    this.load()
+                    this.loadAddress()
                }
             })
 
