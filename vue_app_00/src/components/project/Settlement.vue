@@ -410,6 +410,7 @@ export default {
      },
     data(){
         return{
+            updadeAid:'',
             maskTitle:'',
             temp: {  //要随选择的值发送改变
                 addressprovince: '',
@@ -592,6 +593,8 @@ export default {
         insertaddress(e){
             // 根据不同模式选择不同的处理方法 insert/xg
             let mode=e.target.dataset.mode;
+            this.updadeAid=e.target.dataset.aid;
+            console.log(this.updadeAid);
             if(mode=='insert'){
                 //将所有的填写的内容赋值为空 每次选值要改变temp中的内容，不然只有第一次生效
                 this.shname=''
@@ -610,7 +613,7 @@ export default {
             }else{
                 this.maskTitle='收货人地址'
             }
-            console.log(e.target.dataset.mode)
+            // console.log(e.target.dataset.mode)
             this.addressmask.display="flex";
         },
         closemask(){
@@ -708,7 +711,6 @@ export default {
                 },3000) 
                 return;
             }
-            //发送请求 插入收货地址数据
             let receiver=this.shname;
             let receiverphone=this.shphone;
             let province=this.province;
@@ -718,25 +720,31 @@ export default {
             let subscriber=this.dgname;
             let subscriberphone=this.dgphone;
             let is_default=1;
-            var url = "adress";
-            var obj={
-                receiver,
-                receiverphone,
-                province,
-                city,
-                county,
-                address,
-                subscriber,
-                subscriberphone,
-                is_default
-            };
-            this.axios.get(url,{params:obj}).then(result=>{
-               if(result.data.code==1){
-                   this.addressmask.display="none";
-                   this.loadAddress();
-                    
-                }
-            })
+            // 判断是修改地址还是新增地址 利用maskTitle
+            if(this.maskTitle=='新增收货人地址'){
+                //发送请求 插入收货地址数据
+                var url = "adress";
+                var obj={
+                    receiver,
+                    receiverphone,
+                    province,
+                    city,
+                    county,
+                    address,
+                    subscriber,
+                    subscriberphone,
+                    is_default
+                };
+                this.axios.get(url,{params:obj}).then(result=>{
+                if(result.data.code==1){
+                    this.addressmask.display="none";
+                    this.loadAddress();
+                        
+                    }
+                })
+            }
+            else if(this.maskTitle=='修改收货人地址'){}
+            
 
 
 
