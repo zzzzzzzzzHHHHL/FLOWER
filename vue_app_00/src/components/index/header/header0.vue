@@ -5,7 +5,7 @@
         <img src="./img/huazan_logo.png" alt="">
       </div>
       <div class="center">
-        <el-input placeholder="请输入内容" v-model="input3" class="input-with-select" @keydown="searchMsg">
+        <el-input placeholder="请输入内容" v-model="input3" class="input-with-select">
           <el-button slot="append" icon="el-icon-search" @click="searchMsg2"></el-button>
         </el-input>
       </div>
@@ -43,12 +43,12 @@ export default {
           type: 'warning'
         }).then(() => {
           sessionStorage.clear();
-          this.loginMsg=`登录`;
-          this.logout=false;
-          this.$message({
-            type: 'success',
-            message: '注销成功!'
-          });
+              this.loginMsg=`登录`;
+              this.logout=false;
+              this.$message({
+                type: 'success',
+                message: '注销成功!'
+              });
         }).catch(() => {
           this.$message({
             type: 'info',
@@ -57,12 +57,7 @@ export default {
         });
       }
     },
-    searchMsg(e){
-  //    if(e.keyCode==13){
-  //      var msg=this.input3;
-  //      console.log(msg);
-  //    }
-  },
+
   searchMsg2(){
     var msg=this.input3;
     if(msg=="进口鲜花"){
