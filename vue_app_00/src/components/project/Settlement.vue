@@ -253,57 +253,26 @@
                 <p>商品信息 <span @click="fhgwc">返回购物车</span></p>
                 <div>
                     <!-- 单件商品 -->
-                    <div>
+                    <div v-for="(elem,i) of productList" :key="i">
                         <!-- 左边 -->
                         <div>
-                            <a href="#">
-                                <img src="../../assets/Mig/15.jpg" alt="">
-                            </a>
-                            <span><a href="#">爱之物语-14朵红玫瑰</a></span>
+                            <router-link :to="'product_details/'+elem.lid">
+                                <img :src="'http://127.0.0.1:3000/'+elem.img_url" alt="">
+                            </router-link>
+                            <span><router-link :to="'product_details/'+elem.lid" v-text="elem.title">
+                            </router-link></span>
                             
                         </div>
                         <!-- 右边 -->
                         <div>
-                            <span>￥499.00</span>
-                            <span>x1</span>
+                            <span v-text="elem.price"></span>
+                            <span v-text="'x' +elem.count"></span>
                             <span>有货</span>
-                            <span>￥499.00</span>
+                            <span v-text="'￥'+elem.price*elem.count"></span>
                         </div>
                     </div>
-                    <div>
-                        <!-- 左边 -->
-                        <div>
-                            <a href="#">
-                                <img src="../../assets/Mig/15.jpg" alt="">
-                            </a>
-                            <span><a href="#">爱之物语-14朵红玫瑰</a></span>
-                            
-                        </div>
-                        <!-- 右边 -->
-                        <div>
-                            <span>￥499.00</span>
-                            <span>x1</span>
-                            <span>有货</span>
-                            <span>￥499.00</span>
-                        </div>
-                    </div>
-                    <div>
-                        <!-- 左边 -->
-                        <div>
-                            <a href="#">
-                                <img src="../../assets/Mig/15.jpg" alt="">
-                            </a>
-                            <span><a href="#">爱之物语-14朵红玫瑰</a></span>
-                            
-                        </div>
-                        <!-- 右边 -->
-                        <div>
-                            <span>￥499.00</span>
-                            <span>x1</span>
-                            <span>有货</span>
-                            <span>￥499.00</span>
-                        </div>
-                    </div>
+                    
+                    
                     
                 </div>
             </div>
@@ -314,8 +283,8 @@
             </div>
             <!-- 订单提交 -->
             <div class="ddtj">
-                <p>商品总价：<span>￥898.00</span> </p>
-                <p>应付款金额：<span>￥898.00</span> </p>
+                <p>商品总价：<span v-text="'￥'+totalPrice.toFixed(2)"></span> </p>
+                <p>应付款金额：<span v-text="'￥'+allPrice.toFixed(2)"></span> </p>
                 <button>提交订单</button>
             </div>
             <!-- 新增收货人地址 -->
@@ -410,6 +379,9 @@ export default {
      },
     data(){
         return{
+            allPrice:0,
+            totalPrice:0,
+            productList:[],
             updadeAid:'',
             maskTitle:'',
             temp: {  //要随选择的值发送改变
@@ -483,6 +455,7 @@ export default {
     },
     created(){
         this.loadAddress();
+        this.loadProduct();
         console.log(1111111111)
     },
     methods:{
@@ -516,14 +489,18 @@ export default {
                 this.s1.visibility="visible";
                 this.s2.visibility="hidden";
                 this.s3.visibility="hidden";
+                this.allPrice=this.totalPrice;
+                console.log(this.allPrice)
             }else if(this.s=="s2"){
                 this.s1.visibility="hidden";
                 this.s2.visibility="visible";
                 this.s3.visibility="hidden";
+                this.allPrice=this.totalPrice+30
             }else{
                 this.s1.visibility="hidden";
                 this.s2.visibility="hidden";
                 this.s3.visibility="visible";
+                this.allPrice=this.totalPrice+50
             }
         },
         who(e){
@@ -594,7 +571,7 @@ export default {
             // 根据不同模式选择不同的处理方法 insert/xg
             let mode=e.target.dataset.mode;
             this.updadeAid=e.target.dataset.aid;
-            console.log(this.updadeAid);
+            // console.log(this.updadeAid);
             if(mode=='insert'){
                 //将所有的填写的内容赋值为空 每次选值要改变temp中的内容，不然只有第一次生效
                 this.shname=''
@@ -711,6 +688,7 @@ export default {
                 },3000) 
                 return;
             }
+            let aid=this.updadeAid;
             let receiver=this.shname;
             let receiverphone=this.shphone;
             let province=this.province;
@@ -723,7 +701,7 @@ export default {
             // 判断是修改地址还是新增地址 利用maskTitle
             if(this.maskTitle=='新增收货人地址'){
                 //发送请求 插入收货地址数据
-                var url = "adress";
+                var url = "insertAddress";
                 var obj={
                     receiver,
                     receiverphone,
@@ -743,12 +721,27 @@ export default {
                     }
                 })
             }
-            else if(this.maskTitle=='修改收货人地址'){}
-            
-
-
-
-
+            else if(this.maskTitle=='修改收货人地址'){
+                var url = "updateAddress";
+                var obj={
+                    receiver,
+                    receiverphone,
+                    province,
+                    city,
+                    county,
+                    address,
+                    subscriber,
+                    subscriberphone,
+                    is_default,
+                    aid
+                };
+                this.axios.get(url,{params:obj}).then(result=>{
+                if(result.data.code==1){
+                    this.addressmask.display="none";
+                    this.loadAddress(); 
+                    }
+                })
+            }
         },
         xgscShow(e){
             // this.xgsc.visibility="visible"
@@ -816,6 +809,24 @@ export default {
             })
 
         },
+        loadProduct(){
+            // 发送请求加载数据
+            var url = "cart";
+            this.axios.get(url).then(result=>{
+                if(result.data.code==1){
+                    // this.productList=result.data.data
+                    let list=result.data.data
+                    for(let i=0;i<list.length;i++){
+                        if(list[i].is_checked==1){
+                            // console.log(list[i])
+                            this.productList.push(list[i])
+                            this.totalPrice+=list[i].price*list[i].count
+                        }
+                    }
+                    this.allPrice=this.totalPrice;
+                }
+            })
+        },
         chooseadress(e){
             // console.log(e.target.dataset);
             // 获取到了用户选择的是哪一个地址
@@ -839,6 +850,9 @@ export default {
 </script>
 
 <style scoped>
+.settlement{
+    min-width: 1200px;
+}
 .xuanzhongkuang1{
     visibility: visible !important;
 }

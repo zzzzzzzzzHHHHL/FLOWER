@@ -1062,7 +1062,7 @@ server.get("/changeone",(req,res)=>{
 })
 
 // 添加收货人地址
-server.get("/adress",(req,res)=>{
+server.get("/insertAddress",(req,res)=>{
 	var user_id = req.session.uid;
 	var receiver=req.query.receiver;
 	var subscriber=req.query.subscriber;
@@ -1145,3 +1145,29 @@ server.get("/delAddress",(req,res)=>{
 });
 
 // 修改收货人地址
+server.get("/updateAddress",(req,res)=>{
+	var user_id = req.session.uid;
+	var receiver=req.query.receiver;
+	var subscriber=req.query.subscriber;
+	var province=req.query.province;
+	var city=req.query.city;
+	var county=req.query.county;
+	var address=req.query.address;
+	var receiverphone=req.query.receiverphone;
+	var subscriberphone=req.query.subscriberphone;
+	var is_default=Number(req.query.is_default);
+	var aid = Number(req.query.aid);
+	if(!user_id){
+		res.send({code:-1,msg:"请登录"});
+		return;
+	} 
+	var sql1="UPDATE flower_receiver_address SET is_default=? WHERE user_id=?"
+	var sql="UPDATE flower_receiver_address SET receiver=?,subscriber=?,province=?,city=?,county=?,address=?,receiverphone=?,subscriberphone=?,is_default=? WHERE user_id=? AND aid=?"
+	pool.query(sql1,[0,user_id],(err,result)=>{
+		if(err)throw err;
+		pool.query(sql,[receiver,subscriber,province,city,county,address,receiverphone,subscriberphone,is_default,user_id,aid],(err,result)=>{
+			if(err)throw err;
+			res.send({code:1,data:result})
+		})
+	})	
+})
