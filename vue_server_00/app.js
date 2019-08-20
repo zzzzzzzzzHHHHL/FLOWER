@@ -1105,19 +1105,6 @@ server.get("/selectAdress",(req,res)=>{
 })
 
 // 修改is_default的值
-<<<<<<< HEAD
-
-
-
-
-
-
-/*********************************************************/
-//注销
-server.get("/logout",(req,res)=>{
-	var $uid=req.session.uid;
-	$uid="";
-=======
 server.get("/updateDefault",(req,res)=>{
 	var user_id = req.session.uid;
 	var is_default =Number(req.query.is_default);
@@ -1183,5 +1170,4 @@ server.get("/updateAddress",(req,res)=>{
 			res.send({code:1,data:result})
 		})
 	})	
->>>>>>> a7f528844cc93e13b1faaf7f0fd5d58a700a10f4
 })
