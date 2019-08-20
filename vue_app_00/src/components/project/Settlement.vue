@@ -1,6 +1,6 @@
 <template>
     <div class="settlement"><!-- 购物车结算组件 -->
-        <header00></header00>
+        <!-- <header00></header00> -->
         <navgitor></navgitor>
         <div class="fjx"></div>
         <!-- Nav -->
@@ -12,7 +12,7 @@
             <!-- 收货人信息 -->
             <div class="Consignee">
                 <p>收货人信息</p>
-                <div class="addressAll" @click="chooseadress">
+                <div class="addressAll">
                     <!-- 已有收货地址 -->
                     <div class="address1" v-for="(elem,i) of adresslist" :key="i" :class="{selectedAdress:selecti==i}" >
                         <p class="text-truncate">收货人: <span v-text="elem.receiver"></span> </p>
@@ -20,16 +20,24 @@
                         <p class="text-truncate">收货地址: <span v-text="elem.province+elem.city+elem.county+elem.address"></span> </p>
                         <p class="text-truncate">订购人: <span v-text="elem.subscriber"></span> </p>
                         <p class="text-truncate">订购人手机号: <span v-text="elem.subscriberphone"></span> </p>
-                        <a href="javacript:;" v-if="xgsc==i+1" :data-id="i" @mouseenter="xgscShow" @mouseleave="xgscHidden">修改</a>
-                        <a href="javacript:;" v-if="xgsc==i+1" :data-id="i" @mouseenter="xgscShow" @mouseleave="xgscHidden">删除</a>
+                        <a href="javacript:;" v-show="xgsc==i+1" :data-id="i" :data-aid="elem.aid" @mouseenter="xgscShow" @mouseleave="xgscHidden" @click="insertaddress" data-mode="xg"
+                        :data-receiver="elem.receiver" :data-receiverphone="elem.receiverphone"
+                        :data-province="elem.province"
+                        :data-city="elem.city"
+                        :data-county="elem.county"
+                        :data-address="elem.address"
+                        :data-subscriber="elem.subscriber"
+                        :data-subscriberphone="elem.subscriberphone"
+                        >修改</a>
+                        <a href="javacript:;" v-show="xgsc==i+1" :data-id="i" @mouseenter="xgscShow" @mouseleave="xgscHidden" @click="deleteAdress" :data-aid="elem.aid">删除</a>
                         <span class="iconfont icon-xuanzhongkuang1" :class="{xuanzhongkuang1:selecti==i}"></span>
-                        <div class="adressmask" :data-default="elem.is_default" @mouseenter="xgscShow" @mouseleave="xgscHidden" :data-id="i" :data-aid="elem.aid"></div>
+                        <div class="adressmask" :data-default="elem.is_default" @mouseenter="xgscShow" @mouseleave="xgscHidden" :data-id="i" :data-aid="elem.aid" @click="chooseadress"></div>
                     </div>
                     
                     <!-- 添加新地址 -->
-                    <div class="address">
+                    <div class="address" :style="addAddress">
                         <img src="../../assets/Mig/location.png" alt="">
-                        <p @click="insertaddress">添加新地址</p>
+                        <p @click="insertaddress" data-mode="insert">添加新地址</p>
                     </div>
                 </div>
                 
@@ -245,57 +253,26 @@
                 <p>商品信息 <span @click="fhgwc">返回购物车</span></p>
                 <div>
                     <!-- 单件商品 -->
-                    <div>
+                    <div v-for="(elem,i) of productList" :key="i">
                         <!-- 左边 -->
                         <div>
-                            <a href="#">
-                                <img src="../../assets/Mig/15.jpg" alt="">
-                            </a>
-                            <span><a href="#">爱之物语-14朵红玫瑰</a></span>
+                            <router-link :to="'product_details/'+elem.lid">
+                                <img :src="'http://127.0.0.1:3000/'+elem.img_url" alt="">
+                            </router-link>
+                            <span><router-link :to="'product_details/'+elem.lid" v-text="elem.title">
+                            </router-link></span>
                             
                         </div>
                         <!-- 右边 -->
                         <div>
-                            <span>￥499.00</span>
-                            <span>x1</span>
+                            <span v-text="elem.price"></span>
+                            <span v-text="'x' +elem.count"></span>
                             <span>有货</span>
-                            <span>￥499.00</span>
+                            <span v-text="'￥'+elem.price*elem.count"></span>
                         </div>
                     </div>
-                    <div>
-                        <!-- 左边 -->
-                        <div>
-                            <a href="#">
-                                <img src="../../assets/Mig/15.jpg" alt="">
-                            </a>
-                            <span><a href="#">爱之物语-14朵红玫瑰</a></span>
-                            
-                        </div>
-                        <!-- 右边 -->
-                        <div>
-                            <span>￥499.00</span>
-                            <span>x1</span>
-                            <span>有货</span>
-                            <span>￥499.00</span>
-                        </div>
-                    </div>
-                    <div>
-                        <!-- 左边 -->
-                        <div>
-                            <a href="#">
-                                <img src="../../assets/Mig/15.jpg" alt="">
-                            </a>
-                            <span><a href="#">爱之物语-14朵红玫瑰</a></span>
-                            
-                        </div>
-                        <!-- 右边 -->
-                        <div>
-                            <span>￥499.00</span>
-                            <span>x1</span>
-                            <span>有货</span>
-                            <span>￥499.00</span>
-                        </div>
-                    </div>
+                    
+                    
                     
                 </div>
             </div>
@@ -306,8 +283,8 @@
             </div>
             <!-- 订单提交 -->
             <div class="ddtj">
-                <p>商品总价：<span>￥898.00</span> </p>
-                <p>应付款金额：<span>￥898.00</span> </p>
+                <p>商品总价：<span v-text="'￥'+totalPrice.toFixed(2)"></span> </p>
+                <p>应付款金额：<span v-text="'￥'+allPrice.toFixed(2)"></span> </p>
                 <button>提交订单</button>
             </div>
             <!-- 新增收货人地址 -->
@@ -317,7 +294,7 @@
                 <div class="input1 animated zoomIn">
                     <!-- 新增收货人地址标题 -->
                     <div>
-                        <span>新增收货人地址</span>
+                        <span v-text="maskTitle"></span>
                         <span class="iconfont icon-tishikuangguanbi" @click="closemask"></span>
                     </div>
                     <!-- 表单 -->
@@ -335,7 +312,7 @@
                         </p>
                         <p>
                             <span><span>*</span> 所在地区</span>
-                            <v-distpicker :placeholders="placeholders" class="disrpicker" @province="chooseprovince" @city="choosecity" @area="choosearea" @selected="selectdress"></v-distpicker>
+                            <v-distpicker :placeholders="placeholders" class="disrpicker" @province="chooseprovince" @city="choosecity" @area="choosearea" @selected="selectdress" :province="temp.addressprovince" :city="temp.addresscity" :area="temp.addressdist"></v-distpicker>
                             <span class="Tips tipsderss animated" :class="{fadeIn:isfadeIn6,fadeOut:isfadeOut6}" v-text="adress1" :style="adress1style"></span>
                         </p>
                         <p>
@@ -355,11 +332,33 @@
                         </p>
                     </div>
                     <div>
-                        <button @click="save">保存</button>
+                        <button @click="save" data-mode='save'>保存</button>
                         <button @click="closemask">取消</button>
                     </div>
                 </div>
             </div>
+            <!-- 是否确认删除该收货地址 -->
+            <!-- 遮罩 -->
+            <div class="one" :style="one">
+            <!-- 提示框 -->
+                <div class="animated zoomIn">
+                    <div>
+                        <span>系统提示</span>
+                        <a href="javascript:;" class="iconfont icon-tishikuangguanbi" @click="closeOne"></a>
+                    </div>
+                    <div>
+                        <span class="iconfont icon-ruotishikuang-jinggaotishitubiao"></span>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <span style="font-size:14px">您确定要把该收货地址删除吗？</span>
+                    </div>
+                    <div>
+                        <button @click="closeOne">取消</button>
+                        <button @click="sureDelAddress">确定</button>   
+                    </div>
+                </div>
+            </div>
+
+
         </div>
         <footer00 class="footer"></footer00>
     </div>
@@ -380,6 +379,17 @@ export default {
      },
     data(){
         return{
+            allPrice:0,
+            totalPrice:0,
+            productList:[],
+            updadeAid:'',
+            maskTitle:'',
+            temp: {  //要随选择的值发送改变
+                addressprovince: '',
+                addresscity: '',
+                addressdist: '',
+            },
+            one:{display:"none"},
             selecti:'',
             s:"",
             s1:{visibility:"visible"},
@@ -420,6 +430,7 @@ export default {
             phone2style:{display:"none"},
             adress1style:{display:"none"},
             adress2style:{display:"none"},
+            addAddress:{display:"none"},
             xgsc:'',
             isfadeIn1:false,
             isfadeIn2:false,
@@ -438,13 +449,38 @@ export default {
             city:'',
             county:'',
             adresslist:[],
-            addressID:''
+            addressID:'',
+            deleteAid:-1
         }
     },
     created(){
-        this.load();
+        this.loadAddress();
+        this.loadProduct();
+        console.log(1111111111)
     },
     methods:{
+        closeOne(){
+            this.one.display="none"
+        },
+        deleteAdress(e){
+            this.one.display="flex"
+            // console.log(e.target.dataset.aid);
+            this.deleteAid=e.target.dataset.aid;   
+        },
+        sureDelAddress(){
+            // 发送请求删除地址
+            var url = "delAddress";
+            var obj={
+                aid:this.deleteAid
+            };
+            this.axios.get(url,{params:obj}).then(result=>{
+               if(result.data.code==1){
+                   this.one.display="none"
+                   this.loadAddress();
+                }
+            // console.log(result)
+            })
+        },
         feiyong(e){
             // console.log(e.currentTarget.dataset.num);
             this.s=e.currentTarget.dataset.num;
@@ -453,14 +489,18 @@ export default {
                 this.s1.visibility="visible";
                 this.s2.visibility="hidden";
                 this.s3.visibility="hidden";
+                this.allPrice=this.totalPrice;
+                console.log(this.allPrice)
             }else if(this.s=="s2"){
                 this.s1.visibility="hidden";
                 this.s2.visibility="visible";
                 this.s3.visibility="hidden";
+                this.allPrice=this.totalPrice+30
             }else{
                 this.s1.visibility="hidden";
                 this.s2.visibility="hidden";
                 this.s3.visibility="visible";
+                this.allPrice=this.totalPrice+50
             }
         },
         who(e){
@@ -525,8 +565,32 @@ export default {
             // console.log(a);
             this.adress=a;
             // console.log(this.adress);
+            
         },
-        insertaddress(){
+        insertaddress(e){
+            // 根据不同模式选择不同的处理方法 insert/xg
+            let mode=e.target.dataset.mode;
+            this.updadeAid=e.target.dataset.aid;
+            // console.log(this.updadeAid);
+            if(mode=='insert'){
+                //将所有的填写的内容赋值为空 每次选值要改变temp中的内容，不然只有第一次生效
+                this.shname=''
+                this.shphone=''
+                this.temp.addressprovince =this.placeholders.province
+                this.temp.addresscity = this.placeholders.city
+                this.temp.addressdist =this.placeholders.area
+                this.adressdetail=''
+                this.dgname=''
+                this.dgphone=''
+                this.maskTitle='新增收货人地址'
+            }else if(mode=='xg'){
+                this.maskTitle='修改收货人地址'
+                // 将选中的值给绑定在表单中
+
+            }else{
+                this.maskTitle='收货人地址'
+            }
+            // console.log(e.target.dataset.mode)
             this.addressmask.display="flex";
         },
         closemask(){
@@ -624,7 +688,7 @@ export default {
                 },3000) 
                 return;
             }
-            //发送请求 插入收货地址数据
+            let aid=this.updadeAid;
             let receiver=this.shname;
             let receiverphone=this.shphone;
             let province=this.province;
@@ -634,31 +698,62 @@ export default {
             let subscriber=this.dgname;
             let subscriberphone=this.dgphone;
             let is_default=1;
-            var url = "adress";
-            var obj={
-                receiver,
-                receiverphone,
-                province,
-                city,
-                county,
-                address,
-                subscriber,
-                subscriberphone,
-                is_default
-            };
-            this.axios.get(url,{params:obj}).then(result=>{
-               if(result.data.code==1){
-                   this.addressmask.display="none";
-                   this.load();
-                }
-            })
-
-
-
-
+            // 判断是修改地址还是新增地址 利用maskTitle
+            if(this.maskTitle=='新增收货人地址'){
+                //发送请求 插入收货地址数据
+                var url = "insertAddress";
+                var obj={
+                    receiver,
+                    receiverphone,
+                    province,
+                    city,
+                    county,
+                    address,
+                    subscriber,
+                    subscriberphone,
+                    is_default
+                };
+                this.axios.get(url,{params:obj}).then(result=>{
+                if(result.data.code==1){
+                    this.addressmask.display="none";
+                    this.loadAddress();
+                        
+                    }
+                })
+            }
+            else if(this.maskTitle=='修改收货人地址'){
+                var url = "updateAddress";
+                var obj={
+                    receiver,
+                    receiverphone,
+                    province,
+                    city,
+                    county,
+                    address,
+                    subscriber,
+                    subscriberphone,
+                    is_default,
+                    aid
+                };
+                this.axios.get(url,{params:obj}).then(result=>{
+                if(result.data.code==1){
+                    this.addressmask.display="none";
+                    this.loadAddress(); 
+                    }
+                })
+            }
         },
         xgscShow(e){
             // this.xgsc.visibility="visible"
+            // console.log(e.target.dataset);
+            this.shname=e.target.dataset.receiver;
+            this.shphone=e.target.dataset.receiverphone;
+            this.temp.addressprovince=e.target.dataset.province
+            this.temp.addresscity=e.target.dataset.city
+            this.temp.addressdist=e.target.dataset.county
+            this.adressdetail=e.target.dataset.address
+            this.dgname=e.target.dataset.subscriber
+            this.dgphone=e.target.dataset.subscriberphone
             let i=e.target.dataset.id;
             // console.log(i)
             if(i==0){
@@ -678,42 +773,76 @@ export default {
         chooseprovince(a){
             this.alladress[0]=a;
             this.province=a.value;
-            console.log(this.province)
+            // console.log(this.province)
+            this.temp.addressprovince=a.value
         },
         choosecity(a){
             this.alladress[1]=a;
             this.city=a.value;
-            console.log(this.city)
+            // console.log(this.city)
+            this.temp.addresscity=a.value
         },
         choosearea(a){
             this.county=a.value;
             this.alladress[2]=a;   
-            console.log(this.county)
+            // console.log(this.county)
+            this.temp.addressdist=a.value
         },
-        load(){
+        loadAddress(){
             var url = "selectAdress";
             this.axios.get(url).then(result=>{
                if(result.data.code==1){
                    this.adresslist=result.data.data;
-                   console.log(this.adresslist)
+                   //最多可以写6个地址    
+                   if(this.adresslist.length !=6){
+                       this.addAddress.display="flex"
+                   }else if(this.adresslist.length==6){
+                       this.addAddress.display="none"
+                   }
+                   //循环遍历数组看谁的is_default值为1 给对应的selecti赋值 
+                   for(var i=0;i<this.adresslist.length;i++){
+                       if(this.adresslist[i].is_default==1){
+                           this.selecti=i;
+                       }
+                   }  
                }
             })
 
         },
+        loadProduct(){
+            // 发送请求加载数据
+            var url = "cart";
+            this.axios.get(url).then(result=>{
+                if(result.data.code==1){
+                    // this.productList=result.data.data
+                    let list=result.data.data
+                    for(let i=0;i<list.length;i++){
+                        if(list[i].is_checked==1){
+                            // console.log(list[i])
+                            this.productList.push(list[i])
+                            this.totalPrice+=list[i].price*list[i].count
+                        }
+                    }
+                    this.allPrice=this.totalPrice;
+                }
+            })
+        },
         chooseadress(e){
-            console.log(e.target.dataset);
+            // console.log(e.target.dataset);
             // 获取到了用户选择的是哪一个地址
-            // 发送请求修改默认地址
-            // 在lode(){}中循环遍历数组  看谁的is_default值为1  给对应的xgsc selecti赋值
             this.addressID=e.target.dataset.aid;
-            console.log(this.addressID)
-            let i=e.target.dataset.id
-            if(i==0){this.selecti=0}
-            else if(i==1){this.selecti=1}
-            else if(i==2){this.selecti=2}
-            else if(i==3){this.selecti=3}
-            else if(i==4){this.selecti=4}
-            else if(i==5){this.selecti=5}
+            // 发送请求修改默认地址
+            var url = "updateDefault";
+            var obj={
+                is_default:1,
+                aid:this.addressID
+            }
+            this.axios.get(url,{params:obj}).then(result=>{
+               if(result.data.code==1){
+                    this.loadAddress()
+               }
+            })
+
         }
     },
 
@@ -721,6 +850,9 @@ export default {
 </script>
 
 <style scoped>
+.settlement{
+    min-width: 1200px;
+}
 .xuanzhongkuang1{
     visibility: visible !important;
 }
@@ -1377,4 +1509,93 @@ input[type="date"]::-webkit-clear-button{
 .settlement .disrpicker{
     display: inline-block;
 }
+/* 提示框 */
+.settlement .one{
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #33333375;
+    z-index: 900;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* display: none; */
+}
+.settlement .one>div{
+    width: 276px;
+    height: 195px;
+    /* width: 0;
+    height: 0; */
+    background-color: #fff;
+    position: fixed;
+    box-shadow: 0px 0px 0px 10px rgba(0, 0, 0, 0.144);
+    overflow: hidden;
+    opacity: 1;
+    transition: all 0.2s ease-out;
+    /* display: none; */
+}
+.settlement .one>div div:first-child{
+    width: 100%;
+    height: 43px;
+    padding-left: 20px;
+    background-color: #f8f8f8;
+}
+.settlement .one>div div:first-child span{
+    font-size: 14px !important;
+    color: #333333;
+    line-height: 43px;
+}
+.settlement .one>div div:first-child a{
+    color: #333 !important;
+    font-weight: bold;
+    font-size: 12px !important;
+    position: relative;
+    left: 170px;
+}
+.settlement .one>div div:nth-child(2){
+    width: 100%;
+    height: 88px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.settlement .one>div div:nth-child(2) span:first-child{
+    color: #ffaa15;
+    font-size: 40px !important;
+}
+.settlement .one>div div:nth-child(3){
+    height: 48px;
+    padding: 0 10px 12px;
+}
+.settlement .one>div div:nth-child(3) button{
+    width: 56px;
+    height: 30px;
+    border-color: #333;
+    background-color: #333;
+    color: #fff;
+    float: right;
+    margin-right: 10px;
+    margin-top: 15px;
+    font-size: 12px;
+    border-radius: 2px;
+    font-weight: 400;
+    cursor: pointer;
+}
+.settlement .one>div div:nth-child(3) button:first-child{
+    border: 1px solid #dedede;
+    background-color: #f1f1f1;
+    color: #333;
+    border-radius: 2px;
+}
+
+
+
+
+
+
+
 </style>
