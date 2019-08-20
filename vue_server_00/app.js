@@ -1101,3 +1101,15 @@ server.get("/selectAdress",(req,res)=>{
 })
 
 // 修改is_default的值
+
+
+
+
+
+
+/*********************************************************/
+//注销
+server.get("/logout",(req,res)=>{
+	var $uid=req.session.uid;
+	$uid="";
+})
