@@ -344,55 +344,59 @@ export default {
     methods:{
         jxgw(){window.history.go(-1);},
         loadMore(){
-            var url = "cart";
-            this.axios.get(url).then(result=>{
-                // console.log(result.data.code);
-                if(result.data.code==-1){
-                    this.cart1.display="none";
-                    this.cart2.display="none";
-                    this.cart3.display="block";
-                }else{
-                    this.list=result.data.data;
-                    var n=0;
-                    for(var i=0;i<this.list.length;i++){
-                        if(this.list[i].is_checked==1){
-                            n+=1;
-                        }
-                    }
-                    // console.log(n);
-                    if(n==this.list.length){this.t=true}
-                    if(!this.list.length){
-                        this.cart2.display="block";
+            var uname=sessionStorage.getItem("uname");
+            if(uname){
+                var url = "cart";
+                this.axios.get(url).then(result=>{
+                    // console.log(result.data.code);
+                    if(result.data.code==-1){
                         this.cart1.display="none";
-                        this.cart3.display="none";
-                    }else{
-                        this.cart1.display="block";
                         this.cart2.display="none";
-                        this.cart3.display="none";
-                    }
-                    // 求和sum
-                    this.sum=0;
-                    var k=0; //购物车总数
-                    var k1=0; //选中的商品总数
-                    var sum2=0; //选中商品总价
-                    for(var i=0;i<this.list.length;i++){
-                        // console.log(typeof(this.list[i].price));
-                        this.sum+=(this.list[i].count*this.list[i].price);
-                        k+=Number(this.list[i].count);
-                        if(this.list[i].is_checked==1){
-                            k1+=1;
-                            sum2+=Number(this.list[i].count)*Number(this.list[i].price);
+                        this.cart3.display="block";
+                    }else{
+                        this.list=result.data.data;
+                        var n=0;
+                        for(var i=0;i<this.list.length;i++){
+                            if(this.list[i].is_checked==1){
+                                n+=1;
+                            }
                         }
+                        // console.log(n);
+                        if(n==this.list.length){this.t=true}
+                        if(!this.list.length){
+                            this.cart2.display="block";
+                            this.cart1.display="none";
+                            this.cart3.display="none";
+                        }else{
+                            this.cart1.display="block";
+                            this.cart2.display="none";
+                            this.cart3.display="none";
+                        }
+                        // 求和sum
+                        this.sum=0;
+                        var k=0; //购物车总数
+                        var k1=0; //选中的商品总数
+                        var sum2=0; //选中商品总价
+                        for(var i=0;i<this.list.length;i++){
+                            // console.log(typeof(this.list[i].price));
+                            this.sum+=(this.list[i].count*this.list[i].price);
+                            k+=Number(this.list[i].count);
+                            if(this.list[i].is_checked==1){
+                                k1+=1;
+                                sum2+=Number(this.list[i].count)*Number(this.list[i].price);
+                            }
+                        }
+                        this.sum2=sum2;
+                        this.total=k1;
+                        // console.log(this.total,this.sum2);
+                        // vuex数据存贮
+                        this.$store.commit("set1",k);
+                        this.$store.commit("set2",this.sum);
                     }
-                    this.sum2=sum2;
-                    this.total=k1;
-                    // console.log(this.total,this.sum2);
-                    // vuex数据存贮
-                    this.$store.commit("set1",k);
-                    this.$store.commit("set2",this.sum);
-                }
-                
-            })
+                    
+                })
+            }
+            else{this.cart3.display="block";}
             // console.log(this.sum);
         },
         ljjs(){

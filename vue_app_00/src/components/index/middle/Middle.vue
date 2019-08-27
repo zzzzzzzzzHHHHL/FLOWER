@@ -7,16 +7,17 @@
            <!-- 1F -->
            <div class="floor_1">
                <div class="image_1">
-                   <router-link :to="`${this.list[0].href}`"><img :src="'http://127.0.0.1:3000/'+this.list[0].pic"></router-link>
+                   <!-- <router-link :to="`${this.list[0].href}`"><img :src="'http://127.0.0.1:3000/'+this.list[0].pic"></router-link> -->
+                   <router-link :to="`product_details/1`"><img src="./img/ip1.png"></router-link>
                </div>
                <div class="image_2">
                    <div class="image_2-div">
-                       <router-link :to="`${this.list[1].href}`"><img :src="'http://127.0.0.1:3000/'+this.list[1].pic"></router-link>
+                       <router-link :to="`product_details/2`"><img src="./img/ip2.jpg"></router-link>
                    </div>
                    <div class="image_2-text">
                        <p>她总说不要送她礼物</p>
                        <p>但是你心里自有打算</p>
-                       <router-link :to="`${this.list[1].href}`">立即购买>></router-link>
+                       <router-link :to="`product_details/2`">立即购买>></router-link>
                    </div>
                </div>
            </div>
@@ -79,15 +80,17 @@
            <div class="floor_3trd">
                <div class="image_2">
                    <div class="image_2-div">
-                       <router-link :to="`${this.list[42].href}`"><img :src="'http://127.0.0.1:3000/'+this.list[42].pic"></router-link>
+                       <!-- <router-link :to="`${this.list[42].href}`"><img :src="'http://127.0.0.1:3000/'+this.list[42].pic"></router-link> -->
+                       <router-link :to="`product_details/43`"><img src="./img/ip43.jpg"></router-link>
                    </div>
                    <div class="image_2-text">
                        <p>时尚活力抱抱桶</p>
-                       <router-link :to="`${this.list[42].href}`">前往了解  >></router-link>
+                       <router-link :to="`product_details/43`">前往了解  >></router-link>
                    </div>
                </div>
                <div class="image_1">
-                   <router-link :to="`${this.list[43].href}`"><img :src="'http://127.0.0.1:3000/'+this.list[43].pic"></router-link>
+                   <!-- <router-link :to="`${this.list[43].href}`"><img :src="'http://127.0.0.1:3000/'+this.list[43].pic"></router-link> -->
+                    <router-link :to="`product_details/44`"><img src="./img/ip44.jpg"></router-link>
                </div>
            </div>
            <!-- 新品推荐 -->
@@ -141,6 +144,8 @@ export default {
         // console.log(result);
         this.list=result.data;
         // console.log(this.list);
+        // console.log(this.list[0].href,this.list[1].href);
+        // console.log(this.list[42].href,this.list[43].href);
         this.list_1F=this.list.slice(2,10);
         this.list_2F=this.list.slice(10,18);
         this.list_3F=this.list.slice(18,26);
@@ -148,8 +153,8 @@ export default {
         this.list_5F=this.list.slice(34,42);
         this.list_6F=this.list.slice(44,49);
         })	
-  },
-  components:{
+    },
+    components:{
       "header00":Header,
       "navgitor":Nav,
       "footer00":Footer,

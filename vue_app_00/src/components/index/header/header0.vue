@@ -30,13 +30,13 @@ export default {
   },
   created(){
       var uname=sessionStorage.getItem("uname");
-      if(uname.length>0){
+      if(uname){
         this.loginMsg=`欢迎回来:${uname}`;
         this.logout=true;
       }
   },
- methods:{
-    open() {
+  methods:{
+      open() {
         this.$confirm('确定要注销吗?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
@@ -55,95 +55,96 @@ export default {
             message: '已取消'
           });          
         });
-      }
-    },
+      },
 
-  searchMsg2(){
-    var msg=this.input3;
-    if(msg=="进口鲜花"){
-      this.$router.push("/Import");
+    searchMsg2() {
+      var msg=this.input3;
+      if(msg=="进口鲜花"){
+        this.$router.push("/Import");
+      }
+      else if(msg=="爱情鲜花"){
+        this.$router.push("/Love");
+      }
+      else if(msg=="生日鲜花"){
+        this.$router.push("/Birthday");
+      }
+      else if(msg=="问候长辈"){
+        this.$router.push("/Extend");
+      }
+      else if(msg=="祝福祝贺"){
+        this.$router.push("/Blessing");
+      }
+      else if(msg=="探病慰问"){
+        this.$router.push("/Condole");
+      }
+      else if(msg=="道歉鲜花"){
+        this.$router.push("/Apologize");
+      }
+      else if(msg=="生活鲜花"){
+        this.$router.push("/Life");
+      }
+      else if(msg=="全部鲜花"){
+        this.$router.push("/All ");
+      }
+      else if(msg=="开业花篮"){
+        this.$router.push("/Opening");
+      }
+      else if(msg=="永生花"){
+        this.$router.push("/Forever");
+      }
+      else if(msg=="礼品"){
+        this.$router.push("/Gift");
+      }
+      else if(msg=="登录"){
+        this.$router.push("/Login");
+      }
+      else if(msg=="注册"){
+        this.$router.push("/Register");
+      }
+      else if(msg=="玫瑰"){
+        this.$router.push("/Rose");
+      }
+      else if(msg=="白玫瑰"){
+        this.$router.push("/Wrose");
+      }
+      else if(msg=="红玫瑰"){
+        this.$router.push("/Rrose");
+      }
+      else if(msg=="粉玫瑰"){
+        this.$router.push("/Prose");
+      }
+      else if(msg=="白百合"){
+        this.$router.push("/Whitelily");
+      }
+      else if(msg=="向日葵"){
+        this.$router.push("/Sunflor");
+      }
+      else if(msg=="康乃馨"){
+        this.$router.push("/Kangnaixin");
+      }
+      else if(msg=="雏菊"){
+        this.$router.push("/Daisy");
+      }
+      else if(msg=="红雪山"){
+        this.$router.push("/PinkMt");
+      }
+      else if(msg=="抱抱桶"){
+        this.$router.push("/Hugtong");
+      }
+      else if(msg=="巧克力"){
+        this.$router.push("/Chocolate");
+      }
+      else if(msg=="满天星"){
+        this.$router.push("/Babysbreath");
+      }
+      else if(msg=="香薰"){
+        this.$router.push("/Aromatherapy");
+      }
+      else{
+        this.$router.push("/Serr");
+      }
     }
-    else if(msg=="爱情鲜花"){
-      this.$router.push("/Love");
-    }
-    else if(msg=="生日鲜花"){
-      this.$router.push("/Birthday");
-    }
-    else if(msg=="问候长辈"){
-      this.$router.push("/Extend");
-    }
-    else if(msg=="祝福祝贺"){
-      this.$router.push("/Blessing");
-    }
-    else if(msg=="探病慰问"){
-      this.$router.push("/Condole");
-    }
-    else if(msg=="道歉鲜花"){
-      this.$router.push("/Apologize");
-    }
-    else if(msg=="生活鲜花"){
-      this.$router.push("/Life");
-    }
-    else if(msg=="全部鲜花"){
-      this.$router.push("/All ");
-    }
-    else if(msg=="开业花篮"){
-      this.$router.push("/Opening");
-    }
-    else if(msg=="永生花"){
-      this.$router.push("/Forever");
-    }
-    else if(msg=="礼品"){
-      this.$router.push("/Gift");
-    }
-    else if(msg=="登录"){
-      this.$router.push("/Login");
-    }
-    else if(msg=="注册"){
-      this.$router.push("/Register");
-    }
-    else if(msg=="玫瑰"){
-      this.$router.push("/Rose");
-    }
-    else if(msg=="白玫瑰"){
-      this.$router.push("/Wrose");
-    }
-    else if(msg=="红玫瑰"){
-      this.$router.push("/Rrose");
-    }
-    else if(msg=="粉玫瑰"){
-      this.$router.push("/Prose");
-    }
-    else if(msg=="白百合"){
-      this.$router.push("/Whitelily");
-    }
-    else if(msg=="向日葵"){
-      this.$router.push("/Sunflor");
-    }
-    else if(msg=="康乃馨"){
-      this.$router.push("/Kangnaixin");
-    }
-    else if(msg=="雏菊"){
-      this.$router.push("/Daisy");
-    }
-    else if(msg=="红雪山"){
-      this.$router.push("/PinkMt");
-    }
-    else if(msg=="抱抱桶"){
-      this.$router.push("/Hugtong");
-    }
-    else if(msg=="巧克力"){
-      this.$router.push("/Chocolate");
-    }
-    else if(msg=="满天星"){
-      this.$router.push("/Babysbreath");
-    }
-    else if(msg=="香薰"){
-      this.$router.push("/Aromatherapy");
-    }
-    else{
-      this.$router.push("/Serr");
-    }
+    
   }
 }
 
@@ -187,6 +188,7 @@ export default {
   .register{
     margin-left:10px;
   }
+
 </style>
 
 

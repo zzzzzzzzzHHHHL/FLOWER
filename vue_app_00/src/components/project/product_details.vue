@@ -411,49 +411,58 @@ export default {
             this.guodu2.tsdonghua2=false;
         },
         jrgwc(){
-            var url="InsertProduct";
-            var obj={
-                lid:this.list.lid,
-                img_url:this.list.details,
-                title:this.list.title,
-                price:this.list.price,
-                count:this.num1
-            }
-            this.axios.get(url,{params:obj}).then(result=>{
-                // console.log(result.data.code);
-                if(result.data.code==-1){
-                    this.three.display="flex";
-                }else{
-                    this.two.display="flex";
-                    this.guodu2.tsdonghua2=true;
-                    // this.insert();
-                    var c=this.num1;
-                    var p=this.list.price;
-                    p=this.num1*this.list.price;
-                    // console.log(c,p);
-                    this.$store.commit("plus1",c);
-                    this.$store.commit("plus2",p);
+            var uname=sessionStorage.getItem("uname");
+            if(uname){
+                var url="InsertProduct";
+                var obj={
+                    lid:this.list.lid,
+                    img_url:this.list.details,
+                    title:this.list.title,
+                    price:this.list.price,
+                    count:this.num1
                 }
-            })  
+                this.axios.get(url,{params:obj}).then(result=>{
+                    // console.log(result.data.code);
+                    if(result.data.code==-1){
+                        this.three.display="flex";
+                    }else{
+                        this.two.display="flex";
+                        this.guodu2.tsdonghua2=true;
+                        // this.insert();
+                        var c=this.num1;
+                        var p=this.list.price;
+                        p=this.num1*this.list.price;
+                        // console.log(c,p);
+                        this.$store.commit("plus1",c);
+                        this.$store.commit("plus2",p);
+                    }
+                })
+            }
+            else{this.three.display="flex";}  
         },
         ljgm(){
+            var uname=sessionStorage.getItem("uname");
             // this.insert();
-            var url="InsertProduct";
-            var obj={
-                lid:this.list.lid,
-                img_url:this.list.details,
-                title:this.list.title,
-                price:this.list.price,
-                count:this.num1
-            }
-            // console.log(obj);
-            this.axios.get(url,{params:obj}).then(result=>{
-                // console.log(result);
-                if(result.data.code==1){this.$router.push("/Gocart");}else{
-                    this.three.display="flex";
+            if(uname){
+                var url="InsertProduct";
+                var obj={
+                    lid:this.list.lid,
+                    img_url:this.list.details,
+                    title:this.list.title,
+                    price:this.list.price,
+                    count:this.num1
                 }
-            })
-            
+                // console.log(obj);
+                this.axios.get(url,{params:obj}).then(result=>{
+                    // console.log(result);
+                    if(result.data.code==1){this.$router.push("/Gocart");}else{
+                        this.three.display="flex";
+                    }
+                })
+            }
+            else{
+                this.three.display="flex";
+            }
         },
         ljgm1(){
             this.$router.push("/Gocart");
