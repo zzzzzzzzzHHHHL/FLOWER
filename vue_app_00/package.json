@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "animate.css": "^3.7.2",
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "element-ui": "^2.10.1",
     "mint-ui": "^2.2.9",
     "v-distpicker": "^1.2.1",
