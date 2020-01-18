@@ -158,7 +158,7 @@ export default {
       "header00":Header,
       "navgitor":Nav,
       "footer00":Footer,
-      "banner":Banner
+      "banner":Banner,
      }
 
 }
